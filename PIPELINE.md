@@ -145,7 +145,7 @@ Commit et push dans le dépôt (voir 10), avec `historique/CHECKS.md` s'il a cha
   défauts restants, lien du Google Sheet. Un seul message final, court, en français.
 
 ## 9. Boucle de retour (au début de chaque exécution, 1 minute)
-Lis `Videos!A1:N12` du Google Sheet. Si des vidéos ont leurs colonnes K à N remplies : repère les hooks, familles de sujets
+Lis `Videos!A1:R12` du Google Sheet (K vues, L temps moyen, M % qui finit, N abonnés, O durée, P mot-clé, Q j'aime, R enregistrements). Si des vidéos ont des stats remplies : repère les hooks, familles de sujets
 et durées qui retiennent le mieux (temps moyen, % qui finit) et ceux qui font gagner des abonnés ; penche vers ce qui
 marche ; compare aussi les vidéos de 30 s (colonne O) et de 45 s : si l'une retient nettement mieux, dis-le en tête de ton
 message final pour que Thomas décide (sans jamais répéter la veille) et note la conclusion en une ligne dans l'historique. Vides : ignore.
