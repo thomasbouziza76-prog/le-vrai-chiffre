@@ -144,11 +144,22 @@ Commit et push dans le dépôt (voir 10), avec `historique/CHECKS.md` s'il a cha
   du sujet dès la 1re ligne), sujet, hook et archétype, CTA et sa seconde, concept en une phrase, moteur utilisé, sources,
   défauts restants, lien du Google Sheet. Un seul message final, court, en français.
 
-## 9. Boucle de retour (au début de chaque exécution, 1 minute)
-Lis `Videos!A1:R12` du Google Sheet (K vues, L temps moyen, M % qui finit, N abonnés, O durée, P mot-clé, Q j'aime, R enregistrements). Si des vidéos ont des stats remplies : repère les hooks, familles de sujets
-et durées qui retiennent le mieux (temps moyen, % qui finit) et ceux qui font gagner des abonnés ; penche vers ce qui
-marche ; compare aussi les vidéos de 30 s (colonne O) et de 45 s : si l'une retient nettement mieux, dis-le en tête de ton
-message final pour que Thomas décide (sans jamais répéter la veille) et note la conclusion en une ligne dans l'historique. Vides : ignore.
+## 9. Boucle de retour (au DÉBUT de chaque exécution, ≈ 2 min)
+1. **Mise à jour automatique des stats (si le connecteur Metricool est présent dans ta session)** : Thomas ne remplit
+   plus rien à la main. `getAnalyticsDataByMetrics` (brandId 7764816, from = il y a 30 jours, to = maintenant) avec les
+   métriques TikTok par vidéo `TKPO02` (date et heure), `TKPO05` (description), `TKPO07` (vues), `TKPO08` (j'aime),
+   `TKPO09` (commentaires), `TKPO10` (partages), `TKPO13` (% qui regarde jusqu'au bout), `TKPO15` (temps moyen, s),
+   `TKPO21` (% des vues venant de la recherche). Puis, à part, `TKEV07` (abonnés) et `TKEV08` (nouveaux abonnés par
+   jour). Associe chaque vidéo TikTok à sa ligne du Google Sheet par la légende (début de la description) et la date
+   de publication, puis écris dans CETTE ligne seulement : K vues, L temps moyen, M % qui finit, N nouveaux abonnés du
+   jour de publication (approximation, Metricool ne les donne pas par vidéo), Q j'aime, S partages, T commentaires,
+   U % recherche. Ne touche à aucune autre colonne ; R (enregistrements) reste à Thomas, Metricool ne le fournit pas.
+   Pas de ligne trouvée ou résultat vide : ne remplis rien et note-le en une ligne dans le message final.
+   Sans connecteur Metricool : saute cette sous-étape (l'autre tâche du jour s'en charge).
+2. Lis `Videos!A1:U14`. Si des vidéos ont des stats : repère les hooks, familles de sujets, durées (30 s / 45 s) et
+   mots-clés qui retiennent le mieux (temps moyen, % qui finit, % recherche) et ceux qui font gagner des abonnés ;
+   penche vers ce qui marche (sans jamais répéter la veille) et écris la conclusion en une ligne dans l'historique.
+   Si une durée retient nettement mieux sur au moins 4 vidéos de chaque, dis-le en tête du message final.
 
 ## 10. Dépôt
 `git -C $LVC_REPO add -A && git commit -m "N°xx · sujet" && git push` (le dépôt est attaché avec `add_repo`, access push).
