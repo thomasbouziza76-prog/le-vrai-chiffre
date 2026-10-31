@@ -35,8 +35,11 @@ HyperFrames. Seul `HISTORIQUE.md` (7 dernières vidéos) est à lire en entier :
   pauses (`[short pause]`, `[pause]`, « … »). Hook net : une balise au plus. Aucune balise de bruitage. Un soupir ou un
   rire n'est jamais un sous-titre.
 - ElevenLabs `creative_generate_speech`, model_id `eleven_v4`, voice_id `5l4ttmr4SKNgi0HnOelT` (Paul K), generations_count 1.
-  JAMAIS de 2e appel pour « réessayer » (facturé). Échec (« Unusual activity… Free Tier access has been disabled » ou
-  téléchargement refusé) : arrête-toi et préviens Thomas avec l'erreur exacte. Attends avec `creative_get_flow_run_status`.
+  Attends avec `creative_get_flow_run_status`. Si la génération ÉCHOUE (statut failed, par ex. « Unusual activity…
+  Free Tier access has been disabled ») : attends 30 s et relance UNE seule fois, avec le même texte (constaté : la
+  2e tentative passe souvent). Jamais de relance après une génération réussie (chaque appel est facturé). Si la 2e
+  échoue aussi, si les crédits sont épuisés ou si le téléchargement est refusé : arrête-toi et préviens Thomas avec
+  l'erreur exacte.
 - Voix plus longue que la durée visée + 3 s : raccourcis le script et régénère UNE fois.
 - `bash etapes/02-voix.sh $P "<media[0].url>" <texte-voix.txt>` : télécharge, minute chaque mot (`mots.txt`,
   `mots.json`), liste les silences (`silences.txt`), écrit la durée (`duree.txt`). Recolle les mots sur le script (l'orthographe
