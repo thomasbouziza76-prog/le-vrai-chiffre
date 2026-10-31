@@ -13,9 +13,13 @@ Racine du dépôt : `$LVC_REPO` (après l'étape 0). Projet du jour : `$P` = sor
 HyperFrames. Seul `HISTORIQUE.md` (7 dernières vidéos) est à lire en entier : `historique/HISTORIQUE.md`.
 
 ## 1. Sujet et script (≈ 10 min)
-- Deux vidéos par jour : le prompt de la tâche donne SLOT (0 = matin, 1 = midi). Sujet : ligne n° ((2 × jours depuis
-  2026-10-31 + SLOT − 1) mod 60) + 1 de `sujets.md`, règles du fichier comprises ; si le sujet est déjà dans l'historique,
-  prends la ligne suivante. N° de la vidéo = dernier N° de l'historique + 1.
+- Deux vidéos par jour : le prompt de la tâche donne SLOT (0 = matin, 1 = soir). **Sujet : `git pull`, puis le PREMIER
+  sujet de `sujets.md` qui n'a pas ✅**, en partant du haut, règles du fichier comprises. Saute un sujet ⚡ dont la date
+  « valable jusqu'au » est passée (coche-le ⚡⏭). Si une grosse actu argent de la semaine (Insee, gouvernement, prix,
+  impôts) intéresse plus les gens, tu peux la traiter à la place : ajoute-la en tête avec ⚡. Pour un sujet ⚡, REVÉRIFIE
+  chaque chiffre le jour même (WebSearch) : l'actu bouge. Dès le sujet choisi, mets ✅ + date + N° au début de sa ligne,
+  commit et push TOUT DE SUITE (l'autre tâche du jour ne doit pas prendre le même). N° de la vidéo = dernier N° de
+  l'historique + 1.
 - **Durée (test en cours)** : N° impair = 45 s (110 à 120 mots), N° pair = 30 s (75 à 85 mots). Même qualité, même
   structure comprimée (SCRIPT-HOOKS.md section 11). On compare les deux dans les stats.
 - **Mot-clé de recherche** : choisis le mot que les gens tapent dans TikTok pour ce sujet (épargne, salaire, investir,
