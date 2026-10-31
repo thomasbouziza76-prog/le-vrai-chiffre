@@ -18,6 +18,7 @@ ENV
 source "$HOME/.hf-env"; npx hyperframes telemetry disable >/dev/null 2>&1 || true
 echo "== GSAP local"
 mkdir -p /tmp/g && cd /tmp/g && npm i --silent gsap@3.14.2 >/dev/null && cp node_modules/gsap/dist/gsap.min.js "$HOME/gsap.min.js"
+mkdir -p "$HOME/gsap-plugins" && for f in CustomEase CustomWiggle CustomBounce SplitText DrawSVGPlugin MorphSVGPlugin MotionPathPlugin; do cp "node_modules/gsap/dist/$f.min.js" "$HOME/gsap-plugins/"; done
 echo "== Whisper (faster-whisper + modèle small via npm)"
 pip install -q --break-system-packages faster-whisper >/dev/null 2>&1
 M="$HOME/whisper-small"

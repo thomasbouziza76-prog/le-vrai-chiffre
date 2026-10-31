@@ -8,6 +8,7 @@ cd "$LVC_HF" && bash .claude/skills/motion-design/scripts/new-project.sh "$S" >/
 P="$LVC_HF/$S"
 mkdir -p "$P/assets/vendor" "$P/boards" "$P/renders" "$P/livrables"
 cp "$HOME/gsap.min.js" "$P/assets/vendor/gsap.min.js"
+for f in CustomEase CustomWiggle CustomBounce SplitText DrawSVGPlugin MorphSVGPlugin MotionPathPlugin; do cp "$HOME/gsap-plugins/$f.min.js" "$P/assets/vendor/" 2>/dev/null || true; done
 cp "$LVC_REPO"/polices/InstrumentSans-*.woff2 "$LVC_REPO"/polices/SpaceMono-*.woff2 "$P/assets/fonts/"
 cp "$LVC_REPO/outils/assemble.sh" "$LVC_REPO/outils/build-sfx-mix.py" "$P/"
 echo "$P"

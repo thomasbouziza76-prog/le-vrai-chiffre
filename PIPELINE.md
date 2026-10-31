@@ -66,6 +66,25 @@ vidéos (`HISTORIQUE.md`) : ni frise chronologique, ni glaçon, ni iPhone-banque
 6. Pose les images clés, un snapshot par image clé (`npx hyperframes snapshot --at <t> --no-end --describe false -o boards/stills`),
    regarde-les (les images clés seulement), compare aux vidéos précédentes décrites dans HISTORIQUE.md.
 
+### Qualité visuelle (obligatoire, à inscrire dans frame.md et dans chaque paquet d'agent)
+Lis `recherche/GITHUB.md` (composants du catalogue local, plugins GSAP) et `historique/CHECKS.md` (règles apprises).
+1. **Flou de mouvement** : composant `motion-blur` (`npx hyperframes add motion-blur`), `data-hf-motion-blur` sur tout
+   objet qui traverse l'écran ou zoome vite.
+2. **Courbes** : jamais `linear` ni `ease` par défaut. Entrées « premium » `expo.out` / `power3.out`, objets qui se
+   posent `back.out(1.7)`, sorties `power2.in`. Anticipation (léger recul avant un départ), dépassement puis retour
+   sur les chiffres, inertie : les éléments secondaires suivent avec 0,05 à 0,15 s de retard (stagger).
+3. **Caméra jamais figée** : dérive lente continue (≈ 1 à 2 % d'échelle ou 10-20 px sur un plan), poussée sur le chiffre
+   clé, tremblement seulement sur un impact et très bas.
+4. **Profondeur** : 3 plans (fond, milieu, avant) à vitesses différentes ; ombres de papier empilées (contact + douce) ;
+   léger flou sur le fond quand l'avant est net ; bords de papier irréguliers (`feTurbulence` + `feDisplacementMap`).
+5. **Un moment 3D par vidéo** (Three.js, état piloté par la timeline, rendu dans `onUpdate`) : objet clé éclairé ou en
+   aplats + contours encre pour rester « papier ».
+6. **Chiffres spectaculaires** : compteur à rouleaux (`number-wheel`, `slot-machine-roll`, `split-flap-board`) ou
+   compteur avec pulsation, bruitage « clic » sur la valeur finale, toujours une comparaison concrète à l'écran
+   (« 1 095 € = 2 mois de courses »), chiffre centré, très gros, hors des zones de l'interface TikTok.
+7. **Accents dessinés** : souligné, cercle, flèche, surligneur (`hw-*`, `marker-highlight`) sur le mot ou le chiffre clé.
+8. **Rythme** : un changement visuel toutes les 1,5 à 3 s ; chaque geste visuel fort a son bruitage.
+
 ## 4. Animation (≈ 25 min) : 3 agents au plus
 - Paquets : `node .claude/skills/product-launch-video/scripts/frame-packets.mjs --project <slug> --storyboard <slug>/STORYBOARD.md`
   (depuis `~/motion-design-claude-code`).
@@ -79,6 +98,12 @@ vidéos (`HISTORIQUE.md`) : ni frise chronologique, ni glaçon, ni iPhone-banque
 ## 5. Assemblage, son (≈ 15 min)
 - `assemble.sh` du projet (réglages : FIRST_FRAME, END_CARD, TOTAL = durée de la voix, LEAK_AT et IRIS_AT vides,
   BED_START 0, BED_END = TOTAL). `npx hyperframes check --json` : zéro erreur.
+- **Relecture de mise en scène (agent séparé, ≈ 5 min)** : un agent `general-purpose` neuf, qui n'a pas fait l'animation,
+  reçoit UNE planche (un snapshot par plan + les coutures) et la grille : rythme, lisibilité sur téléphone, plans vides
+  ou figés, effet « cheap » (texte qui apparaît sans mouvement, objets sans ombre, courbes linéaires), respect de
+  l'identité. Il note chaque plan sur 5 et nomme les 2 plus faibles avec la correction précise. Corrige ces 2 plans
+  (ou relance l'agent de la séquence), une seule fois. Ajoute à `historique/CHECKS.md` toute règle nouvelle qu'il a
+  trouvée (une ligne À FAIRE / À NE PAS FAIRE).
 - Contrôle de l'assemblage : un seul snapshot par couture (à 0) et un par séquence, regroupés en UNE planche ; rien de
   figé, rien de vide, pas de saut.
 - Bruitages : `assets/audio/sfx-events.json` (nom, temps, gain) calés sur les gestes, palette sonore propre à la vidéo,
@@ -89,14 +114,15 @@ vidéos (`HISTORIQUE.md`) : ni frise chronologique, ni glaçon, ni iPhone-banque
   musique, et dis-le. Relance `assemble.sh`.
 
 ## 6. Rendu et contrôle (≈ 8 min)
-`npx hyperframes render --quality high --output renders/video.mp4`, puis `bash etapes/06-controle.sh $P`. Regarde la
+`npx hyperframes render --quality high --output renders/video.mp4`, puis la finition commune (grain papier + vignettage
+doux) `bash etapes/07-finition.sh $P`, puis `bash etapes/06-controle.sh $P`. Regarde la
 planche `boards/planche.jpg` en entier. Ne dis jamais que c'est fini avant ces contrôles.
 
 ## 7. Historique (avant la livraison)
 Ajoute une ligne EN HAUT de `historique/HISTORIQUE.md` du dépôt : date, N°, sujet, hook (archétype + phrase), appel à
 l'action ET sa seconde, à approfondir, concept, monde, signatures, blueprints, transitions, effets, palette sonore,
 musique, moteur. Garde les 7 dernières lignes détaillées ; condense les plus anciennes en une demi-ligne chacune.
-Commit et push dans le dépôt (voir 9).
+Commit et push dans le dépôt (voir 10), avec `historique/CHECKS.md` s'il a changé.
 
 ## 8. Couverture, titre, rangement, livraison
 - Couverture : fais un HTML 1080×1920 dans l'identité de la chaîne (modèle de FORMAT : `exemples/couverture-exemple.html`) :
