@@ -13,8 +13,14 @@ Racine du dépôt : `$LVC_REPO` (après l'étape 0). Projet du jour : `$P` = sor
 HyperFrames. Seul `HISTORIQUE.md` (7 dernières vidéos) est à lire en entier : `historique/HISTORIQUE.md`.
 
 ## 1. Sujet et script (≈ 10 min)
-- Sujet : ligne n° ((jours depuis 2026-10-31) mod 60) + 1 de `sujets.md`, règles du fichier comprises (sauter un sujet
-  déjà fait). Vérifie chaque chiffre par une recherche web (Insee, Banque de France, AMF, service-public.fr), garde la
+- Deux vidéos par jour : le prompt de la tâche donne SLOT (0 = matin, 1 = midi). Sujet : ligne n° ((2 × jours depuis
+  2026-10-31 + SLOT − 1) mod 60) + 1 de `sujets.md`, règles du fichier comprises ; si le sujet est déjà dans l'historique,
+  prends la ligne suivante. N° de la vidéo = dernier N° de l'historique + 1.
+- **Durée (test en cours)** : N° impair = 45 s (110 à 120 mots), N° pair = 30 s (75 à 85 mots). Même qualité, même
+  structure comprimée (SCRIPT-HOOKS.md section 11). On compare les deux dans les stats.
+- **Mot-clé de recherche** : choisis le mot que les gens tapent dans TikTok pour ce sujet (épargne, salaire, investir,
+  budget, inflation, impôts, crédit, loyer, prix…). Il est PRONONCÉ par la voix dans les 5 premières secondes, écrit dans
+  le texte d'écran du hook ou du premier plan, et il ouvre la légende (voir étape 8). Vérifie chaque chiffre par une recherche web (Insee, Banque de France, AMF, service-public.fr), garde la
   source et la date.
 - Script : suis `SCRIPT-HOOKS.md` en entier. 8 hooks sur au moins 4 archétypes, garde le plus fort (archétype différent
   des 2 dernières vidéos), texte d'écran de 3 à 7 mots affiché dès la 1re image. 110 à 120 mots. UN seul appel à
@@ -31,7 +37,7 @@ HyperFrames. Seul `HISTORIQUE.md` (7 dernières vidéos) est à lire en entier :
 - ElevenLabs `creative_generate_speech`, model_id `eleven_v4`, voice_id `5l4ttmr4SKNgi0HnOelT` (Paul K), generations_count 1.
   JAMAIS de 2e appel pour « réessayer » (facturé). Échec (« Unusual activity… Free Tier access has been disabled » ou
   téléchargement refusé) : arrête-toi et préviens Thomas avec l'erreur exacte. Attends avec `creative_get_flow_run_status`.
-- Voix > 47 s : raccourcis le script et régénère UNE fois.
+- Voix plus longue que la durée visée + 3 s : raccourcis le script et régénère UNE fois.
 - `bash etapes/02-voix.sh $P "<media[0].url>" <texte-voix.txt>` : télécharge, minute chaque mot (`mots.txt`,
   `mots.json`), liste les silences (`silences.txt`), écrit la durée (`duree.txt`). Recolle les mots sur le script (l'orthographe
   du script gagne ; les mots à faible confiance viennent de la transcription).
@@ -54,7 +60,10 @@ vidéos (`HISTORIQUE.md`) : ni frise chronologique, ni glaçon, ni iPhone-banque
    Le CTA du milieu et son petit texte d'écran y ont leur plan.
 4. 9:16 : rien de lisible au-dessus de y 168 ni sous y 1330 ; bande 1180-1330 réservée au sous-titre ; rien de lisible à
    x > 940 entre y 700 et 1330 ; sous-titre clair (`.fx-sub.dark`) sur fond sombre. Ids SVG uniques et préfixés.
-5. Pose les images clés, un snapshot par image clé (`npx hyperframes snapshot --at <t> --no-end --describe false -o boards/stills`),
+5. LES 3 PREMIÈRES SECONDES : dès l'image 0, le texte d'écran du hook est LISIBLE et quelque chose bouge. Pas de fondu
+   depuis le blanc, pas d'écran vide, pas de logo, pas de titre qui monte lentement. Le premier bruitage tombe à 0 s.
+   Un snapshot à t = 0 et un à t = 0,3 s doivent déjà montrer le hook : sinon corrige le premier plan.
+6. Pose les images clés, un snapshot par image clé (`npx hyperframes snapshot --at <t> --no-end --describe false -o boards/stills`),
    regarde-les (les images clés seulement), compare aux vidéos précédentes décrites dans HISTORIQUE.md.
 
 ## 4. Animation (≈ 25 min) : 3 agents au plus
@@ -98,10 +107,13 @@ Commit et push dans le dépôt (voir 9).
   `videos/N<xx>.mp4` et `covers/N<xx>.jpg` (de `$P/livrables`), puis `edit_version` sur index.html : remplace `/*NEXT*/` par
   `/*NEXT*/` + `{n:"<xx>",date:"AAAA-MM-JJ",titre:"…",sujet:"…",video:"videos/N<xx>.mp4",cover:"covers/N<xx>.jpg",legende:"…"},`.
 - Google Sheet (spreadsheetId 1YOZOKiZslJRvTt3Qzekn7JD3qrJvBn6urOq-1ORWoe0, onglet Videos), plus récent en haut :
-  `insert_dimension` ROWS 1→2 (sheetId 0, inheritFromBefore false), `update_values` `Videos!A2:J2` (N°xx | date | titre |
-  sujet | légende + hashtags | vide | hook | sources | « À publier » | notes), puis `update_formulas` `Videos!F2` :
+  `insert_dimension` ROWS 1→2 (sheetId 0, inheritFromBefore false), `update_values` `Videos!A2:P2` (N°xx | date | titre |
+  sujet | légende + hashtags | vide | hook | sources | « À publier » | notes | K à N vides (stats de Thomas) | durée en
+  secondes | mot-clé), puis `update_formulas` `Videos!F2` :
   `=HYPERLINK("https://claude.ai/artifact/QmS9gdt1rFNDf6hyZSJKKK#N<xx>";"Ouvrir N°<xx>")`. Ne touche jamais aux autres lignes.
   **Colonnes de retour** (K à N, que Thomas remplit à la main 48 h après) : vues | temps moyen | % qui finit | abonnés gagnés.
+- Légende : la 1re ligne commence par le mot-clé de recherche ; 5 hashtags dont 3 sur le sujet (#epargne, #salaire,
+  #investir… selon la vidéo) et 2 génériques (#argent #financepersonnelle).
 - Envoie la vidéo ET la couverture (SendUserFile, status proactive) avec : titre, légende (2 lignes + 5 hashtags, mot-clé
   du sujet dès la 1re ligne), sujet, hook et archétype, CTA et sa seconde, concept en une phrase, moteur utilisé, sources,
   défauts restants, lien du Google Sheet. Un seul message final, court, en français.
@@ -109,7 +121,8 @@ Commit et push dans le dépôt (voir 9).
 ## 9. Boucle de retour (au début de chaque exécution, 1 minute)
 Lis `Videos!A1:N12` du Google Sheet. Si des vidéos ont leurs colonnes K à N remplies : repère les hooks, familles de sujets
 et durées qui retiennent le mieux (temps moyen, % qui finit) et ceux qui font gagner des abonnés ; penche vers ce qui
-marche (sans jamais répéter la veille) et note la conclusion en une ligne dans l'historique. Vides : ignore.
+marche ; compare aussi les vidéos de 30 s (colonne O) et de 45 s : si l'une retient nettement mieux, dis-le en tête de ton
+message final pour que Thomas décide (sans jamais répéter la veille) et note la conclusion en une ligne dans l'historique. Vides : ignore.
 
 ## 10. Dépôt
 `git -C $LVC_REPO add -A && git commit -m "N°xx · sujet" && git push` (le dépôt est attaché avec `add_repo`, access push).

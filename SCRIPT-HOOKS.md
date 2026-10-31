@@ -133,3 +133,18 @@ Règles qui en découlent :
 - **Préparer la suite sans la vendre** : noter dans HISTORIQUE.md les sujets qui pourraient devenir des vidéos d'une minute ou un module de formation (champ « à approfondir »).
 
 Phase suivante (quand le compte atteint 10 000 abonnés, sur décision de Thomas) : vidéos de 60-75 s, structure plus approfondie. À ce moment-là, ne pas changer seul : attendre que Thomas mette à jour ce fichier.
+
+## 11. Version 30 s, 3 premières secondes, mot-clé de recherche
+
+**Version 30 s** (75 à 85 mots) : même squelette, comprimé. 0-3 s HOOK · 3-6 s PRÉCISION · 6-12 s ESCALADE · 12-16 s
+CTA du milieu (une phrase de 6 à 10 mots) puis relance aussitôt · 16-26 s RÉVÉLATION montrée · 26-30 s BOUCLE vers le hook.
+Une seule idée, un seul chiffre fort ; rien qu'on pourrait couper sans casser le fil.
+
+**Les 3 premières secondes** (là où les gens partent) : le hook est dit ET écrit dès l'image 0, quelque chose bouge dès l'image 0,
+aucun fondu d'entrée, aucun logo, aucune intro. La première phrase contient le chiffre ou l'enjeu, jamais « Salut », jamais une
+présentation. Le premier son tombe à 0 s.
+
+**Être trouvé dans la recherche TikTok** (hypothèse de travail : TikTok lit la voix, le texte d'écran et la légende pour classer
+une vidéo ; ce n'est pas garanti, on mesure) : le mot que les gens tapent (épargne, salaire, investir, budget, inflation,
+impôts, crédit, loyer…) est prononcé dans les 5 premières secondes, visible à l'écran dans les mêmes secondes, et ouvre la légende.
+Naturel avant tout : une phrase qui sonne comme du référencement fait décrocher.
