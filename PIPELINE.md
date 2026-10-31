@@ -136,43 +136,20 @@ Commit et push dans le dépôt (voir 10), avec `historique/CHECKS.md` s'il a cha
   ligne mono « LE VRAI CHIFFRE … N° xx », hook en très gros (3 à 5 lignes) avec UN mot dans la boîte terracotta, chiffre clé
   ou objet signature, essentiel entre y 240 et y 1650. Puis `bash etapes/08-livrables.sh $P <xx> <couverture.html>`
   (PNG, JPEG, vignette 270 px à REGARDER, vidéo compressée). Titre : 40 à 70 caractères.
-- Vidéothèque (artefact slug c0766a03-dabd-41fa-a209-746aadb762e6 ; si elle refuse la mise à jour parce qu'elle est
-  partagée, passe sans insister, la vidéo est de toute façon sur GitHub) : `get_artifact`, `publish_files` (patch) avec
+- Vidéothèque (artefact slug c0766a03-dabd-41fa-a209-746aadb762e6) : `get_artifact`, `publish_files` (patch) avec
   `videos/N<xx>.mp4` et `covers/N<xx>.jpg` (de `$P/livrables`), puis `edit_version` sur index.html : remplace `/*NEXT*/` par
   `/*NEXT*/` + `{n:"<xx>",date:"AAAA-MM-JJ",titre:"…",sujet:"…",video:"videos/N<xx>.mp4",cover:"covers/N<xx>.jpg",legende:"…"},`.
 - Google Sheet (spreadsheetId 1YOZOKiZslJRvTt3Qzekn7JD3qrJvBn6urOq-1ORWoe0, onglet Videos), plus récent en haut :
   `insert_dimension` ROWS 1→2 (sheetId 0, inheritFromBefore false), `update_values` `Videos!A2:P2` (N°xx | date | titre |
   sujet | légende + hashtags | vide | hook | sources | « À publier » | notes | K à N vides (stats de Thomas) | durée en
   secondes | mot-clé), puis `update_formulas` `Videos!F2` :
-  `=HYPERLINK("https://raw.githubusercontent.com/thomasbouziza76-prog/lvc-videos/main/v/N<xx>.mp4";"Vidéo N°<xx>")`. Ne touche jamais aux autres lignes.
+  `=HYPERLINK("https://claude.ai/artifact/QmS9gdt1rFNDf6hyZSJKKK#N<xx>";"Ouvrir N°<xx>")`. Ne touche jamais aux autres lignes.
   **Colonnes de retour** (K à N, que Thomas remplit à la main 48 h après) : vues | temps moyen | % qui finit | abonnés gagnés.
 - Légende : la 1re ligne commence par le mot-clé de recherche ; 5 hashtags dont 3 sur le sujet (#epargne, #salaire,
   #investir… selon la vidéo) et 2 génériques (#argent #financepersonnelle).
 - Envoie la vidéo ET la couverture (SendUserFile, status proactive) avec : titre, légende (2 lignes + 5 hashtags, mot-clé
   du sujet dès la 1re ligne), sujet, hook et archétype, CTA et sa seconde, concept en une phrase, moteur utilisé, sources,
   défauts restants, lien du Google Sheet. Un seul message final, court, en français.
-
-## 8 bis. Publication automatique TikTok + YouTube Shorts (Thomas a choisi le 100 % automatique)
-**Garde-fou : NE PUBLIE PAS** si un de ces défauts reste après la correction de la relecture : chiffre faux, non sourcé
-ou au mauvais périmètre ; écran vide ou presque plus de 1 s ; texte ou chiffre coupé au bord ; voix coupée, ratée ou
-désynchronisée ; pas de son ; durée hors 25 à 50 s ; erreur à `06-controle.sh` (noir, gel, décodage). Dans ce cas, livre
-quand même la vidéo à Thomas avec « NON PUBLIÉE » en tête du message et la raison exacte ; statut du Sheet « À publier ».
-Sinon :
-1. Dépôt public des vidéos : `mcp__claude-code-remote__add_repo` owner thomasbouziza76-prog, repo lvc-videos, access push ;
-   `git clone --depth 1 https://github.com/thomasbouziza76-prog/lvc-videos /home/claude/lvc-videos` (long délai) ;
-   copie `$P/livrables/N<xx>.mp4` → `v/N<xx>.mp4` et `$P/livrables/N<xx>.jpg` → `v/N<xx>.jpg` ; commit + push.
-   URL publique (Metricool la lit, testé le 2026-10-31) : `https://raw.githubusercontent.com/thomasbouziza76-prog/lvc-videos/main/v/N<xx>.mp4`.
-   (Pas l'adresse github.io : Metricool la refuse.)
-2. Metricool `createScheduledPost`, blogId 7764816, date = maintenant + 5 min (ISO, fuseau Europe/Paris), `info` :
-   `{"autoPublish":true,"draft":false,"text":"<légende complète + 5 hashtags>","media":["<URL publique>"],
-   "providers":[{"network":"tiktok"},{"network":"youtube"}],"publicationDate":{"dateTime":"AAAA-MM-JJTHH:MM:SS","timezone":"Europe/Paris"},
-   "tiktokData":{"privacyOption":"PUBLIC_TO_EVERYONE","title":"<titre>","isAigc":true},
-   "youtubeData":{"title":"<titre, 100 caractères max>","type":"short","privacy":"public","madeForKids":false,"isAiGeneratedContent":false,"category":"EDUCATION"},
-   "descendants":[],"firstCommentText":"","hasNotReadNotes":false,"mediaAltText":[],"shortener":false,"smartLinkData":{"ids":[]}}`.
-   N'ajoute PAS videoThumbnailUrl (refusé si la chaîne YouTube n'est pas vérifiée). Un seul appel ; s'il renvoie une erreur,
-   corrige le champ fautif et réessaie UNE fois ; sinon « NON PUBLIÉE » + l'erreur exacte.
-3. Sheet : statut « Publiée » (colonne I) et dans les notes (J) « Metricool id <id> ». Message final : « Publiée sur TikTok et
-   YouTube à HH:MM » + le plannerUrl.
 
 ## 9. Boucle de retour (au DÉBUT de chaque exécution, ≈ 2 min)
 1. **Mise à jour automatique des stats (si le connecteur Metricool est présent dans ta session)** : Thomas ne remplit
