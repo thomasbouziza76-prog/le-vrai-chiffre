@@ -4,6 +4,29 @@ Une ligne par vidéo. Lis-la avant de choisir la direction du jour : ne réutili
 mécanismes signatures, ni les transitions dominantes, ni la palette sonore, ni l'archétype de hook, ni l'appel à
 l'action des vidéos récentes.
 
+- 2026-10-31 (2e vidéo du jour, N° 05, 43,15 s) · « Le salaire médian en France » (ligne 2 de sujets.md, [ÉCO] ; la
+  formule donnait la ligne 1, faite le matin) · mot-clé : salaire · hook : contrarien (« Deux mille sept cent trente-trois
+  euros : le salaire moyen en France. Ce chiffre te ment. », écran « SALAIRE MOYEN EN FRANCE / 2 733 € ») · appel à
+  l'action : commenter une question fermée (« Toi, t'es au-dessus ou en dessous du médian ? Écris DESSUS ou DESSOUS. »),
+  à 24,14 s, carte de commentaire générique + curseur qui tape « DESSOUS » ; rappel muet « Abonne-toi » 41,15 → 43,15 s ·
+  à approfondir : « où te situes-tu ? » déciles par âge / métier / région (vidéo d'une minute), écart femmes-hommes
+  (−13 % en EQTP) · concept : la hauteur d'une silhouette = son salaire ; la moyenne est un fil que les gros salaires
+  tirent vers le haut · monde : mur papier gradué en euros, 100 silhouettes de papier découpé (répartition illustrative
+  sur les déciles Insee), fil terracotta de la moyenne, trait pointillé de la médiane, sol encre + rebord · objets :
+  chiffre fêlé, colonnes 3D, cercle dessiné, géant n° 99, carte de commentaire, accolades, étiquette « TOI ? » ·
+  signatures : la hauteur = le salaire ; le géant qui tire le fil (courbe de Bézier vers sa main) ; le chiffre qui se
+  fend et tombe (4,76 s) puis remonte et se ressoude (39,8 s, boucle sur l'image d'ouverture) · moment 3D : Three.js r159,
+  100 colonnes en aplats + contours encre, travelling rasant (5,4 → 8,8 s) · blueprints : logo-assemble-lockup (adapté),
+  spatial-pan-stations, cursor-ui-demo · mouvement : poussée lente, plongée, travelling 3D, whips horizontaux, grue
+  verticale le long du géant, zoom arrière géant, bascule de mise au point, piqué vers le bas de la file, retour au
+  cadre du hook · transitions : chute du chiffre fêlé, 3D → 2D par whip, whip vers le bout de la file, grue, fil tiré +
+  dézoom, carte qui monte/part (rack focus), piqué · effets : compteurs à rouleaux avec clic, fêlure + décalage
+  chromatique, accents dessinés (cercle, flèche, accolades), états des silhouettes (terracotta / encre / pointillé) ·
+  sons : whoosh-short, click, glitch-3, whoosh, whoosh-cinematic, pop (grappes), click-soft, typing, impact-bass-1
+  (géant), riser (fil tiré), chime (fin) · musique : « Action Time Attack Research » (Komiku, CC0, 0 → 16,9 s),
+  « Retro Synths » (HoliznaCC0, CC0, départ 14,44 s, drop calé sur « tirent » 18,38 s), gains 0,12 / 0,11 · voix : 1er
+  et 2e essais refusés par ElevenLabs (« Free generations are busy »), 3e essai OK à la relance de Thomas · outillage :
+  HyperFrames 0.8.82 (kit du dépôt), 3 agents d'animation + 1 relecteur.
 - 2026-10-31 · N° 04 · « Les intérêts composés : 100 € par mois pendant 30 ans » (ligne 1 de sujets.md, [INVESTIR]) · hook :
   grand chiffre (« Quatre-vingt-un mille euros. Avec cent euros par mois. », écran « 81 538 € avec 100 € par mois ») ·
   appel à l'action : enregistrer (« Enregistre-la, et refais le calcul avec ton montant. »), à 21,52 s, pastille noire
@@ -63,13 +86,4 @@ l'action des vidéos récentes.
   effets : tours couchées en cascade, tracé de pointillés, compteurs · sons : bruitages SYNTHÉTISÉS (thud carton, tok
   bois, volets, swish, terre creusée, boom grave au pivot, chime du score, frappe clavier, pop) · musique : aucune ·
   outillage : kit maison GSAP + Playwright (dépôt hyperframes non installé cette fois).
-- 2026-10-29 · « Pourquoi ton argent perd de la valeur sur ton compte courant » · hook : contrarien (« Ton compte
-  courant te fait perdre de l'argent. ») · appel à l'action : enregistrer + commenter RÉEL · concept : le temps qui
-  passe sur un compte · monde : frise chronologique des années 2021-2029 en 3D sur papier, sol de points · objets :
-  iPhone banque, glaçon « 1 000 € », jean et tache mouillée, barre hachurée, formulaire de placement, relevés mensuels,
-  ticket de caisse, carte formule · signatures : objet posé sur la frise avec ombre de contact ; le glaçon qui fond
-  (rime) · blueprints : spatial-pan-stations, camera-journey, kinetic-type-beats, dataviz-countup,
-  device-surface-showcase, cta-morph-press · transitions : objet-pont (solde → glaçon → goutte → barre ; rature →
-  ticket → carte ; glaçon → iPhone ; bloc → signet), coupe au noir au pivot · sons : pops, whooshes courts, clics
-  doux, key-press, riser + impact-bass-1 au pivot, impact-bass-2, sparkle · musique : en fond, ajoutée après coup
-  (tension « Waiting TTTT », élan « Dear Mr Super Computer »).
+- 2026-10-29 · N° 01 · compte courant et inflation · hook contrarien · CTA enregistrer + commenter RÉEL · frise des années 3D, glaçon · musique ajoutée après coup.

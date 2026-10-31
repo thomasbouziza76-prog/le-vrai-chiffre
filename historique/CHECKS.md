@@ -11,3 +11,6 @@ Une ligne par règle ; ne garde que les règles encore utiles (≤ 40 lignes).
 - À NE PAS FAIRE : un texte qui apparaît d'un coup sans mouvement ni bruitage.
 - À NE PAS FAIRE : un plan de plus de 3 s sans aucun changement visuel.
 - À FAIRE : le hook lisible à t = 0 (pas de fondu d'entrée).
+- À FAIRE : tout chiffre principal ou étiquette posé sur un graphique a un fond papier #f6f1e9 (padding ≥ 12 px) au-dessus de toutes les lignes ; une ligne (moyenne, médiane, grille) qui croise ce cadre est coupée ou masquée.
+- À NE PAS FAIRE : laisser une étiquette d'axe se lire derrière une silhouette ou sous un texte ; masquer l'axe quand le plan ne parle pas d'échelle.
+- À FAIRE : à l'image 0, un compteur à rouleaux est à sa valeur finale (seul un léger dépassement bouge) : un rouleau à mi-course rend le hook illisible.
