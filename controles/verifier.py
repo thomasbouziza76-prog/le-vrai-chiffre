@@ -65,7 +65,18 @@ with sync_playwright() as p:
     pg.goto('file://'+D+'/index.html')
     try: pg.wait_for_function('window.ready===true',timeout=15000)
     except Exception: sys.exit('ERREUR : la page ne démarre pas. Erreurs JavaScript : '+('; '.join(errs) or 'aucune')+' → si une « ancre inconnue » est citée, relance moteur/timing.py après avoir modifié plan.js')
-    for i in range(N+1): fr.append(pg.evaluate(JS,round(i*pas,2)))
+    for i in range(N+1):
+        fr.append(pg.evaluate(JS,round(i*pas,2)))
+    # « le dessin bouge » : on fige la caméra et on cache les textes, puis on compare t et t+0,25 s pixel par pixel
+    import io; from PIL import Image, ImageChops
+    def img(): return Image.open(io.BytesIO(pg.screenshot())).convert('L').resize((270,480))
+    BOUGE=[]; tt=0.0
+    while tt<dur-.3:
+        pg.evaluate('(t)=>{window.SANSTEXTE=true; window.CAMFIGE=cam(t); seek(t)}',tt); A=img()
+        pg.evaluate('(t)=>seek(t)',tt+.25); B=img()
+        d=ImageChops.difference(A,B).point(lambda v:255 if v>20 else 0); BOUGE.append((tt,sum(d.histogram()[255:])/(270*480)))
+        tt=round(tt+.25,2)
+    pg.evaluate('()=>{window.SANSTEXTE=false; window.CAMFIGE=null}')
     ACTS=pg.evaluate('window.ACTIONS||[]'); SFXS=pg.evaluate('window.SFX||[]'); MOTS=pg.evaluate("SC.filter(s=>s.type==='mot').map(s=>[s.t0,s.t1])"); EXTRA=pg.evaluate('window.PLANS_EXTRA||[]')
     b.close()
 ok('Aucune erreur JavaScript',not errs,'; '.join(errs[:3]))
@@ -80,6 +91,20 @@ while t<dur-.5:
         if t-t0>1.6: trous.append(f'{t0:.1f}-{t:.1f} s')
     t+=.1
 ok("L'image agit en permanence (pas plus de 1,6 s sans action)",not trous,('rien ne se passe : '+', '.join(trous[:6])) if trous else 'OK')
+# 1 bis) MESURÉ, pas déclaré : à caméra figée et sans textes, on compare l'image à t et t+0,25 s (pixels changés).
+#        Sur toute fenêtre de 1,5 s, il faut en moyenne au moins 0,6 % de pixels changés par quart de seconde.
+#        Refuse : une action déclarée mais pas dessinée, un plan « mot » immobile, un décor arrêté où seule la caméra bouge
+#        (le clignement des yeux de Tico ne suffit pas). Seuils calibrés sur le test N°08 « gare » (02/11).
+if os.environ.get("LVC_DEBUG"): print([(a_,round(b_*100,2)) for a_,b_ in BOUGE])
+mauvais=set()
+for i in range(len(BOUGE)-5):
+    if BOUGE[i][0]<dur-1.5 and sum(x for _,x in BOUGE[i:i+6])/6<.006: mauvais|=set(range(i,i+6))
+fige=[]; m=sorted(mauvais)
+for k,i in enumerate(m):
+    if k==0 or i!=m[k-1]+1: fige.append([BOUGE[i][0],BOUGE[i][0]+.25])
+    else: fige[-1][1]=BOUGE[i][0]+.25
+fige=[f'{x:.1f}-{y:.1f} s' for x,y in fige]
+ok("Le dessin bouge vraiment (mesuré à caméra figée : pas 1,5 s quasi immobiles)",not fige,('dessin figé : '+', '.join(fige[:6])) if fige else 'OK')
 # 2) UN NOUVEAU PLAN TOUTES LES 1 À 3 S : changement net de cadrage (zoom ×1,2, 300 px à l'écran ou 3°), plan plein écran, ou début de scène
 cuts=[0.0]+[a for a,b in MOTS]+[x for x in EXTRA if x]
 for i in range(len(fr)):

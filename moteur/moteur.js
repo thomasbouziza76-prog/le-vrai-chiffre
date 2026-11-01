@@ -499,14 +499,15 @@ CART.forEach(c=>{ if(c.t0>0) son(c.t0-.05,'whoosh-short',.18); });
 
 /* ───── image ───── */
 window.seek=function(t){
-  const c=cam(t); let s=bg(t), w='', per='';
+  const c=window.CAMFIGE||cam(t); let s=bg(t), w='', per='';
   for(const sc of SC) w+=SCENES[sc.type].monde(t,sc);
   const cur=sceneAt(t);
   for(const q of ['gauche','droite']){ let pos=null; const dl=SC.find(sc=>sc._lie&&t>=T(sc.de,0)-.3&&t<sc.t1+1.4);
     if(dl) pos=SCENES.duel.poser(t,q,dl); else pos=SCENES[cur.type].poser(t,q,cur);
     if(pos) per+=perso(q,pos,t); }
   s+=`<g transform="translate(${f(540+c.sh)} ${f(960+c.sh*.6)}) rotate(${f(c.r)}) scale(${f(c.z*1000)/1000}) translate(${-f(c.x)} ${-f(c.y)})">`+grid()+ground()+w+per+'</g>';
-  for(const sc of SC) if(SCENES[sc.type].ecran) s+=SCENES[sc.type].ecran(t,sc);
+  let ec=''; for(const sc of SC) if(SCENES[sc.type].ecran) ec+=SCENES[sc.type].ecran(t,sc); s+=ec;
+  if(window.SANSTEXTE){ S.innerHTML=s; return; }   // contrôle « le dessin bouge » : sans cartons ni sous-titres
   for(const cc of CART) s+=caption(t,cc.t0,cc.t1,cc.l1,cc.l2,cc.mot);
   if(PLAN.source&&(cur.type==='vague'||cur.type==='courbe')){ const t0=T(cur.de,0); s+=txt(540,430,24,'SM',GR,PLAN.source,{ls:2,op:.85*eo(sg(t,t0,t0+.5))*(TAB!==null&&t>TAB-.4&&t<TAB1?0:1)}); }
   s+=pastille(t)+subs(t);
