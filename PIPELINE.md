@@ -13,7 +13,7 @@ Racine du dépôt : `$LVC_REPO` (après l'étape 0). Projet du jour : `$P` = sor
 HyperFrames. Seul `HISTORIQUE.md` (7 dernières vidéos) est à lire en entier : `historique/HISTORIQUE.md`.
 
 ## 1. Sujet et script (≈ 10 min)
-- Deux vidéos par jour : le prompt de la tâche donne SLOT (0 = matin, 1 = soir). **Sujet : `git pull`, puis le PREMIER
+- Deux vidéos par jour : le prompt de la tâche donne SLOT (0 = matin, 1 = soir). **Sujet : `git pull`, lis `Videos!A2:D12` du Google Sheet (les vidéos déjà faites, même hors dépôt), puis le PREMIER
   sujet de `sujets.md` qui n'a pas ✅**, en partant du haut, règles du fichier comprises. Saute un sujet ⚡ dont la date
   « valable jusqu'au » est passée (coche-le ⚡⏭). Si une grosse actu argent de la semaine (Insee, gouvernement, prix,
   impôts) intéresse plus les gens, tu peux la traiter à la place : ajoute-la en tête avec ⚡. Pour un sujet ⚡, REVÉRIFIE

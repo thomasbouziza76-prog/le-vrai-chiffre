@@ -29,7 +29,8 @@ Familles : [ÉCO] les vrais chiffres de la France · [BUDGET] le quotidien · [P
 - Chaque chiffre a sa source et sa date (Insee, Banque de France, ministère, CRE, AMF, ANJ, études publiées).
 
 Déjà faits : compte courant et inflation (N°01), patrimoine net (N°02), reste à vivre (N°03), intérêts composés (N°04),
-salaire médian (N°05). Ne les refais pas.
+salaire médian (N°05). Ne les refais pas. Vérifie AUSSI le Google Sheet (étape 1) : une vidéo faite par le kit de
+secours peut y être sans être cochée ici.
 
 ## La liste
 
@@ -52,7 +53,7 @@ salaire médian (N°05). Ne les refais pas.
 11. [INVESTIR] Rater les 10 meilleurs jours de Bourse en 20 ans : ce que ça change, et les pires jours juste à côté
 12. ⚡ [ÉCO] Impôts : le barème relevé de 2,1 % dans le projet de budget 2027 ; sans ça, 500 000 foyers deviendraient
     imposables · economie.gouv.fr · valable jusqu'au 2026-12-31 (revérifier le vote)
-13. [PIÈGE] Payer en 4 fois : pourquoi le « petit » paiement coûte cher
+✅ 2026-11-01 N°06 · 13. [PIÈGE] Payer en 4 fois : pourquoi le « petit » paiement coûte cher
 14. [ÉCO] Il faut gagner combien pour être dans les 10 % les mieux payés en France
 15. ⚡ [BUDGET] APL et prime d'activité sans revalorisation en 2027 alors que les prix montent : ce que ça fait en euros
     sur un an · projet de budget 2027 · valable jusqu'au 2027-01-31 (revérifier le vote)

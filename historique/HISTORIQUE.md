@@ -4,6 +4,7 @@ Une ligne par vidéo. Lis-la avant de choisir la direction du jour : ne réutili
 mécanismes signatures, ni les transitions dominantes, ni la palette sonore, ni l'archétype de hook, ni l'appel à
 l'action des vidéos récentes.
 
+- 2026-11-01 (matin, N° 06, faite avec le KIT DE SECOURS, détails dans le Sheet) · « Payer en 4 fois devient un crédit le 20 novembre » (ligne 13) · mot-clé : payer en plusieurs fois · hook : devinette (« Dans dix-neuf jours, ton paiement en quatre fois devient… un crédit. ») · visuel : cases « 60 € » × 4, tampon CRÉDIT, compte à rebours J-19 · sources : INC, directive UE 2023/2225, ordonnance 2025-880.
 - 2026-10-31 (2e vidéo du jour, N° 05, 43,15 s) · « Le salaire médian en France » (ligne 2 de sujets.md, [ÉCO] ; la
   formule donnait la ligne 1, faite le matin) · mot-clé : salaire · hook : contrarien (« Deux mille sept cent trente-trois
   euros : le salaire moyen en France. Ce chiffre te ment. », écran « SALAIRE MOYEN EN FRANCE / 2 733 € ») · appel à
