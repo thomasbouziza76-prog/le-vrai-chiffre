@@ -32,3 +32,4 @@ Une ligne par règle ; ne garde que les règles encore utiles (≤ 40 lignes).
 - À NE PAS FAIRE : glitch-1/2/3 (2,6 à 3,5 s de bruit continu) et riser (10 s) en version longue : ils font un fond sonore qui gêne (retour de Thomas sur la N°07 à 21 s). Utiliser des versions coupées (glitch 0,4 s, riser 2,5 s) et contrôler le niveau du mix dans chaque silence de la voix.
 
 - À NE PAS FAIRE (N°07, ASPA : 248 vues, 6 s sur 69 s, 0 abonné) : un sujet et un hook centrés sur un retraité (« SA retraite »). Le public a 20-35 ans : la 1re phrase parle de LUI (« tu », « ton »), sinon il swipe.
+- À NE PAS FAIRE (N°07) : empiler les chiffres (343, 68, 700, 1 043, 4 116, 50 %, 108 586, 90 000, 8 463…). UN chiffre principal + 2 secondaires maximum.

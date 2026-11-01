@@ -19,6 +19,13 @@ Ces règles augmentent les chances ; elles ne garantissent rien. Ne promets jama
 phrase doit concerner le spectateur de 20-35 ans (« ton salaire », « tu as droit », « ton loyer »), jamais un tiers
 âgé. Tico peut vivre le cas, mais la voix parle à « tu » dès les premiers mots.
 
+**Règle des chiffres (leçon N°07 : 11 chiffres en 69 s, Thomas « perdu dès le début »)** :
+- **UN chiffre principal** par vidéo (celui du titre), **2 chiffres secondaires au maximum** pour l'expliquer.
+- Jamais deux chiffres nouveaux dans la même phrase ; au moins 8 s entre deux chiffres nouveaux.
+- Un chiffre n'arrive qu'avec son image (comparaison concrète). Tout le reste se dit en mots (« la moitié », « deux
+  fois plus », « presque rien »), pas en chiffres.
+- Test : quelqu'un qui regarde sans le son doit pouvoir redire LE chiffre de la vidéo à la fin.
+
 ## 1. Les 7 principes
 
 1. **Le hook est la porte.** TikTok, Reels et Shorts décident en 1,5 à 3 s. Si les 3 premières secondes ratent,
