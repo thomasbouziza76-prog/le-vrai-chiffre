@@ -188,7 +188,11 @@ La page de liens de la chaîne affiche les chiffres clés et les 3 dernières vi
    en tutoiement, 120 caractères max>","s":"<source courte + année>"}` (garde 10 chiffres max, supprime les plus vieux) ;
    ajoute EN TÊTE de `videos` : `{"n":"<xx>","titre":"<titre de la vidéo>","lien":"https://www.tiktok.com/@le_vrai_chiffre"}`
    (garde 3 vidéos). Ne touche à rien d'autre (jamais index.html). Le JSON doit rester valide (`python3 -m json.tool`).
-3. Commit + push. Si add_repo ou le push échoue : ne bloque pas la livraison, dis-le en une ligne dans le message final.
+3. Liens directs (si le connecteur Metricool est présent) : `getAnalyticsDataByMetrics` brandId 7764816, 10 derniers jours,
+   metrics `["TKPO02","TKPO03","TKPO05"]` (date, URL, légende). Pour chaque vidéo de `videos` dont le lien est encore le
+   profil, retrouve sa ligne par la légende (le début du titre / mot-clé) et la date, et mets l'URL SANS le `?utm…`.
+   Metricool a 1 à 2 jours de retard : les vidéos pas encore remontées gardent le lien du profil.
+4. Commit + push. Si add_repo ou le push échoue : ne bloque pas la livraison, dis-le en une ligne dans le message final.
 
 ## 9. Boucle de retour (au DÉBUT de chaque exécution, ≈ 2 min)
 1. **Mise à jour automatique des stats (si le connecteur Metricool est présent dans ta session)** : Thomas ne remplit
