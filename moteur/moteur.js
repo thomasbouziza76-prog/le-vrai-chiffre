@@ -234,15 +234,190 @@ SCENES.libre={
   poser(t,qui,sc){ return sc.poser?sc.poser(t,qui,{T,G,ox:sc.ox,bk,sg}):null; },
 };
 
+
+/* ══════════════════ PARCOURS : « l'image bouge, la caméra suit » (décision de Thomas, 01/11 au soir) ══════════════════
+   La vidéo est une suite de PLANS de 1 à 3 s. Dans chaque plan, quelque chose AGIT (Tico tombe, glisse, percute,
+   une barre se coupe, une onde remonte la file…) et la caméra SUIT cette action. Le passage d'un plan au suivant
+   se fait par le mouvement lui-même (on suit la chute, la glissade…), jamais par une caméra qui se promène sur un décor fixe.
+   temps:[{at, action, …}] — actions : grosseBarre, coupe, aligne, court, saut, choc, onde, eclat, recul, retour (voir PLAN.md). */
+const ACTIONS=[]; const action=(a,b,nom)=>ACTIONS.push([+a.toFixed(2),+b.toFixed(2),nom]);
+SCENES.parcours={
+  init(sc){ sc.t0=T(sc.de); sc.t1=T(sc.a,K.end);
+    let V=typeof sc.valeurs==='string'?DONNEES[sc.valeurs].slice():sc.valeurs.slice(); sc.V=V; sc.n=V.length;
+    sc.BW=Math.max(8,Math.round(22*100/sc.n)); sc.STEP=Math.round(sc.BW*30/22); sc.BX=i=>sc.ox+300+i*sc.STEP+sc.BW/2;
+    const B=sc.temps.find(b=>b.action==='grosseBarre'); sc.VB=B?B.valeur:0; sc.k=1500/Math.max(...V,sc.VB); sc.H=i=>sc.V[i]*sc.k;
+    sc.XB=sc.ox-650; sc.WB=170;
+    sc.beats=sc.temps.map((b,j)=>Object.assign({},b,{t:T(b.at)})).sort((a,b)=>a.t-b.t);
+    sc.beats.forEach((b,j)=>{ b.fin=j<sc.beats.length-1?sc.beats[j+1].t:sc.t1; });
+    const get=a=>sc.beats.find(b=>b.action===a);
+    sc.tAligne=get('aligne')?get('aligne').t:sc.t0; sc.iAligne=get('aligne')?get('aligne').i:null;
+    sc.cut=get('coupe'); sc.tCut=sc.cut?sc.cut.t+.45:1e9;
+    /* --- trajectoire de Tico (l'acteur) : segments [t0,t1,f(u)→{x,y}] --- */
+    const P=[]; let cur={x:sc.XB,y:G-(sc.VB*sc.k)}, curI=null;
+    const topY=i=>G-sc.H(i);
+    for(const b of sc.beats){ const d=Math.max(.3,b.fin-b.t);
+      if(b.action==='grosseBarre'){ cur={x:sc.XB+sc.WB/2,y:G-sc.VB*sc.k}; const c0={...cur}; P.push([b.t,b.t,()=>c0]); action(b.t,b.t+1.0,'chiffre géant'); son(b.t+.02,'coup-1',.32); son(b.t+.05,'whoosh-short',.25); secousse(b.t+.15,9); }
+      if(b.action==='coupe'){ const yc=G-b.valeur*sc.k, a={...cur}, tc=b.t+.45; P.push([tc,tc+.55,u=>({x:a.x+20*Math.sin(u*9)*(1-u),y:L(a.y,yc,ei(u))})]);
+        cur={x:a.x,y:yc}; action(b.t,tc+1.2,'coupe'); son(b.t+.05,'riser',.12); son(tc,'ciseaux-snip',.35); son(tc+.2,'whoosh',.25); son(tc+.55,'ecrase-moyen-1',.3); son(tc+.9,'tombe-2',.25); secousse(tc+.55,14); }
+      if(b.action==='aligne'){ const a={...cur}, i=b.i, tx=sc.BX(i), ty=topY(i); P.push([b.t+.1,b.t+1.3,u=>({x:L(a.x,tx,eio(u)),y:L(a.y,ty,eio(u))-120*Math.sin(Math.PI*u)})]);
+        cur={x:tx,y:ty}; curI=i; action(b.t,b.t+2.4,'la file se forme'); son(b.t+.1,'whoosh-cinematic',.25); for(let k=0;k<18;k++) son(b.t+.5+k*.09,`clic-${k%4+1}`,.13); son(b.t+1.3,'pouc-2',.22); }
+      if(b.action==='court'||b.action==='saut'){ const a={...cur}, i0=curI??0, i1=b.a, dur=Math.min(d-.1,b.action==='saut'?.8:Math.max(.9,Math.abs(i1-i0)*.035));
+        if(b.action==='saut') P.push([b.t,b.t+dur,u=>({x:L(a.x,sc.BX(i1),u),y:L(a.y,topY(i1),u)-260*Math.sin(Math.PI*u)})]);
+        else P.push([b.t,b.t+dur,u=>{ const f=L(i0,i1,eio(u)), j=Math.floor(f), fr=f-j, j2=Math.min(sc.n-1,j+1); return {x:L(sc.BX(j),sc.BX(j2),fr),y:L(topY(j),topY(j2),fr)-18*Math.abs(Math.sin(u*Math.PI*Math.abs(i1-i0)/2))}; }]);
+        cur={x:sc.BX(i1),y:topY(i1)}; curI=i1; action(b.t,b.t+dur,b.action);
+        if(b.action==='court') for(let k=0;k<dur/.13;k++) son(b.t+k*.13,`pas-doux-${k%5+1}`,.16); else { son(b.t,'hop',.25); son(b.t+dur,'pouc-3',.25); } }
+      if(b.action==='choc'){ action(b.t,b.t+1.2,'choc'); son(b.t,'impact-bass-1',.3); son(b.t+.05,'tampon',.35); son(b.t+.3,'sparkle',.2); secousse(b.t,18); }
+      if(b.action==='onde'){ action(b.t,b.t+Math.min(d,1.6),'onde'); son(b.t,'riser',.13); son(b.t+.2,'whoosh',.2); }
+      if(b.action==='eclat'){ action(b.t,b.t+1.0,'éclat'); son(b.t,'impact-bass-2',.28); son(b.t+.1,'boing',.2); secousse(b.t,12); }
+      if(b.action==='recul'){ action(b.t,b.t+1.2,'recul'); son(b.t,'whoosh-cinematic',.22); if(b.isoler) son(T(b.isoler.at||b.at)+.0,'tape-leger-2',.22); }
+      if(b.action==='retour'){ action(b.t,b.t+.9,'retour'); son(b.t,'whoosh-short',.25); son(b.t+.6,'caisse-ching',.22); }
+    }
+    sc.track=P; sc.pos=t=>{ let p=null; for(const [a,b,f] of P){ if(t>=a) p=t<=b&&b>a?f((t-a)/(b-a)):f(1); } return p||{x:sc.XB,y:G-sc.VB*sc.k}; };
+    sc.curIAt=t=>{ let i=null; for(const b of sc.beats) if(t>=b.t){ if(b.action==='aligne') i=b.i; if(b.action==='court'||b.action==='saut') i=b.a; } return i; };
+    /* --- caméra qui suit l'action : un cadrage par temps, passage rapide (0,35 s) au début de chaque temps --- */
+    const W=sc.BX(sc.n-1)-sc.BX(0), zLarge=Math.min(.5,1000/(W+500));
+    sc.cadre=(b,t)=>{ const p=sc.pos(t), lead=sc.pos(t+.25);
+      switch(b.action){
+        case 'grosseBarre': return {x:p.x+180,y:p.y+330+L(0,-60,sg(t,b.t,b.fin)),z:L(.92,1.02,sg(t,b.t,b.fin)),r:-1};
+        case 'coupe': return {x:p.x+40,y:p.y+200,z:t<b.t+.45?.95:1.15,r:1.5};
+        case 'aligne': { const u=sg(t,b.t+1.2,b.t+2.2); return {x:L(lead.x,(sc.BX(0)+sc.BX(sc.n-1))/2,u),y:L(p.y+150,Y(zLarge*1.2),u),z:L(.95,zLarge*1.2,u),r:L(0,2,u)}; }
+        case 'court': return {x:lead.x+(lead.x>=p.x?140:-140),y:p.y+120,z:1.0,r:(lead.x>=p.x?-2:2)};
+        case 'saut': return {x:lead.x,y:p.y+100,z:1.05,r:0};
+        case 'choc': { const i=b.i, sh=sg(t,b.t+.5,b.t+1.6); return {x:sc.BX(i)+L(0,220,sh),y:G-sc.H(i)+L(80,-200,sh),z:L(1.25,.75,eio(sh)),r:L(-2,1,sh)}; }
+        case 'onde': { const u=eio(sg(t,b.t,b.t+Math.min(1.6,b.fin-b.t))), f=L(b.de,b.a,u), j=Math.min(sc.n-1,Math.round(f)); return {x:sc.BX(j)+100,y:G-sc.H(j)+260,z:.85,r:2}; }
+        case 'eclat': { const j=Math.round((b.de+b.a)/2); return {x:sc.BX(j)-120,y:G-sc.H(b.a)*.6,z:L(.95,.8,sg(t,b.t,b.fin)),r:-1}; }
+        case 'recul': return {x:(sc.BX(0)+sc.BX(sc.n-1))/2+L(0,80,sg(t,b.t,b.fin)),y:Y(zLarge),z:L(zLarge*1.1,zLarge,sg(t,b.t,b.fin)),r:L(1,-1,sg(t,b.t,b.fin))};
+        case 'retour': { const i=b.i??sc.curIAt(t); return {x:sc.BX(i)-60,y:G-sc.H(i)+120,z:L(1.0,1.25,sg(t,b.t,b.fin)),r:L(1,-1,sg(t,b.t,b.fin))}; }
+      } return {x:p.x,y:p.y,z:1,r:0}; };
+    sc.camFn=t=>{ let j=0; for(let k=0;k<sc.beats.length;k++) if(t>=sc.beats[k].t) j=k; const b=sc.beats[j], c=sc.cadre(b,t);
+      if(j>0){ const u=eio(sg(t,b.t,b.t+.35)); if(u<1){ const c0=sc.cadre(sc.beats[j-1],b.t); for(const k of ['x','y','z','r']) c[k]=L(c0[k],c[k],u); } }
+      return c; };
+    if(sc.cut) sc.cutY=G-sc.cut.valeur*sc.k;
+  },
+  monde(t,sc){ if(t<sc.t0-.3) return ''; let s='';
+    const lit=i=>{ let v=0; for(const b of sc.beats){ if(b.action==='choc'&&i>=b.i) v=Math.max(v,sg(t,b.t+.05+(i-b.i)*.03,b.t+.3+(i-b.i)*.03)); } return v; };
+    const hot=i=>{ let v=0; for(const b of sc.beats){ if(b.action==='eclat'&&i>=b.de&&i<=b.a&&t>=b.t) v=Math.max(v,eo(sg(t,b.t,b.t+.3))); } return v; };
+    const iso=sc.beats.find(b=>b.action==='recul'&&b.isoler), isoU=iso?eo(sg(t,T(iso.isoler.at||iso.at),T(iso.isoler.at||iso.at)+.4))*(1-sg(t,iso.fin-.2,iso.fin+.2)):0;
+    const wave=i=>{ let v=0; for(const b of sc.beats){ if(b.action==='onde'){ const u=sg(t,b.t,b.t+Math.min(1.6,b.fin-b.t)), f=L(b.de,b.a,eio(u)); if(u>0&&u<1&&i>=b.de&&i<=b.a) v=Math.max(v,Math.exp(-Math.pow((i-f)/1.6,2))); } if(b.action==='court'){ const p=sc.pos(t); if(t>=b.t&&t<=b.fin) v=Math.max(v,Math.exp(-Math.pow((sc.BX(i)-p.x)/(sc.STEP*1.2),2))*.6); } } return v; };
+    // la file : elle pousse en dominos à « aligne »
+    const al=sc.tAligne; let side='',top='',front='';
+    for(let i=0;i<sc.n;i++){ if(i===sc.iAligne&&t<al+1.35) continue;
+      const d=al+.45+Math.abs(i-(sc.iAligne??0))*.012, g=t<al?0:bk(sg(t,d,d+.4)); if(g<=0) continue;
+      const w=wave(i), h=sc.H(i)*g*(1+.06*w), x=sc.BX(i)-sc.BW/2, y=G-h, dx=14, dy=-11; const li=lit(i), ho=hot(i);
+      let c=li>.5?'#e9b39d':PAP; if(ho>.5) c=ACC; if(i===sc.iAligne) c=ACC; if(w>.35&&li<.5) c='#f6dccb';
+      const op=iso&&isoU>0&&!(i>=iso.isoler.de&&i<=iso.isoler.a)?1-.78*isoU:1;
+      side+=`<path d="M${f(x+sc.BW)} ${f(y)} l${dx} ${dy} V${f(G+dy)} L${f(x+sc.BW)} ${G} Z" fill="#d9cfbe" opacity="${f(op)}"/>`; top+=`<path d="M${f(x)} ${f(y)} h${sc.BW} l${dx} ${dy} h${-sc.BW} Z" fill="#efe8dc" opacity="${f(op)}"/>`;
+      front+=`<rect x="${f(x)}" y="${f(y)}" width="${sc.BW}" height="${f(h)}" fill="${c}" stroke="${INK}" stroke-width="3" opacity="${f(op)}"/>`;
+      if(ho>0) front+=`<circle cx="${f(sc.BX(i))}" cy="${f(y)}" r="${f(40+30*ho)}" fill="${ACC}" opacity="${f(.18*ho)}"/>`; }
+    s+=`<g stroke="${INK}" stroke-width="2">${side}${top}</g>${front}`;
+    // lignes : seuil (choc) et ligne de l'éclat
+    for(const b of sc.beats){ if(b.action==='choc'&&b.valeur&&t>b.t){ const u=eo(sg(t,b.t+.1,b.t+.6)), y=G-b.valeur*sc.k, x0=sc.BX(b.i)-30; s+=`<path d="M${f(x0)} ${f(y)} H${f(x0+(sc.BX(sc.n-1)-x0+60)*u)}" stroke="${ACC}" stroke-width="7" stroke-dasharray="18 12" opacity="${f(1-isoU*.7)}"/>`; }
+      if(b.action==='eclat'&&b.ligne&&t>b.t-.3&&t<b.fin+.3){ const u=eo(sg(t,b.t-.3,b.t+.3)), y=G-b.ligne*sc.k, x0=sc.BX(b.de)-260; s+=`<path d="M${f(x0)} ${f(y)} H${f(x0+(sc.BX(b.a)+80-x0)*u)}" stroke="${INK}" stroke-width="6" stroke-dasharray="6 10" opacity="${f(u)}"/>`;
+        if(b.ligneTxt) s+=txt(x0+10,y-24,44,'IS',INK,b.ligneTxt,{a:'start',op:u}); } }
+    // la grosse barre (le chiffre de départ), coupée, puis qui devient une barre de la file
+    if(sc.VB){ const B=sc.beats.find(b=>b.action==='grosseBarre'); const rise=bk(sg(t,B.t,B.t+.6)), HB=sc.VB*sc.k*rise; let HL=HB, xB=sc.XB, wB=sc.WB, hEnd=HB, alpha=1;
+      if(sc.cut){ const yc=sc.cut.valeur*sc.k, sw=eo(sg(t,sc.cut.t,sc.cut.t+.45)), fall=eo(sg(t,sc.tCut,sc.tCut+.9));
+        if(t>=sc.tCut){ HL=yc; const hiH=HB-yc; if(fall<1) s+=`<g transform="translate(${f(xB+wB/2+fall*260)} ${f(G-yc-hiH/2+fall*420)}) rotate(${f(fall*38)})" opacity="${f(1-fall)}"><rect x="${-wB/2}" y="${f(-hiH/2)}" width="${wB}" height="${f(hiH)}" fill="#e2d8c8" stroke="${INK}" stroke-width="7"/></g>`;
+          if(fall<1&&sc.cut.txt) s+=txt(xB+wB/2+120+fall*260,G-yc-hiH/2+fall*420,64,'IS',GR,sc.cut.txt,{op:1-fall,a:'start'}); }
+        if(sw>0&&t<sc.tCut+.3) s+=`<path d="M${f(xB-80)} ${f(G-yc)} H${f(xB-80+(wB+160)*sw)}" stroke="${ACC}" stroke-width="10" stroke-linecap="round" opacity="${f(1-sg(t,sc.tCut,sc.tCut+.3))}"/>`; }
+      const mv=sc.iAligne!==null?eio(sg(t,sc.tAligne+.1,sc.tAligne+1.3)):0; const tx=sc.BX(sc.iAligne??0)-sc.BW/2;
+      if(mv<1){ const x=L(xB,tx,mv), w=L(wB,sc.BW,mv), h=L(HL,sc.H(sc.iAligne??0),mv), lit4=sc.cut?eo(sg(t,sc.tCut+.6,sc.tCut+1.0)):0;
+        s+=`<rect x="${f(x)}" y="${f(G-h)}" width="${f(w)}" height="${f(h)}" fill="${lit4>.5?ACC:PAP}" stroke="${INK}" stroke-width="${f(L(7,3,mv))}"/>`;
+        const lab=t<sc.tCut?(B.texte||fmt(sc.VB)):(sc.cut.reste||fmt(sc.cut.valeur));
+        s+=txt(x+w+50,G-h+150,L(130,40,mv),'IS',lit4>.5?ACC:INK,lab,{a:'start',op:(1-mv)*eo(sg(t,B.t+.2,B.t+.6))}); if(B.label&&t<sc.tCut) s+=txt(x+w+54,G-h+30,32,'SM',GR,B.label,{a:'start',ls:3,op:eo(sg(t,B.t+.3,B.t+.7))}); } }
+    // éclats : étiquette
+    for(const b of sc.beats){ if(b.action==='eclat'&&b.txt&&t>b.t&&t<b.fin+.3){ const p=bk(sg(t,b.t+.1,b.t+.45))*(1-sg(t,b.fin,b.fin+.3)), x=sc.BX(b.a)-40, y=G-sc.H(b.a)-140;
+        s+=`<g transform="translate(${f(x)} ${f(y)}) rotate(-8) scale(${f(p)})"><rect x="${f(-tw(b.txt,90,'SM')/2-30)}" y="-75" width="${f(tw(b.txt,90,'SM')+60)}" height="130" fill="${PAP}" stroke="${ACC}" stroke-width="12"/>`+txt(0,26,90,'SM',ACC,b.txt,{ls:4})+'</g>'; }
+      if(b.action==='choc'&&b.txt&&t>b.t){ const p=bk(sg(t,b.t+.1,b.t+.4))*(1-sg(t,b.fin-.2,b.fin+.2)), x=sc.BX(b.i)+40, y=G-sc.H(b.i)-330;
+        if(p>0) s+=`<g transform="translate(${f(x)} ${f(y)}) rotate(-8) scale(${f(L(2,1,cl(p)))})" opacity="${f(cl(p*2))}"><rect x="${f(-tw(b.txt,96,'SM')/2-30)}" y="-78" width="${f(tw(b.txt,96,'SM')+60)}" height="136" fill="none" stroke="${ACC}" stroke-width="12"/>`+txt(0,28,96,'SM',ACC,b.txt,{ls:4})+'</g>'; } }
+    return s; },
+  poser(t,qui,sc){ if(qui!=='gauche'||t<sc.t0-.2) return null; const p=sc.pos(t); return {x:p.x,y:p.y,s:.62*bk(sg(t,sc.t0,sc.t0+.4))}; },
+};
+/* ── MOT : un plan plein écran, un mot qui claque sur un aplat (1 à 2 s) ── */
+SCENES.mot={ overlay:true,
+  init(sc){ sc.t0=T(sc.de); sc.t1=T(sc.a,nextPh(sc.t0)); action(sc.t0,sc.t1,'mot plein écran'); son(sc.t0,'impact-bass-2',.3); son(sc.t0+.02,'whoosh-short',.25); secousse(sc.t0+.05,10); },
+  monde(){ return ''; },
+  ecran(t,sc){ if(t<sc.t0-.05||t>sc.t1+.25) return ''; const pin=eo(sg(t,sc.t0-.05,sc.t0+.12)), pout=sg(t,sc.t1,sc.t1+.25), bgc=sc.fond==='encre'?INK:ACC, fg=sc.fond==='encre'?CR:CR;
+    const lines=sc.txt.split('<br>'), sz=Math.min(230,...lines.map(l=>230*900/Math.max(900,tw(l,230,'IS')))), zoom=1+.06*sg(t,sc.t0,sc.t1);
+    let s=`<g data-role="mot" opacity="${f(1-pout)}"><rect width="1080" height="1920" fill="${bgc}" opacity="${f(pin)}"/><g transform="translate(540 ${f(900-(lines.length-1)*sz*.55)}) scale(${f(L(1.35,1,pin)*zoom)})">`;
+    lines.forEach((l,k)=>{ s+=txt(0,k*sz*1.05+sz*.35,sz,'IS',fg,l); }); return s+'</g></g>'; },
+  poser(){ return null; },
+};
+
+
+/* ══════════════════ MONDE : chaque vidéo invente SON monde (décision de Thomas, 01/11) ══════════════════
+   Le moteur fournit le « comment » (caméra qui suit l'action, plans de 1 à 3 s, textes, sons, contrôles) ;
+   le plan fournit le « quoi » : un monde dessiné pour CETTE vidéo (métaphore), des objets qui agissent, Tico qui bouge.
+   { type:'monde', de, a, nom, visuels:[…], acteur:[{at,x,y,mouvement}], cadres:[{at,cible,zoom,decal,coupe}], dessin:(t,a)=>svg, sons, actions } */
+const OUTILS={ /* la boîte à outils passée à dessin(t,a) — voir PLAN.md « Boîte à outils » */
+  // une boîte en volume (immeuble, caisse, marche, bloc…) : x,y = coin bas-gauche de la face avant
+  boite(x,y,w,h,o={}){ const d=o.prof??Math.min(60,w*.35), c=o.couleur||PAP, cs=o.cote||'#d9cfbe', ct=o.dessus||'#efe8dc', e=o.trait??5;
+    return `<g opacity="${f(o.op??1)}"><path d="M${f(x+w)} ${f(y-h)} l${f(d*.8)} ${f(-d*.6)} V${f(y-d*.6)} L${f(x+w)} ${f(y)} Z" fill="${cs}" stroke="${INK}" stroke-width="${e}" stroke-linejoin="round"/>`+
+      `<path d="M${f(x)} ${f(y-h)} h${f(w)} l${f(d*.8)} ${f(-d*.6)} h${f(-w)} Z" fill="${ct}" stroke="${INK}" stroke-width="${e}" stroke-linejoin="round"/>`+
+      `<rect x="${f(x)}" y="${f(y-h)}" width="${f(w)}" height="${f(h)}" rx="${o.rayon??4}" fill="${c}" stroke="${INK}" stroke-width="${e}"/></g>`; },
+  // une pièce de monnaie vue de face (tourne si rot ≠ 0 : 0 → 1 = un tour)
+  piece(x,y,r,o={}){ const sx=Math.abs(Math.cos(Math.PI*2*(o.tour||0)))||.06; return `<g transform="translate(${f(x)} ${f(y)}) scale(${f(sx)} 1)"><circle r="${f(r)}" fill="${o.couleur||'#f2c46b'}" stroke="${INK}" stroke-width="${f(Math.max(3,r*.09))}"/><circle r="${f(r*.72)}" fill="none" stroke="${INK}" stroke-width="${f(Math.max(2,r*.05))}" opacity=".5"/>`+(sx>.3?txt(0,r*.32,r*.9,'IS',INK,o.txt||'€',{op:.75}):'')+'</g>'; },
+  // un billet
+  billet(x,y,w,o={}){ const h=w*.5; return `<g transform="translate(${f(x)} ${f(y)}) rotate(${f(o.rot||0)})"><rect x="${f(-w/2)}" y="${f(-h/2)}" width="${f(w)}" height="${f(h)}" rx="8" fill="${o.couleur||'#cfe3c4'}" stroke="${INK}" stroke-width="5"/><circle r="${f(h*.28)}" fill="none" stroke="${INK}" stroke-width="4" opacity=".55"/>`+txt(-w*.36,-h*.18,h*.28,'IS',INK,o.txt||'',{a:'start',op:.75})+'</g>'; },
+  // une étiquette (fond papier + trait) ; o.fond:'acc' pour l'accent
+  etiquette(x,y,s,o={}){ const sz=o.taille||56, w=tw(s,sz,o.police||'IS')+sz*.9, h=sz*1.5, fond=o.fond==='acc'?ACC:o.fond==='encre'?INK:PAP, coul=o.fond?CR:INK;
+    return `<g transform="translate(${f(x)} ${f(y)}) rotate(${f(o.rot||0)}) scale(${f(o.p??1)})"><rect x="${f(-w/2+8)}" y="${f(-h/2+8)}" width="${f(w)}" height="${f(h)}" rx="14" fill="${INK}"/><rect x="${f(-w/2)}" y="${f(-h/2)}" width="${f(w)}" height="${f(h)}" rx="14" fill="${fond}" stroke="${INK}" stroke-width="6"/>`+txt(0,sz*.36,sz,o.police||'IS',coul,s)+'</g>'; },
+  // un tampon qui claque (p de 0 à 1)
+  tampon(x,y,s,p,o={}){ if(p<=0) return ''; const sz=o.taille||90, w=tw(s,sz,'SM')+60; return `<g transform="translate(${f(x)} ${f(y)}) rotate(${f(o.rot??-9)}) scale(${f(L(2.2,1,cl(p)))})" opacity="${f(cl(p*2.5))}"><rect x="${f(-w/2)}" y="${f(-sz*.8)}" width="${f(w)}" height="${f(sz*1.45)}" fill="none" stroke="${o.couleur||ACC}" stroke-width="12"/>`+txt(0,sz*.32,sz,'SM',o.couleur||ACC,s,{ls:4})+'</g>'; },
+  // un nombre qui compte de v0 à v1 entre t0 et t1
+  compteur(t,t0,t1,v0,v1,x,y,size,o={}){ const v=L(v0,v1,eo(sg(t,t0,t1))); return txt(x,y,size,'IS',o.couleur||INK,(o.avant||'')+fmt(v,o.unite??'€'),{a:o.a,op:o.op}); },
+  // une onde de choc (cercle qui s'agrandit et s'efface), p de 0 à 1
+  onde(x,y,r,p,o={}){ if(p<=0||p>=1) return ''; return `<circle cx="${f(x)}" cy="${f(y)}" r="${f(r*eo(p))}" fill="none" stroke="${o.couleur||ACC}" stroke-width="${f(14*(1-p))}" opacity="${f(1-p)}"/>`; },
+  // des éclats / confettis qui partent d'un point (déterministes)
+  eclats(x,y,t,t0,o={}){ const p=sg(t,t0,t0+(o.duree||.8)); if(p<=0||p>=1) return ''; let s=''; const n=o.n||14;
+    for(let i=0;i<n;i++){ const a=i/n*6.283+(i%3)*.3, v=(o.force||420)*(.6+.4*((i*37)%10)/10), dx=Math.cos(a)*v*p, dy=Math.sin(a)*v*p+700*p*p;
+      s+=`<rect x="${f(x+dx-9)}" y="${f(y+dy-5)}" width="18" height="10" rx="3" fill="${[ACC,INK,'#f2c46b'][i%3]}" transform="rotate(${f(a*57+p*400)} ${f(x+dx)} ${f(y+dy)})" opacity="${f(1-p)}"/>`; } return s; },
+  // une flèche dessinée qui se trace (p de 0 à 1)
+  fleche(x1,y1,x2,y2,p,o={}){ if(p<=0) return ''; const x=L(x1,x2,p), y=L(y1,y2,p), a=Math.atan2(y2-y1,x2-x1); return `<g stroke="${o.couleur||INK}" stroke-width="${o.ep||10}" stroke-linecap="round" fill="none"><path d="M${f(x1)} ${f(y1)} L${f(x)} ${f(y)}"/>`+(p>.9?`<path d="M${f(x-34*Math.cos(a-.5))} ${f(y-34*Math.sin(a-.5))} L${f(x)} ${f(y)} L${f(x-34*Math.cos(a+.5))} ${f(y-34*Math.sin(a+.5))}"/>`:'')+'</g>'; },
+  // une ombre de contact au sol
+  ombre(x,y,w,o={}){ return `<ellipse cx="${f(x)}" cy="${f(y)}" rx="${f(w/2)}" ry="${f(w*.09)}" fill="${INK}" opacity="${f(o.op??.14)}"/>`; },
+  // ressort : 0 → 1 avec dépassement (pour un objet qui se pose)
+  ressort:(t,t0,d=.6)=>{ const u=sg(t,t0,t0+d); return u<=0?0:1-Math.exp(-6*u)*Math.cos(10*u); },
+};
+SCENES.monde={
+  init(sc){ sc.t0=T(sc.de); sc.t1=T(sc.a,K.end); const A=(sc.acteur||[]).map(p=>Object.assign({},p,{t:T(p.at)})).sort((a,b)=>a.t-b.t);
+    // trajectoire de Tico : chaque point est atteint au temps « at » ; le mouvement de départ commence au point précédent (ou à « depuis »)
+    const seg=[]; for(let i=0;i<A.length;i++){ const b=A[i], a=A[i-1]; if(!a){ seg.push([b.t,b.t,()=>({x:b.x,y:b.y}),'pose']); continue; }
+      const t1=b.t, t0=b.depuis!==undefined?T(b.depuis):Math.max(a.t,t1-(b.duree??({chute:.55,saut:.7,marche:1.1,glisse:1.0,vol:1.2,ascenseur:1.4,teleport:.01}[b.mouvement||'marche']??1)));
+      const m=b.mouvement||'marche', A0={x:a.x,y:a.y};
+      const fn=u=>{ if(m==='chute') return {x:L(A0.x,b.x,u),y:L(A0.y,b.y,u*u)}; if(m==='saut') return {x:L(A0.x,b.x,u),y:L(A0.y,b.y,u)-(b.hauteur??260)*Math.sin(Math.PI*u)};
+        if(m==='glisse'||m==='ascenseur') return {x:L(A0.x,b.x,eio(u)),y:L(A0.y,b.y,eio(u))}; if(m==='vol') return {x:L(A0.x,b.x,eio(u)),y:L(A0.y,b.y,eio(u))-120*Math.sin(Math.PI*u)};
+        if(m==='teleport') return {x:b.x,y:b.y}; return {x:L(A0.x,b.x,eio(u)),y:L(A0.y,b.y,eio(u))-14*Math.abs(Math.sin(u*Math.PI*6))}; };
+      seg.push([t0,t1,fn,m]); action(t0,t1+.15,'Tico : '+m);
+      if(m==='chute'){ son(t0,'whoosh',.22); son(t1,'ecrase-moyen-1',.3); secousse(t1,12); } else if(m==='saut'){ son(t0,'hop',.25); son(t1,'pouc-3',.25); }
+      else if(m==='marche') for(let k=0;k<(t1-t0)/.14;k++) son(t0+k*.14,`pas-doux-${k%5+1}`,.15); else if(m==='glisse'||m==='vol') son(t0,'whoosh-short',.22); else if(m==='ascenseur'){ son(t0,'riser',.12); son(t1,'ping',.25); } }
+    sc.pos=t=>{ let p=A.length?{x:A[0].x,y:A[0].y}:{x:sc.ox+540,y:G}; for(const [a,b,fn] of seg){ if(t>=a) p=t<=b&&b>a?fn((t-a)/(b-a)):fn(1); } return p; };
+    sc.bouge=t=>seg.some(([a,b,,m])=>m!=='pose'&&t>=a&&t<=b);
+    // plans : la caméra suit sa cible ; changement de plan rapide (0,3 s) ou sec (coupe:true)
+    sc.cad=(sc.cadres||[{at:sc.de,cible:'acteur',zoom:1}]).map(c=>Object.assign({},c,{t:T(c.at)})).sort((a,b)=>a.t-b.t);
+    const vise=(c,t)=>{ let x,y; if(c.cible==='acteur'||!c.cible){ const p=sc.pos(t), q=sc.pos(t+.22); x=L(p.x,q.x,.6)+sc.ox; y=L(p.y,q.y,.6); } else { x=sc.ox+c.cible[0]; y=c.cible[1]; }
+      const dz=c.zoomFin?L(c.zoom??1,c.zoomFin,sg(t,c.t,c.fin)):c.zoom??1; return {x:x+(c.decal?.[0]??0),y:y+(c.decal?.[1]??-120),z:dz,r:(c.rot??0)+L(-1,1,sg(t,c.t,c.fin))*(c.derive??1.2)}; };
+    sc.cad.forEach((c,i)=>{ c.fin=i<sc.cad.length-1?sc.cad[i+1].t:sc.t1; });
+    sc.camFn=t=>{ let j=0; for(let k=0;k<sc.cad.length;k++) if(t>=sc.cad[k].t) j=k; const c=sc.cad[j], v=vise(c,t);
+      if(j>0&&!c.coupe){ const u=eio(sg(t,c.t,c.t+(c.transition??.32))); if(u<1){ const v0=vise(sc.cad[j-1],t); for(const k of ['x','y','z','r']) v[k]=L(v0[k],v[k],u); } }
+      return v; };
+    sc.cad.forEach((c,i)=>{ if(i>0) son(c.t,c.coupe?'whoosh-short':'whoosh-short',c.coupe?.16:.12); });
+    (sc.sons||[]).forEach(x=>son(T(x[0]),x[1],x[2]??.25)); (sc.actions||[]).forEach(x=>action(T(x[0]),T(x[1]),x[2]||'action'));
+    sc.api={T,K,G,ox:sc.ox,txt,fmt,tw,INK,PAP,GR,ACC,CR,BLEU,ROSE,GRIS,eo,ei,eio,bk,sg,L,cl,f,acteur:t=>sc.pos(t),...OUTILS};
+  },
+  monde(t,sc){ return t<sc.t0-.3?'':`<g transform="translate(${sc.ox} 0)">`+sc.dessin(t,Object.assign(sc.api,{ox:0}))+'</g>'; },
+  poser(t,qui,sc){ if(qui!=='gauche'||!sc.acteur||t<sc.t0-.2) return null; const p=sc.pos(t); return {x:p.x+sc.ox,y:p.y,s:(sc.taille??.62)*bk(sg(t,sc.t0,sc.t0+.4))}; },
+};
+
 /* ═════════════════════════════ ASSEMBLAGE ═════════════════════════════ */
 const SC=PLAN.scenes.map(x=>Object.assign({},x));
-let ox=0; const LARG={vague:3800,courbe:3400,duel:2600,chiffre:2600,libre:2600,choix:0};
+let ox=0; const LARG={vague:3800,courbe:3400,duel:2600,chiffre:2600,libre:2600,choix:0,parcours:5400,mot:0,monde:4000};
 SC.forEach((sc,i)=>{ const nx=SC[i+1]; if(sc.ox===undefined) sc.ox=ox;
   if(sc.type==='duel'&&nx&&nx.type==='vague'&&nx.persos){ nx.ox=sc.ox; sc._lie=nx; nx.vers0=true; return; }
   ox=sc.ox+(sc.largeur||LARG[sc.type]); });
 SC.forEach(sc=>SCENES[sc.type].init(sc));
 SC.forEach(sc=>{ if(sc._lie){ const V=sc._lie; sc.vers={BX:V.BX,BW:V.BW,k:V.k,iG:V.iG,iD:V.iD}; sc.a=V.de; sc.t1=V.t0; } });
-const sceneAt=t=>{ let c=SC[0]; for(const sc of SC) if(t>=T(sc.de,0)-.01) c=sc; return c; };
+const sceneAt=t=>{ let c=SC.find(x=>!SCENES[x.type].overlay)||SC[0]; for(const sc of SC) if(!SCENES[sc.type].overlay&&t>=T(sc.de,0)-.01) c=sc; return c; };
 
 /* ───── caméra : images clés des scènes + remplissage automatique (jamais > 2,6 s sans nouvelle image clé) ───── */
 let CK=[];
@@ -263,7 +438,9 @@ function camKeys(){ let k=[]; SC.forEach(sc=>(sc.cams||[]).forEach(c=>k.push(c.s
       const m=[tm,L(a[1],b[1],u)+flip*150/z,sol?Y(z):L(a[2],b[2],u),z,flip*2.5]; r.push(m); a=m; flip=-flip; }
     r.push(b); }
   return r; }
-function cam(t){ let a=CK[0],b=CK[CK.length-1];
+function cam(t){ const cs=sceneAt(t); if(cs.camFn&&t>=cs.t0-.05&&t<=cs.t1+.05){ const c=cs.camFn(t); c.z*=(1+.012*Math.sin(t*.9)); c.r+=.6*Math.sin(t*.7);
+    let sh=0; for(const [t0,A] of SHAKES) if(t>t0) sh+=A*Math.exp(-(t-t0)*12)*Math.sin((t-t0)*95); c.sh=sh; return c; }
+  let a=CK[0],b=CK[CK.length-1];
   if(t>=b[0]) a=b; else for(let i=0;i<CK.length-1;i++) if(t>=CK[i][0]&&t<=CK[i+1][0]){a=CK[i];b=CK[i+1];break;}
   const u=a===b?0:eio((t-a[0])/(b[0]-a[0]));
   const c={x:L(a[1],b[1],u),y:L(a[2],b[2],u),z:L(a[3],b[3],u)*(1+.012*Math.sin(t*.9)),r:L(a[4],b[4],u)};
@@ -331,5 +508,5 @@ window.seek=function(t){
   if(PLAN.source&&(cur.type==='vague'||cur.type==='courbe')){ const t0=T(cur.de,0); s+=txt(540,430,24,'SM',GR,PLAN.source,{ls:2,op:.85*eo(sg(t,t0,t0+.5))*(TAB!==null&&t>TAB-.4&&t<TAB1?0:1)}); }
   s+=pastille(t)+subs(t);
   S.innerHTML=s; };
-window.SFX=SFX; window.cam=cam;
+window.SFX=SFX; window.cam=cam; window.ACTIONS=ACTIONS; window.PLANS_EXTRA=SC.filter(s=>s.type==='choix').flatMap(s=>[...s.ta,s.tou,K.end-2.2]); window.PLANS_DEBUTS=SC.flatMap(sc=>sc.beats?sc.beats.map(b=>b.t):[T(sc.de,0)]);
 Promise.all([document.fonts.load('100px IS'),document.fonts.load('40px SM')]).then(()=>{CTX=document.createElement('canvas').getContext('2d');CK=camKeys();window.CK=CK;window.ready=true;seek(0);});

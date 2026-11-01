@@ -11,6 +11,64 @@
 >
 > Référence complète et validée par Thomas : `moteur/exemples/plan-N08.js` (vidéo N°08, chiffres Insee **2024** : pour un nouveau plan, prends les chiffres les plus récents, `salaires-prive-2025`). **Lis-la avant d'écrire un plan.**
 
+## ⚠️ Les 3 règles d'or (Thomas, 01/11) — à relire avant chaque plan
+1. **L'image bouge, la caméra suit** : ce sont les objets (et Tico) qui agissent ; la caméra suit l'action.
+2. **Un nouveau plan toutes les 1 à 3 s** : un plan = un cadrage + une action. On passe au suivant par l'action ou par une coupe.
+3. **Chaque vidéo invente son monde** : utilise la scène **`monde`** (ci-dessous) avec une métaphore propre au sujet. Les scènes toutes faites (`duel`, `vague`, `chiffre`, `courbe`, `parcours`) dessinent des barres ou des courbes : elles sont refusées par le contrôle « monde nouveau » si ces visuels sont dans les 5 dernières vidéos.
+
+## La scène `monde` : la façon normale de faire une vidéo
+
+Tu dessines le monde de CETTE vidéo ; le moteur s'occupe de faire suivre la caméra, de découper en plans, des sons de mouvement, des textes et des contrôles.
+
+```js
+{ type:'monde', de:'p1', a:'p14', nom:'immeuble-des-salaires', visuels:['immeuble','ascenseur','étages'],
+  // Tico : un point par moment. Il ARRIVE au point à « at » (le mouvement commence juste avant, ou à « depuis »).
+  acteur:[ {at:'p1', x:200, y:1300},                                   // y = 1300 : le sol (G)
+           {at:'p3', x:700, y:1300, mouvement:'marche'},               // marche | saut | chute | glisse | vol | ascenseur | teleport
+           {at:'p5', x:700, y:500,  mouvement:'ascenseur', depuis:'p4'},
+           {at:'p6+.5', x:1100, y:900, mouvement:'chute'} ],
+  // les PLANS : un cadrage par moment ; la caméra suit sa cible ('acteur' ou [x,y]) ; coupe:true = changement de plan sec
+  cadres:[ {at:'p1', cible:'acteur', zoom:1.15},
+           {at:'p2', cible:[700,800], zoom:.6, coupe:true},
+           {at:'p3', cible:'acteur', zoom:1.0, decal:[120,-150]},
+           {at:'p5', cible:'acteur', zoom:1.3, zoomFin:1.0} ],
+  // le monde, dessiné en SVG, en coordonnées locales (x de 0 à ~3 000, sol à y = 1300). t = temps ; a = boîte à outils.
+  dessin:(t,a)=>{ let s='';
+    const p=a.sg(t,a.T('p4'),a.T('p5'));                                  // 0 → 1 pendant la montée
+    for(let k=0;k<10;k++) s+=a.boite(560,a.G-k*120,300,120,{couleur:k===9?a.ACC:a.PAP});
+    s+=a.piece(900,a.G-40,50,{tour:t});  s+=a.tampon(900,600,'TOP 10 %',a.sg(t,a.T('p7'),a.T('p7+.3')));
+    return s; },
+  sons:[['p4','riser',.15],['p7','tampon',.35]],          // en plus des sons automatiques (pas, chute, saut, plans)
+  actions:[['p4','p5','ascenseur']] }                      // ce qui bouge dans TON dessin (pour le contrôle « l'image agit »)
+```
+
+- **`visuels`** : 2 à 5 mots qui décrivent ce qu'on voit (« immeuble », « ascenseur »…). Ils sont comparés aux 5 dernières vidéos : s'ils se répètent, le contrôle refuse. Note-les dans HISTORIQUE.md (« VISUELS : … »).
+- **Plans** : prévois un `cadres` toutes les 1 à 3 s. Alterne gros plan (zoom 1.1 à 1.5), plan moyen (0.8 à 1) et plan large (0.4 à 0.6). `zoomFin` fait une poussée ou un recul pendant le plan.
+- **L'image agit** : dans `dessin`, fais bouger les objets en fonction de `t` (avec `a.sg`, `a.eo`, `a.ressort`…), et déclare-les dans `actions`. Jamais plus de 1,6 s sans que rien ne bouge.
+- **Tico** est dessiné par le moteur à la position de `acteur` (`a.acteur(t)` te la donne, par exemple pour qu'une plateforme le porte). Ses humeurs suivent `humeurs`.
+- **Transition par l'action** : fais commencer un plan sur le mouvement du précédent (Tico saute hors du cadre → le plan suivant le cadre en l'air → il atterrit).
+
+### Boîte à outils `a` (dans `dessin`)
+| Outil | Ce que ça dessine |
+|---|---|
+| `a.boite(x,y,w,h,{couleur,prof,op})` | Une boîte en volume (immeuble, étage, caisse, marche, bloc). (x,y) = coin bas-gauche |
+| `a.piece(x,y,r,{tour,txt})` | Une pièce qui peut tourner (`tour` : 0 → 1 = un tour) |
+| `a.billet(x,y,w,{rot,txt})` | Un billet |
+| `a.etiquette(x,y,'texte',{taille,fond:'acc'/'encre',rot,p})` | Une étiquette (p = échelle, pour l'apparition) |
+| `a.tampon(x,y,'TEXTE',p)` | Un tampon qui claque (p de 0 à 1) |
+| `a.compteur(t,t0,t1,v0,v1,x,y,taille)` | Un nombre qui compte |
+| `a.onde(x,y,r,p)` / `a.eclats(x,y,t,t0)` | Onde de choc / éclats qui partent |
+| `a.fleche(x1,y1,x2,y2,p)` | Une flèche qui se trace |
+| `a.ombre(x,y,largeur)` | Ombre de contact au sol |
+| `a.ressort(t,t0)` | 0 → 1 avec rebond (un objet qui se pose) |
+| `a.txt(x,y,taille,'IS'/'SM',couleur,'texte',{a:'start'})` | Un texte dans le monde |
+| `a.sg(t,t0,t1)`, `a.eo`, `a.eio`, `a.bk`, `a.L`, `a.T('p5+.3')`, `a.G` | Temps et courbes |
+| `a.icone('nom',x,y,taille,{couleur})` | Une icône de la bibliothèque (voir `moteur/BIBLIOTHEQUE.md`) |
+| Couleurs | `a.INK` (encre), `a.PAP` (papier), `a.ACC` (terracotta), `a.GR` (gris), `a.CR` (crème) |
+
+### La scène `mot` : un plan plein écran
+`{type:'mot', de:'p5', a:'p5_fin', txt:'MAIS<br>ATTENDS.', fond:'acc'}` : un mot qui claque sur un aplat (1 à 2 s). À utiliser 1 ou 2 fois par vidéo, sur un retournement. Pas de carton pendant ce plan.
+
 ## Les commandes, dans l'ordre
 
 ```bash
@@ -89,7 +147,7 @@ musique:{nom:'tension-cyber-anxiety', drop:'p6', coupe:['p5']},
 - Change d'humeur à chaque phrase où le personnage est visible : c'est ce qui le rend vivant.
 - `persos.droite.accessoire` : `lunettes`, `cravate`, `casquette` ou `noeud`. `couleur` est une teinte de papier : `#f4e3d7`, `#e3ecf2` ou `#efe6c8`.
 
-## Les scènes, avec leurs transformations de données
+## Les scènes toutes faites (bibliothèque : seulement si leurs visuels ne sont pas dans les 5 dernières vidéos)
 
 Enchaîne **2 à 4 scènes**. Chaque scène commence à `de` et finit au début de la suivante. Choisis la scène qui **transforme** ton chiffre, pas celle qui l'affiche.
 
@@ -159,7 +217,10 @@ Couleurs : `'acc'` (terracotta, par défaut), `'gris'` ou `'encre'`.
 - « Abonne-toi » une seule fois, entre 25 % et 70 % de la durée, et un appel final.
 - Un carton dès la 1re image.
 - Aucune erreur JavaScript.
-- Caméra : un vrai mouvement dans **chaque** fenêtre de 3 s.
+- **L'image agit en permanence** : jamais plus de 1,6 s sans action déclarée ni geste bruité.
+- **Un nouveau plan toutes les 1 à 3 s** (changement net de cadrage, plan plein écran ou carte qui se retourne).
+- **Monde nouveau** : `visuels` présents et aucun mot en commun avec les « VISUELS » des 5 dernières vidéos.
+- Pas de carton pendant un plan plein écran (`mot`).
 - Aucun chevauchement entre carton, pastille et sous-titres.
 - **Aucun texte coupé par le bord** : les textes d'écran jamais, ceux du monde pas plus de 0,8 s hors whip pan.
 - Tico : 25 % de l'image maximum, et présent au hook, au milieu, à « abonne-toi » et à la fin.

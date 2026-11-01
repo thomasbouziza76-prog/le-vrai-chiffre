@@ -4,7 +4,13 @@ Rend DOSSIER/index.html en 1080×1920 30 i/s (un processus par cœur), mixe voix
 import sys,os,json,subprocess,multiprocessing as mp
 from playwright.sync_api import sync_playwright
 D=os.path.abspath(sys.argv[1]); OUT=sys.argv[sys.argv.index('--sortie')+1] if '--sortie' in sys.argv else 'video.mp4'
-M=os.path.dirname(os.path.abspath(__file__)); SONS=os.path.join(M,'..','sons')
+M=os.path.dirname(os.path.abspath(__file__))
+SONS_DIRS=[os.path.join(M,'..','sons'),os.path.join(M,'..','hyperframes','.claude','skills','media-use','audio','assets','sfx')]
+def SON(n):
+    for d in SONS_DIRS:
+        f=os.path.join(d,n+'.mp3')
+        if os.path.exists(f): return f
+    return None
 K=json.load(open(os.path.join(D,'K.json'))); FPS=30; N=int(K['end']*FPS); FR=os.path.join(D,'_images')
 def part(a):
     lo,hi=a
@@ -24,10 +30,12 @@ if __name__=='__main__':
     with sync_playwright() as p:
         b=p.chromium.launch(); pg=b.new_page(viewport={'width':1080,'height':1920}); pg.goto('file://'+D+'/index.html'); pg.wait_for_function('window.ready===true',timeout=30000)
         SFX=pg.evaluate('window.SFX'); b.close()
-    SFX=[x for x in SFX if os.path.exists(os.path.join(SONS,x[1]+'.mp3')) and x[0]<K['end']]
+    manq=sorted({x[1] for x in SFX if not SON(x[1])})
+    if manq: print('BRUITAGES INTROUVABLES (ignorés) :',manq)
+    SFX=[x for x in SFX if SON(x[1]) and x[0]<K['end']]
     args=['ffmpeg','-v','error','-y','-i',os.path.join(D,'voix.mp3')]; flt=['[0:a]volume=1.0,apad=whole_dur=%.2f[v]'%K['end']]
     for i,(t,f,g) in enumerate(SFX,1):
-        args+=['-i',os.path.join(SONS,f+'.mp3')]; d=int(max(0,t)*1000); flt.append(f'[{i}:a]volume={g},adelay={d}|{d}[a{i}]')
+        args+=['-i',SON(f)]; d=int(max(0,t)*1000); flt.append(f'[{i}:a]volume={g},adelay={d}|{d}[a{i}]')
     flt.append('[v]'+''.join(f'[a{i}]' for i in range(1,len(SFX)+1))+f'amix=inputs={len(SFX)+1}:normalize=0,atrim=0:{K["end"]},loudnorm=I=-14:TP=-1.5:LRA=11[out]')
     # MUSIQUE (PLAN.musique = nom de moteur/musiques.json) : très basse, et elle se baisse toute seule quand la voix parle
     PL=json.loads(subprocess.run(['node',os.path.join(M,'lireplan.js'),os.path.join(D,'plan.js')],capture_output=True,text=True).stdout or '{}')

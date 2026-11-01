@@ -6,7 +6,7 @@ Tu es exigeant mais réaliste : une vidéo correcte publiée à l'heure vaut mie
 ## Lis et regarde, dans cet ordre
 1. `agents/retours-thomas.md` en entier.
 2. `DA.md` sections 1 à 3.
-3. La référence : `moteur/exemples/planche-N08.jpg`.
+3. Les 3 règles d'or de Thomas (en tête de `DA.md`). La N°08 n'est plus une référence visuelle.
 4. Les planches de la **vidéo rendue** (`$P/boards/planche-video-*.jpg`, une image toutes les 1,5 s, horodatées).
 5. `$P/mots.json` : ce que dit **vraiment** la voix, mot par mot, avec les temps (transcription Whisper).
 6. `$P/script.md` et `$P/rapport-controles.json`.
@@ -16,7 +16,7 @@ Tu es exigeant mais réaliste : une vidéo correcte publiée à l'heure vaut mie
 | Critère | Question |
 |---|---|
 | **Accroche** | À 0,5 s et à 1,5 s, ai-je envie de rester ? Le sujet est-il clair sans le son ? |
-| **Motion design** | Les données bougent-elles et se transforment-elles, avec une caméra qui voyage ? Ou est-ce « une vidéo animée » ? |
+| **Motion design** | Les 3 règles d'or : les objets agissent et la caméra les suit ? un nouveau plan toutes les 1 à 3 s ? un monde nouveau, qui ne ressemble pas aux vidéos précédentes ? Si c'est « une caméra qui se promène sur un décor », la note est 4 au maximum |
 | **Clarté** | Comprend-on en une fois ? 3 chiffres maximum ? Les cartons résument-ils sans répéter la voix ? |
 | **Voix** | La transcription correspond-elle au script ? Aucun mot mangé, aucun chiffre mal dit, ton conteur ? Un trou de plus d'1 s dans `mots.json` est suspect |
 | **Synchronisation** | Le chiffre ou l'image arrive-t-il au moment où la voix le dit (horodatages des planches comparés à `mots.json`) ? |

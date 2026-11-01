@@ -72,7 +72,7 @@ Racine du dépôt : `$LVC_REPO` (après l'étape 0). Projet du jour : `$P` = sor
    `git clone --depth 1 https://github.com/thomasbouziza76-prog/studio /home/claude/studio` (dépôt PRIVÉ, jamais rendu
    public). Il contient `charte/ticket.js` (le Ticket), `motion/` (pièces prêtes, `catalogue.json`) et la vidéo de
    référence. Si le clone échoue : continue avec `exemples/ticket.js` de ce dépôt et dis-le dans le message final.
-2. **Référence** : regarde `moteur/exemples/planche-N08.jpg` (la référence du moteur) et lis `DA.md` section 6.
+2. **Référence** : relis les 3 règles d'or en tête de `DA.md` (image qui agit, nouveau plan toutes les 1 à 3 s, monde unique). La N°08 n'est plus une référence visuelle.
 3. **Boucle de retour** : lis `Videos!A1:W14` du Google Sheet. Les stats sont écrites par la tâche de nuit (22h43) :
    ne les réécris jamais. Si des vidéos ont des stats, repère les hooks, sujets, durées (30 s / 45 s / histoire 62-75 s) et mots-clés qui
    retiennent le mieux (temps moyen, % qui finit, % recherche) et ceux qui font gagner des abonnés. Penche vers ce qui
@@ -134,15 +134,16 @@ Racine du dépôt : `$LVC_REPO` (après l'étape 0). Projet du jour : `$P` = sor
   du script gagne ; les mots à faible confiance viennent de la transcription).
 
 ## 3. Le plan de la vidéo (≈ 10 min) : moteur + contrôles + Critique motion
-**Règle n° 1 : tu n'écris pas d'animation, tu écris `$P/plan.js`.** Lis `moteur/PLAN.md` et le modèle `moteur/exemples/plan-N08.js` (la N°08, validée par Thomas), puis regarde `moteur/exemples/planche-N08.jpg`. C'est le niveau attendu.
+**Règle n° 1 : le moteur fait la caméra, les plans, les textes et les sons ; toi, tu inventes le MONDE de cette vidéo** dans `$P/plan.js` avec la scène `monde` (`moteur/PLAN.md`, section « La scène `monde` »), à partir du monde et des plans choisis par le Stratège. `moteur/exemples/plan-N08.js` ne sert que d'exemple de syntaxe (cartons, humeurs, choix) : ne copie PAS son monde (barres).
 1. **Écris `$P/plan.js`** :
    - `phrases` = le texte voix exact (sans balises, chiffres en chiffres) ;
    - les cartons (hook dès `'debut'`, 1 idée et 1 mot-clé chacun, aucun pendant « abonne-toi ») ;
    - les humeurs (une par phrase où un personnage est visible) ;
-   - 2 à 4 scènes qui **transforment** le chiffre (`duel`, `vague`, `chiffre`, `courbe`, puis `choix` pour la question finale) ;
-   - `abonne`, `question`, `source`, `format`.
+   - une scène **`monde`** (le monde de cette vidéo : `nom`, `visuels`, `acteur`, `cadres` toutes les 1 à 3 s, `dessin`, `actions`), éventuellement 1 ou 2 plans `mot`, puis `choix` pour la question finale ;
+   - `abonne`, `question`, `source`, `format`, `musique`.
 
-   La scène `libre` est un dernier recours, à justifier dans HISTORIQUE.md.
+   Les scènes toutes faites (`duel`, `vague`, `chiffre`, `courbe`, `parcours`) ne s'utilisent que si leurs visuels ne sont pas dans les 5 dernières vidéos (le contrôle « monde nouveau » le vérifie). Note les `visuels` dans HISTORIQUE.md (« VISUELS : … »).
+   **Range ton monde** : s'il est réussi, copie `plan.js` dans `moteur/mondes/<nom>.js` (bibliothèque des mondes, pour s'en inspirer plus tard, jamais pour le recopier tel quel).
 2. `python3 moteur/timing.py $P` : la liste « mots non retrouvés » doit être vide (sinon, aligne `phrases` sur ce que dit la voix).
 3. **`python3 controles/verifier.py $P`** : tout doit être OK. En cas d'échec, corrige le **plan** et relance (environ 10 s par essai). Tu ne passes pas à la suite avec un échec.
    - Si l'échec vient d'un bug du moteur (et pas du plan), ne modifie pas le moteur : contourne-le dans le plan, ou note le bug dans HISTORIQUE.md avec le rapport.

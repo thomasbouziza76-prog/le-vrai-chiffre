@@ -3,6 +3,11 @@
 > **À lire en PREMIER, avant tout autre fichier.**
 > Validée par Thomas le 2026-11-01. Si un autre fichier contredit celui-ci, **c'est DA.md qui gagne**.
 > **Cette DA est définitive** (décision de Thomas) : on ne la change pas, même plus tard. On améliore l'exécution, jamais le style.
+> **LES 3 RÈGLES D'OR (Thomas, 01/11 à 23 h 30 — elles priment sur tout le reste de ce fichier) :**
+> 1. **L'IMAGE BOUGE, LA CAMÉRA SUIT.** Ce sont les OBJETS qui agissent (tombent, roulent, se cassent, se remplissent, s'empilent, se transforment) ; la caméra SUIT l'action. Une caméra qui se promène sur un décor fixe, c'est raté (c'était le défaut des N°07 et N°08).
+> 2. **UN NOUVEAU PLAN TOUTES LES 1 À 3 S.** Une vidéo est une suite de plans (gros plan, plan large, plan plein écran…), chacun avec sa composition et son action. On passe d'un plan au suivant PAR L'ACTION (on suit la chute, la glissade, l'objet lancé…) ou par une coupe sur le rythme. Jamais un seul long plan.
+> 3. **CHAQUE VIDÉO INVENTE SON MONDE.** Une métaphore visuelle propre au sujet (immeuble, ascenseur, file d'attente, balance, sablier, course, tirelire…), des objets et des gags nouveaux. Interdit de reprendre les visuels des 5 vidéos précédentes (`historique/HISTORIQUE.md`, « VISUELS : »). Les barres de graphique ne sont PAS le réflexe par défaut.
+>
 > **Mise à jour du 2026-11-01 soir (décision de Thomas) : MOTION DESIGN EN PREMIER, Tico est l'INVITÉ.** Leçon de la N°07 :
 > avec Tico au centre, la vidéo devenait un dessin animé sur une scène fixe, sans motion design.
 
@@ -30,12 +35,13 @@
 
 | # | Règle | Mesure |
 |---|---|---|
-| 1 | Caméra | **Un mouvement de caméra au moins toutes les 3 s** (zoom ≥ 15 %, panoramique, plongée, rotation, ou coupe vers un NOUVEAU cadrage). **Jamais le même cadrage plus de 3 s.** Poussée sur le chiffre clé, petit tremblement sur les impacts |
+| 1 | Plans et caméra | **Un nouveau plan toutes les 1 à 3 s** (nouveau cadrage ET nouvelle action). La caméra **suit l'objet qui agit** ; elle ne bouge jamais « pour bouger » sur un décor immobile. Passage d'un plan à l'autre par l'action (on suit la chute, le lancer…) ou coupe sur le rythme. Petit tremblement sur les impacts |
 | 2 | Tico, l'invité | **Au minimum aux 4 moments clés** (hook, chiffre choc, retournement ou relance, fin), avec son bruitage ; il peut réagir entre-temps. **25 % de l'image maximum**, jamais le sujet principal d'un plan |
 | 3 | Les données se transforment | **Au moins 2 transformations par scène** (scène = une scène du plan du moteur, `moteur/PLAN.md` ; liste section 5) |
 | 4 | Transitions avec une cause | L'objet d'une scène **devient** l'objet de la suivante (le chiffre éclate → les morceaux deviennent des barres → les barres fondent en courbe) |
 | 5 | 3D stylisée | **Au moins 1 vrai moment 3D par vidéo** (barres extrudées + caméra qui tourne, ticket qui se retourne, avion en papier en profondeur). **3D réaliste interdite** |
-| 6 | Rythme | Un changement de motion design (mouvement de caméra OU transformation de données) toutes les 2 à 3 s, comme la N°05 |
+| 6 | Rythme | Quelque chose AGIT à l'écran en permanence (jamais plus de 1,6 s sans action ni geste bruité) |
+| 12 | Monde unique | La vidéo a SON monde (`PLAN.scenes[].nom` + `visuels`), sans reprendre les visuels des 5 vidéos précédentes (contrôle automatique) |
 | 7 | Fond vivant | Jamais un aplat mort : quadrillage qui apparaît, symboles € et % qui dérivent très lentement |
 | 8 | Écran rempli | Jamais plus de 40 % de vide ; tout chiffre entièrement dans le cadre (marge ≥ 80 px). Sous le sol (zone de l'interface TikTok, y > 1330) : pas de texte, mais du DÉCOR sans texte (sol, ombres, objets posés, reflets) pour que l'image ne paraisse jamais vide en bas |
 | 9 | Son | Chaque geste a son bruitage (`SONS.md`) ; jamais 3 s sans un son d'action ; aucun bruitage plus fort que la voix |
@@ -92,7 +98,7 @@ Pièces prêtes : `motion/` du Studio (`catalogue.json`, champ `quand`).
 
 ## 6. La vidéo de référence (à regarder AVANT d'écrire le plan)
 
-> **Depuis le 01/11/2026, la référence est la N°08 faite avec le moteur** : `moteur/exemples/plan-N08.js` + `moteur/exemples/planche-N08.jpg`. Ce qui suit reste vrai pour l'esprit.
+> **La N°08 n'est plus une référence visuelle** (jugée « vidéo animée » par Thomas le 01/11 au soir) : seules comptent les 3 règles d'or en tête de ce fichier.
 
 - Code : `exemples/ticket-salaire-median-v2.html` (16 s, fonction `seek(t)`).
 - Images clés : `exemples/ticket-salaire-median-v2-planche.jpg`.

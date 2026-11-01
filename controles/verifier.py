@@ -66,17 +66,44 @@ with sync_playwright() as p:
     try: pg.wait_for_function('window.ready===true',timeout=15000)
     except Exception: sys.exit('ERREUR : la page ne démarre pas. Erreurs JavaScript : '+('; '.join(errs) or 'aucune')+' → si une « ancre inconnue » est citée, relance moteur/timing.py après avoir modifié plan.js')
     for i in range(N+1): fr.append(pg.evaluate(JS,round(i*pas,2)))
+    ACTS=pg.evaluate('window.ACTIONS||[]'); SFXS=pg.evaluate('window.SFX||[]'); MOTS=pg.evaluate("SC.filter(s=>s.type==='mot').map(s=>[s.t0,s.t1])"); EXTRA=pg.evaluate('window.PLANS_EXTRA||[]')
     b.close()
 ok('Aucune erreur JavaScript',not errs,'; '.join(errs[:3]))
-# caméra : dans chaque fenêtre de 3 s, un vrai mouvement (≥ 120 px à l'écran, ou ≥ 10 % de zoom, ou ≥ 2°)
-mauvais=[]
-w=int(3/pas)
-for i in range(0,len(fr)-w):
-    a=fr[i]['cam']; best=0
-    for c in fr[i:i+w+1]:
-        c=c['cam']; pan=((c[0]-a[0])**2+(c[1]-a[1])**2)**.5*min(a[2],c[2]); best=max(best,pan/120,abs(c[2]/a[2]-1)/.10,abs(c[3]-a[3])/2)
-    if best<1: mauvais.append(round(i*pas,1))
-ok('Caméra : un mouvement au moins toutes les 3 s',not mauvais,('fenêtres figées à partir de : '+', '.join(map(str,mauvais[:8]))) if mauvais else 'OK sur toute la vidéo')
+# 1) L'IMAGE BOUGE, LA CAMÉRA SUIT (règle de Thomas, 01/11) : à chaque instant, quelque chose AGIT à l'écran
+#    (une action déclarée par le moteur, ou un geste bruité). Pas de trou de plus de 1,6 s.
+ev=[(a,b) for a,b,_ in ACTS]+[(t-.35,t+.35) for t,_,_ in SFXS]
+trous=[]; t=0.0
+while t<dur-.5:
+    if not any(a<=t<=b for a,b in ev):
+        t0=t
+        while t<dur and not any(a<=t<=b for a,b in ev): t+=.1
+        if t-t0>1.6: trous.append(f'{t0:.1f}-{t:.1f} s')
+    t+=.1
+ok("L'image agit en permanence (pas plus de 1,6 s sans action)",not trous,('rien ne se passe : '+', '.join(trous[:6])) if trous else 'OK')
+# 2) UN NOUVEAU PLAN TOUTES LES 1 À 3 S : changement net de cadrage (zoom ×1,2, 300 px à l'écran ou 3°), plan plein écran, ou début de scène
+cuts=[0.0]+[a for a,b in MOTS]+[x for x in EXTRA if x]
+for i in range(len(fr)):
+    a=fr[i]['cam']
+    for k in range(i+1,min(len(fr),i+5)):
+        c=fr[k]['cam']; pan=((c[0]-a[0])**2+(c[1]-a[1])**2)**.5*min(a[2],c[2])
+        if max(a[2],c[2])/min(a[2],c[2])>=1.2 or pan>=300 or abs(c[3]-a[3])>=3: cuts.append(round(i*pas,1)); break
+cuts=sorted(set(cuts))+[dur]; long=[f'{a:.1f}-{b:.1f} s' for a,b in zip(cuts,cuts[1:]) if b-a>3.3]
+ok('Un nouveau plan toutes les 1 à 3 s',not long,('plans trop longs : '+', '.join(long[:6])) if long else f'{len(cuts)-1} changements de plan')
+# 3) CHAQUE VIDÉO EST UNIQUE : ses visuels ne reprennent pas ceux des 5 vidéos précédentes (historique/HISTORIQUE.md, « VISUELS : … »)
+import unicodedata
+def mots(x): return {unicodedata.normalize('NFD',w.lower()).encode('ascii','ignore').decode() for w in re.findall(r"[\wéèêàâçîôû]+",x) if len(w)>3}
+vis=[]; 
+for sc in P['scenes']:
+    vis+=sc.get('visuels',[]) or []
+    vis+={'duel':['barres'],'vague':['barres','graphique'],'chiffre':['barre'],'courbe':['courbe','graphique'],'parcours':['barres']}.get(sc['type'],[])
+H=open(os.path.join(R,'..','historique','HISTORIQUE.md')).read().split('\n')
+recents=[l for l in H if l.startswith('- 20')][:5]
+deja=set()
+for l in recents:
+    m=re.search(r'VISUELS : ([^·]+)',l)
+    if m: deja|=mots(m.group(1))
+pris=mots(' '.join(vis)); comm=sorted(pris&deja)
+ok('Monde nouveau (visuels différents des 5 dernières vidéos)',bool(vis) and not comm,(f'déjà vus récemment : {comm}' if comm else ('PLAN.scenes[].visuels manquant' if not vis else 'visuels : '+', '.join(vis))))
 def inter(a,b): return max(0,min(a[2],b[2])-max(a[0],b[0]))*max(0,min(a[3],b[3])-max(a[1],b[1]))
 SCR=1080*1920; chev=[]; deb={}; grand=[]; tico_t=[]
 for i,f in enumerate(fr):
@@ -84,6 +111,7 @@ for i,f in enumerate(fr):
     for a in ro['carton']:
         for b in ro['pastille']:
             if inter(a,b)>2000: chev.append(f'{t}s carton/pastille')
+    if ro.get('mot') and ro['carton']: chev.append(f'{t}s carton sur un plan plein écran')
     for a in ro['carton']+ro['pastille']:
         for b in ro['sous-titre']:
             if inter(a,b)>2000: chev.append(f'{t}s carton/sous-titre')

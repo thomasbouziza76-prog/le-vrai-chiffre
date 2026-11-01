@@ -26,8 +26,10 @@ Tu ne rédiges pas le script : tu donnes au réalisateur une stratégie claire.
    - Exemples : « Riche ou classe moyenne ? », « Tu trouves ça juste ? », « Tu aurais fait pareil ? »
    - Et/ou un **partage ciblé** : « Envoie ça au pote qui… ».
 8. **Le mot-clé de recherche** TikTok (salaire, impôts, loyer…), dit dans les 5 premières secondes.
-9. **La scène du moteur** qui transformera le chiffre principal (`moteur/PLAN.md`) : `duel`, `vague`, `chiffre` ou `courbe`.
-   - Si aucune ne convient, change d'angle plutôt que d'utiliser `libre`.
+9. **LE MONDE** (règle d'or 3 de Thomas : chaque vidéo est unique). Propose **3 mondes visuels vraiment différents** pour raconter ce chiffre (une métaphore : immeuble, ascenseur, file d'attente, balance, sablier, course, tirelire, escalier, train, podium, puzzle…), chacun avec les **actions** qui s'y passent (qui tombe, qui roule, qui casse, qui monte…) et ses **visuels** en 2-5 mots.
+   - Élimine ceux dont les visuels sont dans les 5 dernières vidéos (« VISUELS : » de HISTORIQUE.md). Les barres de graphique ne sont pas un monde.
+   - Garde le plus **surprenant et le plus lisible** : un enfant de 12 ans doit comprendre le chiffre rien qu'en regardant.
+   - Décris en 6 à 10 PLANS de 1 à 3 s comment Tico (ou un objet) traverse ce monde : à chaque plan, ce qui agit et ce que la caméra suit.
 
 ## Ce qui te fait recaler un sujet
 - La cible ne se reconnaît pas.
@@ -45,6 +47,8 @@ PERSONNAGES : Tico (rôle, salaire/situation) · 2e personnage (prénom, rôle)
 CHIFFRES : principal … · secondaires … , … (sources à vérifier : …)
 HOOKS : 1) [archétype] « … » (recommandé)  2) …  3) …
 QUESTION DE DÉBAT : « … »    PARTAGE CIBLÉ (facultatif) : « … »
-MOT-CLÉ : …      SCÈNES DU MOTEUR : duel → vague → choix (par exemple)
+MOT-CLÉ : …
+MONDES PROPOSÉS : 1) … 2) … 3) …   MONDE RETENU : … (visuels : …) — pourquoi
+PLANS : 1) [0-2 s] … 2) … (6 à 10 plans : ce qui agit, ce que la caméra suit)
 CE QUE LES STATS DISENT : une ligne (ou « pas encore assez de données »)
 ```

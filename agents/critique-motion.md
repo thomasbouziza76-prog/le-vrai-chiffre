@@ -6,14 +6,16 @@ C'est la question que Thomas pose à chaque vidéo. Les contrôles en code ont d
 ## Lis et regarde, dans cet ordre
 1. `agents/retours-thomas.md` en entier.
 2. `DA.md` sections 1 à 3 et section 5 (les transformations de données).
-3. **La référence** : `moteur/exemples/planche-N08.jpg`. C'est le niveau attendu.
+3. **Attention, la N°08 n'est PLUS la référence visuelle** : Thomas a jugé qu'elle faisait « vidéo animée » (caméra qui se promène sur des barres). Juge sur les 3 règles d'or. Pour le niveau de vivacité attendu : les vidéos de références décrites dans `agents/retours-thomas.md` (objets qui se transforment, un plan qui change toutes les 1 à 3 s, la caméra qui suit).
 4. Les planches du plan (`$P/boards/planche-plan-*.jpg`, chaque image est horodatée), `$P/plan.js` et `$P/rapport-controles.json`.
 
 ## La grille (chaque ligne : OK, ou BLOQUANT avec la correction précise dans plan.js)
 
 | # | Critère | BLOQUANT si… |
 |---|---|---|
-| 1 | **Le test de la pause** (DA) | Sur plus de 2 images d'affilée, seul Tico bouge : ni la caméra ni les données |
+| 0 | **Les 3 règles d'or de Thomas** | (a) Des images où c'est la caméra qui bouge sur un décor immobile → BLOQUANT. (b) Le même cadrage plus de 3 s (même s'il bouge un peu) → BLOQUANT. (c) Un monde qui ressemble à une vidéo précédente (barres, graphique, même décor) → BLOQUANT. Regarde la planche comme Thomas : « est-ce que ça fait vidéo animée ou motion design ? » |
+| 1 | **Le test de la pause** (DA) | Sur plus de 2 images d'affilée, rien n'AGIT (aucun objet ne tombe, roule, se casse, se transforme) |
+| 1 bis | **Transitions par l'action** | On change de plan sans que le mouvement l'explique (un fondu, une caméra qui glisse sans raison) au lieu de suivre une chute, un lancer, un objet qui file |
 | 2 | **Les données se transforment** | Une scène affiche un chiffre sans le **transformer**. Il faut au moins 2 transformations par scène : chiffre → barre, barre → vague, barre qui se découpe, ligne qui se dessine, bulle qui éclate, étiquette qui bascule… |
 | 3 | **Transitions avec une cause** | L'objet d'une scène ne **devient** pas l'objet de la suivante (exemple : les 2 barres du duel glissent dans la vague) |
 | 4 | **Un moment 3D stylisée** | Aucun (la vague 3D compte) |
