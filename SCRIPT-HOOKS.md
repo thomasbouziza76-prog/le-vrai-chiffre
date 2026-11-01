@@ -15,6 +15,10 @@ Ces règles augmentent les chances ; elles ne garantissent rien. Ne promets jama
 - Texte d'écran : 2 lignes max, 3 à 7 mots par ligne, un seul mot clé encadré par carton.
 - En écrivant, note à côté de chaque phrase le gag du Ticket et la transformation de données qui l'accompagnent.
 
+**Leçon N°07 (ASPA, 2026-11-01)** : hook « 343 € de plus sur SA retraite » → 6 s de visionnage moyen, 0 abonné. La 1re
+phrase doit concerner le spectateur de 20-35 ans (« ton salaire », « tu as droit », « ton loyer »), jamais un tiers
+âgé. Tico peut vivre le cas, mais la voix parle à « tu » dès les premiers mots.
+
 ## 1. Les 7 principes
 
 1. **Le hook est la porte.** TikTok, Reels et Shorts décident en 1,5 à 3 s. Si les 3 premières secondes ratent,

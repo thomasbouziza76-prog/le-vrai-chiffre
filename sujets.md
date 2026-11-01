@@ -24,6 +24,10 @@ Familles : [ÉCO] les vrais chiffres de la France · [BUDGET] le quotidien · [P
 non réclamées, abattements, remboursements oubliés ; une vidéo sur trois, idéale pour le format histoire du soir).
 
 ## Règles (obligatoires)
+- **Cible : 20 à 35 ans (leçon N°07, ASPA : 6 s de visionnage moyen sur 69 s).** Chaque sujet concerne DIRECTEMENT le
+  spectateur de 20-35 ans (son salaire, son loyer, ses aides, son épargne, ses parents vus depuis SA place). Interdit :
+  un sujet centré sur une personne âgée ou une situation lointaine racontée à la 3e personne. Un sujet « retraite » ou
+  « héritage » ne passe que raconté du point de vue du jeune (« tes parents peuvent te donner 100 000 € sans impôt »).
 - Éducatif uniquement : jamais « achète ça », jamais de produit ou de plateforme recommandé, jamais de promesse.
 - [INVESTIR] : toujours le gain ET la perte possible (pire année, pire baisse, temps pour revenir) ; à l'écran
   « les performances passées ne garantissent pas l'avenir ».
@@ -57,7 +61,7 @@ secours peut y être sans être cochée ici.
 9. [DROITS] L'employeur doit rembourser 50 % de ton abonnement de transport : ce que ça fait en euros sur un an
 10. [ÉCO] Le salaire des patrons du CAC 40 en années de SMIC
 11. [BUDGET] Sur 100 € de salaire, ce que l'État prend vraiment (cotisations, impôt, TVA sur tes achats)
-12. [DROITS] Donner à ses enfants sans impôt : l'abattement de 100 000 € par parent et par enfant, tous les 15 ans
+12. [DROITS] Tes parents peuvent te donner 100 000 € chacun sans impôt, tous les 15 ans (l'abattement parent-enfant)
 13. ⚡ [PIÈGE] Black Friday (27 novembre) : les fausses promos et pourquoi tu dépenses plus que prévu · valable jusqu'au
    2026-11-27
 14. [MENTAL] Le coût d'attendre 5 ans pour commencer à mettre de côté
