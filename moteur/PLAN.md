@@ -233,3 +233,5 @@ Couleurs : `'acc'` (terracotta, par défaut), `'gris'` ou `'encre'`.
 - **Après chaque modification de `plan.js` qui touche `phrases` ou `ancres`, relance `timing.py`** : sinon la page ne démarre pas (le contrôle le dit : « ancre inconnue »).
 - **Toujours vérifier la date des chiffres** : une étude plus récente peut être sortie (exemple : Insee 2025, publiée le 22/10/2026). Le jeu de données du moteur porte l'année dans son nom.
 - **Les contrôles ne voient pas tout** (un texte caché derrière un carton, Tico devant un chiffre, un écran à moitié vide) : regarde toujours la planche toi-même avant la porte 3.
+- **Une scène `monde` n'est plus dessinée 0,6 s après sa fin** (`a`). Pour qu'un décor reste visible pendant la scène suivante (rare), mets `persiste:true`.
+- **Tampons** : `a.tampon()` élargit maintenant son cadre selon l'espacement des lettres ; pas besoin d'ajouter des espaces au texte.
