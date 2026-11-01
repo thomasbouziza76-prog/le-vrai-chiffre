@@ -75,6 +75,13 @@ Kurzgesagt :
 - **Chaque métaphore visuelle est esquissée et choisie** avant d'animer (nos 3 directions de l'étape 3).
 - **2D + touches de 3D** quand ça sert le propos, pas pour faire joli.
 
+## La 3D : oui, mais stylisée
+- **Interdit : la 3D réaliste** (rendu photo, matières réelles, images générées par IA). Thomas l'a testée : « bidon ».
+- **Permis et voulu : la 3D stylisée**, à nos couleurs et avec contours encre : rotation en perspective (le Ticket
+  qui se retourne comme une carte), barres et blocs extrudés (face claire, côté plus foncé, dessus clair), caméra qui
+  tourne autour d'un graphique, objet Three.js en aplats + contours, ticket plié en avion qui vole en profondeur.
+- « Pas de 3D réaliste » ne veut JAMAIS dire « pas de 3D » : au moins un vrai moment 3D stylisé par vidéo.
+
 ## Les premières secondes
 - Image 0 = UNE idée, 6 mots max, énorme, en mouvement, son à 0,0 s, voix qui dit « tu ».
 - Si les 3 premières secondes n'arrêteraient pas TON pouce, refais-les avant le reste.

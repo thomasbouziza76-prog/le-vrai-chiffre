@@ -93,7 +93,7 @@ et `historique/CHECKS.md` (règles apprises).
    clé, tremblement seulement sur un impact et très bas.
 4. **Profondeur** : 3 plans (fond, milieu, avant) à vitesses différentes ; ombres de papier empilées (contact + douce) ;
    léger flou sur le fond quand l'avant est net ; bords de papier irréguliers (`feTurbulence` + `feDisplacementMap`).
-5. **Un moment 3D par vidéo** (Three.js, état piloté par la timeline, rendu dans `onUpdate`) : objet clé éclairé ou en
+5. **Un moment 3D STYLISÉE par vidéo** (pas de 3D réaliste, mais de la 3D oui : voir MOTION.md ; Three.js, état piloté par la timeline, rendu dans `onUpdate`) : objet clé éclairé ou en
    aplats + contours encre pour rester « papier ».
 6. **Chiffres spectaculaires** : compteur à rouleaux (`number-wheel`, `slot-machine-roll`, `split-flap-board`) ou
    compteur avec pulsation, bruitage « clic » sur la valeur finale, toujours une comparaison concrète à l'écran
