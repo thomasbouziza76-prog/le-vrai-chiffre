@@ -50,3 +50,7 @@ Courbes sur mesure, découpe des mots/lettres, tracés qui se dessinent, morphin
   grands nombres) ; chez nous, toujours piloté par la timeline (pas de requestAnimationFrame).
 - Listes : **iart-ai/motion-skills**, **zhuyansen/awesome-claude-video-skills**, **imjszhang/awesome-code-video**,
   **flreey/awesome-motion-graphics**.
+
+## Carrousels (recherche du 2026-11-01)
+- Hainrixz/open-carrusel (MIT) : Claude écrit chaque slide en HTML/CSS, Puppeteer la photographie en PNG 1080×1350, avec un calque « zone de sécurité ». Même méthode que notre `etapes/09-carrousel.sh` (Playwright) : on n'installe pas l'appli (Next.js), on reprend l'idée de zone de sécurité.
+- FranciscoMoretti/carousel-generator (MIT) : éditeur web de carrousels LinkedIn, pas utile pour l'automatisation.

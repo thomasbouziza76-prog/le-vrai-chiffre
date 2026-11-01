@@ -154,6 +154,24 @@ Commit et push dans le dépôt (voir 10), avec `historique/CHECKS.md` s'il a cha
   du sujet dès la 1re ligne), sujet, hook et archétype, CTA et sa seconde, concept en une phrase, moteur utilisé, sources,
   défauts restants, lien du Google Sheet. Un seul message final, court, en français.
 
+## 8 ter. Carrousel (TikTok mode photo + Instagram), même sujet que la vidéo
+Thomas les publie à la main avec la vidéo. Pas de voix : aucun crédit ElevenLabs.
+- **Contenu** : le même sujet et les mêmes chiffres vérifiés que la vidéo, mais le carrousel APPORTE PLUS (le détail, un
+  exemple chiffré, « ce que ça change pour toi »), pour qu'on ait envie de l'enregistrer. 6 à 8 slides : 1 = hook en très
+  gros (il doit arrêter le défilement seul) ; 2 à 5 = un chiffre ou une idée par slide, avec sa comparaison concrète, phrases
+  courtes ; avant-dernière = sources + « contenu éducatif, pas un conseil personnalisé » ; dernière = « Enregistre ce post »
+  avec une raison + « Abonne-toi ». Mêmes règles de contenu que la vidéo (sourcé, aucun avis politique, aucune religion,
+  aucun produit à intérêts présenté comme solution, gain ET perte pour [INVESTIR]).
+- **Format** : un HTML avec des `<section class="slide">` 1080×1350, identité de la chaîne. Modèle de FORMAT :
+  `exemples/carrousel-exemple.html` (garde la grille, les polices, les couleurs ; change le contenu et ajoute 1 ou 2
+  petits dessins propres au sujet, différents à chaque fois). **Zone de sécurité** : tout ce qui compte entre x 80 et
+  x 940, y 140 et y 1150 (TikTok pose ses boutons à droite et sa légende en bas). Texte courant ≥ 40 px. Pas de slide
+  à moitié vide : le contenu est centré et occupe la slide.
+- **Rendu** : `bash etapes/09-carrousel.sh <carrousel.html> $P/livrables <xx>` → `C<xx>-01.png`… + `C<xx>-planche.jpg`.
+  REGARDE la planche : texte coupé, faute, chiffre différent de la vidéo, slide vide = corrige avant de livrer.
+- **Livraison** : envoie les PNG dans l'ordre (SendUserFile) avec une légende carrousel (1re ligne = mot-clé + hook,
+  2 lignes, 5 hashtags) dans le même message final que la vidéo.
+
 ## 9. Boucle de retour (au DÉBUT de chaque exécution, ≈ 2 min)
 1. **Mise à jour automatique des stats (si le connecteur Metricool est présent dans ta session)** : Thomas ne remplit
    plus rien à la main. `getAnalyticsDataByMetrics` (brandId 7764816, from = il y a 30 jours, to = maintenant) avec les

@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="fr"><head><meta charset="utf-8">
+<!-- MODÈLE DE FORMAT (N°06) : 7 slides 1080×1350. Garde la grille, les polices, les couleurs et la structure ;
+     change tout le contenu et les petits dessins à chaque carrousel. Polices copiées à côté par etapes/09-carrousel.sh. -->
+<style>
+@font-face{font-family:IS;src:url(InstrumentSans-500.woff2);font-weight:500}
+@font-face{font-family:IS;src:url(InstrumentSans-700.woff2);font-weight:700}
+@font-face{font-family:SM;src:url(SpaceMono-400.woff2);font-weight:400}
+@font-face{font-family:SM;src:url(SpaceMono-700.woff2);font-weight:700}
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:#ddd;font-family:IS;color:#1c1a17}
+.slide{width:1080px;height:1350px;position:relative;overflow:hidden;margin-bottom:20px;
+  background:radial-gradient(ellipse at 50% 40%,#f6f1e8 0%,#efe8dc 62%,#e6ddce 100%)}
+.slide::after{content:"";position:absolute;inset:0;opacity:.16;pointer-events:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence baseFrequency='.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)' opacity='.35'/%3E%3C/svg%3E")}
+.top{position:absolute;top:70px;left:80px;right:80px;display:flex;justify-content:space-between;font-family:SM;font-size:24px;letter-spacing:.16em;color:#6b645a;border-bottom:2px solid #1c1a17;padding-bottom:16px}
+.h{font-weight:700;letter-spacing:-.035em;line-height:.98}
+.box{background:#c4552d;color:#f6f1e8;padding:0 .14em;display:inline-block;transform:rotate(-1.5deg)}
+.mono{font-family:SM;font-weight:700}
+.lab{font-family:SM;font-size:26px;letter-spacing:.12em;color:#6b645a;text-transform:uppercase}
+.body{font-size:44px;line-height:1.25;font-weight:500}
+.wrap{position:absolute;left:80px;right:80px;top:190px;bottom:150px;display:flex;flex-direction:column;justify-content:center;gap:44px}
+.swipe{position:absolute;bottom:60px;right:80px;font-family:SM;font-size:26px;letter-spacing:.12em;color:#c4552d}
+.card{background:#fbf8f2;border:3px solid #1c1a17;box-shadow:10px 10px 0 #1c1a17;padding:44px}
+.row{display:flex;gap:24px}
+.tick{flex:1;border:3px solid #1c1a17;background:#fbf8f2;text-align:center;padding:26px 0;font-family:SM;font-weight:700;font-size:52px}
+</style></head><body>
+
+<section class="slide"><div class="top"><span>LE VRAI CHIFFRE</span><span>N° 06 · 1/7</span></div>
+ <div class="wrap">
+  <div class="lab">Dès le 20 novembre 2026</div>
+  <div class="h" style="font-size:150px">Payer en<br>4 fois =<br>un <span class="box">crédit.</span></div>
+  <div class="row"><div class="tick">60 €</div><div class="tick">60 €</div><div class="tick">60 €</div><div class="tick">60 €</div></div>
+ </div><div class="swipe">GLISSE →</div></section>
+
+<section class="slide"><div class="top"><span>CE QUI CHANGE</span><span>2/7</span></div>
+ <div class="wrap">
+  <div class="h" style="font-size:96px">Le prêteur doit <span class="box">vérifier</span> que tu peux rembourser.</div>
+  <div class="card body">Avant : 2 clics et c'est payé.<br>Après le 20/11 : on regarde ce qui rentre et ce qui sort de ton compte.</div>
+ </div><div class="swipe">→</div></section>
+
+<section class="slide"><div class="top"><span>CE QUI CHANGE</span><span>3/7</span></div>
+ <div class="wrap">
+  <div class="lab">Même quand c'est gratuit</div>
+  <div class="mono" style="font-size:230px;line-height:1;color:#c4552d">TAEG<br>0 %</div>
+  <div class="body">Le coût total du crédit doit être affiché. Même à 0 %.</div>
+ </div><div class="swipe">→</div></section>
+
+<section class="slide"><div class="top"><span>CE QUI CHANGE</span><span>4/7</span></div>
+ <div class="wrap">
+  <div class="lab">La phrase obligatoire</div>
+  <div class="card h" style="font-size:72px">« Un crédit coûte de l'argent… »</div>
+  <div class="body">Elle devra apparaître sur ton paiement en 4 fois (E-Commerce Nation, 05/08/2026).</div>
+ </div><div class="swipe">→</div></section>
+
+<section class="slide"><div class="top"><span>LE VRAI PIÈGE</span><span>5/7</span></div>
+ <div class="wrap">
+  <div class="h" style="font-size:100px">Un retard ?<br>Les frais ne sont <span class="box">pas plafonnés.</span></div>
+  <div class="body">Une échéance ratée peut coûter bien plus que les 60 € prévus.</div>
+ </div><div class="swipe">→</div></section>
+
+<section class="slide"><div class="top"><span>SOURCES</span><span>6/7</span></div>
+ <div class="wrap" style="gap:30px">
+  <div class="body" style="font-size:36px">• INC, fiche « Mini-crédits et paiements fractionnés » (mise à jour 08/12/2025)<br>• Directive UE 2023/2225, ordonnance n° 2025-880 du 03/09/2025<br>• 240 € = exemple</div>
+  <div class="lab">Contenu éducatif, pas un conseil personnalisé</div>
+ </div></section>
+
+<section class="slide"><div class="top"><span>LE VRAI CHIFFRE</span><span>7/7</span></div>
+ <div class="wrap">
+  <div class="h" style="font-size:120px"><span class="box">Enregistre</span><br>ce post.</div>
+  <div class="body">Tu le ressortiras le jour où on te proposera « 4 fois sans frais ».</div>
+  <div class="card mono" style="font-size:44px;text-align:center">+ Abonne-toi · un vrai chiffre chaque jour</div>
+ </div></section>
+
+</body></html>
