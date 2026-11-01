@@ -1,3 +1,5 @@
+> **Exemple de FORMAT seulement, antérieur à `DA.md`** : ignore son contenu, son arc, son CTA final et l'absence du Ticket. Couleurs et règles : `DA.md` puis `MOTION.md`.
+
 ---
 format: 1080x1920
 duration: 44.49s

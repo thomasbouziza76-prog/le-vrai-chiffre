@@ -1,3 +1,5 @@
+> **Exemple de FORMAT seulement, antérieur à `DA.md`** : ignore son contenu, son arc, son CTA final et l'absence du Ticket. Couleurs et règles : `DA.md` puis `MOTION.md`.
+
 ---
 version: 1
 name: "Le glaçon dans ta poche · charte 9:16 · la frise des années"
@@ -13,13 +15,13 @@ principle: "une frise des années, le solde posé dessus, une idée par image, u
 reference: "reference/monde.html (code commun exécutable : kit caméra 3D en 9:16, frise des années, sol, stations, iPhone banque, glaçon, jean, carte placement, relevés, ticket, carte formule, carte de fin, sous-titre, boîte, trait ; source UNIQUE)"
 
 colors:
-  paper: "#f6f1e9"             # LE fond du film (monde clair), dégradé très doux vers #efe7dc aux bords
+  paper: "#f6f1e8"             # LE fond du film (monde clair), dégradé très doux vers #efe7dc aux bords
   paper-light: "#fffdf9"       # cartes, écran de l'app
-  ink: "#1a1612"               # traits de la frise, textes
+  ink: "#1c1a17"               # traits de la frise, textes
   ink-soft: "rgba(26,22,18,.55)"
   canvas: "#0d0b0a"            # sombre : le pivot (séquence 5) seulement
   ink-on-dark: "#f5efe7"
-  accent: "#c25b28"            # terracotta : boîte du mot clé, trait des 4 pics, « −2,4 % », le bloc « LE RESTE », le signet rempli
+  accent: "#c4552d"            # terracotta : boîte du mot clé, trait des 4 pics, « −2,4 % », le bloc « LE RESTE », le signet rempli
   ice: "#cfe9f4"               # matière du glaçon seulement (dégradé #eef8fc → #bfe0ee, reflets blancs)
   denim: "#3d5a86"             # matière du jean seulement (trame #34507a, surpiqûres #d9a95b)
   wet: "#243b5e"               # la tache mouillée sur le jean
@@ -64,7 +66,7 @@ components:
   end:
     look: "pas de carte de marque : une carte « Enregistrer » (signet qui se remplit de terracotta) et un champ de commentaire « Ajoute un commentaire… » où s'écrit « RÉEL » ; une pastille « ÉPISODE 2 » (Space Mono 700)."
   ink-box:
-    look: "boîte terracotta #c25b28, angles nets (3 px), débord 0,14 em, texte papier ; se trace de gauche à droite (scaleX, 0,16 s power3.out), 0 à 2 images avant le mot."
+    look: "boîte terracotta #c4552d, angles nets (3 px), débord 0,14 em, texte papier ; se trace de gauche à droite (scaleX, 0,16 s power3.out), 0 à 2 images avant le mot."
   stroke:
     look: "trait fin terracotta 4 px sous LE mot-pic, se dessine en 0,3 à 0,5 s power2.out ; 4 pics : « acheter », « rendement réel », « tu perds », « travailler »."
   cursor:
