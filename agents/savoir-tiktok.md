@@ -114,7 +114,7 @@ Rappel cadre : vidéos éducatives uniquement, jamais de conseil d'investissemen
   Exemple : vérifier « salaire net », « prime d'activité », « APL », « impôt sur le revenu » dans l'outil avant d'écrire.
   Sources : [TikTok Newsroom, 13/03/2024](https://newsroom.tiktok.com/creator-search-insights?lang=en) ; TikTok Newsroom FR, 19/03/2024.
 - **5.2 [ÉTUDE + CRÉATEUR]** Comparaison sociale et « est-ce que je suis normal ? » : situer le spectateur dans une distribution officielle.
-  Exemple : salaire net médian du privé 2 190 €, 1er décile 1 492 €, 9e décile 4 334 € (Insee, 2024, EQTP) : Tico est dans la médiane, Yanis dans les 10 % les mieux payés.
+  Exemple : salaire net médian du privé 2 238 €, 1er décile 1 519 €, 9e décile 4 441 € (Insee, 2025, EQTP, publié le 22/10/2026) : Tico est dans la médiane, Yanis dans les 10 % les mieux payés.
   Source des chiffres : [La finance pour tous d'après l'Insee, 10/11/2025](https://www.lafinancepourtous.com/2025/11/10/le-salaire-moyen-est-de-2-733-e-en-france-en-2024/).
 - **5.3 [ÉTUDE]** Les tendances FinTok les plus suivies par les jeunes portent sur la vie à petit budget, les revenus complémentaires, les défis sans dépense, le remboursement de dettes (enquête US).
   Exemple : « Vivre avec 1 500 € à Rouen vs à Paris : le vrai calcul. »

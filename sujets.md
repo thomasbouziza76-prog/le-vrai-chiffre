@@ -46,7 +46,7 @@ secours peut y être sans être cochée ici.
 
 ## La liste
 
-1. [ÉCO] Il faut gagner combien pour être dans les 10 % les mieux payés en France
+✅ 2026-11-01 N°08 · 1. [ÉCO] Il faut gagner combien pour être dans les 10 % les mieux payés en France
 2. [MENTAL] Négocier 100 € d'augmentation : l'effet sur 10 ans
 ✅ 2026-11-01 N°07 · 3. [DROITS] L'ASPA (minimum vieillesse) : combien, pour qui, pourquoi beaucoup de retraités ne la réclament pas, et la récupération sur l'héritage
 4. ⚡ [ÉCO] L'inflation remonte à 3,4 % : ce qui a VRAIMENT augmenté (l'énergie, ~+21 % sur un an) et ce qui a baissé

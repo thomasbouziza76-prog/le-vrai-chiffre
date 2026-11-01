@@ -120,7 +120,7 @@ SCENES.vague={
     sc.cams=[[sc.t0+.6,xc(0,sc.n),Y(zFull),zFull,2],[sc.t0+2.2,xc(sc.n*.6,sc.n),Y(zFull*1.05),zFull*1.05,-2]];
     son(sc.t0+.3,'riser',.15); for(let i=0;i<15;i++) son(sc.t0+.25+i*.12,`clic-${i%4+1}`,.18);
     for(const m of (sc.reperes||[])){ const ta=T(m.at), [a,b]=m.zone||[0,0], xm=xc(a,b);
-      if(m.type==='zone'){ sc.cams.push([ta-.3,xm+250,Y(.8),.8,0],[ta+1.2,xm+250,Y(.92),.92,0],[nextPh(ta)-.45,xm+330,Y(.84),.84,1.5]); son(ta+.2,'validation-1',.25); for(let i=0;i<6;i++) son(ta+.6+i*.15,'click-soft',.2); }
+      if(m.type==='zone'){ const zz=Math.min(.9,900/(sc.BX(b)-sc.BX(a)+500)); sc.cams.push([ta-.3,xm,Y(zz*.88),zz*.88,0],[ta+1.2,xm+60,Y(zz),zz,0],[nextPh(ta)-.45,xm+140,Y(zz*.92),zz*.92,1.5]); son(ta+.2,'validation-1',.25); for(let i=0;i<6;i++) son(ta+.6+i*.15,'click-soft',.2); }
       if(m.type==='seuil'){ sc.cams.push([ta+.35,xm,Y(.62),.62,0],[ta+1.9,xm-180,Y(.56),.56,-2]); son(ta-.1,'whoosh-short',.3); son(ta+.3,'sparkle',.2); if(m.tampon){son(ta+.45,'tampon',.38); secousse(ta+.55,12);} }
       if(m.type==='bulle'){ const te=T(m.eclate??(m.at+'+4')), cx=sc.BX((a+b)/2), cy=G-sc.V[Math.round((a+b)/2)]*sc.k;
         sc.cams.push([ta+.6,cx,cy+60,1.5,0],[ta+1.6,cx-80,cy+140,1.22,-3],[ta+2.8,cx+80,cy+40,1.62,2],[te-.6,cx-40,cy+120,1.25,-1],[te+.75,xc(0,sc.n),Y(zFull*.7),zFull*.7,0]);
@@ -142,7 +142,8 @@ SCENES.vague={
       front+=`<rect x="${x}" y="${f(y)}" width="${sc.BW}" height="${f(h)}" fill="${c}" stroke="${INK}" stroke-width="3" opacity="${fog}"/>`; }
     s+=`<g stroke="${INK}" stroke-width="2">${side}${top}</g>${front}`;
     for(const z of zones){ const g=sg(t,T(z.at)+.5,T(z.at)+1.4), fin=1-sg(t,nextPh(T(z.at))-.35,nextPh(T(z.at))-.05), xm=(sc.BX(z.zone[0])+sc.BX(z.zone[1]))/2;
-      if(g>0&&z.txt) s+=txt(xm,G-sc.V[z.zone[1]-1]*sc.k-260,96,'IS',GR,z.txt,{op:cl(g*2)*fin})+(z.sous?txt(xm,G-sc.V[z.zone[1]-1]*sc.k-180,40,'SM',GR,z.sous,{ls:4,op:cl(g*2)*fin}):''); }
+      const ym=G-sc.V[Math.floor((z.zone[0]+z.zone[1])/2)]*sc.k-300;
+      if(g>0&&z.txt) s+=txt(xm,ym,96,'IS',GR,z.txt,{op:cl(g*2)*fin})+(z.sous?txt(xm,ym+80,40,'SM',GR,z.sous,{ls:4,op:cl(g*2)*fin}):''); }
     for(const z of seuils){ const ta=T(z.at), lit=sg(t,ta+.3,ta+.9), fin=(1-sg(t,nextPh(ta)+.6,nextPh(ta)+1))*(TAB!==null&&TAB>ta?1-sg(t,TAB-.45,TAB-.1):1);
       if(lit>0&&z.tampon){ const p=bk(sg(t,ta+.45,ta+.75)), xi=sc.BX(Math.max(0,z.zone[0]-6)), yv=G-sc.V[z.zone[0]]*sc.k-260;
         s+=`<g transform="translate(${f(xi)} ${f(yv)}) rotate(-8) scale(${f(L(2.2,1,cl(p)))})" opacity="${f(cl(p*2)*fin)}"><rect x="${f(-tw(z.tampon,100,'SM')/2-30)}" y="-80" width="${f(tw(z.tampon,100,'SM')+60)}" height="140" fill="none" stroke="${ACC}" stroke-width="12"/>`+txt(0,30,100,'SM',ACC,z.tampon,{ls:4})+'</g>'; }
@@ -153,7 +154,8 @@ SCENES.vague={
     return s; },
   poser(t,qui,sc){ const i=qui==='gauche'?sc.iG:sc.iD; if(i===null||i===undefined||t<sc.t0) return null;
     if(sc.vers0&&t<sc.t0+1.4) return null; // le duel gère la transition
-    const p=sc.vers0?1:bk(sg(t,sc.t0+.6,sc.t0+1.0)); return {x:sc.BX(i)+sc.BW/2,y:G-sc.V[i]*sc.k,s:.5*p}; },
+    const d=sc.t0+.25+i*(1.8/sc.n), g=sc.vers0?1:bk(sg(t,d,d+.45)); if(g<=0) return null;
+    return {x:sc.BX(i)+sc.BW/2,y:G-sc.V[i]*sc.k*g,s:.5*cl(g*1.5)}; },
 };
 
 /* ── CHIFFRE : un chiffre qui compte, puis devient une barre qui se découpe en parts ── */
@@ -206,17 +208,21 @@ SCENES.courbe={
 SCENES.choix={
   init(sc){ sc.t0=T(sc.de); const ops=sc.options; sc.ta=ops.map(o=>T(o.at)); sc.tou=T(sc.ou,sc.ta[0]+.4);
     const X=sc.ox-800; sc.cams=[[sc.t0,X,Y(.52),.52,0],[sc.t0+1.4,X-130,Y(.6),.6,-2],[K.end-2.4,X-190,Y(.47),.47,1],[K.end,X-300,Y(.38),.38,0]];
-    son(sc.t0-.2,'whoosh-short',.28); son(sc.t0+.05,'caisse-ching',.25); son(sc.t0+.4,'hop',.2); sc.ta.forEach(t=>son(t,'papier-glisse',.28)); son(sc.tou,'tape-leger-2',.22); },
+    son(sc.t0-.2,'whoosh-short',.28); son(sc.t0+.05,'caisse-ching',.25); son(sc.t0+.4,'hop',.2); sc.ta.forEach(t=>son(t,'papier-glisse',.28)); son(sc.tou,'tape-leger-2',.22); son(K.end-2.2,'pop',.22); },
   monde(){ return ''; },
-  ecran(t,sc){ if(t<sc.t0-.2) return ''; let s=`<rect width="1080" height="1920" fill="${CR}" opacity="${f(eo(sg(t,sc.t0-.2,sc.t0+.25))*.94)}"/>`;
+  ecran(t,sc){ if(t<sc.t0-.2) return ''; const zz=1+.05*sg(t,sc.t0,K.end); let s=`<rect width="1080" height="1920" fill="${CR}" opacity="${f(eo(sg(t,sc.t0-.2,sc.t0+.25))*.94)}"/><g transform="translate(540 760) scale(${f(zz*1000)/1000}) rotate(${f(.8*Math.sin(t*1.3))}) translate(-540 -760)">`;
     const p0=bk(sg(t,sc.t0,sc.t0+.35)); s+=`<g transform="translate(540 600) scale(${f(p0)})">`+txt(0,30,180,'IS',ACC,sc.chiffre)+(sc.sur?txt(0,-120,40,'SM',GR,sc.sur,{ls:4}):'')+'</g>';
     sc.options.forEach((o,k)=>{ const x=k===0?290:790, c=k===0?INK:ACC, fl=sg(t,sc.ta[k],sc.ta[k]+.45), sx=-Math.cos(Math.PI*eo(fl)); if(fl<=0) return;
       const front=sx>0, w=390,h=300; s+=`<g transform="translate(${x} 850) scale(${f(Math.abs(sx))} 1)"><rect x="${-w/2+10}" y="${-h/2+10}" width="${w}" height="${h}" rx="22" fill="${INK}"/><rect x="${-w/2}" y="${-h/2}" width="${w}" height="${h}" rx="22" fill="${front?(c===ACC?ACC:PAP):'#e2d8c8'}" stroke="${INK}" stroke-width="7"/>`;
       if(front){ const lines=o.txt.split('<br>'); const sz=Math.min(lines.length===1?96:74, ...lines.map(ln=>74*340/Math.max(340,tw(ln,74,'IS')))); lines.forEach((ln,j)=>{ s+=txt(0,(lines.length===1?28:-10+j*80),sz,'IS',c===ACC?CR:INK,ln); }); }
       s+='</g>'; });
     if(t>sc.tou) s+=txt(540,865,40,'SM',GR,'OU',{ls:6,op:cl(bk(sg(t,sc.tou,sc.tou+.3)))});
-    const tp=bk(sg(t,sc.t0+.3,sc.t0+.7)), dis=T(PLAN.question||'end'); if(tp>0) s+=`<g data-role="perso">`+Ticket.svg({x:540,y:1180,scale:.42*tp,mouth:t>dis?'grin':'flat',brows:'up',armL:[-90,-40],armR:[90,-40],look:[0,-.3],cheeks:t>dis})+'</g>';
+    const tp=bk(sg(t,sc.t0+.3,sc.t0+.7)), dis=T(PLAN.question||'end'), trr=K.end-2.2, sl=eo(sg(t,trr-.25,trr+.25));
+    if(tp>0) s+=`<g data-role="perso">`+Ticket.svg({x:L(540,850,sl),y:1180,scale:.42*tp,mouth:t>dis?'grin':'flat',brows:'up',armL:sl>.5?[-80,-70]:[-90,-40],armR:[90,-40],look:sl>.5?[-1,0]:[0,-.3],cheeks:t>dis})+'</g>';
     if(PLAN.source) s+=txt(540,680,24,'SM',GR,PLAN.source,{ls:1,op:eo(sg(t,sc.t0+.6,sc.t0+1))*.9});
+    s+='</g>';
+    const tr=K.end-2.2; if(t>tr){ const p=bk(sg(t,tr,tr+.35)), pu=1+.04*Math.sin((t-tr)*8); // rappel muet de l'abonnement
+      s+=`<g data-role="rappel" transform="translate(430 1105) scale(${f(p*pu*1000)/1000})"><rect x="-236" y="-52" width="480" height="108" rx="54" fill="${INK}"/><rect x="-242" y="-58" width="480" height="108" rx="54" fill="${ACC}" stroke="${INK}" stroke-width="6"/>`+txt(-2,14,54,'IS',CR,'+ Abonne-toi')+'</g>'; }
     return s; },
   poser(){ return null; },
 };
@@ -244,10 +250,17 @@ function camKeys(){ let k=[]; SC.forEach(sc=>(sc.cams||[]).forEach(c=>k.push(c.s
   const o=[]; for(const c of k){ if(o.length&&c[0]-o[o.length-1][0]<.2) continue; o.push(c); }
   if(!o.length||o[0][0]>0) o.unshift([0,o.length?o[0][1]:540,o.length?o[0][2]:Y(1),o.length?o[0][3]:1,0]);
   if(o[o.length-1][0]<K.end) o.push([K.end,o[o.length-1][1]-120,o[o.length-1][2],o[o.length-1][3]*.92,0]);
+  // whip pan entre scènes : la caméra tient le cadre de la scène qui finit, puis file en 0,7 s vers la suivante
+  SC.forEach((sc,i)=>{ if(i===0||sc.vers0||sc.type==='choix') return; const tb=T(sc.de); const prev=o.filter(k=>k[0]<tb-.35).pop(), nxt=o.find(k=>k[0]>=tb);
+    if(prev&&nxt&&nxt[0]-tb>.45){ o.push([tb-.3,prev[1],prev[2],prev[3],prev[4]],[tb+.4,nxt[1],nxt[2],nxt[3],nxt[4]]); } });
+  o.sort((a,b)=>a[0]-b[0]);
+  // deux images clés trop semblables (moins de 120 px, 10 % de zoom ou 2°) et éloignées de plus d'1,2 s : on ajoute un vrai mouvement
+  const vis=(a,b)=>{ const z=Math.min(a[3],b[3]); return Math.hypot(b[1]-a[1],b[2]-a[2])*z>=130||Math.abs(b[3]/a[3]-1)>=.11||Math.abs(b[4]-a[4])>=2.2; };
+  let alt=1; for(let i=1;i<o.length;i++){ const a=o[i-1],b=o[i]; if(b[0]-a[0]>1.2&&!vis(a,b)){ b[3]=a[3]*(alt>0?.88:1.12); b[1]=a[1]+alt*90/b[3]; b[4]=a[4]+alt*2.5; if(Math.abs(a[2]-Y(a[3]))<2) b[2]=Y(b[3]); alt=-alt; } }
   const r=[o[0]]; let flip=1;
   for(let i=1;i<o.length;i++){ const b=o[i]; let a=r[r.length-1];
-    while(b[0]-a[0]>2.6){ const gap=b[0]-a[0], tm=a[0]+Math.min(2.2,gap/2), u=(tm-a[0])/gap, z=L(a[3],b[3],u)*.9, sol=Math.abs(a[2]-Y(a[3]))<2&&Math.abs(b[2]-Y(b[3]))<2;
-      const m=[tm,L(a[1],b[1],u)+flip*140/z,sol?Y(z):L(a[2],b[2],u),z,flip*2]; r.push(m); a=m; flip=-flip; }
+    while(b[0]-a[0]>2.3){ const gap=b[0]-a[0], tm=a[0]+Math.min(2.2,gap/2), u=(tm-a[0])/gap, z=L(a[3],b[3],u)*.9, sol=Math.abs(a[2]-Y(a[3]))<2&&Math.abs(b[2]-Y(b[3]))<2;
+      const m=[tm,L(a[1],b[1],u)+flip*150/z,sol?Y(z):L(a[2],b[2],u),z,flip*2.5]; r.push(m); a=m; flip=-flip; }
     r.push(b); }
   return r; }
 function cam(t){ let a=CK[0],b=CK[CK.length-1];
@@ -266,14 +279,16 @@ function bg(t){ let s=''; for(let i=0;i<14;i++){ const x=(i*173+60)%1080, y=((i*
 /* ───── textes écran : carton (haut) + sous-titres (bas) + pastille Abonne-toi ───── */
 function caption(t,t0,t1,l1,l2,key){
   if(t<t0||t>t1+.35) return '';
-  const pout=ei(sg(t,t1,t1+.3)); let s=`<g data-role="carton" opacity="${f(1-pout)}" transform="translate(0 ${f(-pout*240)})">`, wi=0; const kw=key?key.split(' '):[];
+  const pout=ei(sg(t,t1,t1+.3)); let s=`<g data-role="carton" opacity="${f(1-pout)}" transform="translate(0 ${f(-pout*240)})">`, wi=0;
+  const KEYI=new Set(); if(key){ const kk=key.split(' '); let base=0; for(const ln of [l1,l2]){ if(!ln) continue; const w=ln.split(' ');
+      for(let i=0;i+kk.length<=w.length&&!KEYI.size;i++) if(kk.every((x,j)=>w[i+j]===x)) kk.forEach((_,j)=>KEYI.add(base+i+j)); base+=w.length; } }
   const wid=l=>l?l.split(' ').reduce((a,w)=>a+tw(w,82,'IS'),0)+tw(' ',82,'IS')*(l.split(' ').length-1)+20:0;
   const size=Math.min(82,82*900/Math.max(wid(l1),wid(l2))), pin=eo(sg(t,t0,t0+.3));
   [[l1,250],[l2,250+size*1.22]].forEach(([line,y])=>{ if(!line) return; const W=wid(line)*size/82;
     s+=`<rect x="${f(540-W/2-30)}" y="${f(y-size*.92)}" width="${f((W+60)*pin)}" height="${f(size*1.2)}" rx="22" fill="${CR}" opacity=".93"/>`; });
   [[l1,250],[l2,250+size*1.22]].forEach(([line,y])=>{ if(!line) return;
     const words=line.split(' '), ws=words.map(w=>tw(w,size,'IS')), sp=tw(' ',size,'IS'); let x=540-(ws.reduce((a,b)=>a+b,0)+sp*(words.length-1))/2;
-    words.forEach((w,j)=>{ const d=t0+wi*.055, p=bk(sg(t,d,d+.32)); wi++; const isK=kw.includes(w);
+    words.forEach((w,j)=>{ const d=t0+wi*.055, p=bk(sg(t,d,d+.32)); const isK=KEYI.has(wi); wi++;
       if(p>0){ const kp=eo(sg(t,d+.15,d+.45)); let g=`<g opacity="${f(cl(p*2))}" transform="translate(${f(x)} ${f(y+(1-p)*60)}) rotate(${f((1-p)*8)})">`;
         if(isK) g+=`<rect x="-10" y="${f(-size*.83)}" width="${f((ws[j]+20)*kp)}" height="${f(size*1.05)}" fill="${ACC}" transform="rotate(-1.5)"/>`;
         g+=txt(0,0,size,'IS',isK&&kp>.55?CR:INK,w,{a:'start'})+'</g>'; s+=g; }

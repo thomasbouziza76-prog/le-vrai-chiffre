@@ -62,7 +62,9 @@ JS="""(t)=>{seek(t); const R=e=>{const r=e.getBoundingClientRect();return [r.lef
 pas=.1; N=int(dur/pas); fr=[]; errs=[]
 with sync_playwright() as p:
     b=p.chromium.launch(); pg=b.new_page(viewport={'width':1080,'height':1920}); pg.on('pageerror',lambda x:errs.append(str(x)))
-    pg.goto('file://'+D+'/index.html'); pg.wait_for_function('window.ready===true',timeout=30000)
+    pg.goto('file://'+D+'/index.html')
+    try: pg.wait_for_function('window.ready===true',timeout=15000)
+    except Exception: sys.exit('ERREUR : la page ne démarre pas. Erreurs JavaScript : '+('; '.join(errs) or 'aucune')+' → si une « ancre inconnue » est citée, relance moteur/timing.py après avoir modifié plan.js')
     for i in range(N+1): fr.append(pg.evaluate(JS,round(i*pas,2)))
     b.close()
 ok('Aucune erreur JavaScript',not errs,'; '.join(errs[:3]))

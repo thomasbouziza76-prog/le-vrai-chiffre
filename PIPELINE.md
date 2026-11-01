@@ -36,7 +36,7 @@ Racine du dépôt : `$LVC_REPO` (après l'étape 0). Projet du jour : `$P` = sor
 
 | | **30 s** (matin, une fois sur deux) | **45 s** (matin, l'autre fois) | **62-75 s** (soir, histoire) |
 |---|---|---|---|
-| Mots de la voix | 75 à 85 | 110 à 120 | 170 à 195 |
+| Mots de la voix (Paul K, stabilité Creative ≈ 3,1 mots/s, mesuré le 01/11) | 90 à 100 | 135 à 145 | 200 à 230 |
 | Appel « abonne-toi » dit à voix haute | entre 12 et 16 s | entre 16 et 24 s | entre 18 et 28 s |
 | Relance | juste après l'appel | juste après l'appel | juste après l'appel |
 | Retournement (« Comment c'est possible ? ») | facultatif | facultatif | obligatoire, entre 25 et 35 s |
@@ -127,8 +127,8 @@ Racine du dépôt : `$LVC_REPO` (après l'étape 0). Projet du jour : `$P` = sor
   2e tentative passe souvent). Jamais de relance après une génération réussie (chaque appel est facturé). Si la 2e
   échoue aussi, si les crédits sont épuisés ou si le téléchargement est refusé : arrête-toi et préviens Thomas avec
   l'erreur exacte.
-- Durée de la voix hors cible : matin, plus de 3 s au-dessus de la durée visée → raccourcis et régénère UNE fois ; soir,
-  moins de 62 s → rallonge le bloc CONCRET et régénère UNE fois, plus de 75 s → raccourcis et régénère UNE fois.
+- Durée de la voix hors cible : matin, plus de 3 s au-dessus ou plus de 6 s en dessous de la durée visée → ajuste le texte et régénère UNE fois ; soir,
+  moins de 62 s → rallonge le bloc CONCRET et régénère UNE fois (sous 1 min, TikTok ne rémunère pas), plus de 75 s → raccourcis et régénère UNE fois.
 - `bash etapes/02-voix.sh $P "<media[0].url>" <texte-voix.txt>` (le moteur relit `$P/assets/audio/voix.mp3` tout seul) : télécharge, minute chaque mot (`mots.txt`,
   `mots.json`), liste les silences (`silences.txt`), écrit la durée (`duree.txt`). Recolle les mots sur le script (l'orthographe
   du script gagne ; les mots à faible confiance viennent de la transcription).

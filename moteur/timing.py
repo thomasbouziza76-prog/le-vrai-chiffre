@@ -6,6 +6,7 @@ import sys,os,json,re,difflib,unicodedata,subprocess
 import numpy as np
 from num2words import num2words
 D=sys.argv[1]; M=os.path.dirname(os.path.abspath(__file__))
+if not os.path.exists(os.path.join(D,'plan.js')): sys.exit('ERREUR : pas de plan.js dans '+D+' (écris-le d\'abord, modèle : plan-modele-N08.js)')
 P=json.loads(subprocess.run(['node',os.path.join(M,'lireplan.js'),os.path.join(D,'plan.js')],capture_output=True,text=True,check=True).stdout)
 import shutil
 if '--simuler' in sys.argv:   # test sans voix : 2,7 mots/s, 0,35 s entre les phrases (aucune transcription)

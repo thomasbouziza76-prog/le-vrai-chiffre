@@ -108,7 +108,7 @@ Présentation ou logo au début · teasing vague (« ce qui suit va te choquer �
 pas » (sauf enjeu énorme) · jeu de mots qu'il faut décoder · hook caché dans la 3e phrase · hook de plus de
 3 s · marque ou chaîne en premier.
 
-## 5. Le script de 45 s (110 à 120 mots ; version 30 s : section 11 ; histoire du soir : section 12)
+## 5. Le script de 45 s (135 à 145 mots avec la voix Paul K en Creative ; version 30 s : section 11 ; histoire du soir : section 12)
 
 ```
 0–3 s    HOOK            Le gain ou l'enjeu, tout de suite. Image + voix + texte court.
@@ -200,7 +200,7 @@ Le format 62-75 s est déjà testé chaque soir depuis le 2026-11-01 (section 12
 
 ## 11. Version 30 s, 3 premières secondes, mot-clé de recherche
 
-**Version 30 s** (75 à 85 mots) : même squelette, comprimé. 0-3 s HOOK · 3-6 s PRÉCISION · 6-12 s ESCALADE · 12-16 s
+**Version 30 s** (90 à 100 mots) : même squelette, comprimé. 0-3 s HOOK · 3-6 s PRÉCISION · 6-12 s ESCALADE · 12-16 s
 appel « abonne-toi » (une phrase de 6 à 10 mots) puis relance aussitôt · 16-26 s RÉVÉLATION montrée · 26-30 s FIN : question qui fait
 réagir et/ou partage ciblé (section 6), qui reboucle si possible vers le hook.
 Une seule idée, un seul chiffre fort ; rien qu'on pourrait couper sans casser le fil.
@@ -217,7 +217,7 @@ Naturel avant tout : une phrase qui sonne comme du référencement fait décroch
 ## 12. Format HISTOIRE de 62 à 75 s (vidéo du SOIR, SLOT 1)
 
 Ce qui fait marcher les grosses vidéos argent : **un personnage avec un cas précis, un enjeu compris en 2 s, un
-retournement, une info utile qu'on enregistre ou qu'on envoie, une question qui fait débattre.** 170 à 195 mots.
+retournement, une info utile qu'on enregistre ou qu'on envoie, une question qui fait débattre.** 200 à 230 mots (la voix Paul K en Creative dit environ 3,1 mots par seconde).
 
 ```
 0–3 s     HOOK          Le chiffre ou l'enjeu en motion design (caméra qui pousse, chiffre qui claque), Tico réagit ; l'enjeu

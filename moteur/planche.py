@@ -13,7 +13,9 @@ else:
     from playwright.sync_api import sync_playwright
     with sync_playwright() as p:
         b=p.chromium.launch(); pg=b.new_page(viewport={'width':1080,'height':1920}); e=[]; pg.on('pageerror',lambda x:e.append(str(x)))
-        pg.goto('file://'+D+'/index.html'); pg.wait_for_function('window.ready===true',timeout=30000)
+        pg.goto('file://'+D+'/index.html')
+        try: pg.wait_for_function('window.ready===true',timeout=15000)
+        except Exception: sys.exit('ERREUR : la page ne démarre pas. Erreurs JavaScript : '+('; '.join(e) or 'aucune')+' → si une « ancre inconnue » est citée, relance moteur/timing.py après avoir modifié plan.js')
         for t in ts: pg.evaluate(f'seek({t})'); pg.screenshot(path='/tmp/_pl.png'); ims.append(Image.open('/tmp/_pl.png').convert('RGB'))
         b.close()
         if e: print('ERREURS JS :',e)

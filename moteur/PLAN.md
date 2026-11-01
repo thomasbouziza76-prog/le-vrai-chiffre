@@ -9,12 +9,12 @@
 > - les transformations de données ;
 > - les bruitages calés sur la voix.
 >
-> Référence complète et validée par Thomas : `moteur/exemples/plan-N08.js` (vidéo N°08). **Lis-la avant d'écrire un plan.**
+> Référence complète et validée par Thomas : `moteur/exemples/plan-N08.js` (vidéo N°08, chiffres Insee **2024** : pour un nouveau plan, prends les chiffres les plus récents, `salaires-prive-2025`). **Lis-la avant d'écrire un plan.**
 
 ## Les commandes, dans l'ordre
 
 ```bash
-bash moteur/nouveau.sh $DOSSIER                 # prépare le dossier (copie le moteur, met le plan N°08 comme modèle)
+bash moteur/nouveau.sh $DOSSIER                 # prépare le dossier (copie le moteur ; plan-modele-N08.js = le modèle à lire)
 # … écris $DOSSIER/plan.js, puis mets la voix dans $DOSSIER/voix.mp3 …
 python3 moteur/timing.py $DOSSIER               # transcrit la voix, cale chaque mot → timing.js (+ ancres p1, p2…)
 python3 controles/verifier.py $DOSSIER          # CONTRÔLES BLOQUANTS (environ 10 s). Échec → corrige le plan, relance.
@@ -58,7 +58,7 @@ const PLAN={
 musique:{nom:'tension-cyber-anxiety', drop:'p6', coupe:['p5']},
 ```
 - `nom` : un morceau de `moteur/musiques.json` (CC0, téléchargé tout seul au rendu). Prends un **ton différent des 2 vidéos précédentes** (HISTORIQUE.md).
-- `drop` : l'ancre où doit tomber le **temps fort** du morceau, c'est-à-dire le chiffre choc ou la révélation. Le moteur décale le morceau pour que ça tombe pile. Pour un morceau sans temps fort (`none`), ne mets pas de `drop`.
+- `drop` : l'ancre où doit tomber le **temps fort** du morceau (colonne « Temps fort ») : le **chiffre choc** ou la révélation. Le moteur décale le morceau pour que ça tombe pile. Pour un morceau « none (bass at X s) », le `drop` vise l'entrée de la basse ; pour un morceau « none » sans basse, ne mets pas de `drop`.
 - `coupe` : les ancres où la musique **se tait 0,5 s juste avant**, pour un silence dramatique avant une révélation (« Et là… »). Une ou deux au maximum.
 - La musique est très basse et se baisse toute seule quand la voix parle : tu n'as pas de volume à régler.
 - Pour réécouter un changement de musique sans refaire les images : `python3 moteur/rendu.py $P --son-seul` (environ 1 min).
@@ -116,11 +116,11 @@ Enchaîne **2 à 4 scènes**. Chaque scène commence à `de` et finit au début 
 ### `vague`
 ```js
 { type:'vague', de:'p6', a:'p13',
-  valeurs:'salaires-prive-2024',            // jeu prêt (moteur/donnees.js), OU un tableau, OU {mediane:2190, moyenne:2733, n:100}
-  persos:{gauche:{i:50}, droite:{i:90,valeur:4400}},   // sur quelle barre chacun se tient (i = rang, de 0 à n-1)
+  valeurs:'salaires-prive-2025',            // jeu prêt (moteur/donnees.js : 2025 = le plus récent), OU un tableau, OU {mediane:2238, moyenne:2797, n:100}
+  persos:{gauche:{i:50}, droite:{i:90,valeur:4500}},   // sur quelle barre chacun se tient (i = rang, de 0 à n-1) ; en 2025, la barre 90 = 1re du top 10 % (> 4 441 €)
   reperes:[
     {type:'zone',  at:'p7',  zone:[0,50],  txt:'LA MOITIÉ', sous:'GAGNENT MOINS'},
-    {type:'seuil', at:'p8',  zone:[90,100], valeur:4334, tampon:'TOP 10 %'},
+    {type:'seuil', at:'p8',  zone:[90,100], valeur:4441, tampon:'TOP 10 %'},
     {type:'bulle', at:'p10', zone:[84,95], eclate:'pop'} ] }
 ```
 
@@ -167,3 +167,8 @@ Couleurs : `'acc'` (terracotta, par défaut), `'gris'` ou `'encre'`.
 - Avec `--video` : 1080×1920 avec son, durée exacte, -14 LUFS.
 
 **Un contrôle en échec bloque la livraison.** Corrige le **plan**, pas le moteur. Si c'est le moteur qui est en cause (un bug), ne le modifie pas pendant une production : note-le dans HISTORIQUE.md avec la planche, et Thomas tranchera.
+
+## Pièges connus (test du 01/11)
+- **Après chaque modification de `plan.js` qui touche `phrases` ou `ancres`, relance `timing.py`** : sinon la page ne démarre pas (le contrôle le dit : « ancre inconnue »).
+- **Toujours vérifier la date des chiffres** : une étude plus récente peut être sortie (exemple : Insee 2025, publiée le 22/10/2026). Le jeu de données du moteur porte l'année dans son nom.
+- **Les contrôles ne voient pas tout** (un texte caché derrière un carton, Tico devant un chiffre, un écran à moitié vide) : regarde toujours la planche toi-même avant la porte 3.
