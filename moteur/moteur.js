@@ -146,7 +146,7 @@ SCENES.vague={
       if(g>0&&z.txt) s+=txt(xm,ym,96,'IS',GR,z.txt,{op:cl(g*2)*fin})+(z.sous?txt(xm,ym+80,40,'SM',GR,z.sous,{ls:4,op:cl(g*2)*fin}):''); }
     for(const z of seuils){ const ta=T(z.at), lit=sg(t,ta+.3,ta+.9), fin=(1-sg(t,nextPh(ta)+.6,nextPh(ta)+1))*(TAB!==null&&TAB>ta?1-sg(t,TAB-.45,TAB-.1):1);
       if(lit>0&&z.tampon){ const p=bk(sg(t,ta+.45,ta+.75)), xi=sc.BX(Math.max(0,z.zone[0]-6)), yv=G-sc.V[z.zone[0]]*sc.k-260;
-        s+=`<g transform="translate(${f(xi)} ${f(yv)}) rotate(-8) scale(${f(L(2.2,1,cl(p)))})" opacity="${f(cl(p*2)*fin)}"><rect x="${f(-tw(z.tampon,100,'SM')/2-30)}" y="-80" width="${f(tw(z.tampon,100,'SM')+60)}" height="140" fill="none" stroke="${ACC}" stroke-width="12"/>`+txt(0,30,100,'SM',ACC,z.tampon,{ls:4})+'</g>'; }
+        s+=`<g transform="translate(${f(xi)} ${f(yv)}) rotate(-8) scale(${f(L(2.2,1,cl(p)))})" opacity="${f(cl(p*2)*fin)}"><rect x="${f(-(tw(z.tampon,100,'SM')+4*z.tampon.length)/2-30)}" y="-80" width="${f(tw(z.tampon,100,'SM')+4*z.tampon.length+60)}" height="140" fill="none" stroke="${ACC}" stroke-width="12"/>`+txt(0,30,100,'SM',ACC,z.tampon,{ls:4})+'</g>'; }
       if(lit>0&&z.valeur) s+=`<path d="M${sc.BX(z.zone[0])-6} ${f(G-z.valeur*sc.k)} H${sc.BX(z.zone[1])+10}" stroke="${ACC}" stroke-width="6" stroke-dasharray="18 12" opacity="${f(lit)}"/>`; }
     if(R.bulle&&t>R.tb+.4&&t<R.te+.5){ const a=R.bulle.zone[0],b=R.bulle.zone[1], cx=sc.BX((a+b)/2), cy=G-sc.V[Math.round((a+b)/2)]*sc.k-60, p=bk(sg(t,R.tb+.4,R.tb+1.0)), r=300*p;
       if(t<R.te) s+=`<circle cx="${f(cx)}" cy="${f(cy)}" r="${f(r)}" fill="#cfe3ef" fill-opacity=".28" stroke="${BLEU}" stroke-width="10"/><path d="M${f(cx-r*.55)} ${f(cy-r*.55)} q${f(r*.2)} ${f(-r*.2)} ${f(r*.45)} ${f(-r*.25)}" stroke="#fff" stroke-width="12" stroke-linecap="round" fill="none" opacity=".8"/>`;
@@ -363,7 +363,7 @@ const OUTILS={ /* la boîte à outils passée à dessin(t,a) — voir PLAN.md «
   etiquette(x,y,s,o={}){ const sz=o.taille||56, w=tw(s,sz,o.police||'IS')+sz*.9, h=sz*1.5, fond=o.fond==='acc'?ACC:o.fond==='encre'?INK:PAP, coul=o.fond?CR:INK;
     return `<g transform="translate(${f(x)} ${f(y)}) rotate(${f(o.rot||0)}) scale(${f(o.p??1)})"><rect x="${f(-w/2+8)}" y="${f(-h/2+8)}" width="${f(w)}" height="${f(h)}" rx="14" fill="${INK}"/><rect x="${f(-w/2)}" y="${f(-h/2)}" width="${f(w)}" height="${f(h)}" rx="14" fill="${fond}" stroke="${INK}" stroke-width="6"/>`+txt(0,sz*.36,sz,o.police||'IS',coul,s)+'</g>'; },
   // un tampon qui claque (p de 0 à 1)
-  tampon(x,y,s,p,o={}){ if(p<=0) return ''; const sz=o.taille||90, w=tw(s,sz,'SM')+60; return `<g transform="translate(${f(x)} ${f(y)}) rotate(${f(o.rot??-9)}) scale(${f(L(2.2,1,cl(p)))})" opacity="${f(cl(p*2.5))}"><rect x="${f(-w/2)}" y="${f(-sz*.8)}" width="${f(w)}" height="${f(sz*1.45)}" fill="none" stroke="${o.couleur||ACC}" stroke-width="12"/>`+txt(0,sz*.32,sz,'SM',o.couleur||ACC,s,{ls:4})+'</g>'; },
+  tampon(x,y,s,p,o={}){ if(p<=0) return ''; const sz=o.taille||90, w=tw(s,sz,'SM')+4*String(s).length+60; return `<g transform="translate(${f(x)} ${f(y)}) rotate(${f(o.rot??-9)}) scale(${f(L(2.2,1,cl(p)))})" opacity="${f(cl(p*2.5))}"><rect x="${f(-w/2)}" y="${f(-sz*.8)}" width="${f(w)}" height="${f(sz*1.45)}" fill="none" stroke="${o.couleur||ACC}" stroke-width="12"/>`+txt(0,sz*.32,sz,'SM',o.couleur||ACC,s,{ls:4})+'</g>'; },
   // un nombre qui compte de v0 à v1 entre t0 et t1
   compteur(t,t0,t1,v0,v1,x,y,size,o={}){ const v=L(v0,v1,eo(sg(t,t0,t1))); return txt(x,y,size,'IS',o.couleur||INK,(o.avant||'')+fmt(v,o.unite??'€'),{a:o.a,op:o.op}); },
   // une onde de choc (cercle qui s'agrandit et s'efface), p de 0 à 1
@@ -408,7 +408,7 @@ SCENES.monde={
     (sc.sons||[]).forEach(x=>son(T(x[0]),x[1],x[2]??.25)); (sc.actions||[]).forEach(x=>action(T(x[0]),T(x[1]),x[2]||'action'));
     sc.api={T,K,G,ox:sc.ox,txt,fmt,tw,INK,PAP,GR,ACC,CR,BLEU,ROSE,GRIS,eo,ei,eio,bk,sg,L,cl,f,acteur:t=>sc.pos(t),...OUTILS};
   },
-  monde(t,sc){ return t<sc.t0-.3?'':`<g transform="translate(${sc.ox} 0)">`+sc.dessin(t,Object.assign(sc.api,{ox:0}))+'</g>'; },
+  monde(t,sc){ return (t<sc.t0-.3||(!sc.persiste&&t>sc.t1+.6))?'':`<g transform="translate(${sc.ox} 0)">`+sc.dessin(t,Object.assign(sc.api,{ox:0}))+'</g>'; },
   poser(t,qui,sc){ if(qui!=='gauche'||!sc.acteur||t<sc.t0-.2) return null; const p=sc.pos(t); return {x:p.x+sc.ox,y:p.y,s:(sc.taille??.62)*bk(sg(t,sc.t0,sc.t0+.4))}; },
 };
 

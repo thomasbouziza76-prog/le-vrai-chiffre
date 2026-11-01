@@ -97,7 +97,11 @@ for sc in P['scenes']:
     vis+=sc.get('visuels',[]) or []
     vis+={'duel':['barres'],'vague':['barres','graphique'],'chiffre':['barre'],'courbe':['courbe','graphique'],'parcours':['barres']}.get(sc['type'],[])
 H=open(os.path.join(R,'..','historique','HISTORIQUE.md')).read().split('\n')
-recents=[l for l in H if l.startswith('- 20')][:5]
+entrees=[]
+for l in H:
+    if l.startswith('- 20'): entrees.append(l)
+    elif entrees and l.startswith('  '): entrees[-1]+=' '+l.strip()
+recents=entrees[:5]
 deja=set()
 for l in recents:
     m=re.search(r'VISUELS : ([^·]+)',l)

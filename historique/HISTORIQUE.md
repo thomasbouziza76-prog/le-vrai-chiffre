@@ -30,7 +30,7 @@ l'action des vidéos récentes.
   « Retro Synths » (HoliznaCC0, CC0, départ 14,44 s, drop calé sur « tirent » 18,38 s), gains 0,12 / 0,11 · voix : 1er
   et 2e essais refusés par ElevenLabs (« Free generations are busy »), 3e essai OK à la relance de Thomas · outillage :
   HyperFrames 0.8.82 (kit du dépôt), 3 agents d'animation + 1 relecteur.
-- 2026-10-31 · N° 04 · « Les intérêts composés : 100 € par mois pendant 30 ans » (ligne 1 de sujets.md, [INVESTIR]) · hook :
+- 2026-10-31 · N° 04 · « Les intérêts composés : 100 € par mois pendant 30 ans » (ligne 1 de sujets.md, [INVESTIR]) · VISUELS : boîte de Petri, microscope, cellules qui se divisent · hook :
   grand chiffre (« Quatre-vingt-un mille euros. Avec cent euros par mois. », écran « 81 538 € avec 100 € par mois ») ·
   appel à l'action : enregistrer (« Enregistre-la, et refais le calcul avec ton montant. »), à 21,52 s, pastille noire
   au signet terracotta + étiquette « ton montant » qui défile (50/200/150 €) pendant que la culture réagit ; rappel muet
