@@ -162,8 +162,9 @@ Thomas les publie à la main avec la vidéo. Pas de voix : aucun crédit ElevenL
   courtes ; avant-dernière = sources + « contenu éducatif, pas un conseil personnalisé » ; dernière = « Enregistre ce post »
   avec une raison + « Abonne-toi ». Mêmes règles de contenu que la vidéo (sourcé, aucun avis politique, aucune religion,
   aucun produit à intérêts présenté comme solution, gain ET perte pour [INVESTIR]).
-- **Format** : un HTML avec des `<section class="slide">` 1080×1350, identité de la chaîne. Modèle de FORMAT :
-  `exemples/carrousel-exemple.html` (garde la grille, les polices, les couleurs ; change le contenu et ajoute 1 ou 2
+- **Format** : un HTML avec des `<section class="slide">` 1080×1350, identité de la chaîne. Modèle de FORMAT VALIDÉ PAR
+  THOMAS (2026-11-01) : `exemples/carrousel-exemple.html`, et son rendu `exemples/carrousel-exemple-planche.jpg` à REGARDER
+  avant de commencer : ton carrousel doit avoir le même niveau de vie et de lisibilité (garde la grille, les polices, les couleurs ; change le contenu et ajoute 1 ou 2
   petits dessins propres au sujet, différents à chaque fois). **Zone de sécurité** : tout ce qui compte entre x 80 et
   x 940, y 140 et y 1150 (TikTok pose ses boutons à droite et sa légende en bas). **Tout ce qu'il faut pour comprendre
   est écrit EN GROS** (titres ≥ 96 px, texte ≥ 56 px) : la slide 1 dit le message complet en une phrase géante (date,
