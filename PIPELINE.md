@@ -233,10 +233,23 @@ Commit et push dans le dépôt (voir 10), avec `historique/CHECKS.md` s'il a cha
 ## 8 ter. Carrousel (TikTok mode photo + Instagram), même sujet que la vidéo
 Thomas les publie à la main avec la vidéo. Pas de voix : aucun crédit ElevenLabs.
 - **Contenu** : le même sujet et les mêmes chiffres vérifiés que la vidéo, mais le carrousel APPORTE PLUS (le détail, un
-  exemple chiffré, « ce que ça change pour toi »), pour qu'on ait envie de l'enregistrer. 6 à 8 slides : 1 = hook en très
-  gros (il doit arrêter le défilement seul) ; 2 à 5 = un chiffre ou une idée par slide, avec sa comparaison concrète, phrases
-  courtes ; avant-dernière = sources + « contenu éducatif, pas un conseil personnalisé » ; dernière = « Enregistre ce post »
-  avec une raison + « Abonne-toi ». Mêmes règles de contenu que la vidéo (sourcé, aucun avis politique, aucune religion,
+  exemple chiffré, « ce que ça change pour toi »), pour qu'on ait envie de l'enregistrer.
+
+  **Règles de structure (stats du 2026-11-01 : les gens voient en moyenne 2,7 slides sur 7)** :
+
+  | Slide | Contenu |
+  |---|---|
+  | 1 | Le hook en très gros : le message complet en une phrase (il doit arrêter le défilement seul) |
+  | 2 | LE chiffre clé + sa comparaison concrète |
+  | 3 | Ce que ça change pour TOI (exemple chiffré) |
+  | 4 | Le détail ou le piège en plus |
+  | 5 | Sources + « contenu éducatif, pas un conseil personnalisé » |
+  | 6 | « Enregistre ce post » avec une raison + « Abonne-toi » |
+
+  - **6 slides MAXIMUM** (5 si le sujet est simple).
+  - **L'essentiel tient dans les slides 1 à 3** : quelqu'un qui s'arrête à la 3 a tout compris.
+  - **Chaque slide (sauf la dernière) finit par une relance** qui donne envie de voir la suivante, en bas à droite près
+    de la flèche : « Et toi, ça fait combien ? → », « Le pire arrive slide 4 → ». Jamais une phrase qui conclut. Mêmes règles de contenu que la vidéo (sourcé, aucun avis politique, aucune religion,
   aucun produit à intérêts présenté comme solution, gain ET perte pour [INVESTIR]).
 - **Format** : un HTML avec des `<section class="slide">` 1080×1350, identité de la chaîne. Modèle de FORMAT VALIDÉ PAR
   THOMAS (2026-11-01) : `exemples/carrousel-exemple.html`, et son rendu `exemples/carrousel-exemple-planche.jpg` à REGARDER
@@ -251,6 +264,7 @@ Thomas les publie à la main avec la vidéo. Pas de voix : aucun crédit ElevenL
   travers avec ombre de papier et scotch ; un FIL CONTINU (trait terracotta en bas) sort à droite d'une slide et rentre à
   gauche de la suivante ; points de progression en bas. Le fil et les annotations ne passent JAMAIS sur un texte. Pas de slide
   à moitié vide : le contenu est centré et occupe la slide.
+- Phrases courtes, un chiffre ou une idée par slide.
 - **Rendu** : `bash etapes/09-carrousel.sh <carrousel.html> $P/livrables <xx>` → `C<xx>-01.png`… + `C<xx>-planche.jpg`.
   REGARDE la planche : texte coupé, faute, chiffre différent de la vidéo, slide vide = corrige avant de livrer.
 - **Légende carrousel** : 1re ligne = mot-clé + hook, 2 lignes, 5 hashtags. Les PNG sont envoyés à l'étape 11.

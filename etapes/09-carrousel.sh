@@ -16,7 +16,7 @@ with sync_playwright() as p:
     for i, el in enumerate(pg.query_selector_all("section.slide"), 1):
         f = f"{out}/C{n}-{i:02d}.png"; el.screenshot(path=f); files.append(f)
     b.close()
-if not 5 <= len(files) <= 10: sys.exit(f"ERREUR : {len(files)} slides (il en faut 5 à 10)")
+if not 5 <= len(files) <= 6: sys.exit(f"ERREUR : {len(files)} slides (il en faut 5 ou 6)")
 th = [Image.open(f).convert("RGB").resize((270, 338)) for f in files]
 sheet = Image.new("RGB", (270 * min(5, len(th)), 338 * ((len(th) + 4) // 5)), "white")
 for i, t in enumerate(th): sheet.paste(t, ((i % 5) * 270, (i // 5) * 338))
