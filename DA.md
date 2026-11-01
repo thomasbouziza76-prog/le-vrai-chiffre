@@ -32,7 +32,7 @@
 |---|---|---|
 | 1 | Caméra | **Un mouvement de caméra au moins toutes les 3 s** (zoom ≥ 15 %, panoramique, plongée, rotation, ou coupe vers un NOUVEAU cadrage). **Jamais le même cadrage plus de 3 s.** Poussée sur le chiffre clé, petit tremblement sur les impacts |
 | 2 | Tico, l'invité | **Au minimum aux 4 moments clés** (hook, chiffre choc, retournement ou relance, fin), avec son bruitage ; il peut réagir entre-temps. **25 % de l'image maximum**, jamais le sujet principal d'un plan |
-| 3 | Les données se transforment | **Au moins 2 transformations par scène** (scène = une séquence du STORYBOARD ; liste section 5) |
+| 3 | Les données se transforment | **Au moins 2 transformations par scène** (scène = une scène du plan du moteur, `moteur/PLAN.md` ; liste section 5) |
 | 4 | Transitions avec une cause | L'objet d'une scène **devient** l'objet de la suivante (le chiffre éclate → les morceaux deviennent des barres → les barres fondent en courbe) |
 | 5 | 3D stylisée | **Au moins 1 vrai moment 3D par vidéo** (barres extrudées + caméra qui tourne, ticket qui se retourne, avion en papier en profondeur). **3D réaliste interdite** |
 | 6 | Rythme | Un changement de motion design (mouvement de caméra OU transformation de données) toutes les 2 à 3 s, comme la N°05 |
@@ -90,7 +90,9 @@ Pièces prêtes : `motion/` du Studio (`catalogue.json`, champ `quand`).
 
 ---
 
-## 6. La vidéo de référence (à regarder AVANT de faire le storyboard)
+## 6. La vidéo de référence (à regarder AVANT d'écrire le plan)
+
+> **Depuis le 01/11/2026, la référence est la N°08 faite avec le moteur** : `moteur/exemples/plan-N08.js` + `moteur/exemples/planche-N08.jpg`. Ce qui suit reste vrai pour l'esprit.
 
 - Code : `exemples/ticket-salaire-median-v2.html` (16 s, fonction `seek(t)`).
 - Images clés : `exemples/ticket-salaire-median-v2-planche.jpg`.

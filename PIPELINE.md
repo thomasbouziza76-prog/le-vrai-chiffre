@@ -1,8 +1,14 @@
 # Pipeline quotidien · « Le Vrai Chiffre » (vidéo 9:16 : matin 30 ou 45 s, soir histoire 62 à 75 s ; voir le tableau des durées)
 
 Session neuve et éphémère : tout se réinstalle. Travaille seul, sans poser de question. Si une étape échoue deux fois,
-livre ce qui existe et écris ce qui manque. Les étapes mécaniques sont des scripts dans `etapes/` : lance-les, ne les
-réécris pas, ne relis pas leur code. Garde ta réflexion pour le sujet, le script et la mise en scène.
+livre ce qui existe et écris ce qui manque. Les étapes mécaniques sont des scripts dans `etapes/` et `moteur/` : lance-les, ne les
+réécris pas, ne relis pas leur code. Garde ta réflexion pour le sujet, le script et le plan.
+
+> **Depuis le 01/11/2026 (décision de Thomas) : MOTEUR + CONTRÔLES + AGENTS.**
+> - **Moteur** : tu n'écris plus d'animation à la main. Tu écris `plan.js` (`moteur/PLAN.md`) et le moteur fabrique la vidéo au niveau de la N°08.
+> - **Contrôles** : `controles/verifier.py` vérifie en code les règles de la DA. Un contrôle en échec bloque la livraison.
+> - **Agents** : 4 agents neufs relisent aux étapes stratégiques (`agents/README.md`). Stratège → Critique script → Critique motion → Juge final.
+> - **Durée visée d'une production complète : 45 à 60 min.**
 
 Racine du dépôt : `$LVC_REPO` (après l'étape 0). Projet du jour : `$P` = sortie de `etapes/01-nouveau-projet.sh`.
 
@@ -16,6 +22,8 @@ Racine du dépôt : `$LVC_REPO` (après l'étape 0). Projet du jour : `$P` = sor
 | 4 | `MOTION.md` | Couleurs, polices, règles de mouvement des pros |
 | 5 | `SONS.md` | Bruitages et niveaux |
 | 6 | `historique/CHECKS.md` | Les erreurs déjà faites, à ne pas refaire |
+| 7 | **`moteur/PLAN.md`** + `moteur/exemples/plan-N08.js` | Comment écrire le plan de la vidéo (le moteur fait le reste) |
+| 8 | **`agents/README.md`** + `agents/retours-thomas.md` | L'équipe d'agents et les retours de Thomas |
 
 **Si deux fichiers se contredisent : `DA.md` > `historique/CHECKS.md` > `PIPELINE.md` > `SCRIPT-HOOKS.md` > `MOTION.md` > `SONS.md`.**
 
@@ -52,31 +60,28 @@ Racine du dépôt : `$LVC_REPO` (après l'étape 0). Projet du jour : `$P` = sor
 
 | Quoi | Différent de |
 |---|---|
-| Archétype de hook, musique, CTA, palette sonore | les 2 vidéos précédentes |
-| Blueprints HyperFrames | les 3 vidéos précédentes |
-| Monde, fil rouge, objet signature | les 7 vidéos précédentes (`HISTORIQUE.md`) |
-| Pièce du Studio utilisée telle quelle | les 2 vidéos précédentes |
-| **Se réutilisent librement** | le Ticket, son adversaire géant, les transformations de données de `DA.md` section 5 |
+| Archétype de hook, question finale, 2e personnage (prénom) | les 2 vidéos précédentes |
+| Enchaînement de scènes du moteur (ex. `duel → vague → choix`) | la vidéo précédente (varie au moins une scène ou les repères) |
+| **Se réutilisent librement** | Tico, le moteur et ses scènes, les transformations de données de `DA.md` section 5 |
 
-## 0. Installer (≈ 1 min)
-`bash etapes/00-installer.sh` puis `source ~/.hf-env`. Il installe HyperFrames 0.8.82 et ses skills (copie dans
-`hyperframes/`), GSAP local, Whisper et prépare les polices. Lis `~/motion-design-claude-code/AGENTS.md` (jamais
-`skills update`, `upgrade`, `feedback`, `publish`, `npx skills add`). Jamais de moteur maison : la vidéo se rend avec
-HyperFrames. Seul `HISTORIQUE.md` (7 dernières vidéos) est à lire en entier : `historique/HISTORIQUE.md`.
+## 0. Installer (≈ 1 à 2 min)
+`bash etapes/00-installer.sh` puis `source ~/.hf-env`. Il installe Whisper (avec son modèle local) et num2words, et définit `$LVC_REPO`. Playwright et Chromium sont déjà là. **HyperFrames n'est plus utilisé** : la vidéo se rend avec `moteur/`. Seul `historique/HISTORIQUE.md` (les 7 dernières vidéos) est à lire en entier.
 
 ## 0 bis. Studio, référence et boucle de retour (≈ 4 min, AVANT le sujet)
 1. **Studio** : `mcp__claude-code-remote__add_repo` owner **thomasbouziza76-prog**, repo **studio**, access push, puis
    `git clone --depth 1 https://github.com/thomasbouziza76-prog/studio /home/claude/studio` (dépôt PRIVÉ, jamais rendu
    public). Il contient `charte/ticket.js` (le Ticket), `motion/` (pièces prêtes, `catalogue.json`) et la vidéo de
    référence. Si le clone échoue : continue avec `exemples/ticket.js` de ce dépôt et dis-le dans le message final.
-2. **Référence** : regarde `exemples/ticket-salaire-median-v2-planche.jpg` et lis `DA.md` section 6.
+2. **Référence** : regarde `moteur/exemples/planche-N08.jpg` (la référence du moteur) et lis `DA.md` section 6.
 3. **Boucle de retour** : lis `Videos!A1:W14` du Google Sheet. Les stats sont écrites par la tâche de nuit (22h43) :
    ne les réécris jamais. Si des vidéos ont des stats, repère les hooks, sujets, durées (30 s / 45 s / histoire 62-75 s) et mots-clés qui
    retiennent le mieux (temps moyen, % qui finit, % recherche) et ceux qui font gagner des abonnés. Penche vers ce qui
    marche, sans répéter les 2 vidéos précédentes, et note la conclusion en une ligne dans l'historique. Si une durée
    retient nettement mieux sur au moins 4 vidéos de chaque, dis-le en tête du message final.
 
-## 1. Sujet et script (≈ 10 min)
+## 1. Sujet et script (≈ 12 min), avec 2 agents
+- Crée d'abord le dossier : `P=$(bash etapes/01-nouveau-projet.sh nXX-slug)` (slug provisoire, tu peux le garder même si le sujet change).
+- **PORTE 1 · Stratège** (`agents/stratege.md`) : lance-le **avant** de choisir le sujet. Donne-lui le SLOT, la règle de sujet ci-dessous, les stats du Sheet (colle-les) et les chemins. Il écrit `$P/agents/1-strategie.md`. Suis sa stratégie (sujet, angle, personnages, hook, question de débat, mot-clé, scènes). Tu peux t'en écarter **seulement si une règle de ce fichier l'impose** : écris pourquoi dans HISTORIQUE.md.
 - Deux vidéos par jour : le prompt de la tâche donne SLOT (0 = matin, 1 = soir). **Sujet : `git pull`, lis `Videos!A2:D12` du Google Sheet (les vidéos déjà faites, même hors dépôt), puis le PREMIER
   sujet de `sujets.md` qui n'a pas ✅**, en partant du haut, règles du fichier comprises. Saute un sujet ⚡ dont la date
   « valable jusqu'au » est passée (coche-le ⚡⏭). Si une grosse actu argent de la semaine (Insee, gouvernement, prix,
@@ -93,11 +98,13 @@ HyperFrames. Seul `HISTORIQUE.md` (7 dernières vidéos) est à lire en entier :
   budget, inflation, impôts, crédit, loyer, prix…). Il est PRONONCÉ par la voix dans les 5 premières secondes, écrit dans
   le texte d'écran du hook ou du premier plan, et il ouvre la légende (voir étape 8). Vérifie chaque chiffre par une recherche web (Insee, Banque de France, AMF, service-public.fr), garde la
   source et la date.
-- Script : suis `SCRIPT-HOOKS.md` en entier. 8 hooks sur au moins 4 archétypes (le soir aussi, tous portés par Tico et son cas), garde le plus fort (archétype différent
+- Script : suis `SCRIPT-HOOKS.md` en entier. Pars des 3 hooks du Stratège ; complète jusqu'à 8 hooks sur au moins 4 archétypes (le soir aussi, tous portés par Tico et son cas), garde le plus fort (archétype différent
   des 2 dernières vidéos), texte d'écran de 3 à 6 mots affiché dès la 1re image. Nombre de mots et secondes : tableau des durées. Deux appels dits à
   voix haute, et deux seulement (SCRIPT-HOOKS.md section 6) : « abonne-toi » avec une raison, juste après le chiffre choc,
   suivi aussitôt d'une relance ; puis, à la fin, une question qui fait réagir en commentaire et/ou un partage ciblé.
   Passe la grille de contrôle (section 8) et réécris jusqu'à ce que tout passe.
+- Écris `$P/script.md` : le texte voix ElevenLabs (avec balises, chiffres en lettres), puis la liste `phrases` du plan (sans balises, chiffres en chiffres) et les cartons.
+- **PORTE 2 · Critique script** (`agents/critique-script.md`) : **avant de générer la voix** (chaque voix coûte des crédits). Il écrit `$P/agents/2-script.md`. À CORRIGER → corrige puis relance-le (2 tours maximum, voir `agents/README.md`).
 - Tutoiement, zéro jargon non expliqué, éducatif seulement, aucun conseil personnalisé, aucun produit à intérêts
   présenté comme solution, aucune référence religieuse. Chiffres en lettres dans la voix, en chiffres à l'écran.
 
@@ -122,117 +129,49 @@ HyperFrames. Seul `HISTORIQUE.md` (7 dernières vidéos) est à lire en entier :
   l'erreur exacte.
 - Durée de la voix hors cible : matin, plus de 3 s au-dessus de la durée visée → raccourcis et régénère UNE fois ; soir,
   moins de 62 s → rallonge le bloc CONCRET et régénère UNE fois, plus de 75 s → raccourcis et régénère UNE fois.
-- `bash etapes/02-voix.sh $P "<media[0].url>" <texte-voix.txt>` : télécharge, minute chaque mot (`mots.txt`,
+- `bash etapes/02-voix.sh $P "<media[0].url>" <texte-voix.txt>` (le moteur relit `$P/assets/audio/voix.mp3` tout seul) : télécharge, minute chaque mot (`mots.txt`,
   `mots.json`), liste les silences (`silences.txt`), écrit la durée (`duree.txt`). Recolle les mots sur le script (l'orthographe
   du script gagne ; les mots à faible confiance viennent de la transcription).
 
-## 3. Direction, monde, storyboard (≈ 15 min)
-Règle n° 1 : chaque vidéo est une création NOUVELLE (mais le Ticket, son adversaire et les transformations de `DA.md` se réutilisent). Identité fixe : palette (papier #f6f1e8, encre
-#1c1a17, terracotta #c4552d réservé aux moments qui comptent ; détail dans MOTION.md), polices Instrument Sans + Space Mono, sous-titre mot par mot
-en bas (58 px, y 1196, boîte terracotta sur le mot clé), 9:16, finition. Tout le reste change : concept, monde,
-objets, caméra, transitions, signatures, effets, bruitages. Interdit de reprendre le monde ou les mécanismes des 7 dernières
-vidéos (`HISTORIQUE.md`) : « mécanisme » = monde, fil rouge, objet signature (voir le tableau « À ne pas répéter »).
-1. Trouve la métaphore du sujet (elle se joue sur le verbe). Propose-toi 3 directions vraiment différentes
-   (`hyperframes/templates/DIRECTIONS-TEMPLATE.md`) et garde celle qui ressemble le MOINS aux 7 dernières.
-2. Varie la mise en scène avec les outils : au moins 2 blueprints de
-   `hyperframes/.claude/skills/hyperframes-animation/blueprints-index.md` différents de ceux des 3 dernières vidéos ;
-   règles de mouvement `.../rules/` ; catalogue (`npx hyperframes catalog --tag transition --json`, `camera`,
-   `caption-style`) ; runtimes GSAP, Lottie, Three.js, canvas, SVG ; 3 à 5 sortes de transitions « avec une cause ».
-3. Écris `frame.md`, `reference/monde.html` (décor du jour, poses `GX_POSES.Knn`) et `STORYBOARD.md` au FORMAT de
-   `exemples/storyboard-exemple.md` (format et niveau de détail seulement ; il date d'AVANT `DA.md` : ignore son arc, ses couleurs,
-   son CTA final et l'absence de Ticket) : 6 à 8 séquences, `src`,
-   `type`, `blueprint`, `focal`, `rules`, `handoff_in/out` identiques mot pour mot à chaque couture, 2 à 4 plans par séquence.
-   Les deux appels (abonne-toi après le chiffre choc, question ou partage à la fin) et leur petit texte d'écran y ont leur plan.
-4. 9:16 : rien de lisible au-dessus de y 168 ni sous y 1330 ; bande 1180-1330 réservée au sous-titre ; rien de lisible à
-   x > 940 entre y 700 et 1330 ; sous-titre clair (`.fx-sub.dark`) sur fond sombre. Ids SVG uniques et préfixés.
-5. LES 3 PREMIÈRES SECONDES : dès l'image 0, le texte d'écran du hook est LISIBLE et quelque chose bouge. Pas de fondu
-   depuis le blanc, pas d'écran vide, pas de logo, pas de titre qui monte lentement. Le premier bruitage tombe à 0 s.
-   **Motion design d'abord** (règles chiffrées de `DA.md` : un mouvement de caméra au moins toutes les 3 s, jamais le
-   même cadrage plus de 3 s, au moins 2 transformations de données par séquence, transitions avec une cause) ; **Tico est
-   l'invité** (4 moments clés minimum, 25 % de l'image maximum). L'ouverture
-   (0 à 2 s) : le chiffre ou l'enjeu en motion design (caméra qui pousse, chiffre qui claque), Tico réagit, bruité geste par geste. Regarde d'abord la vidéo de
-   référence `exemples/ticket-salaire-median-v2.html` + `exemples/ticket-salaire-median-v2-planche.jpg`. Le Ticket se
-   dessine TOUJOURS avec `ticket.js` (jamais à la main).
-   Un snapshot à t = 0 et un à t = 0,3 s doivent déjà montrer le hook : sinon corrige le premier plan.
-   **Librairie du Studio d'abord** (cloné à l'étape 0 bis) : lis `motion/catalogue.json` (champ `quand`) et prends 1 à 3 pièces qui servent le sujet :
-   copie leur `index.html`, change le `CFG` (textes, chiffres, durées), garde la charte. Jamais la même pièce telle quelle
-   deux jours de suite (regarde `utilise_dans`) : modifie-la vraiment ou prends-en une autre. Si le clone échoue, continue sans.
-6. Pose les images clés, un snapshot par image clé (`npx hyperframes snapshot --at <t> --no-end --describe false -o boards/stills`),
-   regarde-les (les images clés seulement), compare aux vidéos précédentes décrites dans HISTORIQUE.md.
+## 3. Le plan de la vidéo (≈ 10 min) : moteur + contrôles + Critique motion
+**Règle n° 1 : tu n'écris pas d'animation, tu écris `$P/plan.js`.** Lis `moteur/PLAN.md` et le modèle `moteur/exemples/plan-N08.js` (la N°08, validée par Thomas), puis regarde `moteur/exemples/planche-N08.jpg`. C'est le niveau attendu.
+1. **Écris `$P/plan.js`** :
+   - `phrases` = le texte voix exact (sans balises, chiffres en chiffres) ;
+   - les cartons (hook dès `'debut'`, 1 idée et 1 mot-clé chacun, aucun pendant « abonne-toi ») ;
+   - les humeurs (une par phrase où un personnage est visible) ;
+   - 2 à 4 scènes qui **transforment** le chiffre (`duel`, `vague`, `chiffre`, `courbe`, puis `choix` pour la question finale) ;
+   - `abonne`, `question`, `source`, `format`.
 
-### Qualité visuelle (obligatoire, à inscrire dans frame.md et dans chaque paquet d'agent)
-Lis d'abord `DA.md` (la direction artistique, prioritaire), puis `MOTION.md` (la charte de mouvement), puis `recherche/GITHUB.md` (composants du catalogue local, plugins GSAP)
-et `historique/CHECKS.md` (règles apprises).
-1. **Flou de mouvement** : composant `motion-blur` (`npx hyperframes add motion-blur`), `data-hf-motion-blur` sur tout
-   objet qui traverse l'écran ou zoome vite.
-2. **Courbes** : jamais `linear` ni `ease` par défaut. Entrées « premium » `expo.out` / `power3.out`, objets qui se
-   posent `back.out(1.7)`, sorties `power2.in`. Anticipation (léger recul avant un départ), dépassement puis retour
-   sur les chiffres, inertie : les éléments secondaires suivent avec 0,05 à 0,15 s de retard (stagger).
-3. **Caméra jamais figée** : dérive lente continue (≈ 1 à 2 % d'échelle ou 10-20 px sur un plan), poussée sur le chiffre
-   clé, tremblement seulement sur un impact et très bas.
-4. **Profondeur** : 3 plans (fond, milieu, avant) à vitesses différentes ; ombres de papier empilées (contact + douce) ;
-   léger flou sur le fond quand l'avant est net ; bords de papier irréguliers (`feTurbulence` + `feDisplacementMap`).
-5. **Au moins un moment 3D STYLISÉE par vidéo** (pas de 3D réaliste, mais de la 3D oui : voir MOTION.md ; Three.js, état piloté par la timeline, rendu dans `onUpdate`) : objet clé éclairé ou en
-   aplats + contours encre pour rester « papier ».
-6. **Chiffres spectaculaires** : compteur à rouleaux (`number-wheel`, `slot-machine-roll`, `split-flap-board`) ou
-   compteur avec pulsation, bruitage « clic » sur la valeur finale, toujours une comparaison concrète à l'écran
-   (« 1 095 € = 2 mois de courses »), chiffre centré, très gros, hors des zones de l'interface TikTok.
-7. **Accents dessinés** : souligné, cercle, flèche, surligneur (`hw-*`, `marker-highlight`) sur le mot ou le chiffre clé.
-8. **Rythme** : un changement visuel toutes les 1,5 à 3 s ; chaque geste visuel fort a son bruitage.
-9. **Types de plans pour un chiffre** (liste prioritaire : `DA.md` section 5 ; détail ci-dessous ; 3 ou 4 différents par vidéo) :
-   - *Morphose de graphique* : les barres s'affinent une à une et deviennent une courbe qui passe par leurs sommets
-     (mêmes valeurs, la courbe se DESSINE, point final en terracotta avec son étiquette).
-   - *Zoom sur l'indicateur* : 4 crochets terracotta encadrent UNE case d'un tableau, le reste s'assombrit, la case
-     grossit depuis sa vraie place jusqu'à remplir l'écran (fantôme pointillé à l'origine).
-   - *Avant / après* : la même carte, seule la date (pastille) bascule, le chiffre change.
-   - *Grille* : 20 ou 100 tuiles identiques, une seule casse le motif (ex. « 1 sur 10 »).
-   - *Appel de note* : un cercle au marqueur se dessine autour d'un détail, puis l'étiquette arrive.
-   - *Lettres masquées* : le mot du hook en contour, la couleur monte à l'intérieur des lettres avec un trait-repère.
-   - *Pile à ressort* : 3 cartes (offres, cas, mois) qui s'éventaillent, la première dépasse puis se stabilise.
-   - *Compteur* : nombre qui monte, calculé dans le code, jamais deviné.
+   La scène `libre` est un dernier recours, à justifier dans HISTORIQUE.md.
+2. `python3 moteur/timing.py $P` : la liste « mots non retrouvés » doit être vide (sinon, aligne `phrases` sur ce que dit la voix).
+3. **`python3 controles/verifier.py $P`** : tout doit être OK. En cas d'échec, corrige le **plan** et relance (environ 10 s par essai). Tu ne passes pas à la suite avec un échec.
+   - Si l'échec vient d'un bug du moteur (et pas du plan), ne modifie pas le moteur : contourne-le dans le plan, ou note le bug dans HISTORIQUE.md avec le rapport.
+4. `python3 moteur/planche.py $P 1` → `$P/boards/planche-plan-*.jpg`. Regarde-les toi aussi.
+5. **PORTE 3 · Critique motion** (`agents/critique-motion.md`) : il juge si c'est du motion design ou « une vidéo animée ». Il écrit `$P/agents/3-motion.md`.
+   - À CORRIGER → corrige `plan.js`, relance les contrôles et la planche, puis relance un Critique motion neuf (2 tours maximum).
 
-## 4. Animation (≈ 25 min) : 3 agents au plus
-- Paquets : `node .claude/skills/product-launch-video/scripts/frame-packets.mjs --project <slug> --storyboard <slug>/STORYBOARD.md`
-  (depuis `~/motion-design-claude-code`).
-- Répartis les séquences en 3 agents `general-purpose` au plus (≈ 2-3 séquences chacun), lancés en même temps. Chaque agent ne reçoit
-  QUE : ses paquets, le kit `reference/monde.html`, les images clés de ses séquences, `DA.md`, `historique/CHECKS.md`, le chemin absolu de `ticket.js` (`/home/claude/studio/charte/ticket.js`,
-  sinon `$LVC_REPO/exemples/ticket.js`), `MOTION.md`, `SONS.md`,
-  la charte et les 4 règles. Chaque paquet dit quelle transformation de données et quel gag du Ticket la séquence contient.
-  Règles BLOQUANTES : (1) UN SEUL `<script>` par template ; (2) `gsap.timeline({paused:true, onUpdate: render})` ;
-  (3) `<script src="assets/vendor/gsap.min.js">`, jamais le CDN ; (4) ids préfixés (`p03-…`) et ids SVG uniques.
-  Un agent qui dépasse 35 min : demande-lui de livrer.
-- Attends que tous les fichiers de séquence existent.
+## 4. Rendu (≈ 3 à 5 min)
+`python3 moteur/rendu.py $P` : images (un processus par cœur), bruitages déclarés par le moteur, niveau à -14 LUFS, encodage → `$P/video.mp4` (copiée dans `$P/renders/video.mp4`).
+Puis **`python3 controles/verifier.py $P --video`** (tout OK) et `bash etapes/06-controle.sh $P` (noirs, images figées, son).
 
-## 5. Assemblage, son (≈ 15 min)
-- `assemble.sh` du projet (réglages : FIRST_FRAME, END_CARD, TOTAL = durée de la voix, LEAK_AT et IRIS_AT vides,
-  BED_START 0, BED_END = TOTAL). `npx hyperframes check --json` : zéro erreur.
-- **Relecture de mise en scène (agent séparé, ≈ 5 min)** : un agent `general-purpose` neuf, qui n'a pas fait l'animation,
-  reçoit UNE planche (un snapshot par plan + les coutures) et la grille : rythme, lisibilité sur téléphone, plans vides
-  ou figés, effet « cheap » (texte qui apparaît sans mouvement, objets sans ombre, courbes linéaires), respect de
-  l'identité, et la grille « Contrôle final DA » de `DA.md` section 9. Il note chaque plan sur 5 et nomme les 2 plus faibles avec la correction précise. Corrige ces 2 plans
-  (ou relance l'agent de la séquence), une seule fois. Ajoute à `historique/CHECKS.md` toute règle nouvelle qu'il a
-  trouvée (une ligne À FAIRE / À NE PAS FAIRE).
-- Contrôle de l'assemblage : un seul snapshot par couture (à 0) et un par séquence, regroupés en UNE planche ; rien de
-  figé, rien de vide, pas de saut.
-- Bruitages : lis `SONS.md` (bibliothèque de 75 sons, règle « chaque geste a son son », densité, niveaux : SONS.md fait foi). `assets/audio/sfx-events.json` (nom, temps, gain) calés sur les gestes, palette sonore propre à la vidéo,
-  choisie parmi les 75 sons (copiés dans `.claude/skills/media-use/audio/assets/sfx/` par l'installation), différente des 2 vidéos précédentes. `python3 build-sfx-mix.py`.
-  **Niveaux validés par Thomas (2026-11-01)** : sons glitch (glitch-1, glitch-2, glitch-3) gain **0,065 maximum** ; aucun
-  bruitage ne doit passer au-dessus de la voix : écoute/mesure le mix aux secondes où il y a des bruitages et baisse le gain
-  de tout son qui dépasse. On garde tous les bruitages, on règle juste leur niveau.
-- Musique (obligatoire) : pistes CC0 du tableau « The 10 tracks used for film C » de
-  `.claude/skills/motion-design/references/music.md` (hôte files.freemusicarchive.org), tension + élan DIFFÉRENTES des 2
-  dernières vidéos. Bruit de fond : 12 à 15 dB sous la voix dans les silences, gains ≤ 0,12. Échec de téléchargement : sans
-  musique, et dis-le. Relance `assemble.sh`.
+## 5. Juge final (≈ 4 min) : PORTE 4
+`python3 moteur/planche.py $P 1.5 --video` → `$P/boards/planche-video-*.jpg`, puis le **Juge final** (`agents/juge-final.md`). Il écrit `$P/agents/4-juge.md`.
+- **VALIDÉ (7/10 et plus)** : tu passes à la suite.
+- **À CORRIGER** : applique ses corrections dans le plan, relance l'étape 3 (contrôles) et l'étape 4 (rendu), puis un Juge neuf. **Un seul nouveau rendu.**
+- **Une voix fausse est toujours bloquante** : régénère la voix une fois (étape 2), puis timing → contrôles → rendu.
+- Après 2 tours, livre quand même, en recopiant ses réserves.
 
-## 6. Rendu et contrôle (≈ 8 min)
-`npx hyperframes render --quality high --output renders/video.mp4`, puis la finition commune (grain papier + vignettage
-doux) `bash etapes/07-finition.sh $P`, puis `bash etapes/06-controle.sh $P`. Regarde la
-planche `boards/planche.jpg` en entier. Ne dis jamais que c'est fini avant ces contrôles.
+La ligne « POUR THOMAS » du Juge est recopiée dans le message final, avec sa note.
+
+## 6. Ce qui change avec le moteur (rappel)
+- Plus de `frame.md`, de `STORYBOARD.md`, d'agents d'animation, d'`assemble.sh` ni de HyperFrames : c'était la cause des 2 h de production et des erreurs qui revenaient.
+- Le moteur garantit l'identité (palette, polices, cartons, sous-titres, Tico, grain papier). **Ta créativité va dans le plan** : l'angle, les scènes choisies, les repères, les humeurs et les cartons.
+- Musique : pas de musique de fond avec le moteur pour l'instant (voix + bruitages, comme la N°08).
 
 ## 7. Historique (avant la livraison)
 Ajoute une ligne EN HAUT de `historique/HISTORIQUE.md` du dépôt : date, N°, sujet, hook (archétype + phrase), format (matin court / soir histoire),
 les deux appels (abonne-toi + fin) ET leurs secondes, à approfondir, concept, monde, signatures, blueprints, transitions, effets, palette sonore,
-musique, moteur. Garde les 7 dernières lignes détaillées ; condense les plus anciennes en une demi-ligne chacune.
+scènes du moteur utilisées, notes des 4 agents (script, motion, juge) et nombre de tours, durée totale de la production. Garde les 7 dernières lignes détaillées ; condense les plus anciennes en une demi-ligne chacune.
 Commit et push dans le dépôt (voir 10), avec `historique/CHECKS.md` s'il a changé.
 
 ## 8. Couverture, titre, rangement, livraison
@@ -306,7 +245,7 @@ La page de liens de la chaîne affiche les chiffres clés et les 3 dernières vi
 Le Studio (`/home/claude/studio`, cloné à l'étape 0 bis) garde tout pour nous : vidéos, couvertures, carrousels, fiches, librairie.
 1. `videos/N<xx>/` : `video.mp4` compressée (`ffmpeg -i <rendu> -vf scale=720:-2 -c:v libx264 -preset veryfast -crf 28
    -c:a aac -b:a 96k -movflags +faststart`, moins de 15 Mo, sinon crf 32), `couverture.jpg` (qualité 85), `carrousel/C<xx>-NN.jpg`
-   (qualité 85), et `fiche.json` aux MÊMES champs que `videos/N06/fiche.json` (statut « À publier », stats vides,
+   (qualité 85), `plan.js` (le plan de la vidéo, réutilisable), `agents/` (les 4 verdicts, copie de `$P/agents/`), et `fiche.json` aux MÊMES champs que `videos/N06/fiche.json` (statut « À publier », stats vides,
    `motion_utilises` = clés des pièces de la librairie utilisées).
 2. `chiffres/chiffres.json` : ajoute le chiffre clé (mêmes champs, `videos` contient `"<xx>"`).
 3. `motion/catalogue.json` : ajoute `"N<xx>"` dans `utilise_dans` des pièces utilisées. Si un plan de la vidéo est nouveau et
@@ -325,7 +264,7 @@ Ne pousse que `historique/` et les fichiers du kit modifiés, jamais `node_modul
 
 ## 11. Livraison finale (UN seul message, en tout dernier, après 8 quinquies et 10)
 Envoie dans l'ordre (SendUserFile, status proactive) : la vidéo, la couverture, puis les slides du carrousel. Dans un seul
-message court, en français : titre ; légende vidéo (2 lignes + 5 hashtags, mot-clé dès la 1re ligne, source et périmètre
+message court, en français : **la note du Juge final et sa ligne « POUR THOMAS »** (en premier) ; titre ; légende vidéo (2 lignes + 5 hashtags, mot-clé dès la 1re ligne, source et périmètre
 du chiffre) ; légende carrousel ; sujet ; durée ; hook et archétype ; les deux appels et leurs secondes ; concept en une phrase ; gags du
 Ticket et transformations de données utilisés ; pièces du Studio utilisées ; sources ; défauts restants ; lien du Google
 Sheet ; et une ligne pour chaque étape qui a échoué (page de liens, Studio, musique…).

@@ -1,14 +1,11 @@
 #!/usr/bin/env bash
-# Étape 1 bis · crée le projet du jour dans ~/motion-design-claude-code/<slug> (slug en kebab-case, ex. n05-interets-composes)
-# Usage : bash etapes/01-nouveau-projet.sh <slug>
+# Étape 1 bis · crée le dossier de production du jour et y prépare le moteur.
+# Usage : bash etapes/01-nouveau-projet.sh <slug>   (slug en kebab-case, ex. n09-negocier-100-euros)
+# Sortie : le chemin du dossier ($P). Dedans : index.html + moteur + plan.js (modèle N°08 à remplacer),
+# boards/ (planches), renders/ (vidéo), livrables/, agents/ (verdicts des agents).
 set -euo pipefail
 source "$HOME/.hf-env"
-S="${1:?usage: 01-nouveau-projet.sh <slug>}"
-cd "$LVC_HF" && bash .claude/skills/motion-design/scripts/new-project.sh "$S" >/dev/null
-P="$LVC_HF/$S"
-mkdir -p "$P/assets/vendor" "$P/boards" "$P/renders" "$P/livrables"
-cp "$HOME/gsap.min.js" "$P/assets/vendor/gsap.min.js"
-for f in CustomEase CustomWiggle CustomBounce SplitText DrawSVGPlugin MorphSVGPlugin MotionPathPlugin; do cp "$HOME/gsap-plugins/$f.min.js" "$P/assets/vendor/" 2>/dev/null || true; done
-cp "$LVC_REPO"/polices/InstrumentSans-*.woff2 "$LVC_REPO"/polices/SpaceMono-*.woff2 "$P/assets/fonts/"
-cp "$LVC_REPO/outils/assemble.sh" "$LVC_REPO/outils/build-sfx-mix.py" "$P/"
+S="${1:?usage: 01-nouveau-projet.sh <slug>}"; P="$HOME/production/$S"
+mkdir -p "$P/boards" "$P/renders" "$P/livrables" "$P/agents" "$P/assets/audio"
+bash "$LVC_REPO/moteur/nouveau.sh" "$P" >/dev/null
 echo "$P"
