@@ -33,3 +33,4 @@ Une ligne par règle ; ne garde que les règles encore utiles (≤ 40 lignes).
 
 - À NE PAS FAIRE (N°07, ASPA : 248 vues, 6 s sur 69 s, 0 abonné) : un sujet et un hook centrés sur un retraité (« SA retraite »). Le public a 20-35 ans : la 1re phrase parle de LUI (« tu », « ton »), sinon il swipe.
 - À NE PAS FAIRE (N°07) : empiler les chiffres (343, 68, 700, 1 043, 4 116, 50 %, 108 586, 90 000, 8 463…). UN chiffre principal + 2 secondaires maximum.
+- À NE PAS FAIRE (N°07) : 15 s sur le même cadrage avec seulement Tico et des objets qui bougent = un dessin animé, pas du motion design. Un mouvement de caméra au moins toutes les 3 s.

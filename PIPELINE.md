@@ -10,7 +10,7 @@ Racine du dépôt : `$LVC_REPO` (après l'étape 0). Projet du jour : `$P` = sor
 
 | Ordre | Fichier | Pourquoi |
 |---|---|---|
-| 1 | **`DA.md`** | La direction artistique : Ticket du début à la fin + données qui bougent. **Il prime sur tout.** |
+| 1 | **`DA.md`** | La direction artistique : motion design d'abord, Tico en invité. **Il prime sur tout.** |
 | 2 | `PIPELINE.md` (ce fichier) | Les étapes, dans l'ordre |
 | 3 | `SCRIPT-HOOKS.md` | Écrire le script (hook, les deux appels, formats court et histoire) |
 | 4 | `MOTION.md` | Couleurs, polices, règles de mouvement des pros |
@@ -33,7 +33,8 @@ Racine du dépôt : `$LVC_REPO` (après l'étape 0). Projet du jour : `$P` = sor
 | Relance | juste après l'appel | juste après l'appel | juste après l'appel |
 | Retournement (« Comment c'est possible ? ») | facultatif | facultatif | obligatoire, entre 25 et 35 s |
 | Fin : question qui fait réagir et/ou partage ciblé | dernières 3 à 4 s | dernières 3 à 5 s | dernières 5 à 8 s |
-| Gags / réactions de Tico (un toutes les 4 à 6 s) | 5 à 7 | 8 à 11 | 12 à 16 |
+| Mouvements de caméra (au moins un toutes les 3 s) | 10 et plus | 15 et plus | 21 et plus |
+| Apparitions de Tico (minimum : hook, choc, retournement ou relance, fin) | 4 et plus | 4 et plus | 4 et plus |
 | Bruitages | 25 à 40 | 35 à 60 | 60 à 90 |
 | Texte d'écran à l'image 0 | 3 à 6 mots | 3 à 6 mots | 3 à 6 mots |
 
@@ -139,9 +140,10 @@ vidéos (`HISTORIQUE.md`) : « mécanisme » = monde, fil rouge, objet signature
    x > 940 entre y 700 et 1330 ; sous-titre clair (`.fx-sub.dark`) sur fond sombre. Ids SVG uniques et préfixés.
 5. LES 3 PREMIÈRES SECONDES : dès l'image 0, le texte d'écran du hook est LISIBLE et quelque chose bouge. Pas de fondu
    depuis le blanc, pas d'écran vide, pas de logo, pas de titre qui monte lentement. Le premier bruitage tombe à 0 s.
-   **Le Ticket est là du début à la fin et joue avec des données qui se transforment** (règles chiffrées de `DA.md` :
-   gag toutes les 4 à 6 s, au moins 2 transformations de données par séquence, transitions avec une cause). Son premier
-   gag ouvre la vidéo (0 à 2 s, lié au sujet, compris sans lire ni écouter, bruité geste par geste). Regarde d'abord la vidéo de
+   **Motion design d'abord** (règles chiffrées de `DA.md` : un mouvement de caméra au moins toutes les 3 s, jamais le
+   même cadrage plus de 3 s, au moins 2 transformations de données par séquence, transitions avec une cause) ; **Tico est
+   l'invité** (4 moments clés minimum, 25 % de l'image maximum). L'ouverture
+   (0 à 2 s) : le chiffre ou l'enjeu en motion design (caméra qui pousse, chiffre qui claque), Tico réagit, bruité geste par geste. Regarde d'abord la vidéo de
    référence `exemples/ticket-salaire-median-v2.html` + `exemples/ticket-salaire-median-v2-planche.jpg`. Le Ticket se
    dessine TOUJOURS avec `ticket.js` (jamais à la main).
    Un snapshot à t = 0 et un à t = 0,3 s doivent déjà montrer le hook : sinon corrige le premier plan.

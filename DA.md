@@ -3,12 +3,14 @@
 > **À lire en PREMIER, avant tout autre fichier.**
 > Validée par Thomas le 2026-11-01. Si un autre fichier contredit celui-ci, **c'est DA.md qui gagne**.
 > **Cette DA est définitive** (décision de Thomas) : on ne la change pas, même plus tard. On améliore l'exécution, jamais le style.
+> **Mise à jour du 2026-11-01 soir (décision de Thomas) : MOTION DESIGN EN PREMIER, Tico est l'INVITÉ.** Leçon de la N°07 :
+> avec Tico au centre, la vidéo devenait un dessin animé sur une scène fixe, sans motion design.
 
 ---
 
 ## 1. La DA en une phrase
 
-**Des données qui bougent, et le Ticket qui joue avec elles, du début à la fin, en 100 % motion design.**
+**Du motion design d'abord (caméra qui voyage, chiffres et formes qui se transforment, texte qui bouge), avec Tico en invité qui réagit aux moments clés.**
 
 ---
 
@@ -16,11 +18,11 @@
 
 | Couche | Ce que c'est | Ce qu'elle fait |
 |---|---|---|
-| **1. Les données** | Le chiffre, le graphique, la courbe, la grille, le compteur | Elles **se transforment** : se fissurent, fondent en courbe, se coupent en deux, se remplissent, roulent. Jamais une simple apparition. |
-| **2. Le Ticket** | La mascotte (ticket de caisse avec yeux, bras, jambes) | Il **joue avec les données** : grimpe sur les barres, glisse sur la courbe, pousse un drapeau, se fait écraser par un chiffre. Il réagit à chaque révélation. |
-| **3. Le texte** | Le texte d'écran (2 lignes max) | Il **arrive mot par mot** (chaque mot monte avec une petite rotation) ; le mot clé reçoit un encadré terracotta qui pousse depuis la gauche. |
+| **1. Le motion design (le personnage principal, ~75 % de l'image)** | La caméra, le chiffre, le graphique, la courbe, la grille, le compteur, les formes | La **caméra voyage** (zoom, panoramique, plongée, rotation) et les données **se transforment** : se fissurent, fondent en courbe, se coupent en deux, se remplissent, roulent. Jamais une simple apparition, jamais un plan fixe. |
+| **2. Le texte** | Le carton (2 lignes max) | Il **arrive mot par mot** (chaque mot monte avec une petite rotation) ; le mot clé reçoit un encadré terracotta qui pousse depuis la gauche. |
+| **3. Tico (l'invité, 25 % de l'image maximum)** | La mascotte (ticket de caisse avec yeux, bras, jambes) | Il **subit et commente** le motion design aux moments clés : se fait écraser par le chiffre, glisse sur la courbe, sursaute au choc, pose la question de la fin. Il ne porte jamais un plan à lui seul. |
 
-**Le test** : à n'importe quelle seconde, mets la vidéo en pause. Les données ET le Ticket doivent être en train de faire quelque chose.
+**Le test** : à n'importe quelle seconde, mets la vidéo en pause : la CAMÉRA ou les DONNÉES sont en train de bouger. Si seul Tico bouge, c'est raté.
 
 ---
 
@@ -28,16 +30,17 @@
 
 | # | Règle | Mesure |
 |---|---|---|
-| 1 | Le Ticket est présent | **Du début à la fin** (pas seulement l'ouverture) |
-| 2 | Un gag ou une réaction du Ticket | **Toutes les 4 à 6 s** (5 à 7 en 30 s, 8 à 11 en 45 s, 12 à 16 en 62-75 s), chacun avec son bruitage |
+| 1 | Caméra | **Un mouvement de caméra au moins toutes les 3 s** (zoom ≥ 15 %, panoramique, plongée, rotation, ou coupe vers un NOUVEAU cadrage). **Jamais le même cadrage plus de 3 s.** Poussée sur le chiffre clé, petit tremblement sur les impacts |
+| 2 | Tico, l'invité | **Au minimum aux 4 moments clés** (hook, chiffre choc, retournement ou relance, fin), avec son bruitage ; il peut réagir entre-temps. **25 % de l'image maximum**, jamais le sujet principal d'un plan |
 | 3 | Les données se transforment | **Au moins 2 transformations par scène** (scène = une séquence du STORYBOARD ; liste section 5) |
 | 4 | Transitions avec une cause | L'objet d'une scène **devient** l'objet de la suivante (le chiffre éclate → les morceaux deviennent des barres → les barres fondent en courbe) |
 | 5 | 3D stylisée | **Au moins 1 vrai moment 3D par vidéo** (barres extrudées + caméra qui tourne, ticket qui se retourne, avion en papier en profondeur). **3D réaliste interdite** |
-| 6 | Caméra | Elle voyage : zoom arrière, panoramique, poussée sur le chiffre clé, petit tremblement sur les impacts |
+| 6 | Rythme | Un changement de motion design (mouvement de caméra OU transformation de données) toutes les 2 à 3 s, comme la N°05 |
 | 7 | Fond vivant | Jamais un aplat mort : quadrillage qui apparaît, symboles € et % qui dérivent très lentement |
 | 8 | Écran rempli | Jamais plus de 40 % de vide ; tout chiffre entièrement dans le cadre (marge ≥ 80 px). Sous le sol (zone de l'interface TikTok, y > 1330) : pas de texte, mais du DÉCOR sans texte (sol, ombres, objets posés, reflets) pour que l'image ne paraisse jamais vide en bas |
 | 9 | Son | Chaque geste a son bruitage (`SONS.md`) ; jamais 3 s sans un son d'action ; aucun bruitage plus fort que la voix |
-| 10 | Image 0 | Carton du hook de 3 à 6 mots lisible, le Ticket et le chiffre bougent déjà, un son ET la voix commencent à 0,0 s |
+| 10 | Image 0 | Carton du hook de 3 à 6 mots lisible, le chiffre et la caméra bougent déjà (Tico peut être là), un son ET la voix commencent à 0,0 s |
+| 11 | Chiffres | UN chiffre principal + 2 secondaires maximum (`SCRIPT-HOOKS.md`) |
 
 ---
 
@@ -62,10 +65,10 @@
   légendes, la couverture et le carrousel, on dit toujours « Tico ».
 
 ### Son rôle
-- Tico, c'est **toi / ton argent**. La voix dit « tu », Tico le vit à l'écran.
+- Tico est **l'invité** du motion design : il réagit, subit, commente. Il représente **toi / ton argent** : la voix dit « tu », Tico le vit.
 - Il a souvent un **adversaire** : un Ticket géant (les très gros salaires, la banque, l'inflation, l'État…), un tampon, un chiffre qui lui tombe dessus. Même dessin, plus grand, avec son montant.
 - Physique de dessin animé : anticipation, écrasement et étirement, rebonds, sueur, sursauts.
-- Taille : `scale` 0,8 à 1,6 dans le plan ; il ne doit jamais être une petite figurine perdue.
+- Taille : 25 % de l'image au maximum ; lisible (yeux visibles) mais jamais le sujet principal du plan.
 
 ---
 
@@ -128,7 +131,8 @@ Pièces prêtes : `motion/` du Studio (`catalogue.json`, champ `quand`).
 
 ## 8. Interdits
 
-- Le Ticket seul qui bouge pendant que les données restent figées (erreur de la démo v1).
+- Le Ticket seul qui bouge pendant que les données et la caméra restent figées (erreurs de la démo v1 et de la N°07).
+- Le même cadrage plus de 3 s, une vidéo qui ressemble à un dessin animé sur une scène fixe.
 - Un chiffre ou un graphique qui « apparaît » sans se transformer.
 - Le Ticket redessiné à la main (il changerait de tête).
 - La 3D réaliste, les images générées par IA, les photos.
@@ -139,8 +143,9 @@ Pièces prêtes : `motion/` du Studio (`catalogue.json`, champ `quand`).
 
 ## 9. Contrôle final DA (à cocher sur la planche avant de dire que c'est fini)
 
-- [ ] Le Ticket est visible et actif dans chaque scène, du début à la fin.
-- [ ] Un gag ou une réaction toutes les 4 à 6 s, chacun avec son bruitage.
+- [ ] Jamais le même cadrage plus de 3 s (vérifie la planche : deux images à 3 s d'écart ne doivent jamais avoir le même cadrage).
+- [ ] Tico aux 4 moments clés, jamais plus de 25 % de l'image, jamais seul à bouger.
+- [ ] UN chiffre principal + 2 secondaires maximum.
 - [ ] Chaque scène a au moins 2 transformations de données.
 - [ ] Chaque transition a une cause (l'objet devient le suivant).
 - [ ] Au moins un moment 3D stylisée.

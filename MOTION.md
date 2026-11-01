@@ -37,8 +37,8 @@ charlie947/motion-graphics-skills (« brand-intake ») ; contenu propre à la ch
   (option 1) et le module `exemples/ticket.js` ; gag de référence animé : `exemples/ticket-gag-exemple.html` (coupé en 4, écrasé par le tampon CRÉDIT).
 - Il EST l'argent : il s'allonge quand la facture monte, se fait plier, couper, tamponner, aplatir ; il marche,
   sautille, sursaute, a peur, est content. Physique de dessin animé : écrasement et étirement, rebonds, anticipation.
-- Il est là **du début à la fin** et joue AVEC les données (gag ou réaction toutes les 4 à 6 s, voir `DA.md`). Son
-  premier gag ouvre la vidéo (0 à 2 s), lié au sujet, compréhensible sans le son et sans lire.
+- **Il est l'invité** (décision du 2026-11-01 soir, voir `DA.md`) : le motion design passe d'abord ; Tico apparaît au moins
+  aux 4 moments clés (hook, choc, retournement ou relance, fin), 25 % de l'image maximum, jamais seul à bouger.
 - Il ne remplace jamais le motion design : les données se transforment autant que lui (au moins 2 transformations par séquence).
 - Toujours dessiné avec `ticket.js` (Studio `charte/ticket.js`, copie `exemples/ticket.js`), jamais redessiné.
 - Chaque geste du Ticket a son bruitage (voir SONS.md).

@@ -7,7 +7,7 @@ Ces règles augmentent les chances ; elles ne garantissent rien. Ne promets jama
 ## 0. Écrire pour la DA du Ticket (prioritaire, voir `DA.md` section 7)
 
 - **La voix raconte, le Ticket joue, l'écran résume.** Chaque phrase du script doit pouvoir être JOUÉE à l'écran
-  (par le Ticket ou par les données). Une phrase sans image : réécris-la.
+  par le motion design (caméra, données, texte) ; Tico réagit aux moments clés. Une phrase sans image : réécris-la.
 - Le Ticket, c'est **toi / ton argent** : la voix dit « tu », le Ticket le vit.
 - Ton complice, un peu taquin envers le chiffre ou l'adversaire (« ce chiffre te ment », « elle ne bouge pas »),
   jamais envers le spectateur.
@@ -98,7 +98,7 @@ pas » (sauf enjeu énorme) · jeu de mots qu'il faut décoder · hook caché da
                          renvoie si possible au hook (boucle). Rappel muet à l'écran « Abonne-toi » pendant les
                          2 dernières secondes.
 ```
-- Les gags du Ticket ponctuent TOUTE la vidéo (un toutes les 4 à 6 s, voir `DA.md`), chacun au service de l'idée dite à ce moment.
+- Le motion design porte la vidéo (caméra et données, voir `DA.md`) ; Tico intervient aux moments clés, au service de l'idée dite à ce moment.
 - Mets ton 2e meilleur moment près du début (pour survivre à la chute des premières secondes) et le meilleur à la
   révélation.
 - Un changement visuel toutes les 1,5 à 3 s, jamais plus de 3 s sans changement.
@@ -192,7 +192,8 @@ Ce qui fait marcher les grosses vidéos argent : **un personnage avec un cas pr�
 retournement, une info utile qu'on enregistre ou qu'on envoie, une question qui fait débattre.** 170 à 195 mots.
 
 ```
-0–3 s     HOOK          Tico (et souvent un 2e personnage) + l'enjeu ou l'injustice en une phrase.
+0–3 s     HOOK          Le chiffre ou l'enjeu en motion design (caméra qui pousse, chiffre qui claque), Tico réagit ; l'enjeu
+                        ou l'injustice en une phrase, dite à « tu ».
                         « Imagine : tu bosses 43 ans au SMIC, comme Tico. Son pote Karim, lui, n'a jamais travaillé. »
                         Image 0 : Tico + le chiffre de l'enjeu (« 43 ans ») ; le 2e personnage entre après 1,5 s.
 3–15 s    LE CAS        Prénom, âge, salaire, situation : tout est chiffré et sourcé.
@@ -205,6 +206,6 @@ retournement, une info utile qu'on enregistre ou qu'on envoie, une question qui 
                             seul appel). Tico réagit.
 ```
 - Durée minimum 62 s (au-dessus d'une minute), maximum 75 s.
-- Le personnage principal est TOUJOURS Tico (voir `DA.md` section 4) ; les autres personnages ont des prénoms variés.
+- Le cas est celui de Tico (voir `DA.md` section 4), mais l'image est portée par le motion design ; les autres personnages ont des prénoms variés.
 - Le soir, la relance après « abonne-toi » peut être le retournement lui-même (« Comment c'est possible ? »).
 - Un seul fil : une histoire, un cas, une révélation. Rien qu'on pourrait couper sans casser l'histoire.
