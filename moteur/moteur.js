@@ -337,10 +337,18 @@ SCENES.parcours={
 SCENES.mot={ overlay:true,
   init(sc){ sc.t0=T(sc.de); sc.t1=T(sc.a,nextPh(sc.t0)); action(sc.t0,sc.t1,'mot plein écran'); son(sc.t0,'impact-bass-2',.3); son(sc.t0+.02,'whoosh-short',.25); secousse(sc.t0+.05,10); },
   monde(){ return ''; },
-  ecran(t,sc){ if(t<sc.t0-.05||t>sc.t1+.25) return ''; const pin=eo(sg(t,sc.t0-.05,sc.t0+.12)), pout=sg(t,sc.t1,sc.t1+.25), bgc=sc.fond==='encre'?INK:ACC, fg=sc.fond==='encre'?CR:CR;
-    const lines=sc.txt.split('<br>'), sz=Math.min(230,...lines.map(l=>230*900/Math.max(900,tw(l,230,'IS')))), zoom=1+.06*sg(t,sc.t0,sc.t1);
-    let s=`<g data-role="mot" opacity="${f(1-pout)}"><rect width="1080" height="1920" fill="${bgc}" opacity="${f(pin)}"/><g transform="translate(540 ${f(900-(lines.length-1)*sz*.55)}) scale(${f(L(1.35,1,pin)*zoom)})">`;
-    lines.forEach((l,k)=>{ s+=txt(0,k*sz*1.05+sz*.35,sz,'IS',fg,l); }); return s+'</g></g>'; },
+  // Le plan « mot » VIT (contrôle mesuré, 02/11) : lettres qui tombent une à une, poussée de caméra nette,
+  // un trait d'encre qui se trace sous le mot, et sc.dessin(t,api) optionnel pour un geste propre à la vidéo.
+  ecran(t,sc){ if(t<sc.t0-.05||t>sc.t1+.25) return ''; const pin=eo(sg(t,sc.t0-.05,sc.t0+.12)), pout=sg(t,sc.t1,sc.t1+.25), bgc=sc.fond==='encre'?INK:ACC, fg=CR, d=Math.max(.6,sc.t1-sc.t0);
+    const lines=sc.txt.split('<br>'), sz=Math.min(230,...lines.map(l=>230*760/Math.max(760,tw(l,230,"IS")))), zoom=1+.2*eio(sg(t,sc.t0,sc.t1)), y0=900-(lines.length-1)*sz*.55;
+    let s=`<g data-role="mot" opacity="${f(1-pout)}"><rect width="1080" height="1920" fill="${bgc}" opacity="${f(pin)}"/><g transform="translate(540 ${f(y0)}) scale(${f(zoom)}) rotate(${f(-2+3*sg(t,sc.t0,sc.t1))})">`;
+    let n=0; const tot=lines.join('').length;
+    lines.forEach((l,k)=>{ const w=tw(l,sz,'IS'); let x=-w/2;
+      for(const ch of l){ const cw=tw(ch,sz,'IS')*(1-.035), u=bk(sg(t,sc.t0+n/Math.max(1,tot)*Math.min(.45,d*.35),sc.t0+n/Math.max(1,tot)*Math.min(.45,d*.35)+.22));
+        s+=`<g transform="translate(${f(x+cw/2)} ${f(k*sz*1.05+sz*.35-260*(1-u))}) rotate(${f((n%2?8:-8)*(1-u))})" opacity="${f(cl(u*3))}">`+txt(0,0,sz,'IS',fg,ch)+'</g>'; x+=cw; n++; } });
+    const tr=eio(sg(t,sc.t0+.35,sc.t1-.1)), yl=lines.length*sz*1.05-sz*.35;
+    if(tr>.02) s+=`<path d="M${f(-430)} ${f(yl)} L${f(-430+860*tr)} ${f(yl+10*Math.sin(tr*9))}" stroke="${sc.fond==='encre'?ACC:INK}" stroke-width="22" stroke-linecap="round" fill="none"/>`;
+    s+='</g>'; if(sc.dessin) s+=sc.dessin(t,{t0:sc.t0,t1:sc.t1,T,txt,tw,INK,PAP,GR,ACC,CR,eo,ei,eio,bk,sg,L,cl,f,...OUTILS}); return s+'</g>'; },
   poser(){ return null; },
 };
 
