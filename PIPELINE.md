@@ -165,7 +165,10 @@ Thomas les publie à la main avec la vidéo. Pas de voix : aucun crédit ElevenL
 - **Format** : un HTML avec des `<section class="slide">` 1080×1350, identité de la chaîne. Modèle de FORMAT :
   `exemples/carrousel-exemple.html` (garde la grille, les polices, les couleurs ; change le contenu et ajoute 1 ou 2
   petits dessins propres au sujet, différents à chaque fois). **Zone de sécurité** : tout ce qui compte entre x 80 et
-  x 940, y 140 et y 1150 (TikTok pose ses boutons à droite et sa légende en bas). Texte courant ≥ 40 px. Pas de slide
+  x 940, y 140 et y 1150 (TikTok pose ses boutons à droite et sa légende en bas). **Tout ce qu'il faut pour comprendre
+  est écrit EN GROS** (titres ≥ 96 px, texte ≥ 56 px) : la slide 1 dit le message complet en une phrase géante (date,
+  chiffre ou condition compris, ex. « 20 novembre : ton paiement en 4 fois devient un crédit. »). Les petits textes gris
+  (bandeau du haut, « glisse ») ne portent JAMAIS une info importante. Pas de slide
   à moitié vide : le contenu est centré et occupe la slide.
 - **Rendu** : `bash etapes/09-carrousel.sh <carrousel.html> $P/livrables <xx>` → `C<xx>-01.png`… + `C<xx>-planche.jpg`.
   REGARDE la planche : texte coupé, faute, chiffre différent de la vidéo, slide vide = corrige avant de livrer.
