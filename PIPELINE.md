@@ -125,7 +125,7 @@ et `historique/CHECKS.md` (règles apprises).
   trouvée (une ligne À FAIRE / À NE PAS FAIRE).
 - Contrôle de l'assemblage : un seul snapshot par couture (à 0) et un par séquence, regroupés en UNE planche ; rien de
   figé, rien de vide, pas de saut.
-- Bruitages : `assets/audio/sfx-events.json` (nom, temps, gain) calés sur les gestes, palette sonore propre à la vidéo,
+- Bruitages : lis `SONS.md` (bibliothèque de 75 sons, règle « chaque geste a son son », densité). `assets/audio/sfx-events.json` (nom, temps, gain) calés sur les gestes, palette sonore propre à la vidéo,
   choisie parmi les 20 sons de `.claude/skills/media-use/audio/assets/sfx/`, différente de la veille. `python3 build-sfx-mix.py`.
   **Niveaux validés par Thomas (2026-11-01)** : sons glitch (glitch-1, glitch-2, glitch-3) gain **0,065 maximum** ; aucun
   bruitage ne doit passer au-dessus de la voix : écoute/mesure le mix aux secondes où il y a des bruitages et baisse le gain

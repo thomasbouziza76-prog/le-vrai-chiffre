@@ -6,3 +6,5 @@ node_modules/
 renders/
 boards/
 __pycache__/
+
+!sons/*.mp3
