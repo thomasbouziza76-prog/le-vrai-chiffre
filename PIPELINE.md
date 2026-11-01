@@ -180,6 +180,16 @@ Thomas les publie à la main avec la vidéo. Pas de voix : aucun crédit ElevenL
 - **Livraison** : envoie les PNG dans l'ordre (SendUserFile) avec une légende carrousel (1re ligne = mot-clé + hook,
   2 lignes, 5 hashtags) dans le même message final que la vidéo.
 
+## 8 quater. Page de liens (levraichiffre.github.io) : mise à jour
+La page de liens de la chaîne affiche les chiffres clés et les 3 dernières vidéos depuis un fichier `data.json`.
+1. `mcp__claude-code-remote__add_repo` owner **levraichiffre**, repo **levraichiffre.github.io**, access push ; puis
+   `git clone --depth 1 https://github.com/levraichiffre/levraichiffre.github.io /home/claude/lien-page`.
+2. Dans `data.json`, ajoute EN TÊTE de `chiffres` le chiffre clé de la vidéo : `{"n":"<le chiffre, court>","t":"<une phrase
+   en tutoiement, 120 caractères max>","s":"<source courte + année>"}` (garde 10 chiffres max, supprime les plus vieux) ;
+   ajoute EN TÊTE de `videos` : `{"n":"<xx>","titre":"<titre de la vidéo>","lien":"https://www.tiktok.com/@le_vrai_chiffre"}`
+   (garde 3 vidéos). Ne touche à rien d'autre (jamais index.html). Le JSON doit rester valide (`python3 -m json.tool`).
+3. Commit + push. Si add_repo ou le push échoue : ne bloque pas la livraison, dis-le en une ligne dans le message final.
+
 ## 9. Boucle de retour (au DÉBUT de chaque exécution, ≈ 2 min)
 1. **Mise à jour automatique des stats (si le connecteur Metricool est présent dans ta session)** : Thomas ne remplit
    plus rien à la main. `getAnalyticsDataByMetrics` (brandId 7764816, from = il y a 30 jours, to = maintenant) avec les
