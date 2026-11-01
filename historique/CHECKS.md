@@ -18,3 +18,4 @@ Une ligne par règle ; ne garde que les règles encore utiles (≤ 40 lignes).
 - À FAIRE : chaque chiffre affiché tient entier dans le cadre (marge ≥ 80 px), vérifié sur la planche contact.
 - À FAIRE : au moins un plan qui change vraiment de décor ou d'échelle (pas le même graphique pendant toute la vidéo) + le moment 3D prévu.
 - À FAIRE : le périmètre exact du chiffre à l'écran et dans la légende (ex. « secteur privé », source Insee + année).
+- À FAIRE : glitch-1/2/3 à gain 0,065 maximum ; aucun bruitage plus fort que la voix (vérifié à l'écoute/mesure aux secondes des bruitages).

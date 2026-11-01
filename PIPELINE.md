@@ -115,6 +115,9 @@ Lis `recherche/GITHUB.md` (composants du catalogue local, plugins GSAP) et `hist
   figé, rien de vide, pas de saut.
 - Bruitages : `assets/audio/sfx-events.json` (nom, temps, gain) calés sur les gestes, palette sonore propre à la vidéo,
   choisie parmi les 20 sons de `.claude/skills/media-use/audio/assets/sfx/`, différente de la veille. `python3 build-sfx-mix.py`.
+  **Niveaux validés par Thomas (2026-11-01)** : sons glitch (glitch-1, glitch-2, glitch-3) gain **0,065 maximum** ; aucun
+  bruitage ne doit passer au-dessus de la voix : écoute/mesure le mix aux secondes où il y a des bruitages et baisse le gain
+  de tout son qui dépasse. On garde tous les bruitages, on règle juste leur niveau.
 - Musique (obligatoire) : pistes CC0 du tableau « The 10 tracks used for film C » de
   `.claude/skills/motion-design/references/music.md` (hôte files.freemusicarchive.org), tension + élan DIFFÉRENTES des 2
   dernières vidéos. Bruit de fond : 12 à 15 dB sous la voix dans les silences, gains ≤ 0,12. Échec de téléchargement : sans
