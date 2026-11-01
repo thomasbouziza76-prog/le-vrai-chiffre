@@ -47,6 +47,9 @@ ok('Appel « abonne-toi » : une seule fois, au milieu',len(ab)==1 and P.get('ab
 if ab:
     t_ab=K['p%d'%(ab[0]+1)]; ok('« Abonne-toi » placé entre 25 % et 70 % de la vidéo',.25*dur<=t_ab<=.7*dur,f'à {t_ab:.1f} s sur {dur:.1f} s')
 ok('Appel final (question de débat ou partage ciblé)',appel_fin,fin)
+MU=P.get('musique'); MU={'nom':MU} if isinstance(MU,str) else (MU or {})
+CATM=json.load(open(os.path.join(M,'musiques.json')))
+ok('Musique choisie et calée (nom connu + temps fort sur une ancre)',MU.get('nom') in CATM and (bool(MU.get('drop')) or 'none' in CATM.get(MU.get('nom'),{}).get('drop','')),f"musique : {MU}")
 ok('Hook : carton dès la 1re image',any(c.get('de')=='debut' for c in P['cartons']),'')
 
 # 4. image par image : caméra, débordements, chevauchements, taille de Tico, présence de Tico

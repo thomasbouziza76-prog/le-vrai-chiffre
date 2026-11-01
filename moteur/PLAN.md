@@ -36,6 +36,7 @@ const PLAN={
   persos:{ gauche:{nom:'Tico'}, droite:{nom:'Karim',couleur:'#f4e3d7',accessoire:'cravate'} },
   phrases:[ … ],             // le texte voix, phrase par phrase (voir ci-dessous)
   ancres:{ … },              // repères sur un mot précis
+  musique:{nom:'tension-cyber-anxiety', drop:'p6', coupe:['p5']},  // voir « musique » plus bas
   abonne:'p6',               // la phrase « Abonne-toi… »
   question:'dis',            // l'ancre de l'appel final
   cartons:[ … ], humeurs:[ … ], scenes:[ … ],
@@ -51,6 +52,29 @@ const PLAN={
 - `'p3'` : début de la phrase 3. `'p3+.5'` : 0,5 s après. `'p3-.4'` : 0,4 s avant. `'p3_fin'` : fin de la phrase 3.
 - `ancres:{ pop:{mot:'Jamais',phrase:'p12'} }` crée l'ancre `pop` sur le mot « Jamais » de la phrase 12. Ajoute `n:2` pour viser la 2e occurrence.
 - `'debut'` (uniquement pour le 1er carton) : affiché dès la première image. C'est le hook.
+
+### `musique` : la musique de fond au bon moment (obligatoire)
+```js
+musique:{nom:'tension-cyber-anxiety', drop:'p6', coupe:['p5']},
+```
+- `nom` : un morceau de `moteur/musiques.json` (CC0, téléchargé tout seul au rendu). Prends un **ton différent des 2 vidéos précédentes** (HISTORIQUE.md).
+- `drop` : l'ancre où doit tomber le **temps fort** du morceau, c'est-à-dire le chiffre choc ou la révélation. Le moteur décale le morceau pour que ça tombe pile. Pour un morceau sans temps fort (`none`), ne mets pas de `drop`.
+- `coupe` : les ancres où la musique **se tait 0,5 s juste avant**, pour un silence dramatique avant une révélation (« Et là… »). Une ou deux au maximum.
+- La musique est très basse et se baisse toute seule quand la voix parle : tu n'as pas de volume à régler.
+- Pour réécouter un changement de musique sans refaire les images : `python3 moteur/rendu.py $P --son-seul` (environ 1 min).
+
+| Nom | Morceau | BPM | Temps fort | Ton |
+|---|---|---|---|---|
+| `tension-time-attack-research` | Action Time Attack Research, Komiku | 120 | none | dark |
+| `tension-waiting-tttt` | Waiting TTTT, Loyalty Freak Music | 160 | none (bass at 11.9 s) | medium |
+| `tension-cyber-anxiety` | Cyber Anxiety, HoliznaCC0 | 160 | none (bass at 9.0 s) | medium |
+| `elan-dear-mr-super-computer` | Dear Mr Super Computer, HoliznaCC0 | 130 | 5.59 s | bright |
+| `elan-back-in-the-80s` | Back In The 80s, HoliznaCC0 | 120 | 7.93 s | bright |
+| `complet-machines-with-feelings` | Machines With Feelings, HoliznaCC0 | 100 | 19.14 s | bright |
+| `complet-retro-synths` | Retro Synths, HoliznaCC0 | 120 | 15.92 s | bright |
+| `complet-feels-good-to-be-alive` | It feels good to be alive too, Loyalty Freak Music | 140 | 13.64 s | bright |
+| `minimal-drifting-piano` | Drifting Piano, HoliznaCC0 | 100 | none | dark |
+| `minimal-ambiant-hope` | Ambiant Hope, Komiku | 133 | none | medium |
 
 ### `cartons` : le texte en haut de l'écran
 - Format : `{de:'p5', l1:'Et là… les deux', l2:'ont tort.', mot:'tort.'}`.

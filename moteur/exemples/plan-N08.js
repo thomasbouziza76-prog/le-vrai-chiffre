@@ -25,6 +25,7 @@ const PLAN={
   ],
   // ancres supplémentaires sur un mot précis (dans une phrase donnée)
   ancres:{ pop:{mot:'Jamais',phrase:'p12'}, riche:{mot:'riche',phrase:'p13'}, ou:{mot:'ou',phrase:'p13'}, classe:{mot:'classe',phrase:'p13'}, dis:{mot:'Dis-le',phrase:'p13'} },
+  musique:{nom:'tension-cyber-anxiety', drop:'p6', coupe:['p5']},   // le temps fort tombe sur « Range tous les salariés… », silence juste avant « Et là… »
   abonne:'p9',          // la pastille « + Abonne-toi » pendant cette phrase (pas de carton à ce moment-là)
   question:'dis',       // Tico sourit à partir de là (appel final)
 

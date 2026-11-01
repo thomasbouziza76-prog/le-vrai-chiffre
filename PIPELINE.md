@@ -166,7 +166,7 @@ La ligne « POUR THOMAS » du Juge est recopiée dans le message final, avec sa 
 ## 6. Ce qui change avec le moteur (rappel)
 - Plus de `frame.md`, de `STORYBOARD.md`, d'agents d'animation, d'`assemble.sh` ni de HyperFrames : c'était la cause des 2 h de production et des erreurs qui revenaient.
 - Le moteur garantit l'identité (palette, polices, cartons, sous-titres, Tico, grain papier). **Ta créativité va dans le plan** : l'angle, les scènes choisies, les repères, les humeurs et les cartons.
-- Musique : pas de musique de fond avec le moteur pour l'instant (voix + bruitages, comme la N°08).
+- **Musique (obligatoire, décision de Thomas du 01/11)** : `PLAN.musique` (`moteur/PLAN.md`). Un morceau CC0 de `moteur/musiques.json`, d'un ton différent des 2 vidéos précédentes, avec son temps fort calé sur le chiffre choc (`drop`) et un silence juste avant la révélation (`coupe`). Elle est très basse et se baisse toute seule sous la voix. Si le téléchargement échoue, le rendu continue sans musique : dis-le dans le message final.
 
 ## 7. Historique (avant la livraison)
 Ajoute une ligne EN HAUT de `historique/HISTORIQUE.md` du dépôt : date, N°, sujet, hook (archétype + phrase), format (matin court / soir histoire),

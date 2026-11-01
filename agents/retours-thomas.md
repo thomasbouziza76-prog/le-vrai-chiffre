@@ -28,6 +28,7 @@
 | 30/10 | démo v1 | « Le motion design tourne autour du ticket, c'est juste des apparitions de chiffres » | Faire apparaître un chiffre n'est pas du motion design | Critique motion : au moins 2 **transformations** de données par scène |
 | 01/11 | N°08 v1 | Chiffre coupé, superpositions de cartons, personnages qui flottent, pastille sur le carton, sous-titres mélangés | Une vidéo qui paraît bâclée perd la confiance | Contrôles automatiques : textes coupés, chevauchements |
 | 01/11 | N°08 | « Le abonne-toi, il est tout petit, faut qu'il soit en beaucoup plus gros, qu'il puisse pas le rater » | Un appel seulement auditif se rate (beaucoup regardent sans le son) | Le moteur affiche un GROS bouton « + Abonne-toi » (presque toute la largeur) avec un doigt qui appuie ; ne le réduis jamais |
+| 01/11 | moteur | « Il faut des musiques, au bon moment, comme les bruitages » | La musique porte l'émotion et le rythme ; sans elle la vidéo paraît vide | `PLAN.musique` obligatoire (contrôle), avec son temps fort calé sur le chiffre choc et un silence avant la révélation |
 | 01/11 | tâches | « On améliore le prompt mais les vidéos sont pas meilleures, à chaque fois un truc qui respecte pas » | Les règles écrites s'oublient | D'où le moteur, les contrôles en code et les agents relecteurs |
 | 30/10 | — | « J'aime pas le prénom Julie » | Choix de Thomas | Jamais « Julie ». Tico est fixe ; les autres prénoms varient (Yanis, Karim, Inès, Lucas, Sarah…) |
 

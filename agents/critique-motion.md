@@ -22,6 +22,7 @@ C'est la question que Thomas pose à chaque vidéo. Les contrôles en code ont d
 | 7 | **Le hook visuel (image 0,5 s)** | On ne comprend pas le sujet sans le son |
 | 8 | **Variété** | Plus de 3 s avec le même cadrage, ou la même scène pendant plus de 40 % de la vidéo sans nouveau repère |
 | 9 | **Cohérence voix / image** | Ce qu'on voit ne correspond pas à ce qui est dit à ce moment (comparer les horodatages aux `phrases`) |
+| 9 bis | **Musique et bruitages au bon moment** | `PLAN.musique` n'a pas de temps fort (`drop`) sur le chiffre choc ou la révélation, ou pas de `coupe` avant le moment « Et là… ». Ou le ton du morceau ne colle pas à l'histoire (tension pour un problème, élan pour une bonne nouvelle), ou c'est le même ton que les 2 vidéos précédentes |
 | 10 | **Fin** | L'écran final ne pose pas la question de débat clairement |
 
 Ensuite, **note de 1 à 10** : « est-ce du motion design au niveau de la N°08 ? »
