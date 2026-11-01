@@ -26,3 +26,6 @@ Une ligne par règle ; ne garde que les règles encore utiles (≤ 40 lignes).
 - À FAIRE : les données se transforment autant que le Ticket bouge (fissure, barres → courbe, coupe en deux, compteur).
 - À FAIRE : texte d'écran mot par mot ; le mot clé encadré passe en blanc seulement quand l'encadré est derrière lui.
 - À NE PAS FAIRE : le Ticket ou un drapeau qui cache un chiffre à lire ; deux cartons de texte superposés pendant une transition.
+- À NE PAS FAIRE : une couture où l'objet clé disparaît et où la séquence suivante démarre sur un décor vide qui se construit : la séquence N+1 s'ouvre sur un plan déjà rempli où l'objet de N est encore là (N°07, relecture).
+- À FAIRE : un personnage qui sort en réaction a quitté le cadre avant qu'une étiquette chiffrée apparaisse sur son trajet ; les étiquettes chiffrées restent au premier plan, jamais posées sur un personnage (N°07).
+- À FAIRE : animation en SVG piloté par le temps : déclencher le rendu par une propriété-fonction tweenée (proxy.clock(v)), pas seulement par onUpdate (le seek peut supprimer les événements) ; jamais « </script> » dans un code inliné (N°07).
