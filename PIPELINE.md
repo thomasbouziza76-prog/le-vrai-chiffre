@@ -108,7 +108,13 @@ HyperFrames. Seul `HISTORIQUE.md` (7 dernières vidéos) est à lire en entier :
   pauses (`[short pause]`, `[pause]`, « … »). **Sigles** : écris-les dans le texte voix comme ils se prononcent (« l'Aspa »
   et jamais « l'ASPA » ; « la Drès » pour la Drees ; « T.A.E.G. » épelé) ; à l'écran, garde l'orthographe officielle. Hook net : une balise au plus. Aucune balise de bruitage. Un soupir ou un
   rire n'est jamais un sous-titre.
-- ElevenLabs `creative_generate_speech`, model_id `eleven_v4`, voice_id `5l4ttmr4SKNgi0HnOelT` (Paul K), generations_count 1.
+- Réglage voix (choisi par Thomas le 01/11, N°08) : model_id `eleven_v4`, voice_id `5l4ttmr4SKNgi0HnOelT` (Paul K),
+  **stabilité « Creative » = 0.0**, similarité **inchangée** (valeur par défaut, au milieu), langue `fr`. Référence : la voix
+  de la N°08 (`exemples/` du Studio).
+  Méthode : `creative_add_flow_node` (node_type `tts`, model_id `eleven_v4`, voice_id ci-dessus, prompt = texte voix,
+  model_parameters `{"language_code":"fr","voice_settings":{"stability":0.0}}`), puis `creative_run_flow_nodes` sur ce nœud
+  avec generations_count 1. Si `add_flow_node` refuse `voice_settings` (erreur de validation, rien n'est facturé) :
+  rabats-toi sur `creative_generate_speech` (model_id `eleven_v4`, même voix, generations_count 1) et note-le dans HISTORIQUE.md.
   Attends avec `creative_get_flow_run_status`. Si la génération ÉCHOUE (statut failed, par ex. « Unusual activity…
   Free Tier access has been disabled ») : attends 30 s et relance UNE seule fois, avec le même texte (constaté : la
   2e tentative passe souvent). Jamais de relance après une génération réussie (chaque appel est facturé). Si la 2e
