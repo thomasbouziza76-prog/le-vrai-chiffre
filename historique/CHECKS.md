@@ -19,3 +19,4 @@ Une ligne par règle ; ne garde que les règles encore utiles (≤ 40 lignes).
 - À FAIRE : au moins un plan qui change vraiment de décor ou d'échelle (pas le même graphique pendant toute la vidéo) + le moment 3D prévu.
 - À FAIRE : le périmètre exact du chiffre à l'écran et dans la légende (ex. « secteur privé », source Insee + année).
 - À FAIRE : glitch-1/2/3 à gain 0,065 maximum ; aucun bruitage plus fort que la voix (vérifié à l'écoute/mesure aux secondes des bruitages).
+- À FAIRE (N°06 : la moitié des gens partent à 0:01) : la 1re seconde = UNE seule idée, 6 mots max à l'écran, en énorme, rien d'autre (pas de calendrier + ticket + tampon + petit texte en même temps) ; un mouvement fort dès l'image 0 (punch-in, objet qui tombe, chiffre qui claque) + un son à 0,0 s ; la voix commence à 0,0 s et parle au spectateur (« Tu… ? »). Le détail arrive à partir de 1,5 s.
