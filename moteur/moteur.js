@@ -376,6 +376,9 @@ const OUTILS={ /* la boîte à outils passée à dessin(t,a) — voir PLAN.md «
   fleche(x1,y1,x2,y2,p,o={}){ if(p<=0) return ''; const x=L(x1,x2,p), y=L(y1,y2,p), a=Math.atan2(y2-y1,x2-x1); return `<g stroke="${o.couleur||INK}" stroke-width="${o.ep||10}" stroke-linecap="round" fill="none"><path d="M${f(x1)} ${f(y1)} L${f(x)} ${f(y)}"/>`+(p>.9?`<path d="M${f(x-34*Math.cos(a-.5))} ${f(y-34*Math.sin(a-.5))} L${f(x)} ${f(y)} L${f(x-34*Math.cos(a+.5))} ${f(y-34*Math.sin(a+.5))}"/>`:'')+'</g>'; },
   // une ombre de contact au sol
   ombre(x,y,w,o={}){ return `<ellipse cx="${f(x)}" cy="${f(y)}" rx="${f(w/2)}" ry="${f(w*.09)}" fill="${INK}" opacity="${f(o.op??.14)}"/>`; },
+  // une icône de la bibliothèque Tabler (5 200 objets du quotidien, trait encre, remplissage papier) : nom → https://tabler.io/icons
+  icone(nom,x,y,taille,o={}){ const g=(typeof ICONES!=='undefined')&&ICONES[nom]; if(!g) return txt(x,y,40,'SM',ACC,'?'+nom);
+    const sc=taille/24; return `<g transform="translate(${f(x-taille/2)} ${f(y-taille/2)}) rotate(${f(o.rot||0)} 12 12) scale(${f(sc)})" fill="${o.fond||'none'}" stroke="${o.couleur||INK}" stroke-width="${f((o.ep||6)/sc)}" stroke-linecap="round" stroke-linejoin="round" opacity="${f(o.op??1)}">${g}</g>`; },
   // ressort : 0 → 1 avec dépassement (pour un objet qui se pose)
   ressort:(t,t0,d=.6)=>{ const u=sg(t,t0,t0+d); return u<=0?0:1-Math.exp(-6*u)*Math.cos(10*u); },
 };
