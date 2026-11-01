@@ -73,6 +73,11 @@ vidéos (`HISTORIQUE.md`) : ni frise chronologique, ni glaçon, ni iPhone-banque
    ni écouter (modèle : `exemples/ticket-gag-exemple.html`), bruité geste par geste (SONS.md). Ensuite, motion design
    riche qui bouge au moins autant que la N°05.
    Un snapshot à t = 0 et un à t = 0,3 s doivent déjà montrer le hook : sinon corrige le premier plan.
+   **Librairie du Studio d'abord** : `mcp__claude-code-remote__add_repo` owner **thomasbouziza76-prog**, repo **studio**,
+   access push, puis `git clone --depth 1 https://github.com/thomasbouziza76-prog/studio /home/claude/studio` (dépôt
+   PRIVÉ, jamais rendu public). Lis `motion/catalogue.json` (champ `quand`) et prends 1 à 3 pièces qui servent le sujet :
+   copie leur `index.html`, change le `CFG` (textes, chiffres, durées), garde la charte. Jamais la même pièce telle quelle
+   deux jours de suite (regarde `utilise_dans`) : modifie-la vraiment ou prends-en une autre. Si le clone échoue, continue sans.
 6. Pose les images clés, un snapshot par image clé (`npx hyperframes snapshot --at <t> --no-end --describe false -o boards/stills`),
    regarde-les (les images clés seulement), compare aux vidéos précédentes décrites dans HISTORIQUE.md.
 
@@ -204,6 +209,20 @@ La page de liens de la chaîne affiche les chiffres clés et les 3 dernières vi
    ajoute EN TÊTE de `videos` : `{"n":"<xx>","titre":"<titre de la vidéo>","lien":"https://www.tiktok.com/@le_vrai_chiffre"}`
    (garde 3 vidéos). Ne touche à rien d'autre (jamais index.html). Le JSON doit rester valide (`python3 -m json.tool`).
 3. Commit + push. Si add_repo ou le push échoue : ne bloque pas la livraison, dis-le en une ligne dans le message final.
+
+## 8 quinquies. Studio (dépôt privé) : archiver la vidéo
+Le Studio (`/home/claude/studio`, cloné à l'étape 3) garde tout pour nous : vidéos, couvertures, carrousels, fiches, librairie.
+1. `videos/N<xx>/` : `video.mp4` compressée (`ffmpeg -i <rendu> -vf scale=720:-2 -c:v libx264 -preset veryfast -crf 28
+   -c:a aac -b:a 96k -movflags +faststart`, moins de 15 Mo, sinon crf 32), `couverture.jpg` (qualité 85), `carrousel/C<xx>-NN.jpg`
+   (qualité 85), et `fiche.json` aux MÊMES champs que `videos/N06/fiche.json` (statut « À publier », stats vides,
+   `motion_utilises` = clés des pièces de la librairie utilisées).
+2. `chiffres/chiffres.json` : ajoute le chiffre clé (mêmes champs, `videos` contient `"<xx>"`).
+3. `motion/catalogue.json` : ajoute `"N<xx>"` dans `utilise_dans` des pièces utilisées. Si un plan de la vidéo est nouveau et
+   réussi, range-le comme nouvelle pièce : `motion/<nom-court>/index.html` autonome (polices `../../charte/polices/`,
+   en-tête « Quand l'utiliser », objet `CFG`, `window.seek(t)`), `apercu.gif` (12 i/s, 270 px de large), et une entrée au
+   catalogue (`nom`, `quand`, `duree_s`, `type`, `utilise_dans`). Une pièce au plus par jour, seulement si elle est belle.
+4. `python3 outils/tableau.py` (régénère README.md), puis commit + push. Si ça échoue : ne bloque pas la livraison,
+   dis-le en une ligne dans le message final.
 
 ## 9. Boucle de retour (au DÉBUT de chaque exécution, ≈ 2 min)
 1. **Les stats ne sont plus écrites ici** : la tâche « Stats et liens · chaque nuit » (22h43) remplit le Google Sheet
