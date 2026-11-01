@@ -103,7 +103,8 @@ HyperFrames. Seul `HISTORIQUE.md` (7 dernières vidéos) est à lire en entier :
 ## 2. Voix (≈ 2 min)
 - Écris le texte voix « comme à un pote » avec les balises eleven_v4 : tons (`[serious]`, `[curious]`, `[softly]`,
   `[warmly]`, `[surprised]`…), 3 à 6 sons humains (`[sighs]`, `[chuckles]`, `[exhales]`, `[gasps]`, `[clears throat]`),
-  pauses (`[short pause]`, `[pause]`, « … »). Hook net : une balise au plus. Aucune balise de bruitage. Un soupir ou un
+  pauses (`[short pause]`, `[pause]`, « … »). **Sigles** : écris-les dans le texte voix comme ils se prononcent (« l'Aspa »
+  et jamais « l'ASPA » ; « la Drès » pour la Drees ; « T.A.E.G. » épelé) ; à l'écran, garde l'orthographe officielle. Hook net : une balise au plus. Aucune balise de bruitage. Un soupir ou un
   rire n'est jamais un sous-titre.
 - ElevenLabs `creative_generate_speech`, model_id `eleven_v4`, voice_id `5l4ttmr4SKNgi0HnOelT` (Paul K), generations_count 1.
   Attends avec `creative_get_flow_run_status`. Si la génération ÉCHOUE (statut failed, par ex. « Unusual activity…

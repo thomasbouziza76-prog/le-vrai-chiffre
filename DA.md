@@ -35,7 +35,7 @@
 | 5 | 3D stylisée | **Au moins 1 vrai moment 3D par vidéo** (barres extrudées + caméra qui tourne, ticket qui se retourne, avion en papier en profondeur). **3D réaliste interdite** |
 | 6 | Caméra | Elle voyage : zoom arrière, panoramique, poussée sur le chiffre clé, petit tremblement sur les impacts |
 | 7 | Fond vivant | Jamais un aplat mort : quadrillage qui apparaît, symboles € et % qui dérivent très lentement |
-| 8 | Écran rempli | Jamais plus de 40 % de vide ; tout chiffre entièrement dans le cadre (marge ≥ 80 px) |
+| 8 | Écran rempli | Jamais plus de 40 % de vide ; tout chiffre entièrement dans le cadre (marge ≥ 80 px). Sous le sol (zone de l'interface TikTok, y > 1330) : pas de texte, mais du DÉCOR sans texte (sol, ombres, objets posés, reflets) pour que l'image ne paraisse jamais vide en bas |
 | 9 | Son | Chaque geste a son bruitage (`SONS.md`) ; jamais 3 s sans un son d'action ; aucun bruitage plus fort que la voix |
 | 10 | Image 0 | Carton du hook de 3 à 6 mots lisible, le Ticket et le chiffre bougent déjà, un son ET la voix commencent à 0,0 s |
 
