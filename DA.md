@@ -1,0 +1,133 @@
+# DA.md · La direction artistique de « Le Vrai Chiffre »
+
+> **À lire en PREMIER, avant tout autre fichier.**
+> Validée par Thomas le 2026-11-01. Si un autre fichier contredit celui-ci, **c'est DA.md qui gagne**.
+
+---
+
+## 1. La DA en une phrase
+
+**Des données qui bougent, et le Ticket qui joue avec elles, du début à la fin, en 100 % motion design.**
+
+---
+
+## 2. Les 3 couches, à l'écran en même temps, tout le temps
+
+| Couche | Ce que c'est | Ce qu'elle fait |
+|---|---|---|
+| **1. Les données** | Le chiffre, le graphique, la courbe, la grille, le compteur | Elles **se transforment** : se fissurent, fondent en courbe, se coupent en deux, se remplissent, roulent. Jamais une simple apparition. |
+| **2. Le Ticket** | La mascotte (ticket de caisse avec yeux, bras, jambes) | Il **joue avec les données** : grimpe sur les barres, glisse sur la courbe, pousse un drapeau, se fait écraser par un chiffre. Il réagit à chaque révélation. |
+| **3. Le texte** | Le texte d'écran (2 lignes max) | Il **arrive mot par mot** (chaque mot monte avec une petite rotation) ; le mot clé reçoit un encadré terracotta qui pousse depuis la gauche. |
+
+**Le test** : à n'importe quelle seconde, mets la vidéo en pause. Les données ET le Ticket doivent être en train de faire quelque chose.
+
+---
+
+## 3. Les règles chiffrées (toutes obligatoires)
+
+| # | Règle | Mesure |
+|---|---|---|
+| 1 | Le Ticket est présent | **Du début à la fin** (pas seulement l'ouverture) |
+| 2 | Un gag ou une réaction du Ticket | **Toutes les 4 à 6 s** (6 à 8 par vidéo), chacun avec son bruitage |
+| 3 | Les données se transforment | **Au moins 2 transformations par scène** (voir liste section 5) |
+| 4 | Transitions avec une cause | L'objet d'une scène **devient** l'objet de la suivante (le chiffre éclate → les morceaux deviennent des barres → les barres fondent en courbe) |
+| 5 | 3D stylisée | **Au moins 1 vrai moment 3D par vidéo** (barres extrudées + caméra qui tourne, ticket qui se retourne, avion en papier en profondeur). **3D réaliste interdite** |
+| 6 | Caméra | Elle voyage : zoom arrière, panoramique, poussée sur le chiffre clé, petit tremblement sur les impacts |
+| 7 | Fond vivant | Jamais un aplat mort : quadrillage qui apparaît, symboles € et % qui dérivent très lentement |
+| 8 | Écran rempli | Jamais plus de 40 % de vide ; tout chiffre entièrement dans le cadre (marge ≥ 80 px) |
+| 9 | Son | Chaque geste a son bruitage (`SONS.md`) ; jamais 3 s sans un son d'action ; aucun bruitage plus fort que la voix |
+| 10 | Image 0 | Le hook est lisible, le Ticket et le chiffre bougent déjà, un son tombe à 0,0 s |
+
+---
+
+## 4. Le Ticket
+
+### Toujours le même dessin
+- **Ne redessine jamais le Ticket.** Utilise le module `ticket.js` :
+  - dans le Studio : `/home/claude/studio/charte/ticket.js` (version de référence) ;
+  - copie de secours dans ce dépôt : `exemples/ticket.js`.
+- Appel : `Ticket.svg({x, y, scale, mouth, brows, look, armL, armR, footL, footR, sx, sy, rot, ...})` (options en tête du fichier).
+- **Animations prêtes à l'emploi** : `motion/ticket-*` dans le Studio (marche, course, saut, pousser, tirer, se faire écraser, avion en papier 3D, se retourner comme une carte…). Liste et usage : `motion/catalogue.json` (`"type": "ticket"`).
+
+### Son rôle
+- Le Ticket, c'est **toi / ton argent**. La voix dit « tu », le Ticket le vit à l'écran.
+- Il a souvent un **adversaire** : un Ticket géant (les très gros salaires, la banque, l'inflation, l'État…), un tampon, un chiffre qui lui tombe dessus. Même dessin, plus grand, avec son montant.
+- Physique de dessin animé : anticipation, écrasement et étirement, rebonds, sueur, sursauts.
+- Taille : `scale` 0,8 à 1,6 dans le plan ; il ne doit jamais être une petite figurine perdue.
+
+---
+
+## 5. Les transformations de données (en prendre au moins 2 par scène)
+
+| Transformation | Exemple |
+|---|---|
+| **Fissure / éclatement** | Le gros chiffre se fissure sur le mot qui dérange, puis éclate en morceaux |
+| **Barres 3D → courbe** | Les barres extrudées fondent en une courbe continue |
+| **Coupe en deux** | Une ligne (médiane, seuil) coupe la courbe ; une moitié se remplit en terracotta, « 50 % » compte |
+| **Compteur** | Le chiffre roule d'une valeur à l'autre (2 733 → 2 190), calculé dans le code |
+| **Drapeau qui glisse** | Un repère (moyenne, prix, taux) est tiré ou poussé le long d'un axe |
+| **Grille de 100** | 100 tuiles, une partie change de couleur |
+| **Zoom sur l'indicateur** | Une case grossit depuis sa vraie place |
+| **Remplissage / vidange** | Une jauge, un bocal, une barre qui se vide pendant que le Ticket s'y accroche |
+| **Pile à ressort** | Des cartes (dépenses, offres) tombent et s'empilent sur le Ticket |
+
+Pièces prêtes : `motion/` du Studio (`catalogue.json`, champ `quand`).
+
+---
+
+## 6. La vidéo de référence (à regarder AVANT de faire le storyboard)
+
+- Code : `exemples/ticket-salaire-median-v2.html` (16 s, fonction `seek(t)`).
+- Images clés : `exemples/ticket-salaire-median-v2-planche.jpg`.
+- Vidéo : Studio, `exemples/ticket-salaire-median-v2.mp4`.
+- **On s'inspire du NIVEAU de mouvement et de la façon dont les 3 couches s'emboîtent. On ne copie jamais le contenu.**
+
+| Temps | Données (couche 1) | Ticket (couche 2) | Texte (couche 3) |
+|---|---|---|---|
+| 0–2,4 s | « 2 733 € » énorme, se fissure | Arrive en marchant, voit le chiffre, sursaute | « Ce chiffre te **ment.** » tamponné |
+| 2,4–5,6 s | Le chiffre éclate ; barres 3D qui montent, caméra qui tourne ; la barre du 1 % jaillit | Soulevé par une barre comme un ascenseur, saute de barre en barre | « Range les salaires… » mot par mot |
+| 5,6–7 s | Les barres fondent en courbe (calée sur les vrais chiffres Insee) | Porté par la surface, puis toboggan sur la courbe | « Relie-les : voilà la **courbe**… » |
+| 7–9 s | Le géant tombe sur la queue de la courbe, qui tremble ; le drapeau MOYENNE glisse à 2 733 € | Catapulté, retombe, fâché | « Ces gros salaires tirent la **moyenne.** » |
+| 9–12 s | Le drapeau ne bouge pas | Pousse de toutes ses forces, glisse, tombe, a une idée | « Tu peux pousser : elle ne **bouge pas.** » |
+| 12–12,6 s | Drapeau MÉDIANE planté ; la moitié gauche se remplit, « 50 % » compte | Sursaute, puis fier | « Le vrai milieu, c'est la **médiane.** » |
+| 12,7–16 s | Compteur 2 733 → 2 190 € ; « Le vrai chiffre. » | S'assoit essoufflé, se relève et montre le chiffre | Source en petit |
+
+---
+
+## 7. Le texte dans cette DA (voix + écran)
+
+- **La voix raconte, le Ticket joue, l'écran résume.** Jamais la voix qui lit le texte d'écran mot pour mot.
+- **Écris le script en pensant aux gags** : chaque phrase doit pouvoir être JOUÉE par le Ticket ou par les données. Si une phrase ne donne aucune image, réécris-la.
+- **Ton** : complice, un peu taquin envers le chiffre ou l'adversaire, jamais envers le spectateur. Le chiffre « ment », la moyenne « ne bouge pas », le crédit « tamponne ».
+- **Phrases courtes** : une idée par phrase, souvent avec un verbe d'action (pousser, tirer, tomber, couper, glisser, écraser).
+- **Texte d'écran** : 2 lignes maximum, 3 à 7 mots par ligne, **un seul mot clé encadré** par carton.
+- Exemples dans la DA :
+  - « Ce chiffre te **ment.** »
+  - « Ces gros salaires tirent la **moyenne.** »
+  - « Tu peux pousser : elle ne **bouge pas.** »
+  - « Le vrai milieu, c'est la **médiane.** »
+- Les règles de `SCRIPT-HOOKS.md` (hook, CTA au milieu, boucle, mots) restent valables ; cette section dit **comment** les écrire.
+
+---
+
+## 8. Interdits
+
+- Le Ticket seul qui bouge pendant que les données restent figées (erreur de la démo v1).
+- Un chiffre ou un graphique qui « apparaît » sans se transformer.
+- Le Ticket redessiné à la main (il changerait de tête).
+- La 3D réaliste, les images générées par IA, les photos.
+- Le Ticket qui cache un chiffre ou un texte à lire.
+- Le texte « Le Vrai Chiffre » comme logo dans la vidéo (le nom de la chaîne est déjà partout).
+
+---
+
+## 9. Contrôle final DA (à cocher sur la planche avant de dire que c'est fini)
+
+- [ ] Le Ticket est visible et actif dans chaque scène, du début à la fin.
+- [ ] Un gag ou une réaction toutes les 4 à 6 s, chacun avec son bruitage.
+- [ ] Chaque scène a au moins 2 transformations de données.
+- [ ] Chaque transition a une cause (l'objet devient le suivant).
+- [ ] Au moins un moment 3D stylisée.
+- [ ] Texte d'écran mot par mot, un mot clé encadré, 2 lignes max.
+- [ ] Pause à n'importe quelle seconde : données ET Ticket en mouvement.
+- [ ] Aucun chiffre caché par le Ticket ; aucun écran à moitié vide.

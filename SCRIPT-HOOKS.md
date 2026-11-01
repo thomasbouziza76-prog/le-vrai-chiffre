@@ -4,6 +4,17 @@ Synthèse adaptée à « Le Vrai Chiffre » (finance, 45 s, 9:16, voix off, moti
 viral-tiktok-content), qui reprennent les cadres de Kallaway, MrBeast, Hormozi, Koe, Welsh, Bush et Galloway.
 Ces règles augmentent les chances ; elles ne garantissent rien. Ne promets jamais qu'une vidéo va percer.
 
+## 0. Écrire pour la DA du Ticket (prioritaire, voir `DA.md` section 7)
+
+- **La voix raconte, le Ticket joue, l'écran résume.** Chaque phrase du script doit pouvoir être JOUÉE à l'écran
+  (par le Ticket ou par les données). Une phrase sans image : réécris-la.
+- Le Ticket, c'est **toi / ton argent** : la voix dit « tu », le Ticket le vit.
+- Ton complice, un peu taquin envers le chiffre ou l'adversaire (« ce chiffre te ment », « elle ne bouge pas »),
+  jamais envers le spectateur.
+- Phrases courtes, une idée, un verbe d'action (pousser, tirer, tomber, couper, glisser, écraser).
+- Texte d'écran : 2 lignes max, 3 à 7 mots par ligne, un seul mot clé encadré par carton.
+- En écrivant, note à côté de chaque phrase le gag du Ticket et la transformation de données qui l'accompagnent.
+
 ## 1. Les 7 principes
 
 1. **Le hook est la porte.** TikTok, Reels et Shorts décident en 1,5 à 3 s. Si les 3 premières secondes ratent,
@@ -76,7 +87,7 @@ pas » (sauf enjeu énorme) · jeu de mots qu'il faut décoder · hook caché da
                          pousser à revoir. Autorisé : un rappel muet à l'écran de 1 à 3 mots (« Abonne-toi »,
                          « Enregistre ») pendant les 2 dernières secondes.
 ```
-- Le gag éventuel se place dans l'escalade, en 2 à 3 s, et sert l'idée.
+- Les gags du Ticket ponctuent TOUTE la vidéo (un toutes les 4 à 6 s, voir `DA.md`), chacun au service de l'idée dite à ce moment.
 - Mets ton 2e meilleur moment près du début (pour survivre à la chute des premières secondes) et le meilleur à la
   révélation.
 - Un changement visuel toutes les 2 à 3 s (déjà dans la grammaire du storyboard).

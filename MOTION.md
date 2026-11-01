@@ -33,12 +33,14 @@ cesse, rien de figé. Toute vidéo doit bouger AU MOINS autant. La N°06 (paieme
 ## Le Ticket, la mascotte de la chaîne
 - Un ticket de caisse crème, contour encre, bas en dents de scie, deux gros yeux ronds, une bouche, des bras et des
   jambes en trait d'encre ; son montant en terracotta (Space Mono). Dessin de référence : `exemples/ticket-personnage.png`
-  (option 1) ; gag de référence animé : `exemples/ticket-gag-exemple.html` (coupé en 4, écrasé par le tampon CRÉDIT).
+  (option 1) et le module `exemples/ticket.js` ; gag de référence animé : `exemples/ticket-gag-exemple.html` (coupé en 4, écrasé par le tampon CRÉDIT).
 - Il EST l'argent : il s'allonge quand la facture monte, se fait plier, couper, tamponner, aplatir ; il marche,
   sautille, sursaute, a peur, est content. Physique de dessin animé : écrasement et étirement, rebonds, anticipation.
 - Le gag d'ouverture (0 à 2 s) le met en scène, TOUJOURS lié au sujet, compréhensible sans le son et sans lire.
-- Il ne remplace PAS le motion design : après le gag, la vidéo reste un vrai motion design riche (types de plans,
-  caméra qui voyage, comme la N°05) ; le Ticket peut revenir 1 ou 2 fois (réaction, CTA, chute finale).
+- **Mis à jour le 2026-11-01 (voir `DA.md`)** : le Ticket reste **du début à la fin** et joue AVEC les données
+  (gag ou réaction toutes les 4 à 6 s). Il ne remplace jamais le motion design : les données se transforment autant
+  que lui (au moins 2 transformations par scène).
+- Toujours dessiné avec `ticket.js` (Studio `charte/ticket.js`, copie `exemples/ticket.js`), jamais redessiné.
 - Chaque geste du Ticket a son bruitage (voir SONS.md).
 
 ## Les règles des pros (recherche du 2026-11-01 : Disney, Jorge R. Canedo / Ordinary Folk, Vox, Kurzgesagt)

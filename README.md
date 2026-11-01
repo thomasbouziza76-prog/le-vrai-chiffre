@@ -2,6 +2,7 @@
 
 Kit de la vidéo quotidienne (TikTok / YouTube) : procédure, scripts d'étapes, copie de HyperFrames 0.8.82 et de ses skills.
 
+- `DA.md` : **la direction artistique, à lire en premier** (prime sur tout le reste)
 - `PIPELINE.md` : la procédure complète (point d'entrée de la tâche planifiée)
 - `SCRIPT-HOOKS.md`, `sujets.md` : écriture du script, 60 sujets
 - `etapes/` : scripts des étapes mécaniques (installation, voix, contrôle, livrables)

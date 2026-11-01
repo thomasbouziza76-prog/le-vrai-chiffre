@@ -6,6 +6,19 @@ réécris pas, ne relis pas leur code. Garde ta réflexion pour le sujet, le scr
 
 Racine du dépôt : `$LVC_REPO` (après l'étape 0). Projet du jour : `$P` = sortie de `etapes/01-nouveau-projet.sh`.
 
+## Ordre de lecture (obligatoire)
+
+| Ordre | Fichier | Pourquoi |
+|---|---|---|
+| 1 | **`DA.md`** | La direction artistique : Ticket du début à la fin + données qui bougent. **Il prime sur tout.** |
+| 2 | `PIPELINE.md` (ce fichier) | Les étapes, dans l'ordre |
+| 3 | `SCRIPT-HOOKS.md` | Écrire le script (hook, CTA, boucle) |
+| 4 | `MOTION.md` | Couleurs, polices, règles de mouvement des pros |
+| 5 | `SONS.md` | Bruitages et niveaux |
+| 6 | `historique/CHECKS.md` | Les erreurs déjà faites, à ne pas refaire |
+
+**Si deux fichiers se contredisent : `DA.md` gagne, puis `historique/CHECKS.md`, puis ce fichier.**
+
 ## 0. Installer (≈ 1 min)
 `bash etapes/00-installer.sh` puis `source ~/.hf-env`. Il installe HyperFrames 0.8.82 et ses skills (copie dans
 `hyperframes/`), GSAP local, Whisper et prépare les polices. Lis `~/motion-design-claude-code/AGENTS.md` (jamais
@@ -50,8 +63,8 @@ HyperFrames. Seul `HISTORIQUE.md` (7 dernières vidéos) est à lire en entier :
   du script gagne ; les mots à faible confiance viennent de la transcription).
 
 ## 3. Direction, monde, storyboard (≈ 15 min)
-Même règle n° 1 qu'avant : chaque vidéo est une création NOUVELLE. Identité fixe : palette (papier #f6f1e9, encre
-#1a1612, terracotta #c25b28 réservé aux moments qui comptent), polices Instrument Sans + Space Mono, sous-titre mot par mot
+Même règle n° 1 qu'avant : chaque vidéo est une création NOUVELLE. Identité fixe : palette (papier #f6f1e8, encre
+#1c1a17, terracotta #c4552d réservé aux moments qui comptent ; détail dans MOTION.md), polices Instrument Sans + Space Mono, sous-titre mot par mot
 en bas (58 px, y 1196, boîte terracotta sur le mot clé), 9:16, finition. Tout le reste change : concept, monde,
 objets, caméra, transitions, signatures, effets, bruitages. Interdit de reprendre le monde ou les mécanismes des 7 dernières
 vidéos (`HISTORIQUE.md`) : ni frise chronologique, ni glaçon, ni iPhone-banque en fil rouge.
@@ -69,9 +82,11 @@ vidéos (`HISTORIQUE.md`) : ni frise chronologique, ni glaçon, ni iPhone-banque
    x > 940 entre y 700 et 1330 ; sous-titre clair (`.fx-sub.dark`) sur fond sombre. Ids SVG uniques et préfixés.
 5. LES 3 PREMIÈRES SECONDES : dès l'image 0, le texte d'écran du hook est LISIBLE et quelque chose bouge. Pas de fondu
    depuis le blanc, pas d'écran vide, pas de logo, pas de titre qui monte lentement. Le premier bruitage tombe à 0 s.
-   **Ouverture = gag du Ticket** (mascotte, voir MOTION.md) : 0 à 2 s, un gag physique lié au sujet, compris sans lire
-   ni écouter (modèle : `exemples/ticket-gag-exemple.html`), bruité geste par geste (SONS.md). Ensuite, motion design
-   riche qui bouge au moins autant que la N°05.
+   **Ouverture = gag du Ticket** (0 à 2 s, lié au sujet, compris sans lire ni écouter, bruité geste par geste). **Puis le
+   Ticket reste jusqu'à la fin et joue avec des données qui se transforment** : règles chiffrées de `DA.md` (gag toutes
+   les 4 à 6 s, au moins 2 transformations de données par scène, transitions avec une cause). Regarde d'abord la vidéo de
+   référence `exemples/ticket-salaire-median-v2.html` + `exemples/ticket-salaire-median-v2-planche.jpg`. Le Ticket se
+   dessine TOUJOURS avec `ticket.js` (jamais à la main).
    Un snapshot à t = 0 et un à t = 0,3 s doivent déjà montrer le hook : sinon corrige le premier plan.
    **Librairie du Studio d'abord** : `mcp__claude-code-remote__add_repo` owner **thomasbouziza76-prog**, repo **studio**,
    access push, puis `git clone --depth 1 https://github.com/thomasbouziza76-prog/studio /home/claude/studio` (dépôt
@@ -82,7 +97,7 @@ vidéos (`HISTORIQUE.md`) : ni frise chronologique, ni glaçon, ni iPhone-banque
    regarde-les (les images clés seulement), compare aux vidéos précédentes décrites dans HISTORIQUE.md.
 
 ### Qualité visuelle (obligatoire, à inscrire dans frame.md et dans chaque paquet d'agent)
-Lis d'abord `MOTION.md` (la charte de mouvement), puis `recherche/GITHUB.md` (composants du catalogue local, plugins GSAP)
+Lis d'abord `DA.md` (la direction artistique, prioritaire), puis `MOTION.md` (la charte de mouvement), puis `recherche/GITHUB.md` (composants du catalogue local, plugins GSAP)
 et `historique/CHECKS.md` (règles apprises).
 1. **Flou de mouvement** : composant `motion-blur` (`npx hyperframes add motion-blur`), `data-hf-motion-blur` sur tout
    objet qui traverse l'écran ou zoome vite.
@@ -116,7 +131,8 @@ et `historique/CHECKS.md` (règles apprises).
 - Paquets : `node .claude/skills/product-launch-video/scripts/frame-packets.mjs --project <slug> --storyboard <slug>/STORYBOARD.md`
   (depuis `~/motion-design-claude-code`).
 - Répartis les séquences en 3 agents `general-purpose` au plus (≈ 2-3 séquences chacun), lancés en même temps. Chaque agent ne reçoit
-  QUE : ses paquets, le kit `reference/monde.html`, les images clés de ses séquences, la charte et les 4 règles.
+  QUE : ses paquets, le kit `reference/monde.html`, les images clés de ses séquences, `DA.md`, `ticket.js` (chemin absolu),
+  la charte et les 4 règles. Chaque paquet dit quelle transformation de données et quel gag du Ticket la séquence contient.
   Règles BLOQUANTES : (1) UN SEUL `<script>` par template ; (2) `gsap.timeline({paused:true, onUpdate: render})` ;
   (3) `<script src="assets/vendor/gsap.min.js">`, jamais le CDN ; (4) ids préfixés (`p03-…`) et ids SVG uniques.
   Un agent qui dépasse 35 min : demande-lui de livrer.
@@ -128,7 +144,7 @@ et `historique/CHECKS.md` (règles apprises).
 - **Relecture de mise en scène (agent séparé, ≈ 5 min)** : un agent `general-purpose` neuf, qui n'a pas fait l'animation,
   reçoit UNE planche (un snapshot par plan + les coutures) et la grille : rythme, lisibilité sur téléphone, plans vides
   ou figés, effet « cheap » (texte qui apparaît sans mouvement, objets sans ombre, courbes linéaires), respect de
-  l'identité. Il note chaque plan sur 5 et nomme les 2 plus faibles avec la correction précise. Corrige ces 2 plans
+  l'identité, et la grille « Contrôle final DA » de `DA.md` section 9. Il note chaque plan sur 5 et nomme les 2 plus faibles avec la correction précise. Corrige ces 2 plans
   (ou relance l'agent de la séquence), une seule fois. Ajoute à `historique/CHECKS.md` toute règle nouvelle qu'il a
   trouvée (une ligne À FAIRE / À NE PAS FAIRE).
 - Contrôle de l'assemblage : un seul snapshot par couture (à 0) et un par séquence, regroupés en UNE planche ; rien de

@@ -1,0 +1,222 @@
+<!doctype html><html><head><meta charset="utf-8"><style>
+@font-face{font-family:IS;src:url(../polices/InstrumentSans-700.woff2)}
+@font-face{font-family:SM;src:url(../polices/SpaceMono-700.woff2)}
+html,body{margin:0;width:1080px;height:1920px;overflow:hidden}
+body{background:radial-gradient(ellipse at 50% 42%,#f7f2ea 0%,#efe8dc 58%,#e2d8c8 100%)}
+#g{position:absolute;inset:0;opacity:.16;z-index:3;pointer-events:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence baseFrequency='.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)' opacity='.35'/%3E%3C/svg%3E")}
+svg{position:absolute;inset:0}
+</style><script src="ticket.js"></script></head><body>
+<svg id="s" width="1080" height="1920" viewBox="0 0 1080 1920"></svg><div id="g"></div>
+<script>
+/* EXEMPLE « salaire médian » avec le Ticket du début à la fin (démo sans voix, 16 s).
+   Chiffres : Insee Première n° 2079 (23/10/2025), salariés du privé, net, équivalent temps plein, 2024 :
+   moyenne 2 733 €, médiane 2 190 €, 1 % gagnent plus de 10 261 €. Les barres sont un SCHÉMA (pas à l'échelle). */
+const S=document.getElementById('s');
+const INK='#1c1a17',PAP='#fbf8f2',GR='#6b645a',ACC='#c4552d',ACT='#a3431f';
+const cl=(x,a=0,b=1)=>Math.max(a,Math.min(b,x)), L=(a,b,u)=>a+(b-a)*u, sg=(t,a,b)=>cl((t-a)/(b-a));
+const eo=u=>1-Math.pow(1-cl(u),3), ei=u=>Math.pow(cl(u),3), eio=u=>{u=cl(u);return u<.5?4*u*u*u:1-Math.pow(-2*u+2,3)/2;};
+const bk=u=>{u=cl(u);const c1=1.9,c3=c1+1;return 1+c3*Math.pow(u-1,3)+c1*Math.pow(u-1,2);};
+const el=u=>{u=cl(u);if(u===0||u===1)return u;return Math.pow(2,-10*u)*Math.sin((u*10-.75)*2.0944)+1;};
+const f=n=>Math.round(n*10)/10;
+let CTX; const tw=(s,size,font)=>{CTX.font=`700 ${size}px ${font}`;return CTX.measureText(s).width;};
+const X=v=>2110+(v-1000)*880/3000;                 // règle des salaires (monde)
+const G1=1400, G3=1250, PIV=2550;
+const BH=[260,360,450,540,640,760,3000], BX=i=>-60+i*180, BW=140, BC=i=>BX(i)+BW/2;
+const barH=(i,t)=>{ if(i===6) return t<5.1?0:30+(BH[6]-30)*eo(sg(t,5.1,5.6)); const a=2.95+i*.09; return 30+(BH[i]-30)*bk(sg(t,a,a+.35)); };
+const barTop=(i,t)=>G1-(t<2.95?0:barH(i,t));
+
+function txt(x,y,size,font,fill,s,o={}){
+  return `<text x="${f(x)}" y="${f(y)}" font-family="${font}" font-weight="700" font-size="${size}" fill="${fill}" text-anchor="${o.a||'middle'}" letter-spacing="${o.ls||(font==='IS'?-size*.035:0)}" opacity="${o.op??1}" ${o.tr?`transform="${o.tr}"`:''}>${s}</text>`;}
+function pop(t,t0,d=.35){return t<t0?0:bk(sg(t,t0,t0+d));}
+// courbe : log-normale calée sur les vrais chiffres Insee (médiane 2 190 €, moyenne 2 733 € → σ = 0,666)
+const MU=Math.log(2190), SIG=0.6656, VX=x=>1000+(x+40)*4000/1180, XV=v=>-40+(v-1000)*1180/4000;
+const PDF=v=>Math.exp(-Math.pow(Math.log(v)-MU,2)/(2*SIG*SIG))/v, PMAX=PDF(Math.exp(MU-SIG*SIG));
+const CH=x=>x<-40?0:640*PDF(VX(x))/PMAX;
+// légende écran mot par mot : chaque mot monte avec rotation, le mot clé a un encadré qui pousse depuis la gauche
+function caption(t,t0,t1,l1,l2,key){
+  if(t<t0||t>t1+.35) return '';
+  const pout=ei(sg(t,t1,t1+.3)), size=80;
+  let s=`<g opacity="${f(1-pout)}" transform="translate(0 ${f(-pout*260)})">`;
+  let wi=0; const kw=key?key.split(' '):[];
+  [[l1,250],[l2,350]].forEach(([line,y])=>{ if(!line) return;
+    const words=line.split(' '), ws=words.map(w=>tw(w,size,'IS')), sp=tw(' ',size,'IS');
+    const tot=ws.reduce((a,b)=>a+b,0)+sp*(words.length-1); let x=540-tot/2;
+    words.forEach((w,j)=>{ const d=t0+wi*.055, p=bk(sg(t,d,d+.32)); wi++;
+      const isK=kw.includes(w);
+      if(p>0){ const dy=(1-p)*60, rot=(1-p)*8;
+        let g=`<g opacity="${f(cl(p*2))}" transform="translate(${f(x)} ${f(y+dy)}) rotate(${f(rot)})">`;
+        if(isK){ const kp=eo(sg(t,d+.15,d+.45)); g+=`<rect x="-10" y="-66" width="${f((ws[j]+20)*kp)}" height="84" fill="${ACC}" transform="rotate(-1.5)"/>`; }
+        g+=txt(0,0,size,'IS',isK&&eo(sg(t,d+.15,d+.45))>.55?'#f6f1e8':INK,w,{a:'start'})+'</g>'; s+=g; }
+      x+=ws[j]+sp; }); });
+  return s+'</g>';
+}
+/* ───── courbe / barres ───── */
+function stepH(x,t){ for(let i=0;i<7;i++){ if(x>=BX(i)&&x<=BX(i)+BW) return barH(i,t); } return 0; }
+let JEL=0;
+function jelly(t){ if(t<7.42) return 0; const u=t-7.42; return -.22*Math.exp(-4*u)*Math.cos(14*u); }
+function surfH(x,t){ if(t<5.6) return 0; const u=eio(sg(t,5.75,6.4)); return L(stepH(x,t),CH(x),u)*(1+jelly(t)*Math.exp(-Math.pow((x-900)/260,2))); }
+const ON=(x,t)=>G1-surfH(x,t);
+function sweep(t){ return L(-80,XV(2190),eio(sg(t,11.95,12.5))); }
+function area(t){
+  if(t<5.6) return '';
+  const u=eio(sg(t,5.75,6.4)); let pts=[]; const N=140;
+  for(let k=0;k<=N;k++){ const x=-60+k*(1220/N); pts.push([x, ON(x,t)]); }
+  const d='M-60 '+G1+' '+pts.map(p=>`L${f(p[0])} ${f(p[1])}`).join(' ')+` L1160 ${G1} Z`;
+  let s=`<defs><clipPath id="half"><rect x="-80" y="0" width="${f(Math.max(0,sweep(t)+80))}" height="1500"/></clipPath></defs>`;
+  s+=`<path d="${d}" fill="${PAP}" stroke="${INK}" stroke-width="${f(6+2*u)}" stroke-linejoin="round"/>`;
+  if(u>.5) for(let k=0;k<12;k++){ const x=-20+k*95; const h=surfH(x,t); if(h>40) s+=`<path d="M${f(x)} ${G1-8} V${f(G1-h+26)}" stroke="#e6ddce" stroke-width="5" opacity="${f((u-.5)*2)}"/>`; }
+  if(t>11.95) s+=`<path d="${d}" fill="${ACC}" stroke="${INK}" stroke-width="8" stroke-linejoin="round" clip-path="url(#half)"/>`;
+  if(u>.8&&t<11.95) s+=txt(560,G1-30,30,'SM',GR,'(schéma calé sur les chiffres Insee)',{op:f((u-.8)*5)});
+  if(t>11.95){ const k=eo(sg(t,12.0,12.6)), n=Math.round(50*k);
+    s+=txt(110,G1-190,96,'IS','#f6f1e8',n+' %',{op:cl(k*3)});
+    s+=txt(720,G1-90,80,'IS',INK,n+' %',{op:cl(k*3)}); }
+  return s;
+}
+function bars(t){
+  if(t<2.9||t>5.75) return '';
+  const dep=eo(sg(t,2.95,3.5))*(1-eo(sg(t,5.55,5.75))), phi=Math.PI*.85*eio(sg(t,3.5,5.5)), dx=46*Math.cos(phi)*dep, dy=-34*dep;
+  let s='', order=dx>=0?[6,5,4,3,2,1,0]:[0,1,2,3,4,5,6];
+  for(const i of order){
+    const h=barH(i,t), x=BX(i), y=G1, top=y-h, big=i===6; if(h<=0) continue;
+    const cF=big?ACC:PAP, cS=big?'#9c3f1f':'#d9cfbe', cT=big?'#d9764f':'#efe8dc';
+    const st=`stroke="${INK}" stroke-width="6" stroke-linejoin="round"`, sx=dx>=0?x+BW:x;
+    s+=`<path d="M${f(sx)} ${f(top)} L${f(sx+dx)} ${f(top+dy)} L${f(sx+dx)} ${f(y+dy)} L${f(sx)} ${f(y)} Z" fill="${cS}" ${st}/>`;
+    s+=`<path d="M${f(x)} ${f(top)} L${f(x+BW)} ${f(top)} L${f(x+BW+dx)} ${f(top+dy)} L${f(x+dx)} ${f(top+dy)} Z" fill="${cT}" ${st}/>`;
+    s+=`<rect x="${x}" y="${f(top)}" width="${BW}" height="${f(h)}" fill="${cF}" ${st}/>`;
+    if(big&&t>5.3) s+=txt(x+BW/2,G1-120,64,'SM','#f6f1e8','1 %',{op:eo(sg(t,5.3,5.5))});
+  }
+  return s;
+}
+function grid(t){ if(t<2.8) return ''; const a=.55*eo(sg(t,2.9,3.6)); let s=`<g stroke="#d9cfbe" stroke-width="3" opacity="${f(a)}">`;
+  for(let x=-500;x<=1700;x+=110) s+=`<path d="M${x} -300 V${G1}"/>`; for(let y=G1;y>=-300;y-=110) s+=`<path d="M-500 ${y} H1700"/>`; return s+'</g>'; }
+function flag(px,label1,label2,col,t0,t,wob=0,ph=300){
+  const d=t<t0?0:bk(sg(t,t0,t0+.3)); if(d<=0) return '';
+  const y=L(-900,0,Math.min(1,d)), tip=wob*Math.sin(t*35);
+  let s=`<g transform="translate(0 ${f(y)})"><path d="M${f(px)} ${G1} L${f(px+tip)} ${G1-ph}" stroke="${INK}" stroke-width="10" stroke-linecap="round" ${col===INK?'':'stroke-dasharray="26 16"'}/>`;
+  s+=`<g transform="translate(${f(px+tip)} ${G1-ph-70})"><rect x="-140" y="-70" width="280" height="150" rx="10" fill="${INK}" transform="translate(8 8)"/><rect x="-140" y="-70" width="280" height="150" rx="10" fill="${col}" stroke="${INK}" stroke-width="6"/>`;
+  s+=txt(0,-10,46,'SM','#f6f1e8',label1,{ls:2});
+  if(label2) s+=txt(0,60,58,'IS','#f6f1e8',label2.s,{op:label2.op,tr:`scale(${f(label2.sc)})`});
+  return s+'</g></g>';
+}
+/* ───── le Ticket principal ───── */
+function hero(t){
+  const o={x:540,y:G1,scale:.8,mouth:'smile',look:[0,0]}, apply=w=>{o.footL=w.footL;o.footR=w.footR;o.armL=w.armL;o.armR=w.armR;o.y+=w.bob;};
+  const sq=(u,amt=.18)=>{const k=Math.sin(Math.PI*cl(u));o.sy=1-amt*k;o.sx=1+amt*.6*k;};
+  if(t<.9){ o.x=L(300,540,t/.9); apply(Ticket.walk(t*14)); o.look=[1,0]; }
+  else if(t<1.3){ o.look=[0,-cl((t-.9)*5)]; o.mouth=t>1.02?'o':'smile'; o.blink=t>1.12&&t<1.2?.9:0; }
+  else if(t<1.42){ sq(sg(t,1.3,1.5)*1.4,.2); o.look=[0,-1]; o.mouth='o'; }
+  else if(t<1.8){ const u=sg(t,1.42,1.8); o.y=G1-120*Math.sin(Math.PI*u); o.sx=.9; o.sy=1.12; o.mouth='open'; o.brows='up'; o.armL=[-60,-110]; o.armR=[60,-110]; o.look=[0,-1]; }
+  else if(t<2.4){ sq(sg(t,1.8,1.98)); if(t>1.98){o.sy=1+.025*Math.sin(t*9);} o.mouth=t>2.0?'open':'wavy'; o.brows='worried'; o.sweat=sg(t,1.85,2.4); o.look=[0,-1];
+     if(t>2.0){o.armL=[-80,-40];o.armR=[80,-40];} }
+  else if(t<2.95){ const u=eio(sg(t,2.4,2.9)); o.x=L(540,BC(0),u); apply(Ticket.walk(t*26,1.2)); o.rot=-9*Math.sin(Math.PI*u); o.mouth='o'; o.look=[-1,0]; }
+  else if(t<3.75){ o.x=BC(0); o.y=barTop(0,t); o.mouth=t<3.35?'o':'grin'; o.cheeks=t>3.35; o.brows='up';
+     o.look=t<3.35?[0,1]:[1,-.3]; if(t<3.35){o.armL=[-80,-60+40*Math.sin(t*30)];o.armR=[80,-60-40*Math.sin(t*30)];} }
+  else if(t<4.83){ const k=Math.min(2,Math.floor((t-3.75)/.36)), u=(t-3.75-k*.36)/.36, a=k, b=k+1;
+     o.mouth='grin'; o.cheeks=true; o.look=[1,-.4];
+     if(u<.15){ o.x=BC(a); o.y=barTop(a,t); sq(u/.15*.5,.18); }
+     else if(u<.85){ const v=(u-.15)/.7; o.x=L(BC(a),BC(b),eio(v)); o.y=L(barTop(a,t),barTop(b,t),v)-150*Math.sin(Math.PI*v); o.sx=.92; o.sy=1.1; o.armL=[-70,-90]; o.armR=[70,-90]; }
+     else { o.x=BC(b); o.y=barTop(b,t); sq((u-.85)/.15*.5+.5,.2); } }
+  else if(t<5.6){ o.x=BC(3); o.y=barTop(3,t);
+     if(t<5.0){ o.mouth='grin'; o.cheeks=true; o.armL=[-60,-100]; o.armR=[60,-100+20*Math.sin(t*20)]; o.look=[0,-.5]; }
+     else { o.look=[cl((t-5.0)*4),-cl((t-5.0)*4)]; o.mouth=t>5.2?'open':'o'; o.brows='up'; o.sweat=sg(t,5.3,5.6);
+            if(t>5.5) o.x+=4*Math.sin(t*70); o.armL=[-80,-30]; o.armR=[80,-30]; } }
+  else if(t<6.45){ o.x=BC(3); o.y=ON(o.x,t); o.mouth='o'; o.brows='up'; o.look=[0,1]; o.armL=[-90,-20+30*Math.sin(t*25)]; o.armR=[90,-20-30*Math.sin(t*25)]; }
+  else if(t<7.05){ const u=ei(sg(t,6.45,7.05)); o.x=L(BC(3),760,u); o.y=ON(o.x,t); const sl=(ON(o.x+6,t)-ON(o.x-6,t))/12;
+     o.rot=Math.atan(sl)*57.3; o.sy=.82; o.sx=1.08; o.mouth='grin'; o.cheeks=true; o.armL=[-60,-110]; o.armR=[60,-110]; o.footL=[40,-20]; o.footR=[60,-20]; o.look=[1,.3]; }
+  else if(t<7.42){ o.x=760; o.y=ON(760,t); sq(sg(t,7.05,7.2),.22); o.mouth=t<7.25?'grin':'o'; o.look=t<7.25?[1,0]:[1,-1]; o.brows=t<7.25?'none':'up'; }
+  else if(t<8.3){ const u=sg(t,7.42,8.3); o.x=760-40*Math.sin(Math.PI*u); o.y=ON(o.x,t)-420*Math.sin(Math.PI*u); o.rot=-25*Math.sin(Math.PI*u*2);
+     o.mouth='open'; o.brows='up'; o.armL=[-90,-60]; o.armR=[90,-60]; }
+  else if(t<8.9){ o.x=760; o.y=ON(760,t); sq(sg(t,8.3,8.47),.25); o.brows='angry'; o.mouth='flat'; o.look=[1,0]; }
+  else if(t<9.4){ const u=eio(sg(t,8.9,9.4)); o.x=L(760,XV(2733)+105,u); o.y=ON(o.x,t); apply(Ticket.walk(t*16)); o.brows='angry'; o.mouth='flat'; o.look=[-1,0]; }
+  else if(t<10.9){ o.x=XV(2733)+105+5*Math.sin(t*42); o.y=ON(o.x,t); o.rot=-14; const w=Ticket.walk(t*34,.8); o.footL=[w.footL[0]+18,w.footL[1]]; o.footR=[w.footR[0]+18,w.footR[1]];
+     o.armL=[-92,-6]; o.armR=[-40,40]; o.mouth='wavy'; o.brows='worried'; o.sweat=(t*1.6)%1; o.look=[-1,0]; o.blink=.35; }
+  else if(t<11.3){ const u=eo(sg(t,10.9,11.15)); o.x=XV(2733)+105+70*u; o.y=ON(o.x,t); o.rot=L(-14,78,u); o.mouth=t<11.15?'o':'sad'; o.look=[0,-1]; }
+  else if(t<11.95){ if(t<11.45){o.x=XV(2733)+175; o.y=ON(o.x,t); o.rot=L(78,0,eo(sg(t,11.3,11.45))); o.mouth='grin'; o.brows='up';}
+     else { const v=eio(sg(t,11.45,11.85)); o.x=L(XV(2733)+175,60,v); o.y=ON(o.x,t); apply(Ticket.walk(t*26,1.1)); o.rot=-8; o.mouth='grin'; o.brows='up'; o.look=[-1,0]; }
+     o.extra=t<11.55?`<text x="0" y="-470" font-family="IS" font-weight="700" font-size="90" text-anchor="middle" fill="${ACC}">!</text>`:''; }
+  else if(t<12.7){ o.x=60; o.y=ON(60,t); if(t>12.0&&t<12.3){const u=sg(t,12.0,12.3);o.y-=70*Math.sin(Math.PI*u);o.brows='up';o.mouth='o';}
+     else {o.mouth='grin';o.cheeks=true;o.look=[0,1];} }
+  else if(t<14.35){ o.x=60; o.y=ON(60,t); const u=sg(t,12.72,12.92); o.sy=L(1,.74,eo(u)); o.sx=L(1,1.12,eo(u));
+     if(t>12.92){o.sy=.74+.02*Math.sin(t*18); o.footL=[46,-6]; o.footR=[70,-6];}
+     o.mouth=(Math.floor(t*7)%2)?'open':'flat'; o.sweat=(t*1.2)%1; o.blink=.55; o.armL=[-70,30]; o.armR=[70,30]; o.look=[.4,-.5]; }
+  else { o.x=60; o.y=ON(60,t); if(t<14.65){const u=sg(t,14.35,14.65);o.y-=130*Math.sin(Math.PI*u);o.sy=1.08;}
+     else {o.sy=1+.02*Math.sin(t*7);} o.mouth='grin'; o.cheeks=true; o.brows='up'; o.armR=[50,-125]; o.handR='point'; o.armL=[-62,55]; o.look=[.3,-1]; o.blink=t>15.25&&t<15.35?.95:0; }
+  return Ticket.svg(o);
+}
+function giant(t){
+  if(t<7.2) return '';
+  const o={x:1040,y:G1,scale:1.5,price:'10 261 €',mouth:'grin',cheeks:true,look:[-1,0]};
+  if(t<7.42){ o.y=L(-1000,G1,ei(sg(t,7.2,7.42))); o.mouth='o'; o.sy=1.1; o.sx=.93; o.armL=[-60,-120]; o.armR=[60,-120]; }
+  else if(t<7.9){ const k=el(sg(t,7.42,7.9)); o.sy=L(.68,1,k); o.sx=L(1.3,1,k); }
+  else if(t<12.0){ o.sy=1+.03*Math.sin(t*22); o.brows='up'; o.armL=[-70,20]; o.armR=[70,20]; }
+  else if(t<12.7){ o.mouth='o'; o.brows='up'; o.look=[-1,-.2]; }
+  else { o.mouth='flat'; o.brows='angry'; o.look=[-1,0]; o.cheeks=false; }
+  return Ticket.svg(o);
+}
+function bg(t){ let s='';
+  for(let i=0;i<14;i++){ const x=(i*173+60)%1080, y=((i*389+200)-t*(18+i*3))%2100; const yy=y<-100?y+2100:y;
+    s+=txt(x,yy,54+(i%3)*16,'SM',GR,i%2?'€':'%',{op:.07,tr:`rotate(${(i*37)%40-20} ${x} ${f(yy)})`}); }
+  return s; }
+function cam(t){
+  let c={x:540,y:1062,z:1.6+.04*cl(t/2.4)};
+  if(t>=2.4&&t<5.6){ const u=eio(sg(t,2.4,2.95)); c={x:540+18*Math.sin(t*.9)*u,y:L(1062,882,u),z:L(1.64,.85,u)}; }
+  else if(t>=5.6&&t<12.7){ const u=eio(sg(t,5.6,6.4)); c={x:L(540+18*Math.sin(5.6*.9),520,u),y:880,z:L(.85,.95,u)+.012*Math.sin(t*.7)}; }
+  else if(t>=12.7){ const u=eio(sg(t,12.7,13.3)); c={x:520,y:L(880,790,u),z:L(.95,.9,u)+.03*sg(t,13.3,16)}; }
+  let sh=0; for(const [t0,A] of [[1.8,6],[5.45,18],[7.42,26],[12.0,12],[12.75,6]]) if(t>t0) sh+=A*Math.exp(-(t-t0)*13)*Math.sin((t-t0)*95);
+  c.sh=sh; return c; }
+function bigNumber(t){
+  if(t>2.95) return '';
+  const p0=1.14-.14*eo(sg(t,0,.3)), str='2 733 €';
+  const crack=sg(t,1.9,2.15), brk=sg(t,2.32,2.95);
+  const W=tw('2 733 €',250,'IS'), x0=540-W/2, N=6;
+  let s=txt(540,260,52,'SM',GR,'SALAIRE MOYEN',{ls:6,op:cl(t*8+.4)*(1-brk)});
+  if(brk<=0){
+    s+=`<g transform="translate(540 400) scale(${f(p0)}) rotate(${f(-2*Math.sin(t*3))}) translate(-540 -400)">`+txt(540,470,250,'IS',INK,str);
+    if(crack>0){ const pts=[[x0-10,330],[x0+W*.22,410],[x0+W*.36,350],[x0+W*.55,440],[x0+W*.7,360],[x0+W*.86,430],[x0+W+10,380]];
+      const n=Math.max(1,Math.ceil(crack*(pts.length-1))); s+=`<path d="M${pts.slice(0,n+1).map(p=>p.join(' ')).join(' L')}" fill="none" stroke="${ACC}" stroke-width="10" stroke-linejoin="round"/>`; }
+    s+='</g>';
+  } else {
+    for(let i=0;i<N;i++){ const a=x0+W*i/N, b=x0+W*(i+1)/N, dl=i*.04, u=ei(sg(brk,dl,dl+.75));
+      const dy=u*1500, rot=u*(i%2?28:-22), dx=u*(i-2.5)*60;
+      s+=`<defs><clipPath id="sl${i}"><rect x="${f(a)}" y="250" width="${f(b-a+1)}" height="300"/></clipPath></defs>`;
+      s+=`<g transform="translate(${f(dx)} ${f(dy)}) rotate(${f(rot)} ${f((a+b)/2)} 400)"><g clip-path="url(#sl${i})">${txt(540,470,250,'IS',INK,'2 733 €')}</g></g>`; }
+  }
+  return s;
+}
+window.seek=function(t){
+  const c=cam(t);
+  let s=bg(t);
+  s+=`<g transform="translate(${f(540+c.sh)} ${f(960+c.sh*.6)}) scale(${f(c.z*1000)/1000}) translate(${-f(c.x)} ${-f(c.y)})">`;
+  s+=grid(t);
+  s+=`<rect x="-600" y="${G1}" width="2400" height="12" fill="${INK}"/>`;
+  s+=bars(t)+area(t);
+  if(t>6.7){ const pm=t<7.45?XV(2420):L(XV(2420),XV(2733),bk(sg(t,7.45,7.95))); const n2=t<7.9?null:{s:'2 733 €',op:1,sc:bk(sg(t,7.9,8.2))};
+    s+=flag(pm,'MOYENNE',n2,ACC,6.7,t,(t>9.45&&t<10.9)?6:0,560); }
+  s+=giant(t);
+  s+=flag(XV(2190),'MÉDIANE',{s:'2 190 €',op:1,sc:1},INK,11.88,t,0,760);
+  if(t>12.0&&t<12.4){const k=sg(t,12.0,12.4);for(let j=0;j<8;j++){const a=j/8*Math.PI*2;s+=`<circle cx="${f(XV(2190)+Math.cos(a)*(40+170*eo(k)))}" cy="${f(G1-830+Math.sin(a)*(40+120*eo(k)))}" r="${f(10*(1-k))}" fill="${ACC}"/>`;}}
+  s+=hero(t);
+  s+='</g>';
+  if(t<2.95){ s+=bigNumber(t);
+    if(t>1.55){ const p=bk(sg(t,1.55,1.9)), y=640, out=ei(sg(t,2.15,2.4));
+      s+=`<g opacity="${f(cl(p*1.4)*(1-out))}" transform="translate(0 ${f(-out*300)}) translate(540 ${y}) scale(${f(.7+.3*p)}) translate(-540 ${-y})">`;
+      const a='Ce chiffre te ', k='ment.', wa=tw(a,110,'IS'), wk=tw(k,110,'IS'); let x=540-(wa+wk+24)/2;
+      s+=txt(x,y,110,'IS',INK,a,{a:'start'})+`<rect x="${f(x+wa)}" y="${y-88}" width="${f(wk+24)}" height="116" fill="${ACC}" transform="rotate(-2 ${f(x+wa)} ${y-30})"/>`+txt(x+wa+12,y,110,'IS','#f6f1e8',k,{a:'start'})+'</g>'; } }
+  s+=caption(t,2.75,5.0,'Range les salaires','du plus petit au plus gros.','gros.');
+  s+=caption(t,5.1,5.8,'1 % gagnent plus de','10 261 € par mois.','10 261 €');
+  s+=caption(t,6.15,7.1,'Relie-les : voilà','la courbe des salaires.','courbe');
+  s+=caption(t,7.2,8.85,'Ces gros salaires','tirent la moyenne.','moyenne.');
+  s+=caption(t,9.0,11.3,'Tu peux pousser :','elle ne bouge pas.','bouge pas.');
+  s+=caption(t,11.45,12.6,'Le vrai milieu,','c\'est la médiane.','médiane.');
+  if(t>12.75){ const k=sg(t,12.9,13.7), v=Math.round(L(2733,2190,eo(k))), p=bk(sg(t,12.75,13.1));
+    const vs=v.toLocaleString('fr-FR').replace(/ /g,' ')+' €';
+    s+=txt(540,230,50,'SM',GR,'LA MOITIÉ GAGNE MOINS DE',{ls:3,op:cl(p)});
+    s+=`<g transform="translate(540 400) scale(${f(.6+.4*p)}) translate(-540 -400)">`+txt(540,410,230,'IS',k>=1?ACC:INK,vs)+'</g>';
+    if(t>13.95){ const q=bk(sg(t,13.95,14.25)), y=545, k2='Le vrai chiffre.', w=tw(k2,92,'IS');
+      s+=`<g transform="translate(540 ${y}) scale(${f(1.4-.4*q)}) rotate(-2) translate(-540 ${-y})" opacity="${f(cl(q*2))}"><rect x="${f(540-w/2-16)}" y="${y-78}" width="${f(w+32)}" height="100" fill="${INK}"/>`+txt(540,y,92,'IS','#f6f1e8',k2)+'</g>'; }
+    if(t>14.3) s+=txt(540,615,28,'SM',GR,'Insee · privé · net · temps plein · 2024',{op:eo(sg(t,14.3,14.6))});
+  }
+  S.innerHTML=s;
+};
+Promise.all([document.fonts.load('100px IS'),document.fonts.load('40px SM')]).then(()=>{CTX=document.createElement('canvas').getContext('2d');window.ready=true;seek(0);});
+</script></body></html>
