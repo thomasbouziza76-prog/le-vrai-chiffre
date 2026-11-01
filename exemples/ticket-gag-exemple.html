@@ -1,0 +1,98 @@
+<!doctype html><html><head><meta charset="utf-8"><style>
+@font-face{font-family:IS;src:url(InstrumentSans-700.woff2)}@font-face{font-family:SM;src:url(SpaceMono-700.woff2)}
+html,body{margin:0;width:1080px;height:1920px;overflow:hidden}
+body{background:radial-gradient(ellipse at 50% 45%,#f7f2ea 0%,#efe8dc 58%,#e2d8c8 100%)}
+#g{position:absolute;inset:0;opacity:.16;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence baseFrequency='.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)' opacity='.35'/%3E%3C/svg%3E")}
+.t{position:absolute;left:70px;right:70px;top:150px;font-family:IS;font-weight:700;letter-spacing:-.035em;line-height:.95;color:#1c1a17;transform-origin:left top}
+.box{background:#c4552d;color:#f6f1e8;padding:0 .12em;display:inline-block;transform:rotate(-1.5deg)}
+svg{position:absolute;inset:0;z-index:1}
+.t{z-index:2}
+</style></head><body><div id="g"></div>
+<div id="h1" class="t" style="font-size:150px">Tu payes<br>en 4 fois&nbsp;?</div>
+<div id="h2" class="t" style="font-size:170px;opacity:0">= un <span class="box">crédit.</span></div>
+<svg id="s" width="1080" height="1920" viewBox="0 0 1080 1920"></svg>
+<script>
+const S=document.getElementById('s');const NS='http://www.w3.org/2000/svg';
+const cl=(x,a=0,b=1)=>Math.max(a,Math.min(b,x));
+const eo=t=>1-Math.pow(1-cl(t),3), ei=t=>Math.pow(cl(t),3);
+const bk=t=>{t=cl(t);const c1=1.9,c3=c1+1;return 1+c3*Math.pow(t-1,3)+c1*Math.pow(t-1,2);};
+const el=t=>{t=cl(t);if(t===0||t===1)return t;return Math.pow(2,-10*t)*Math.sin((t*10-.75)*2.0944)+1;};
+// ticket 360 x 640, centre x 540, haut y 620 ; 4 morceaux de 160 de haut
+const TX=540,TY=560,TW=440,PH=200;
+function zig(w,yb){let d='';const n=8,s=w/n;for(let i=0;i<n;i++){d+=` l${s/2} 16 l${s/2} -16`;}return d;}
+function piece(i,o){ // o: {x,y,rot,sx,sy,eyes,face,dead}
+ const w=TW,h=PH;let p=`<g transform="translate(${o.x} ${o.y}) rotate(${o.rot}) scale(${o.sx} ${o.sy})">`;
+ p+=`<path d="M${-w/2} ${-h/2} H${w/2} V${h/2} ${i==3?'':''} H${-w/2} Z" fill="#fbf8f2" stroke="#1c1a17" stroke-width="7" stroke-linejoin="round"/>`;
+ if(i==3)p+=`<path d="M${-w/2} ${h/2} ${zig(w)}" fill="#fbf8f2" stroke="#1c1a17" stroke-width="7" stroke-linejoin="round"/>`;
+ if(o.lines)p+=`<g stroke="#d6ccbb" stroke-width="9" stroke-linecap="round"><path d="M${-w/2+40} ${-h/2+44} H${w/2-40}"/><path d="M${-w/2+40} ${-h/2+80} H${w/2-90}"/></g>`;
+ if(o.price)p+=`<text x="0" y="${o.priceY||48}" font-family="SM" font-weight="700" font-size="${o.priceSize||60}" text-anchor="middle" fill="#c4552d">${o.price}</text>`;
+ if(o.eyes){const ey=o.eyeY||-20,ex=o.eyeX||44,r=o.eyeR||26;
+  if(o.dead){p+=`<g stroke="#1c1a17" stroke-width="7" stroke-linecap="round"><path d="M${-ex-14} ${ey-14} l28 28 M${-ex+14} ${ey-14} l-28 28 M${ex-14} ${ey-14} l28 28 M${ex+14} ${ey-14} l-28 28"/></g>`;}
+  else{p+=`<circle cx="${-ex}" cy="${ey}" r="${r}" fill="#fff" stroke="#1c1a17" stroke-width="6"/><circle cx="${ex}" cy="${ey}" r="${r}" fill="#fff" stroke="#1c1a17" stroke-width="6"/><circle cx="${-ex+(o.look||4)}" cy="${ey+4}" r="${r*.42}" fill="#1c1a17"/><circle cx="${ex+(o.look||4)}" cy="${ey+4}" r="${r*.42}" fill="#1c1a17"/>`;}
+  if(o.mouth==='smile')p+=`<path d="M-30 ${ey+44} Q0 ${ey+70} 30 ${ey+44}" stroke="#1c1a17" stroke-width="7" fill="none" stroke-linecap="round"/>`;
+  if(o.mouth==='o')p+=`<ellipse cx="0" cy="${ey+52}" rx="14" ry="18" fill="#1c1a17"/>`;
+ }
+ if(o.legs){const lg=o.legs;p+=`<path d="M-40 ${h/2+(i==3?16:0)} v${lg} h-22 M40 ${h/2+(i==3?16:0)} v${lg} h22" stroke="#1c1a17" stroke-width="7" fill="none" stroke-linecap="round"/>`;}
+ return p+'</g>';}
+window.seek=function(t){
+ let o='';
+ // caméra : légère poussée + secousse à l'impact
+ const sh=t>1.52&&t<1.85?Math.sin(t*90)*18*(1-(t-1.52)/.33):0;
+ const zoom=1+0.04*eo(t/3.2)+ (t>1.5&&t<1.62?0.03:0);
+ o+=`<g transform="translate(${540+sh} ${960+sh*.6}) scale(${zoom}) translate(-540 -960)">`;
+ // ombre au sol
+ o+=`<ellipse cx="540" cy="${t<0.95?1500:1440}" rx="${t<0.95?260:470}" ry="28" fill="rgba(28,26,23,.14)"/>`;
+ // phase 1 : ticket entier qui respire, ciseaux coupent 3 fois
+ const cuts=[0.30,0.55,0.80];
+ const idleY=Math.sin(t*9)*6;
+ const spread=eo((t-0.95)/0.35);
+ const crush=t>=1.52?1:0;
+ for(let i=0;i<4;i++){
+  const n=cuts.filter(c=>t>c).length;
+  const gap=i>0&&n>=i? 14*eo((t-cuts[i-1])/0.12):0;
+  let y0=TY+i*PH+PH/2+idleY + (i>0? [0,1,2,3].slice(1,i+1).reduce((a,k)=>a+ (n>=k?14*eo((t-cuts[k-1])/0.12):0),0):0);
+  // positions finales en rang, au sol
+  const fx=[320,760,320,760][i], fy=[1030,1030,1330,1330][i];
+  let x=TX+(fx-TX)*spread, y=y0+(fy-y0)*spread;
+  const hop=t>1.3&&t<1.52?-Math.abs(Math.sin((t-1.3)*22+i))*40:0;
+  y+=hop;
+  let sx=1,sy=1,rot=(1-spread)*0+spread*([-4,3,-2,5][i])*(t<1.52?1:0.3);
+  if(t>=0.95&&t<1.1){const pp=(t-0.95)/0.15;sy=1+0.15*Math.sin(pp*Math.PI);sx=1-0.08*Math.sin(pp*Math.PI);}
+  const base=1-0.22*spread; sx*=base; sy*=base;
+  if(crush){const c=el((t-1.52)/0.5);sy=base*(1-0.72*Math.min(1,c));sx=base*(1+0.4*Math.min(1,c));y=fy+PH*base/2-PH*sy/2+10;rot=0;}
+  const eyes = i===0||spread>0.3;
+  const o2={x,y,rot,sx,sy,eyes,
+   eyeY:i===0&&spread<0.3?-22:-28, eyeX:i===0&&spread<0.3?54:40, eyeR:i===0&&spread<0.3?28:22,
+   mouth: t<1.47?(i===0&&spread<0.3?'smile':(t>1.2?'smile':'')):(t<1.52?'o':''),
+   look: t>1.38&&t<1.52?-8:4,
+   dead: crush&&t>1.62, lines:i===1||i===2&&spread<0.3,
+   price: spread<0.3?(i===3?'240 €':''):'60 €', priceY: spread<0.3?40:62, priceSize: spread<0.3?64:46,
+   legs: (i===3&&spread<0.3)?60:(spread>0.3&&!crush?44*spread:0)};
+  if(spread>=0.3){o2.lines=false;}
+  o+=piece(i,o2);
+ }
+ // ciseaux
+ const ci=cuts.findIndex(c=>t>c-0.18&&t<c+0.12);
+ if(t<0.95&&t>0.08){const c=ci>=0?cuts[ci]:null;const k=c?cl((t-(c-0.18))/0.3):0;
+  const yC=c?TY+(ci+1)*PH+idleY:TY+PH;const sxp=c?1250-760*eo(k*1.6)+ (k>0.6?600*ei((k-0.6)/0.4):0):1250;
+  const open=c?Math.abs(Math.sin(k*Math.PI*3))*24:20;
+  o+=`<g transform="translate(${sxp} ${yC})"><g transform="rotate(${-open})"><path d="M0 0 L190 -16 L190 8 Z" fill="#c9cdd2" stroke="#1c1a17" stroke-width="6"/><circle cx="-34" cy="-30" r="30" fill="none" stroke="#c4552d" stroke-width="14"/></g><g transform="rotate(${open})"><path d="M0 0 L190 16 L190 -8 Z" fill="#dfe2e6" stroke="#1c1a17" stroke-width="6"/><circle cx="-34" cy="30" r="30" fill="none" stroke="#c4552d" stroke-width="14"/></g><circle r="8" fill="#1c1a17"/></g>`;
+  if(c&&t>c-0.02&&t<c+0.1)o+=`<g stroke="#1c1a17" stroke-width="6" stroke-linecap="round" opacity="${1-(t-c)/0.1}"><path d="M${TX+200} ${yC-30} l30 -20 M${TX+210} ${yC} l40 0 M${TX+200} ${yC+30} l30 20"/></g>`;
+ }
+ // tampon CRÉDIT géant
+ if(t>1.3){const d=t<1.52?ei((t-1.3)/0.22):1;const up=t>2.15?eo((t-2.15)/0.35):0;
+  const sy=t>=1.52&&t<1.65?0.85+0.15*eo((t-1.52)/0.13):1;
+  const yS=-900+(1265+900)*d-up*2600;
+  o+=`<g transform="translate(540 ${yS}) scale(1 ${sy})"><rect x="-120" y="-860" width="240" height="320" rx="30" fill="#1c1a17"/><rect x="-70" y="-980" width="140" height="140" rx="70" fill="#c4552d" stroke="#1c1a17" stroke-width="8"/><rect x="-490" y="-560" width="980" height="150" rx="16" fill="#3a3530" stroke="#1c1a17" stroke-width="8"/><rect x="-510" y="-420" width="1020" height="570" rx="12" fill="#c4552d" stroke="#1c1a17" stroke-width="8"/></g>`;}
+ // encre CRÉDIT au sol après levée
+ if(t>2.15){const a=eo((t-2.15)/0.2);o+=`<g opacity="${a}" transform="rotate(-4 540 1180)"><rect x="60" y="1050" width="960" height="270" fill="none" stroke="#c4552d" stroke-width="14"/><text x="540" y="1238" font-family="SM" font-weight="700" font-size="190" text-anchor="middle" fill="#c4552d" fill-opacity=".92" letter-spacing="12">CRÉDIT</text></g>`;}
+ // poussière à l'impact
+ if(t>1.52&&t<1.95){const k=(t-1.52)/0.43;for(let j=0;j<10;j++){const a=(j/9)*Math.PI;const r=540+240*eo(k);o+=`<circle cx="${540+Math.cos(a)*r*(j%2?1:-1)}" cy="${1420-Math.sin(a)*90*eo(k)}" r="${(16-10*k)}" fill="#d6ccbb" opacity="${1-k}"/>`;}}
+ o+='</g>';
+ S.innerHTML=o;
+ const h1=document.getElementById('h1'),h2=document.getElementById('h2');
+ h1.style.opacity=t<1.52?1:0;h1.style.transform=`scale(${t<0.12?1.06-t*0.5:1})`;
+ const p2=bk((t-1.56)/0.35);h2.style.opacity=t>1.56?1:0;h2.style.transform=`translateY(${(1-p2)*-50}px) scale(${0.85+0.15*p2})`;
+};
+document.fonts.load('150px IS').then(()=>document.fonts.load('60px SM')).then(()=>{window.ready=true;seek(0);});
+</script></body></html>

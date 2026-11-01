@@ -14,6 +14,8 @@ cat > "$HOME/.hf-env" <<ENV
 export HYPERFRAMES_NO_TELEMETRY=1 DO_NOT_TRACK=1 HYPERFRAMES_SKIP_SKILLS=1 HYPERFRAMES_NO_UPDATE_CHECK=1
 export HYPERFRAMES_BROWSER_PATH="$BR"
 export LVC_REPO="$R" LVC_HF="$W"
+# sons en plus (Kenney CC0 + sons fabriqués) : utilisables par leur nom dans sfx-events.json
+cp "$R"/sons/*.mp3 "$W/.claude/skills/media-use/audio/assets/sfx/" 2>/dev/null || true
 ENV
 source "$HOME/.hf-env"; npx hyperframes telemetry disable >/dev/null 2>&1 || true
 echo "== GSAP local"
