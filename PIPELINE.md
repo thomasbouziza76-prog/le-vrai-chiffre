@@ -69,6 +69,9 @@ vidéos (`HISTORIQUE.md`) : ni frise chronologique, ni glaçon, ni iPhone-banque
    x > 940 entre y 700 et 1330 ; sous-titre clair (`.fx-sub.dark`) sur fond sombre. Ids SVG uniques et préfixés.
 5. LES 3 PREMIÈRES SECONDES : dès l'image 0, le texte d'écran du hook est LISIBLE et quelque chose bouge. Pas de fondu
    depuis le blanc, pas d'écran vide, pas de logo, pas de titre qui monte lentement. Le premier bruitage tombe à 0 s.
+   **Ouverture = gag du Ticket** (mascotte, voir MOTION.md) : 0 à 2 s, un gag physique lié au sujet, compris sans lire
+   ni écouter (modèle : `exemples/ticket-gag-exemple.html`), bruité geste par geste (SONS.md). Ensuite, motion design
+   riche qui bouge au moins autant que la N°05.
    Un snapshot à t = 0 et un à t = 0,3 s doivent déjà montrer le hook : sinon corrige le premier plan.
 6. Pose les images clés, un snapshot par image clé (`npx hyperframes snapshot --at <t> --no-end --describe false -o boards/stills`),
    regarde-les (les images clés seulement), compare aux vidéos précédentes décrites dans HISTORIQUE.md.
