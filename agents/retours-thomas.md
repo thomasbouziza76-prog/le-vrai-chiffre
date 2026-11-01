@@ -39,4 +39,5 @@
 - **Priorités** : partages et commentaires d'abord, puis abonnements, puis likes.
 - **Exactement 2 appels dits à voix haute** : « abonne-toi » au milieu, puis une question et/ou un partage ciblé à la fin.
 - **Voix** : ElevenLabs v4, Paul K, stabilité « Creative ». Ton conteur, posé.
+- **Musique** : niveau et calage validés par Thomas sur la N°08 v3 (01/11) : morceau CC0 très bas, baissé sous la voix, temps fort sur le chiffre choc, silence avant la révélation. Ne change pas les niveaux du moteur.
 - **Garder le rythme de publication** : 2 vidéos par jour. Une vidéo moyenne publiée vaut mieux qu'aucune vidéo.
