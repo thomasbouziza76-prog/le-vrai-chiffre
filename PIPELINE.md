@@ -252,7 +252,7 @@ Thomas les publie à la main avec la vidéo. Pas de voix : aucun crédit ElevenL
     de la flèche : « Et toi, ça fait combien ? → », « Le pire arrive slide 4 → ». Jamais une phrase qui conclut. Mêmes règles de contenu que la vidéo (sourcé, aucun avis politique, aucune religion,
   aucun produit à intérêts présenté comme solution, gain ET perte pour [INVESTIR]).
 - **Format** : un HTML avec des `<section class="slide">` 1080×1350, identité de la chaîne. Modèle de FORMAT VALIDÉ PAR
-  THOMAS (2026-11-01) : `exemples/carrousel-exemple.html`, et son rendu `exemples/carrousel-exemple-planche.jpg` à REGARDER
+  THOMAS (2026-11-01) : `exemples/carrousel-exemple.html`, et son rendu `exemples/carrousel-exemple-planche.jpg` à REGARDER (il a 7 slides : garde son STYLE, mais suis la structure en 6 slides ci-dessus)
   avant de commencer : ton carrousel doit avoir le même niveau de vie et de lisibilité (garde la grille, les polices, les couleurs ; change le contenu et ajoute 1 ou 2
   petits dessins propres au sujet, différents à chaque fois). **Zone de sécurité** : tout ce qui compte entre x 80 et
   x 940, y 140 et y 1150 (TikTok pose ses boutons à droite et sa légende en bas). **Tout ce qu'il faut pour comprendre
