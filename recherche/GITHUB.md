@@ -54,3 +54,13 @@ Courbes sur mesure, découpe des mots/lettres, tracés qui se dessinent, morphin
 ## Carrousels (recherche du 2026-11-01)
 - Hainrixz/open-carrusel (MIT) : Claude écrit chaque slide en HTML/CSS, Puppeteer la photographie en PNG 1080×1350, avec un calque « zone de sécurité ». Même méthode que notre `etapes/09-carrousel.sh` (Playwright) : on n'installe pas l'appli (Next.js), on reprend l'idée de zone de sécurité.
 - FranciscoMoretti/carousel-generator (MIT) : éditeur web de carrousels LinkedIn, pas utile pour l'automatisation.
+
+## charlie947/motion-graphics-skills (MIT, recherche du 2026-11-01)
+15 skills de motion design « tout en code » (HTML + window.seek, export HyperFrames), même méthode que la nôtre.
+Repris : l'idée d'un fichier `MOTION.md` lu avant toute animation (créé à la racine du dépôt) ; leurs règles « premium »
+(un objet qui change de forme au lieu d'un fondu, fantôme de l'état de départ, décalage d'un temps, tenue vivante,
+polices chargées avant l'image 0, remplir le cadre) ; 8 types de plans adaptés aux chiffres (PIPELINE, Qualité
+visuelle, point 9) tirés de leurs recettes chart morph, dashboard zoom, before/after, grid, label call-out, masked type,
+spring stack, counter ; l'exigence « si les 3 premières secondes n'arrêtent pas ton pouce, refais-les ».
+Pas repris : leurs skills de lancement produit SaaS / LinkedIn, le style Vox « animé sur deux images » (à tester un
+jour sur une vidéo), l'export GIF.

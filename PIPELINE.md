@@ -74,7 +74,8 @@ vidéos (`HISTORIQUE.md`) : ni frise chronologique, ni glaçon, ni iPhone-banque
    regarde-les (les images clés seulement), compare aux vidéos précédentes décrites dans HISTORIQUE.md.
 
 ### Qualité visuelle (obligatoire, à inscrire dans frame.md et dans chaque paquet d'agent)
-Lis `recherche/GITHUB.md` (composants du catalogue local, plugins GSAP) et `historique/CHECKS.md` (règles apprises).
+Lis d'abord `MOTION.md` (la charte de mouvement), puis `recherche/GITHUB.md` (composants du catalogue local, plugins GSAP)
+et `historique/CHECKS.md` (règles apprises).
 1. **Flou de mouvement** : composant `motion-blur` (`npx hyperframes add motion-blur`), `data-hf-motion-blur` sur tout
    objet qui traverse l'écran ou zoome vite.
 2. **Courbes** : jamais `linear` ni `ease` par défaut. Entrées « premium » `expo.out` / `power3.out`, objets qui se
@@ -91,6 +92,17 @@ Lis `recherche/GITHUB.md` (composants du catalogue local, plugins GSAP) et `hist
    (« 1 095 € = 2 mois de courses »), chiffre centré, très gros, hors des zones de l'interface TikTok.
 7. **Accents dessinés** : souligné, cercle, flèche, surligneur (`hw-*`, `marker-highlight`) sur le mot ou le chiffre clé.
 8. **Rythme** : un changement visuel toutes les 1,5 à 3 s ; chaque geste visuel fort a son bruitage.
+9. **Types de plans pour un chiffre** (choisis-en 3 ou 4 différents par vidéo, jamais le même graphique toute la vidéo) :
+   - *Morphose de graphique* : les barres s'affinent une à une et deviennent une courbe qui passe par leurs sommets
+     (mêmes valeurs, la courbe se DESSINE, point final en terracotta avec son étiquette).
+   - *Zoom sur l'indicateur* : 4 crochets terracotta encadrent UNE case d'un tableau, le reste s'assombrit, la case
+     grossit depuis sa vraie place jusqu'à remplir l'écran (fantôme pointillé à l'origine).
+   - *Avant / après* : la même carte, seule la date (pastille) bascule, le chiffre change.
+   - *Grille* : 20 ou 100 tuiles identiques, une seule casse le motif (ex. « 1 sur 10 »).
+   - *Appel de note* : un cercle au marqueur se dessine autour d'un détail, puis l'étiquette arrive.
+   - *Lettres masquées* : le mot du hook en contour, la couleur monte à l'intérieur des lettres avec un trait-repère.
+   - *Pile à ressort* : 3 cartes (offres, cas, mois) qui s'éventaillent, la première dépasse puis se stabilise.
+   - *Compteur* : nombre qui monte, calculé dans le code, jamais deviné.
 
 ## 4. Animation (≈ 25 min) : 3 agents au plus
 - Paquets : `node .claude/skills/product-launch-video/scripts/frame-packets.mjs --project <slug> --storyboard <slug>/STORYBOARD.md`
