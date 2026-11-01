@@ -103,7 +103,8 @@ HyperFrames. Seul `HISTORIQUE.md` (7 dernières vidéos) est à lire en entier :
 
 ## 2. Voix (≈ 2 min)
 - Écris le texte voix « comme à un pote » avec les balises eleven_v4 : tons (`[serious]`, `[curious]`, `[softly]`,
-  `[warmly]`, `[surprised]`…), 3 à 6 sons humains (`[sighs]`, `[chuckles]`, `[exhales]`, `[gasps]`, `[clears throat]`),
+  `[warmly]`, `[surprised]`…), 0 à 2 sons humains maximum (`[sighs]`, `[exhales]` ; jamais de rire forcé) : le ton est celui d'un conteur posé
+  (`SCRIPT-HOOKS.md`, « Le ton : raconter comme un conteur »),
   pauses (`[short pause]`, `[pause]`, « … »). **Sigles** : écris-les dans le texte voix comme ils se prononcent (« l'Aspa »
   et jamais « l'ASPA » ; « la Drès » pour la Drees ; « T.A.E.G. » épelé) ; à l'écran, garde l'orthographe officielle. Hook net : une balise au plus. Aucune balise de bruitage. Un soupir ou un
   rire n'est jamais un sous-titre.

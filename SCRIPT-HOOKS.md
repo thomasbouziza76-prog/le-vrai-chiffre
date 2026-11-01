@@ -16,8 +16,36 @@ Ces règles augmentent les chances ; elles ne garantissent rien. Ne promets jama
 - En écrivant, note à côté de chaque phrase le gag du Ticket et la transformation de données qui l'accompagnent.
 
 **Leçon N°07 (ASPA, 2026-11-01)** : hook « 343 € de plus sur SA retraite » → 6 s de visionnage moyen, 0 abonné. La 1re
-phrase doit concerner le spectateur de 20-35 ans (« ton salaire », « tu as droit », « ton loyer »), jamais un tiers
-âgé. Tico peut vivre le cas, mais la voix parle à « tu » dès les premiers mots.
+phrase concerne quelqu'un dans lequel le spectateur de 20-35 ans SE RECONNAÎT : lui-même (« tu »), ou un personnage
+comme lui (Tico qui bosse, un jeune salarié, un locataire). Jamais un tiers lointain (un retraité, un patron du CAC 40
+raconté de son point de vue).
+
+## Le ton : raconter comme un conteur (décision de Thomas, 2026-11-01, d'après les vidéos qui cartonnent)
+
+Modèle validé par Thomas (vidéo d'un autre créateur, à imiter pour le TON, jamais à copier) :
+« Thomas a travaillé 43 ans au SMIC. Son pote Lucas, lui, a passé toute sa vie au RSA. À 65 ans, l'heure de la
+retraite sonne pour les deux. Et là, Thomas tombe de haut. »
+
+Ce qui fait que ça accroche :
+- **Une histoire, pas une explication** : un personnage, une situation concrète, un contraste, une chute. On a envie
+  de connaître la suite avant de savoir de quoi parle la vidéo.
+- **Phrases très courtes**, sujet-verbe-complément, une seule info par phrase. Pas de subordonnées, pas de parenthèses.
+- **Des mots de tous les jours** : « bosser », « son pote », « tomber de haut », « à peine », « même pas ». Aucun sigle
+  dans les 10 premières secondes ; un sigle n'arrive qu'après l'histoire, expliqué en 5 mots.
+- **Un contraste dès les 2 premières phrases** : deux personnes, deux situations, un écart qui choque.
+- **Des phrases de tension** qui relancent : « Et là… », « Sauf que… », « Comment c'est possible ? », « Le pire ? ».
+- **Des chiffres arrondis et répétés** : « environ 1 200 € », « à peine 150 € de plus » ; le chiffre principal revient
+  2 ou 3 fois.
+- **Un narrateur posé** qui raconte, pas un présentateur qui s'exclame : peu de balises d'émotion, aucun rire forcé,
+  2 sons humains maximum (un soupir sur la chute, par exemple).
+
+À ne plus faire (exemple réel N°07) : « 343 euros de plus sur sa retraite, chaque mois. Tico y a droit, et il refuse.
+Tico a 68 ans et 700 euros de retraite. Mais l'Aspa, le minimum vieillesse, complète tes revenus jusqu'à 1 043 euros
+par mois quand tu vis seul. » → trop de chiffres, un sigle d'entrée, un personnage lointain, aucune histoire.
+
+Le bon ton, sur un sujet de la cible (exemple de TON, chiffres à vérifier avant tout usage) :
+« Tico bosse à temps plein depuis 3 ans. Son collègue Karim aussi. Même boulot, même salaire. Sauf que chaque mois,
+Karim touche une aide de plus. Et Tico, lui, n'en a jamais entendu parler. »
 
 **Règle des chiffres (leçon N°07 : 11 chiffres en 69 s, Thomas « perdu dès le début »)** :
 - **UN chiffre principal** par vidéo (celui du titre), **2 chiffres secondaires au maximum** pour l'expliquer.
