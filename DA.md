@@ -2,6 +2,7 @@
 
 > **À lire en PREMIER, avant tout autre fichier.**
 > Validée par Thomas le 2026-11-01. Si un autre fichier contredit celui-ci, **c'est DA.md qui gagne**.
+> **Cette DA est définitive** (décision de Thomas) : on ne la change pas, même plus tard. On améliore l'exécution, jamais le style.
 
 ---
 
@@ -28,7 +29,7 @@
 | # | Règle | Mesure |
 |---|---|---|
 | 1 | Le Ticket est présent | **Du début à la fin** (pas seulement l'ouverture) |
-| 2 | Un gag ou une réaction du Ticket | **Toutes les 4 à 6 s** (8 à 11 en 45 s, 5 à 7 en 30 s), chacun avec son bruitage |
+| 2 | Un gag ou une réaction du Ticket | **Toutes les 4 à 6 s** (5 à 7 en 30 s, 8 à 11 en 45 s, 12 à 16 en 62-75 s), chacun avec son bruitage |
 | 3 | Les données se transforment | **Au moins 2 transformations par scène** (scène = une séquence du STORYBOARD ; liste section 5) |
 | 4 | Transitions avec une cause | L'objet d'une scène **devient** l'objet de la suivante (le chiffre éclate → les morceaux deviennent des barres → les barres fondent en courbe) |
 | 5 | 3D stylisée | **Au moins 1 vrai moment 3D par vidéo** (barres extrudées + caméra qui tourne, ticket qui se retourne, avion en papier en profondeur). **3D réaliste interdite** |
@@ -49,8 +50,16 @@
 - Appel : `Ticket.svg({x, y, scale, mouth, brows, look, armL, armR, footL, footR, sx, sy, rot, ...})` (options en tête du fichier).
 - **Animations prêtes à l'emploi** : `motion/ticket-*` dans le Studio (marche, course, saut, pousser, tirer, se faire écraser, avion en papier 3D, se retourner comme une carte…). Liste et usage : `motion/catalogue.json` (`"type": "ticket"`).
 
+### Son nom : **Tico**
+- La mascotte s'appelle **Tico**, toujours, dans toutes les vidéos (choix de Thomas du 2026-11-01). Un nom fixe = on le
+  reconnaît, on s'y attache, les commentaires le citent.
+- À chaque vidéo, Tico **joue un rôle** différent, avec son cas chiffré : « Imaginons que Tico gagne 1 800 € net… ». Son
+  âge et son salaire changent selon l'histoire, comme un personnage de dessin animé.
+- Les **autres personnages** (le pote, le patron, le géant, les parents) ont des prénoms variés et courants en France,
+  différents d'une vidéo à l'autre. Jamais « Julie ».
+
 ### Son rôle
-- Le Ticket, c'est **toi / ton argent**. La voix dit « tu », le Ticket le vit à l'écran.
+- Tico, c'est **toi / ton argent**. La voix dit « tu », Tico le vit à l'écran.
 - Il a souvent un **adversaire** : un Ticket géant (les très gros salaires, la banque, l'inflation, l'État…), un tampon, un chiffre qui lui tombe dessus. Même dessin, plus grand, avec son montant.
 - Physique de dessin animé : anticipation, écrasement et étirement, rebonds, sueur, sursauts.
 - Taille : `scale` 0,8 à 1,6 dans le plan ; il ne doit jamais être une petite figurine perdue.
@@ -109,7 +118,8 @@ Pièces prêtes : `motion/` du Studio (`catalogue.json`, champ `quand`).
   - « Ces gros salaires tirent la **moyenne.** »
   - « Tu peux pousser : elle ne **bouge pas.** »
   - « Le vrai milieu, c'est la **médiane.** »
-- Les règles de `SCRIPT-HOOKS.md` (hook, CTA au milieu, boucle, mots) restent valables ; cette section dit **comment** les écrire.
+- Les règles de `SCRIPT-HOOKS.md` (hook, les deux appels de la section 6, formats, mots) restent valables ; cette section dit **comment** les écrire.
+- La fin pose une question qui fait réagir (« Tu trouves ça juste ? ») : Tico la « pose » à l'écran (il se tourne vers nous, hausse les épaules).
 
 ---
 

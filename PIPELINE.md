@@ -12,23 +12,29 @@ Racine du dépôt : `$LVC_REPO` (après l'étape 0). Projet du jour : `$P` = sor
 |---|---|---|
 | 1 | **`DA.md`** | La direction artistique : Ticket du début à la fin + données qui bougent. **Il prime sur tout.** |
 | 2 | `PIPELINE.md` (ce fichier) | Les étapes, dans l'ordre |
-| 3 | `SCRIPT-HOOKS.md` | Écrire le script (hook, CTA, boucle) |
+| 3 | `SCRIPT-HOOKS.md` | Écrire le script (hook, les deux appels, formats court et histoire) |
 | 4 | `MOTION.md` | Couleurs, polices, règles de mouvement des pros |
 | 5 | `SONS.md` | Bruitages et niveaux |
 | 6 | `historique/CHECKS.md` | Les erreurs déjà faites, à ne pas refaire |
 
 **Si deux fichiers se contredisent : `DA.md` > `historique/CHECKS.md` > `PIPELINE.md` > `SCRIPT-HOOKS.md` > `MOTION.md` > `SONS.md`.**
 
-## Tableau des durées (test en cours : N° impair = 45 s, N° pair = 30 s)
+## Tableau des durées (décision de Thomas du 2026-11-01)
 
-| | **45 s** (N° impair) | **30 s** (N° pair) |
-|---|---|---|
-| Mots de la voix | 110 à 120 | 75 à 85 |
-| Appel à l'action (CTA) dit à voix haute | entre 16 et 24 s | entre 12 et 16 s |
-| Relance | juste après le CTA | juste après le CTA |
-| Gags / réactions du Ticket (un toutes les 4 à 6 s) | 8 à 11 | 5 à 7 |
-| Bruitages | 35 à 60 | 25 à 40 |
-| Texte d'écran à l'image 0 | 3 à 6 mots | 3 à 6 mots |
+- **Vidéo du MATIN (SLOT 0)** : format court, N° impair = 45 s, N° pair = 30 s.
+- **Vidéo du SOIR (SLOT 1)** : format HISTOIRE de 62 à 75 s (au-dessus d'une minute : seules les vidéos de plus d'1 min
+  sont rémunérées par TikTok). Structure : `SCRIPT-HOOKS.md` section 12.
+
+| | **30 s** (matin, N° pair) | **45 s** (matin, N° impair) | **62-75 s** (soir, histoire) |
+|---|---|---|---|
+| Mots de la voix | 75 à 85 | 110 à 120 | 170 à 195 |
+| Appel « abonne-toi » dit à voix haute | entre 12 et 16 s | entre 16 et 24 s | entre 18 et 28 s |
+| Relance | juste après l'appel | juste après l'appel | juste après l'appel |
+| Retournement (« Comment c'est possible ? ») | facultatif | facultatif | obligatoire, entre 25 et 35 s |
+| Fin : question qui fait réagir et/ou partage ciblé | dernières 3 à 4 s | dernières 3 à 5 s | dernières 5 à 8 s |
+| Gags / réactions de Tico (un toutes les 4 à 6 s) | 5 à 7 | 8 à 11 | 12 à 16 |
+| Bruitages | 25 à 40 | 35 à 60 | 60 à 90 |
+| Texte d'écran à l'image 0 | 3 à 6 mots | 3 à 6 mots | 3 à 6 mots |
 
 ## Les deux textes à l'écran (ne pas confondre)
 
@@ -76,16 +82,17 @@ HyperFrames. Seul `HISTORIQUE.md` (7 dernières vidéos) est à lire en entier :
   chaque chiffre le jour même (WebSearch) : l'actu bouge. Dès le sujet choisi, mets ✅ + date + N° au début de sa ligne,
   commit et push TOUT DE SUITE (l'autre tâche du jour ne doit pas prendre le même). N° de la vidéo = dernier N° de
   l'historique + 1.
-- **Durée (test en cours)** : N° impair = 45 s (110 à 120 mots), N° pair = 30 s (75 à 85 mots). Même qualité, même
-  structure comprimée (SCRIPT-HOOKS.md section 11). On compare les deux dans les stats.
+- **Durée** : voir le tableau des durées en tête de ce fichier (matin court 30/45 s selon le N°, soir histoire 62-75 s).
+  On compare les formats dans les stats.
 - **Mot-clé de recherche** : choisis le mot que les gens tapent dans TikTok pour ce sujet (épargne, salaire, investir,
   budget, inflation, impôts, crédit, loyer, prix…). Il est PRONONCÉ par la voix dans les 5 premières secondes, écrit dans
   le texte d'écran du hook ou du premier plan, et il ouvre la légende (voir étape 8). Vérifie chaque chiffre par une recherche web (Insee, Banque de France, AMF, service-public.fr), garde la
   source et la date.
 - Script : suis `SCRIPT-HOOKS.md` en entier. 8 hooks sur au moins 4 archétypes, garde le plus fort (archétype différent
-  des 2 dernières vidéos), texte d'écran de 3 à 6 mots affiché dès la 1re image. Nombre de mots et seconde du CTA : tableau des durées. UN seul appel à
-  l'action dit à voix haute, juste après le chiffre choc, suivi aussitôt d'une relance ; la fin est une
-  boucle vers le hook. Passe la grille de contrôle (section 8) et réécris jusqu'à ce que tout passe.
+  des 2 dernières vidéos), texte d'écran de 3 à 6 mots affiché dès la 1re image. Nombre de mots et secondes : tableau des durées. Deux appels dits à
+  voix haute, et deux seulement (SCRIPT-HOOKS.md section 6) : « abonne-toi » avec une raison, juste après le chiffre choc,
+  suivi aussitôt d'une relance ; puis, à la fin, une question qui fait réagir en commentaire et/ou un partage ciblé.
+  Passe la grille de contrôle (section 8) et réécris jusqu'à ce que tout passe.
 - Tutoiement, zéro jargon non expliqué, éducatif seulement, aucun conseil personnalisé, aucun produit à intérêts
   présenté comme solution, aucune référence religieuse. Chiffres en lettres dans la voix, en chiffres à l'écran.
 
@@ -121,7 +128,7 @@ vidéos (`HISTORIQUE.md`) : « mécanisme » = monde, fil rouge, objet signature
    `exemples/storyboard-exemple.md` (format et niveau de détail seulement ; il date d'AVANT `DA.md` : ignore son arc, ses couleurs,
    son CTA final et l'absence de Ticket) : 6 à 8 séquences, `src`,
    `type`, `blueprint`, `focal`, `rules`, `handoff_in/out` identiques mot pour mot à chaque couture, 2 à 4 plans par séquence.
-   Le CTA du milieu et son petit texte d'écran y ont leur plan.
+   Les deux appels (abonne-toi après le chiffre choc, question ou partage à la fin) et leur petit texte d'écran y ont leur plan.
 4. 9:16 : rien de lisible au-dessus de y 168 ni sous y 1330 ; bande 1180-1330 réservée au sous-titre ; rien de lisible à
    x > 940 entre y 700 et 1330 ; sous-titre clair (`.fx-sub.dark`) sur fond sombre. Ids SVG uniques et préfixés.
 5. LES 3 PREMIÈRES SECONDES : dès l'image 0, le texte d'écran du hook est LISIBLE et quelque chose bouge. Pas de fondu

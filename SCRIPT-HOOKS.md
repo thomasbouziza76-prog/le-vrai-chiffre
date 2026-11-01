@@ -75,7 +75,7 @@ pas » (sauf enjeu énorme) · jeu de mots qu'il faut décoder · hook caché da
 0–3 s    HOOK            Le gain ou l'enjeu, tout de suite. Image + voix + texte court.
 3–8 s    PRÉCISION       Le chiffre, la chose nommée, la situation du spectateur.
 8–16 s   ESCALADE        Les douleurs concrètes, enchaînées par « mais / donc ». Monte, ne stagne pas.
-16–22 s  CTA AU MILIEU   (décision de Thomas) Juste APRÈS le premier « waouh » (le chiffre choc), quand le
+16–22 s  ABONNE-TOI      Appel 1 de la section 6 (décision de Thomas) Juste APRÈS le premier « waouh » (le chiffre choc), quand le
                          spectateur est accroché : UNE phrase de 6 à 12 mots (2-3 s maximum), liée au sujet.
                          L'image ne s'arrête pas : l'animation continue, le CTA apparaît en petit texte à l'écran
                          (pastille ou bouton dans le style de la chaîne) pendant que la voix le dit.
@@ -83,9 +83,9 @@ pas » (sauf enjeu énorme) · jeu de mots qu'il faut décoder · hook caché da
                          « Sauf que personne ne te dit ça : », avec un changement visuel fort. Le CTA ne doit
                          jamais être suivi d'un blanc.
 22–38 s  RÉVÉLATION      L'explication ou la solution, chiffrée, montrée à l'écran (pas seulement dite).
-38–45 s  BOUCLE          Pas de 2e appel à l'action dit à voix haute. La dernière phrase renvoie au hook pour
-                         pousser à revoir. Autorisé : un rappel muet à l'écran de 1 à 3 mots (« Abonne-toi »,
-                         « Enregistre ») pendant les 2 dernières secondes.
+38–45 s  FIN             La question qui fait réagir en commentaire et/ou le partage ciblé (section 6), qui
+                         renvoie si possible au hook (boucle). Rappel muet à l'écran « Abonne-toi » pendant les
+                         2 dernières secondes.
 ```
 - Les gags du Ticket ponctuent TOUTE la vidéo (un toutes les 4 à 6 s, voir `DA.md`), chacun au service de l'idée dite à ce moment.
 - Mets ton 2e meilleur moment près du début (pour survivre à la chute des premières secondes) et le meilleur à la
@@ -94,19 +94,25 @@ pas » (sauf enjeu énorme) · jeu de mots qu'il faut décoder · hook caché da
 - Récit double : la voix explique pendant que l'image montre un objet qui fait l'action ; jamais la voix qui
   répète le texte à l'écran mot pour mot.
 
-## 6. L'appel à l'action (un seul dit à voix haute, au milieu, varié d'un jour à l'autre)
+## 6. Les appels à l'action (décision de Thomas du 2026-11-01 : EXACTEMENT deux par vidéo, dits à voix haute)
 
-Pourquoi au milieu : moins de gens restent jusqu'à la fin, et beaucoup aiment une vidéo sans la finir. Au milieu,
-le CTA touche plus de monde, à un moment où le spectateur est déjà accroché. Choisis selon le sujet, et pas le même
-que la veille (HISTORIQUE.md). Formule-le comme une suite naturelle de la phrase précédente, pas comme une pub :
-- **S'abonner, avec une raison** : « Abonne-toi, demain je te montre un autre chiffre que ta banque te cache. »
-- **Enregistrer** (contenu pratique) : « Enregistre-la, tu vas en avoir besoin à ta prochaine paie. »
-- **Commenter, question fermée facile** (une réponse en un mot ou un chiffre) : « Toi, tu gardes combien sur ton
-  compte courant ? Écris juste le chiffre. » / « Réponds OUI ou NON en commentaire : tu savais ça ? »
-- **Envoyer** : « Envoie-la à quelqu'un qui garde tout sur son compte courant. »
-- **Commenter un mot-clé** (seulement si une suite est prévue) : « Écris BUDGET et je fais la partie 2. »
-Jamais « abonne-toi » sans raison, jamais d'appel trompeur, jamais deux appels différents à voix haute.
-Note dans HISTORIQUE.md le CTA choisi ET sa seconde, pour comparer plus tard avec les statistiques.
+**Ce qui compte le plus pour TikTok : les PARTAGES et les COMMENTAIRES**, puis les enregistrements, puis les likes.
+Objectif de la phase actuelle : les **abonnements**. Chaque vidéo pousse donc à agir à deux moments, et seulement deux :
+
+| Moment | Action | Exemples |
+|---|---|---|
+| **1. Juste après le chiffre choc** (secondes : tableau des durées de PIPELINE.md) | **S'abonner, avec une raison**, puis relance aussitôt | « Abonne-toi, demain je te montre un autre chiffre que ta banque te cache. » |
+| **2. La fin** (dernières secondes) | **Commenter** avec une question qui fait réagir, et/ou **partager à quelqu'un de précis** | « 150 € de plus pour 43 ans de travail. Tu trouves ça juste ? » · « Normal ou pas ? Dis-le en commentaire. » · « Montre-la à tes parents. » · « Envoie-la à quelqu'un qui garde tout sur son compte courant. » |
+
+- **Les questions qui font débattre sont VOULUES**, même sur un sujet de société ou d'actualité (« Tu trouves ça
+  juste ? », « Normal ou pas ? »). La page ne donne jamais SON avis ; les gens, eux, débattent en commentaire, et c'est
+  ce qu'on cherche.
+- La question de fin est **facile à répondre** : oui/non, juste/pas juste, un chiffre, un mot.
+- Le partage est **ciblé sur une personne précise** (tes parents, ton pote qui…, quelqu'un qui…), jamais « partage cette vidéo ».
+- Toujours une raison pour s'abonner. Jamais d'appel trompeur. Varie les formulations d'une vidéo à l'autre.
+- À l'écran : pendant l'appel 1, une petite pastille « Abonne-toi » dans le style de la chaîne ; pendant les 2 dernières
+  secondes, un rappel muet « Abonne-toi ».
+- Note dans HISTORIQUE.md les deux appels choisis ET leurs secondes, pour comparer avec les statistiques.
 
 ## 7. Les mots
 
@@ -124,8 +130,9 @@ Note dans HISTORIQUE.md le CTA choisi ET sa seconde, pour comparer plus tard ave
 - [ ] La vidéo livre exactement ce que le hook promet.
 - [ ] Une relance juste après le CTA, et chaque transition est un « mais » ou un « donc ».
 - [ ] La révélation est montrée à l'écran, pas seulement dite.
-- [ ] Un seul appel à l'action dit à voix haute, placé juste après le chiffre choc (16-24 s en 45 s, 12-16 s en 30 s), suivi
-      aussitôt d'une relance ; différent de celui de la veille. La fin est une boucle, pas un CTA.
+- [ ] Exactement deux appels dits à voix haute (section 6) : « abonne-toi » avec une raison juste après le chiffre choc,
+      suivi aussitôt d'une relance ; à la fin, une question qui fait réagir et/ou un partage ciblé. Formulations
+      différentes des 2 vidéos précédentes.
 - [ ] Archétype de hook différent des 2 dernières vidéos.
 - [ ] Contenu éducatif, sans promesse d'argent facile, sans produit à intérêts présenté comme solution.
 
@@ -133,22 +140,24 @@ Note dans HISTORIQUE.md le CTA choisi ET sa seconde, pour comparer plus tard ave
 
 La priorité n'est pas encore de vendre : c'est **la portée et l'abonnement**. Chaque vidéo est jugée sur 3 signaux, dans cet ordre :
 1. **Rétention des 3 premières secondes** : le hook écrit et dit dès la 1re image, aucun logo ni intro.
-2. **Visionnage complet / revisionnage** : 30 ou 45 s dans cette phase (test en cours), fin qui reboucle sur la 1re phrase quand c'est possible.
+2. **Visionnage complet / revisionnage** : matin 30 ou 45 s, soir 62-75 s (tableau des durées de PIPELINE.md) ; la fin reboucle sur la 1re phrase quand c'est possible.
+4. **Commentaires et partages** : ce sont les signaux qui pèsent le plus pour TikTok (section 6).
 3. **Abonnement** : donner une raison concrète de suivre (« chaque jour, un chiffre que ta banque ne te montre pas »).
 
 Règles qui en découlent :
 - **Format série reconnaissable** : le chiffre clé du jour en très gros dès la 1re image (c'est la promesse « Le Vrai Chiffre »). Le style reste fixe, la mise en scène change (règle n° 1 : chaque vidéo est une création nouvelle, PIPELINE étape 3).
-- **Un seul appel à l'action, au milieu de la vidéo** (section 5), en rotation : **s'abonner** (1 jour sur 2 au moins), enregistrer, commenter un mot-clé, partager à quelqu'un. Jamais de lien, jamais de vente, jamais de « formation » dans cette phase.
+- **Les deux appels de la section 6** dans chaque vidéo. Jamais de lien, jamais de vente, jamais de « formation » dans cette phase.
 - **Sujets à large audience d'abord** : salaire, loyer, inflation, épargne, dettes, impôts, grosses dépenses du quotidien. Les sujets de niche ou très techniques viennent plus tard.
-- **Commentaires = carburant** : la question fermée simple (« Tu gardes combien sur ton compte courant ? Réponds en un chiffre. ») est un des CTA du MILIEU (section 6), jamais un 2e appel à la fin.
+- **Commentaires = carburant** : la question de fin (section 6) doit donner envie de répondre et de se répondre entre spectateurs.
 - **Préparer la suite sans la vendre** : noter dans HISTORIQUE.md les sujets qui pourraient devenir des vidéos d'une minute ou un module de formation (champ « à approfondir »).
 
-Phase suivante (quand le compte atteint 10 000 abonnés, sur décision de Thomas) : vidéos de 60-75 s, structure plus approfondie. À ce moment-là, ne pas changer seul : attendre que Thomas mette à jour ce fichier.
+Le format 62-75 s est déjà testé chaque soir depuis le 2026-11-01 (section 12). Ne change pas seul la répartition des formats : c'est Thomas qui décide.
 
 ## 11. Version 30 s, 3 premières secondes, mot-clé de recherche
 
 **Version 30 s** (75 à 85 mots) : même squelette, comprimé. 0-3 s HOOK · 3-6 s PRÉCISION · 6-12 s ESCALADE · 12-16 s
-CTA du milieu (une phrase de 6 à 10 mots) puis relance aussitôt · 16-26 s RÉVÉLATION montrée · 26-30 s BOUCLE vers le hook.
+appel « abonne-toi » (une phrase de 6 à 10 mots) puis relance aussitôt · 16-26 s RÉVÉLATION montrée · 26-30 s FIN : question qui fait
+réagir et/ou partage ciblé (section 6), qui reboucle si possible vers le hook.
 Une seule idée, un seul chiffre fort ; rien qu'on pourrait couper sans casser le fil.
 
 **Les 3 premières secondes** (là où les gens partent) : le hook est dit ET écrit dès l'image 0, quelque chose bouge dès l'image 0,
@@ -159,3 +168,23 @@ présentation. Le premier son tombe à 0 s.
 une vidéo ; ce n'est pas garanti, on mesure) : le mot que les gens tapent (épargne, salaire, investir, budget, inflation,
 impôts, crédit, loyer…) est prononcé dans les 5 premières secondes, visible à l'écran dans les mêmes secondes, et ouvre la légende.
 Naturel avant tout : une phrase qui sonne comme du référencement fait décrocher.
+
+## 12. Format HISTOIRE de 62 à 75 s (vidéo du SOIR, SLOT 1)
+
+Ce qui fait marcher les grosses vidéos argent : **un personnage avec un cas précis, un enjeu compris en 2 s, un
+retournement, une info utile qu'on enregistre ou qu'on envoie, une question qui fait débattre.** 170 à 195 mots.
+
+```
+0–3 s     HOOK          Tico (et souvent un 2e personnage) + l'enjeu ou l'injustice en une phrase.
+                        « Tico a travaillé 43 ans au SMIC. Son pote Karim n'a jamais travaillé. »
+3–15 s    LE CAS        Prénom, âge, salaire, situation : tout est chiffré et sourcé.
+15–20 s   LE CHOC       Le chiffre qui surprend.
+18–28 s   ABONNE-TOI    Appel 1 (section 6), puis relance aussitôt.
+25–35 s   RETOURNEMENT  « Comment c'est possible ? » / « Sauf que… » : changement visuel fort.
+35–55 s   EXPLICATION   Le mécanisme, les conditions, les montants, MONTRÉS par les données qui se transforment.
+55–65 s   CONCRET       Ce que TOI tu peux vérifier ou demander (« il faut la demander », « regarde ta fiche de paie »).
+65–75 s   FIN           Appel 2 (section 6) : partage ciblé + question qui fait réagir. Tico réagit.
+```
+- Durée minimum 62 s (au-dessus d'une minute), maximum 75 s.
+- Le personnage principal est TOUJOURS Tico (voir `DA.md` section 4) ; les autres personnages ont des prénoms variés.
+- Un seul fil : une histoire, un cas, une révélation. Rien qu'on pourrait couper sans casser l'histoire.
