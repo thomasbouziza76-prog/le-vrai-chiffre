@@ -28,15 +28,15 @@
 | # | Règle | Mesure |
 |---|---|---|
 | 1 | Le Ticket est présent | **Du début à la fin** (pas seulement l'ouverture) |
-| 2 | Un gag ou une réaction du Ticket | **Toutes les 4 à 6 s** (6 à 8 par vidéo), chacun avec son bruitage |
-| 3 | Les données se transforment | **Au moins 2 transformations par scène** (voir liste section 5) |
+| 2 | Un gag ou une réaction du Ticket | **Toutes les 4 à 6 s** (8 à 11 en 45 s, 5 à 7 en 30 s), chacun avec son bruitage |
+| 3 | Les données se transforment | **Au moins 2 transformations par scène** (scène = une séquence du STORYBOARD ; liste section 5) |
 | 4 | Transitions avec une cause | L'objet d'une scène **devient** l'objet de la suivante (le chiffre éclate → les morceaux deviennent des barres → les barres fondent en courbe) |
 | 5 | 3D stylisée | **Au moins 1 vrai moment 3D par vidéo** (barres extrudées + caméra qui tourne, ticket qui se retourne, avion en papier en profondeur). **3D réaliste interdite** |
 | 6 | Caméra | Elle voyage : zoom arrière, panoramique, poussée sur le chiffre clé, petit tremblement sur les impacts |
 | 7 | Fond vivant | Jamais un aplat mort : quadrillage qui apparaît, symboles € et % qui dérivent très lentement |
 | 8 | Écran rempli | Jamais plus de 40 % de vide ; tout chiffre entièrement dans le cadre (marge ≥ 80 px) |
 | 9 | Son | Chaque geste a son bruitage (`SONS.md`) ; jamais 3 s sans un son d'action ; aucun bruitage plus fort que la voix |
-| 10 | Image 0 | Le hook est lisible, le Ticket et le chiffre bougent déjà, un son tombe à 0,0 s |
+| 10 | Image 0 | Carton du hook de 3 à 6 mots lisible, le Ticket et le chiffre bougent déjà, un son ET la voix commencent à 0,0 s |
 
 ---
 
@@ -81,6 +81,9 @@ Pièces prêtes : `motion/` du Studio (`catalogue.json`, champ `quand`).
 - Images clés : `exemples/ticket-salaire-median-v2-planche.jpg`.
 - Vidéo : Studio, `exemples/ticket-salaire-median-v2.mp4`.
 - **On s'inspire du NIVEAU de mouvement et de la façon dont les 3 couches s'emboîtent. On ne copie jamais le contenu.**
+- La référence est une démo SANS voix : une vraie vidéo ajoute la voix (dès 0,0 s) et le sous-titre en bas (voir PIPELINE, « Les deux textes à l'écran »).
+- **Défauts connus de la référence, à ne pas reproduire** : à 7,6 s et 10,2 s le Ticket cache l'étiquette « MOYENNE 2 733 € » ;
+  le montant du géant est coupé au bord droit ; vers 5,4 s la barre du 1 % touche le carton de texte.
 
 | Temps | Données (couche 1) | Ticket (couche 2) | Texte (couche 3) |
 |---|---|---|---|
@@ -100,7 +103,7 @@ Pièces prêtes : `motion/` du Studio (`catalogue.json`, champ `quand`).
 - **Écris le script en pensant aux gags** : chaque phrase doit pouvoir être JOUÉE par le Ticket ou par les données. Si une phrase ne donne aucune image, réécris-la.
 - **Ton** : complice, un peu taquin envers le chiffre ou l'adversaire, jamais envers le spectateur. Le chiffre « ment », la moyenne « ne bouge pas », le crédit « tamponne ».
 - **Phrases courtes** : une idée par phrase, souvent avec un verbe d'action (pousser, tirer, tomber, couper, glisser, écraser).
-- **Texte d'écran** : 2 lignes maximum, 3 à 7 mots par ligne, **un seul mot clé encadré** par carton.
+- **Carton (texte d'écran du haut)** : 2 lignes maximum, 3 à 7 mots par ligne (3 à 6 mots à l'image 0), **un seul mot clé encadré** par carton. Le sous-titre du bas transcrit la voix ; le carton la résume.
 - Exemples dans la DA :
   - « Ce chiffre te **ment.** »
   - « Ces gros salaires tirent la **moyenne.** »
@@ -117,7 +120,7 @@ Pièces prêtes : `motion/` du Studio (`catalogue.json`, champ `quand`).
 - Le Ticket redessiné à la main (il changerait de tête).
 - La 3D réaliste, les images générées par IA, les photos.
 - Le Ticket qui cache un chiffre ou un texte à lire.
-- Le texte « Le Vrai Chiffre » comme logo dans la vidéo (le nom de la chaîne est déjà partout).
+- Un logo ou le nom de la chaîne en signature. (La phrase « Le vrai chiffre. » est permise quand elle conclut la révélation, comme dans la référence.)
 
 ---
 

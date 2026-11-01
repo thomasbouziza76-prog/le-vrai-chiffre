@@ -12,7 +12,7 @@ charlie947/motion-graphics-skills (« brand-intake ») ; contenu propre à la ch
 ## Typo
 - Titres et sous-titres : Instrument Sans 700, interlettrage −0,035 em, interligne ~0,98
 - Chiffres, labels, tampons : Space Mono 700 (chiffres) / 400 (labels en capitales espacées)
-- Le mot clé de la phrase dans la boîte terracotta (légère rotation −1,5°). UN seul par écran.
+- Le mot clé dans la boîte terracotta (légère rotation −1,5°) : UN seul par carton ; le sous-titre du bas a sa propre boîte.
 - Charge les polices AVANT la première image (sinon l'image 0 s'affiche dans une police de secours).
 
 ## Mouvement
@@ -27,8 +27,9 @@ charlie947/motion-graphics-skills (« brand-intake ») ; contenu propre à la ch
 - Remplir le cadre : on met l'effet à l'échelle, jamais une petite vignette au milieu d'un grand vide.
 
 ## La référence de mouvement
-La N°05 (salaire médian) est la vidéo qui bouge le mieux selon Thomas : caméra qui voyage, objets qui arrivent sans
-cesse, rien de figé. Toute vidéo doit bouger AU MOINS autant. La N°06 (paiement en 4 fois) était trop statique.
+- **Référence actuelle : la démo v2 du salaire médian** (`DA.md` section 6 : `exemples/ticket-salaire-median-v2.html` et sa planche).
+- La N°05 publiée (salaire médian, sans Ticket) reste l'exemple d'une vidéo qui bouge bien ; la N°06 était trop statique.
+- La démo v1 (Ticket qui bouge seul, données figées) est l'erreur à ne pas refaire.
 
 ## Le Ticket, la mascotte de la chaîne
 - Un ticket de caisse crème, contour encre, bas en dents de scie, deux gros yeux ronds, une bouche, des bras et des
@@ -36,10 +37,9 @@ cesse, rien de figé. Toute vidéo doit bouger AU MOINS autant. La N°06 (paieme
   (option 1) et le module `exemples/ticket.js` ; gag de référence animé : `exemples/ticket-gag-exemple.html` (coupé en 4, écrasé par le tampon CRÉDIT).
 - Il EST l'argent : il s'allonge quand la facture monte, se fait plier, couper, tamponner, aplatir ; il marche,
   sautille, sursaute, a peur, est content. Physique de dessin animé : écrasement et étirement, rebonds, anticipation.
-- Le gag d'ouverture (0 à 2 s) le met en scène, TOUJOURS lié au sujet, compréhensible sans le son et sans lire.
-- **Mis à jour le 2026-11-01 (voir `DA.md`)** : le Ticket reste **du début à la fin** et joue AVEC les données
-  (gag ou réaction toutes les 4 à 6 s). Il ne remplace jamais le motion design : les données se transforment autant
-  que lui (au moins 2 transformations par scène).
+- Il est là **du début à la fin** et joue AVEC les données (gag ou réaction toutes les 4 à 6 s, voir `DA.md`). Son
+  premier gag ouvre la vidéo (0 à 2 s), lié au sujet, compréhensible sans le son et sans lire.
+- Il ne remplace jamais le motion design : les données se transforment autant que lui (au moins 2 transformations par séquence).
 - Toujours dessiné avec `ticket.js` (Studio `charte/ticket.js`, copie `exemples/ticket.js`), jamais redessiné.
 - Chaque geste du Ticket a son bruitage (voir SONS.md).
 

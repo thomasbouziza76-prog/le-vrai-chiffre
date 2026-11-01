@@ -1,6 +1,6 @@
 # Écrire le script : hook, rétention, appel à l'action
 
-Synthèse adaptée à « Le Vrai Chiffre » (finance, 45 s, 9:16, voix off, motion design, audience francophone) des skills open source vyralcontent/content-skills (licence MIT : viral-hooks, viral-short-form,
+Synthèse adaptée à « Le Vrai Chiffre » (finance, 30 ou 45 s selon le N°, voir le tableau des durées de PIPELINE.md, 9:16, voix off, motion design, audience francophone) des skills open source vyralcontent/content-skills (licence MIT : viral-hooks, viral-short-form,
 viral-tiktok-content), qui reprennent les cadres de Kallaway, MrBeast, Hormozi, Koe, Welsh, Bush et Galloway.
 Ces règles augmentent les chances ; elles ne garantissent rien. Ne promets jamais qu'une vidéo va percer.
 
@@ -28,10 +28,10 @@ Ces règles augmentent les chances ; elles ne garantissent rien. Ne promets jama
    puis fuir, et les plateformes le détectent. Pour cette chaîne : jamais d'argent facile, jamais de fausse
    urgence, jamais de chiffre non sourcé.
 5. **Trois couches en même temps** dans la première seconde : l'image (ce que montre la première frame), la voix
-   (5 à 10 mots), et un texte à l'écran de 3 à 7 mots qui RÉSUME le hook sans le répéter (« 1 000 € → 867 € »).
+   (5 à 10 mots), et un texte à l'écran de 3 à 6 mots qui RÉSUME le hook sans le répéter (« 1 000 € → 867 € »).
    Beaucoup regardent sans le son : le hook doit marcher muet.
-6. **Pas d'échauffement.** Pas de « salut », pas de logo, pas de « aujourd'hui on va parler de ». Le logo et la
-   marque vont à la fin.
+6. **Pas d'échauffement.** Pas de « salut », pas de logo, pas de « aujourd'hui on va parler de ». Aucun logo, ni au
+   début ni à la fin.
 7. **Chaque phrase gagne la suivante.** Les temps s'enchaînent par « mais » ou « donc », jamais par « et puis ».
 
 ## 2. Les archétypes de hook (avec des exemples pour la chaîne)
@@ -69,7 +69,7 @@ Présentation ou logo au début · teasing vague (« ce qui suit va te choquer �
 pas » (sauf enjeu énorme) · jeu de mots qu'il faut décoder · hook caché dans la 3e phrase · hook de plus de
 3 s · marque ou chaîne en premier.
 
-## 5. Le script de 45 s (110 à 120 mots)
+## 5. Le script de 45 s (110 à 120 mots ; version 30 s : section 11)
 
 ```
 0–3 s    HOOK            Le gain ou l'enjeu, tout de suite. Image + voix + texte court.
@@ -90,7 +90,7 @@ pas » (sauf enjeu énorme) · jeu de mots qu'il faut décoder · hook caché da
 - Les gags du Ticket ponctuent TOUTE la vidéo (un toutes les 4 à 6 s, voir `DA.md`), chacun au service de l'idée dite à ce moment.
 - Mets ton 2e meilleur moment près du début (pour survivre à la chute des premières secondes) et le meilleur à la
   révélation.
-- Un changement visuel toutes les 2 à 3 s (déjà dans la grammaire du storyboard).
+- Un changement visuel toutes les 1,5 à 3 s, jamais plus de 3 s sans changement.
 - Récit double : la voix explique pendant que l'image montre un objet qui fait l'action ; jamais la voix qui
   répète le texte à l'écran mot pour mot.
 
@@ -119,12 +119,12 @@ Note dans HISTORIQUE.md le CTA choisi ET sa seconde, pour comparer plus tard ave
 ## 8. Le contrôle avant de valider le script (tout doit passer)
 
 - [ ] Le hook contient un nom concret ou un chiffre précis et sourcé.
-- [ ] Le hook est compris en moins de 3 s, sans le son (texte à l'écran de 3 à 7 mots).
+- [ ] Le hook est compris en moins de 3 s, sans le son (texte à l'écran de 3 à 6 mots).
 - [ ] Aucun anti-pattern de la section 4.
 - [ ] La vidéo livre exactement ce que le hook promet.
-- [ ] Une relance au creux (~18 s), et chaque transition est un « mais » ou un « donc ».
+- [ ] Une relance juste après le CTA, et chaque transition est un « mais » ou un « donc ».
 - [ ] La révélation est montrée à l'écran, pas seulement dite.
-- [ ] Un seul appel à l'action dit à voix haute, placé entre 16 et 24 s juste après le chiffre choc, suivi
+- [ ] Un seul appel à l'action dit à voix haute, placé juste après le chiffre choc (16-24 s en 45 s, 12-16 s en 30 s), suivi
       aussitôt d'une relance ; différent de celui de la veille. La fin est une boucle, pas un CTA.
 - [ ] Archétype de hook différent des 2 dernières vidéos.
 - [ ] Contenu éducatif, sans promesse d'argent facile, sans produit à intérêts présenté comme solution.
@@ -133,14 +133,14 @@ Note dans HISTORIQUE.md le CTA choisi ET sa seconde, pour comparer plus tard ave
 
 La priorité n'est pas encore de vendre : c'est **la portée et l'abonnement**. Chaque vidéo est jugée sur 3 signaux, dans cet ordre :
 1. **Rétention des 3 premières secondes** : le hook écrit et dit dès la 1re image, aucun logo ni intro.
-2. **Visionnage complet / revisionnage** : 40-50 s maximum dans cette phase, fin qui reboucle sur la 1re phrase quand c'est possible.
+2. **Visionnage complet / revisionnage** : 30 ou 45 s dans cette phase (test en cours), fin qui reboucle sur la 1re phrase quand c'est possible.
 3. **Abonnement** : donner une raison concrète de suivre (« chaque jour, un chiffre que ta banque ne te montre pas »).
 
 Règles qui en découlent :
-- **Format série reconnaissable** : le chiffre clé du jour en très gros dès la 1re image (c'est la promesse « Le Vrai Chiffre »). Le style reste fixe, la mise en scène change (règle n° 1 du PIPELINE).
+- **Format série reconnaissable** : le chiffre clé du jour en très gros dès la 1re image (c'est la promesse « Le Vrai Chiffre »). Le style reste fixe, la mise en scène change (règle n° 1 : chaque vidéo est une création nouvelle, PIPELINE étape 3).
 - **Un seul appel à l'action, au milieu de la vidéo** (section 5), en rotation : **s'abonner** (1 jour sur 2 au moins), enregistrer, commenter un mot-clé, partager à quelqu'un. Jamais de lien, jamais de vente, jamais de « formation » dans cette phase.
 - **Sujets à large audience d'abord** : salaire, loyer, inflation, épargne, dettes, impôts, grosses dépenses du quotidien. Les sujets de niche ou très techniques viennent plus tard.
-- **Commentaires = carburant** : terminer parfois par une question fermée simple (« Tu gardes combien sur ton compte courant ? Réponds en un chiffre. »).
+- **Commentaires = carburant** : la question fermée simple (« Tu gardes combien sur ton compte courant ? Réponds en un chiffre. ») est un des CTA du MILIEU (section 6), jamais un 2e appel à la fin.
 - **Préparer la suite sans la vendre** : noter dans HISTORIQUE.md les sujets qui pourraient devenir des vidéos d'une minute ou un module de formation (champ « à approfondir »).
 
 Phase suivante (quand le compte atteint 10 000 abonnés, sur décision de Thomas) : vidéos de 60-75 s, structure plus approfondie. À ce moment-là, ne pas changer seul : attendre que Thomas mette à jour ce fichier.
