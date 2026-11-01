@@ -41,3 +41,6 @@ Réponds en 5 lignes maximum : verdict, note, les 2 corrections les plus importa
 - Les stats réelles des vidéos (Google Sheet, colonnes vues, % qui finit, abonnés gagnés) : la meilleure source sur ce qui marche **pour cette chaîne**. Si elles contredisent `savoir-tiktok.md`, ce sont les stats qui gagnent.
 
 **En cas de contradiction : `DA.md` > `retours-thomas.md` > `PIPELINE.md` > `savoir-tiktok.md`.** Par exemple, `savoir-tiktok.md` conseille 61 à 75 s, mais le matin reste au format court (30-45 s) de `PIPELINE.md`.
+
+## Si un agent ne répond plus (02/11)
+Un agent qui a beaucoup travaillé peut ne plus pouvoir être relancé (historique trop lourd). Ce n'est pas grave si **le journal du projet (`$P/journal.md`) est tenu à chaque étape** : on lance un nouvel agent avec le même rôle, on lui donne le journal, le plan, le dernier verdict et ce qui a changé depuis, et il reprend là où l'autre s'est arrêté. D'où la règle : chaque agent note chaque étape dans le journal, avec l'heure et le résultat.
