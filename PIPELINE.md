@@ -188,25 +188,12 @@ La page de liens de la chaîne affiche les chiffres clés et les 3 dernières vi
    en tutoiement, 120 caractères max>","s":"<source courte + année>"}` (garde 10 chiffres max, supprime les plus vieux) ;
    ajoute EN TÊTE de `videos` : `{"n":"<xx>","titre":"<titre de la vidéo>","lien":"https://www.tiktok.com/@le_vrai_chiffre"}`
    (garde 3 vidéos). Ne touche à rien d'autre (jamais index.html). Le JSON doit rester valide (`python3 -m json.tool`).
-3. Liens directs (si le connecteur Metricool est présent) : `getAnalyticsDataByMetrics` brandId 7764816, 10 derniers jours,
-   metrics `["TKPO02","TKPO03","TKPO05"]` (date, URL, légende). Pour chaque vidéo de `videos` dont le lien est encore le
-   profil, retrouve sa ligne par la légende (le début du titre / mot-clé) et la date, et mets l'URL SANS le `?utm…`.
-   Metricool a 1 à 2 jours de retard : les vidéos pas encore remontées gardent le lien du profil.
-4. Commit + push. Si add_repo ou le push échoue : ne bloque pas la livraison, dis-le en une ligne dans le message final.
+3. Commit + push. Si add_repo ou le push échoue : ne bloque pas la livraison, dis-le en une ligne dans le message final.
 
 ## 9. Boucle de retour (au DÉBUT de chaque exécution, ≈ 2 min)
-1. **Mise à jour automatique des stats (si le connecteur Metricool est présent dans ta session)** : Thomas ne remplit
-   plus rien à la main. `getAnalyticsDataByMetrics` (brandId 7764816, from = il y a 30 jours, to = maintenant) avec les
-   métriques TikTok par vidéo `TKPO02` (date et heure), `TKPO05` (description), `TKPO07` (vues), `TKPO08` (j'aime),
-   `TKPO09` (commentaires), `TKPO10` (partages), `TKPO13` (% qui regarde jusqu'au bout), `TKPO15` (temps moyen, s),
-   `TKPO21` (% des vues venant de la recherche). Puis, à part, `TKEV07` (abonnés) et `TKEV08` (nouveaux abonnés par
-   jour). Associe chaque vidéo TikTok à sa ligne du Google Sheet par la légende (début de la description) et la date
-   de publication, puis écris dans CETTE ligne seulement : K vues, L temps moyen, M % qui finit, N nouveaux abonnés du
-   jour de publication (approximation, Metricool ne les donne pas par vidéo), Q j'aime, S partages, T commentaires,
-   U % recherche. Ne touche à aucune autre colonne ; R (enregistrements) reste à Thomas, Metricool ne le fournit pas.
-   Pas de ligne trouvée ou résultat vide : ne remplis rien et note-le en une ligne dans le message final.
-   Sans connecteur Metricool : saute cette sous-étape (l'autre tâche du jour s'en charge).
-2. Lis `Videos!A1:U14`. Si des vidéos ont des stats : repère les hooks, familles de sujets, durées (30 s / 45 s) et
+1. **Les stats ne sont plus écrites ici** : la tâche « Stats et liens · chaque nuit » (22h43) remplit le Google Sheet
+   (K à U, lien TikTok en V) et les liens directs de la page de liens. Ne les réécris pas : lis-les seulement.
+2. Lis `Videos!A1:W14`. Si des vidéos ont des stats : repère les hooks, familles de sujets, durées (30 s / 45 s) et
    mots-clés qui retiennent le mieux (temps moyen, % qui finit, % recherche) et ceux qui font gagner des abonnés ;
    penche vers ce qui marche (sans jamais répéter la veille) et écris la conclusion en une ligne dans l'historique.
    Si une durée retient nettement mieux sur au moins 4 vidéos de chaque, dis-le en tête du message final.
