@@ -41,6 +41,40 @@ cesse, rien de figé. Toute vidéo doit bouger AU MOINS autant. La N°06 (paieme
   caméra qui voyage, comme la N°05) ; le Ticket peut revenir 1 ou 2 fois (réaction, CTA, chute finale).
 - Chaque geste du Ticket a son bruitage (voir SONS.md).
 
+## Les règles des pros (recherche du 2026-11-01 : Disney, Jorge R. Canedo / Ordinary Folk, Vox, Kurzgesagt)
+Les 10 principes du motion design (Jorge R. Canedo, ex-Buck, fondateur d'Ordinary Folk, adaptés des 12 de Disney) :
+1. **Timing, espacement, rythme** : les gestes tombent sur le rythme de la voix et de la musique (un geste fort = une
+   syllabe forte ou un temps de la musique), jamais au hasard.
+2. **Courbes d'accélération** : rien ne bouge à vitesse constante.
+3. **Masse et poids** : un objet lourd (tampon, coffre, pile de pièces) part lentement et frappe fort ; un objet léger
+   (ticket, billet) flotte et rebondit. Le poids se lit même sur des formes abstraites.
+4. **Anticipation** : petit recul dans l'autre sens avant chaque grand mouvement (le Ticket se baisse avant de sauter,
+   le tampon remonte un peu avant de tomber).
+5. **Trajectoires en arc** : ce qui vole, tombe ou saute suit une courbe, jamais une ligne droite.
+6. **Écrasement, étirement, traînée** : à l'impact on écrase, en vitesse on étire ; une traînée (smear) sur les gestes
+   très rapides. Le Ticket en papier se déforme beaucoup, une pièce presque pas.
+7. **Continuité et chevauchement** : les parties ne démarrent ni ne s'arrêtent ensemble (bras du Ticket en retard sur
+   le corps, lettres décalées, rangées décalées).
+8. **Exagération** : on pousse plus loin que le réel (temps suspendu en l'air, écrasement énorme), sinon c'est mou.
+9. **Animation secondaire** : une couche en plus qui porte du sens (poussière à l'impact, gouttes de sueur, petit
+   tremblement de peur, pastille qui pulse derrière un chiffre).
+10. **Attrait** : ça doit être beau ET drôle. « Make it fun. »
+
+Vox (art direction de Joey Sendaydiego, techniques documentées) :
+- **Un motif fil rouge par vidéo** autour duquel tout le visuel se construit (ex. l'horloge en papier devenue camembert).
+- **Les chiffres deviennent des objets** (une horloge, un caddie, une pile) plutôt que des barres abstraites.
+- **Fond jamais mort** : une texture qui bouge très lentement derrière les éléments fixes.
+- **Transition par recul de caméra** avec un bref flou qui cache la coupe.
+- **Images « caméra »** : légère aberration chromatique et flou SEULEMENT sur les bords du cadre.
+- **Pas de sur-polissage** : trop parfait, ça fait pub. Intéressant d'abord, propre ensuite.
+- **La mesure, c'est la rétention** : on juge une vidéo au temps de visionnage, pas au « c'est joli ».
+
+Kurzgesagt :
+- **Des personnages attachants et décalés** sont leur marque : on s'attache à une mitochondrie, donc à notre Ticket.
+- **La voix donne le timing** de toute l'animation ; on anime APRÈS la voix, sur ses respirations et ses accents.
+- **Chaque métaphore visuelle est esquissée et choisie** avant d'animer (nos 3 directions de l'étape 3).
+- **2D + touches de 3D** quand ça sert le propos, pas pour faire joli.
+
 ## Les premières secondes
 - Image 0 = UNE idée, 6 mots max, énorme, en mouvement, son à 0,0 s, voix qui dit « tu ».
 - Si les 3 premières secondes n'arrêteraient pas TON pouce, refais-les avant le reste.
