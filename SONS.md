@@ -10,7 +10,7 @@ côté des 20 sons de HyperFrames. Licence : Kenney (CC0, `sons/LICENCE-kenney-C
   Tampon : `tampon`. Chute : `chute-sifflet` puis `tombe-*` ou `ecrase-*` à l'arrivée. Pièces, argent qui tombe :
   `metal-leger-*`, `caisse-ching`. Objet posé : `tape-leger-*`, `assiette-legere-*`. Coup : `coup-*`.
   Interface, chiffre qui s'affiche : `clic-*`, `validation-*`, `bong`, `erreur`.
-- Densité : une vidéo de 30 s compte 25 à 40 bruitages ; une de 45 s, 35 à 60. Jamais 3 s sans aucun son d'action.
+- Densité : une vidéo de 30 s compte 25 à 40 bruitages ; une de 45 s, 35 à 60 ; une histoire de 62 à 75 s, 60 à 90. Jamais 3 s sans aucun son d'action.
 - Varie : ne réutilise pas le même fichier deux fois d'affilée (prends -1, -2, -3…).
 - Niveaux : aucun bruitage plus fort que la voix ; glitch-1/2/3 gain 0,065 max ; pas et pouc 0,15 à 0,3 ; impacts
   0,25 max pendant la voix, jusqu'à 0,6 dans un vrai silence de la voix (la voix commence à 0,0 s).

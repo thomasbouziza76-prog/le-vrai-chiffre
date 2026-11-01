@@ -56,7 +56,10 @@
 - À chaque vidéo, Tico **joue un rôle** différent, avec son cas chiffré : « Imaginons que Tico gagne 1 800 € net… ». Son
   âge et son salaire changent selon l'histoire, comme un personnage de dessin animé.
 - Les **autres personnages** (le pote, le patron, le géant, les parents) ont des prénoms variés et courants en France,
-  différents d'une vidéo à l'autre. Jamais « Julie ».
+  différents d'une vidéo à l'autre. Jamais « Julie ». Un adversaire-institution porte son étiquette (« L'ÉTAT »,
+  « LA BANQUE »), pas de prénom.
+- Dans ces fichiers, « le Ticket » = Tico (nom technique du dessin). Dans la voix, les cartons, les sous-titres, les
+  légendes, la couverture et le carrousel, on dit toujours « Tico ».
 
 ### Son rôle
 - Tico, c'est **toi / ton argent**. La voix dit « tu », Tico le vit à l'écran.
@@ -119,7 +122,7 @@ Pièces prêtes : `motion/` du Studio (`catalogue.json`, champ `quand`).
   - « Tu peux pousser : elle ne **bouge pas.** »
   - « Le vrai milieu, c'est la **médiane.** »
 - Les règles de `SCRIPT-HOOKS.md` (hook, les deux appels de la section 6, formats, mots) restent valables ; cette section dit **comment** les écrire.
-- La fin pose une question qui fait réagir (« Tu trouves ça juste ? ») : Tico la « pose » à l'écran (il se tourne vers nous, hausse les épaules).
+- La fin pose une question qui fait réagir (« Tu trouves ça juste ? ») et/ou demande un partage ciblé : Tico la « pose » à l'écran (il se tourne vers nous, hausse les épaules).
 
 ---
 

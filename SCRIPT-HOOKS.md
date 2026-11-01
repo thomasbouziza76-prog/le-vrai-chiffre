@@ -1,6 +1,6 @@
 # Écrire le script : hook, rétention, appel à l'action
 
-Synthèse adaptée à « Le Vrai Chiffre » (finance, 30 ou 45 s selon le N°, voir le tableau des durées de PIPELINE.md, 9:16, voix off, motion design, audience francophone) des skills open source vyralcontent/content-skills (licence MIT : viral-hooks, viral-short-form,
+Synthèse adaptée à « Le Vrai Chiffre » (finance, matin 30 ou 45 s, soir histoire 62 à 75 s, voir le tableau des durées de PIPELINE.md, 9:16, voix off, motion design, audience francophone) des skills open source vyralcontent/content-skills (licence MIT : viral-hooks, viral-short-form,
 viral-tiktok-content), qui reprennent les cadres de Kallaway, MrBeast, Hormozi, Koe, Welsh, Bush et Galloway.
 Ces règles augmentent les chances ; elles ne garantissent rien. Ne promets jamais qu'une vidéo va percer.
 
@@ -65,11 +65,11 @@ Si après 3 retouches le hook reste plat, change d'archétype, pas de mots.
 ## 4. Les anti-patterns (interdits)
 
 Présentation ou logo au début · teasing vague (« ce qui suit va te choquer ») · appâter puis changer de sujet ·
-« abonne-toi » avant d'avoir donné de la valeur · commencer par une histoire chronologique · « Stop, ne scrolle
+« abonne-toi » avant d'avoir donné de la valeur · commencer par une histoire chronologique (« au début… », « en 1982… » ; le format histoire du soir ouvre sur l'enjeu ou l'injustice, jamais sur le début de l'histoire) · « Stop, ne scrolle
 pas » (sauf enjeu énorme) · jeu de mots qu'il faut décoder · hook caché dans la 3e phrase · hook de plus de
 3 s · marque ou chaîne en premier.
 
-## 5. Le script de 45 s (110 à 120 mots ; version 30 s : section 11)
+## 5. Le script de 45 s (110 à 120 mots ; version 30 s : section 11 ; histoire du soir : section 12)
 
 ```
 0–3 s    HOOK            Le gain ou l'enjeu, tout de suite. Image + voix + texte court.
@@ -112,6 +112,12 @@ Objectif de la phase actuelle : les **abonnements**. Chaque vidéo pousse donc �
 - Toujours une raison pour s'abonner. Jamais d'appel trompeur. Varie les formulations d'une vidéo à l'autre.
 - À l'écran : pendant l'appel 1, une petite pastille « Abonne-toi » dans le style de la chaîne ; pendant les 2 dernières
   secondes, un rappel muet « Abonne-toi ».
+- **Ce qui ne compte PAS comme un appel** : la pastille « Abonne-toi » et le rappel muet des 2 dernières secondes (ils ne
+  sont pas dits). Une question + un partage dits ensemble à la fin = UN seul appel (l'appel 2).
+- **Boucle + question** : la dernière phrase dite EST la question ou le partage ; elle reprend le chiffre ou le mot du
+  hook (« 43 ans au SMIC pour 150 € de plus. Tu trouves ça juste ? ») et la dernière image rejoint l'image 0. La boucle ne
+  remplace jamais l'appel 2.
+- La pastille « Abonne-toi » ne se superpose jamais au carton de la question.
 - Note dans HISTORIQUE.md les deux appels choisis ET leurs secondes, pour comparer avec les statistiques.
 
 ## 7. Les mots
@@ -138,18 +144,18 @@ Objectif de la phase actuelle : les **abonnements**. Chaque vidéo pousse donc �
 
 ## 10. Objectif de la chaîne (phase actuelle : croissance vers 10 000 abonnés)
 
-La priorité n'est pas encore de vendre : c'est **la portée et l'abonnement**. Chaque vidéo est jugée sur 3 signaux, dans cet ordre :
+La priorité n'est pas encore de vendre : c'est **la portée (partages et commentaires d'abord) et l'abonnement**. Chaque vidéo est jugée sur 4 signaux :
 1. **Rétention des 3 premières secondes** : le hook écrit et dit dès la 1re image, aucun logo ni intro.
 2. **Visionnage complet / revisionnage** : matin 30 ou 45 s, soir 62-75 s (tableau des durées de PIPELINE.md) ; la fin reboucle sur la 1re phrase quand c'est possible.
-4. **Commentaires et partages** : ce sont les signaux qui pèsent le plus pour TikTok (section 6).
-3. **Abonnement** : donner une raison concrète de suivre (« chaque jour, un chiffre que ta banque ne te montre pas »).
+3. **Commentaires et partages** : ce sont les signaux qui pèsent le plus pour TikTok ; la priorité des appels (section 6).
+4. **Abonnement** : donner une raison concrète de suivre (« chaque jour, un chiffre que ta banque ne te montre pas »).
 
 Règles qui en découlent :
-- **Format série reconnaissable** : le chiffre clé du jour en très gros dès la 1re image (c'est la promesse « Le Vrai Chiffre »). Le style reste fixe, la mise en scène change (règle n° 1 : chaque vidéo est une création nouvelle, PIPELINE étape 3).
+- **Format série reconnaissable** : le chiffre clé du jour en très gros dès la 1re image (c'est la promesse « Le Vrai Chiffre » ; le soir, c'est le chiffre de l'enjeu, ex. « 43 ans », le chiffre choc étant gardé pour 15-20 s). Le style reste fixe, la mise en scène change (règle n° 1 : chaque vidéo est une création nouvelle, PIPELINE étape 3).
 - **Les deux appels de la section 6** dans chaque vidéo. Jamais de lien, jamais de vente, jamais de « formation » dans cette phase.
 - **Sujets à large audience d'abord** : salaire, loyer, inflation, épargne, dettes, impôts, grosses dépenses du quotidien. Les sujets de niche ou très techniques viennent plus tard.
 - **Commentaires = carburant** : la question de fin (section 6) doit donner envie de répondre et de se répondre entre spectateurs.
-- **Préparer la suite sans la vendre** : noter dans HISTORIQUE.md les sujets qui pourraient devenir des vidéos d'une minute ou un module de formation (champ « à approfondir »).
+- **Préparer la suite sans la vendre** : noter dans HISTORIQUE.md les sujets qui pourraient devenir une histoire du soir ou un module de formation (champ « à approfondir »).
 
 Le format 62-75 s est déjà testé chaque soir depuis le 2026-11-01 (section 12). Ne change pas seul la répartition des formats : c'est Thomas qui décide.
 
@@ -176,15 +182,18 @@ retournement, une info utile qu'on enregistre ou qu'on envoie, une question qui 
 
 ```
 0–3 s     HOOK          Tico (et souvent un 2e personnage) + l'enjeu ou l'injustice en une phrase.
-                        « Tico a travaillé 43 ans au SMIC. Son pote Karim n'a jamais travaillé. »
+                        « Imagine : tu bosses 43 ans au SMIC, comme Tico. Son pote Karim, lui, n'a jamais travaillé. »
+                        Image 0 : Tico + le chiffre de l'enjeu (« 43 ans ») ; le 2e personnage entre après 1,5 s.
 3–15 s    LE CAS        Prénom, âge, salaire, situation : tout est chiffré et sourcé.
 15–20 s   LE CHOC       Le chiffre qui surprend.
 18–28 s   ABONNE-TOI    Appel 1 (section 6), puis relance aussitôt.
 25–35 s   RETOURNEMENT  « Comment c'est possible ? » / « Sauf que… » : changement visuel fort.
 35–55 s   EXPLICATION   Le mécanisme, les conditions, les montants, MONTRÉS par les données qui se transforment.
-55–65 s   CONCRET       Ce que TOI tu peux vérifier ou demander (« il faut la demander », « regarde ta fiche de paie »).
-65–75 s   FIN           Appel 2 (section 6) : partage ciblé + question qui fait réagir. Tico réagit.
+55 s → fin − 8 s  CONCRET   Ce que TOI tu peux vérifier ou demander (« il faut la demander », « regarde ta fiche de paie »).
+5 à 8 dernières s  FIN       Appel 2 (section 6) : question qui fait réagir et/ou partage ciblé (les deux ensemble = UN
+                            seul appel). Tico réagit.
 ```
 - Durée minimum 62 s (au-dessus d'une minute), maximum 75 s.
 - Le personnage principal est TOUJOURS Tico (voir `DA.md` section 4) ; les autres personnages ont des prénoms variés.
+- Le soir, la relance après « abonne-toi » peut être le retournement lui-même (« Comment c'est possible ? »).
 - Un seul fil : une histoire, un cas, une révélation. Rien qu'on pourrait couper sans casser l'histoire.

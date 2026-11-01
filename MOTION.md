@@ -31,7 +31,7 @@ charlie947/motion-graphics-skills (« brand-intake ») ; contenu propre à la ch
 - La N°05 publiée (salaire médian, sans Ticket) reste l'exemple d'une vidéo qui bouge bien ; la N°06 était trop statique.
 - La démo v1 (Ticket qui bouge seul, données figées) est l'erreur à ne pas refaire.
 
-## Le Ticket, la mascotte de la chaîne
+## Le Ticket (Tico), la mascotte de la chaîne
 - Un ticket de caisse crème, contour encre, bas en dents de scie, deux gros yeux ronds, une bouche, des bras et des
   jambes en trait d'encre ; son montant en terracotta (Space Mono). Dessin de référence : `exemples/ticket-personnage.png`
   (option 1) et le module `exemples/ticket.js` ; gag de référence animé : `exemples/ticket-gag-exemple.html` (coupé en 4, écrasé par le tampon CRÉDIT).

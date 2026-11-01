@@ -1,4 +1,4 @@
-# Pipeline quotidien · « Le Vrai Chiffre » (vidéo 9:16 de 30 ou 45 s, voir le tableau des durées)
+# Pipeline quotidien · « Le Vrai Chiffre » (vidéo 9:16 : matin 30 ou 45 s, soir histoire 62 à 75 s ; voir le tableau des durées)
 
 Session neuve et éphémère : tout se réinstalle. Travaille seul, sans poser de question. Si une étape échoue deux fois,
 livre ce qui existe et écris ce qui manque. Les étapes mécaniques sont des scripts dans `etapes/` : lance-les, ne les
@@ -21,11 +21,12 @@ Racine du dépôt : `$LVC_REPO` (après l'étape 0). Projet du jour : `$P` = sor
 
 ## Tableau des durées (décision de Thomas du 2026-11-01)
 
-- **Vidéo du MATIN (SLOT 0)** : format court, N° impair = 45 s, N° pair = 30 s.
+- **Vidéo du MATIN (SLOT 0)** : format court qui ALTERNE avec la vidéo du matin précédente dans `HISTORIQUE.md` : 45 s si
+  la précédente faisait 30 s, 30 s si elle faisait 45 s. Le N° ne joue PAS sur la durée.
 - **Vidéo du SOIR (SLOT 1)** : format HISTOIRE de 62 à 75 s (au-dessus d'une minute : seules les vidéos de plus d'1 min
   sont rémunérées par TikTok). Structure : `SCRIPT-HOOKS.md` section 12.
 
-| | **30 s** (matin, N° pair) | **45 s** (matin, N° impair) | **62-75 s** (soir, histoire) |
+| | **30 s** (matin, une fois sur deux) | **45 s** (matin, l'autre fois) | **62-75 s** (soir, histoire) |
 |---|---|---|---|
 | Mots de la voix | 75 à 85 | 110 à 120 | 170 à 195 |
 | Appel « abonne-toi » dit à voix haute | entre 12 et 16 s | entre 16 et 24 s | entre 18 et 28 s |
@@ -69,7 +70,7 @@ HyperFrames. Seul `HISTORIQUE.md` (7 dernières vidéos) est à lire en entier :
    référence. Si le clone échoue : continue avec `exemples/ticket.js` de ce dépôt et dis-le dans le message final.
 2. **Référence** : regarde `exemples/ticket-salaire-median-v2-planche.jpg` et lis `DA.md` section 6.
 3. **Boucle de retour** : lis `Videos!A1:W14` du Google Sheet. Les stats sont écrites par la tâche de nuit (22h43) :
-   ne les réécris jamais. Si des vidéos ont des stats, repère les hooks, sujets, durées (30 s / 45 s) et mots-clés qui
+   ne les réécris jamais. Si des vidéos ont des stats, repère les hooks, sujets, durées (30 s / 45 s / histoire 62-75 s) et mots-clés qui
    retiennent le mieux (temps moyen, % qui finit, % recherche) et ceux qui font gagner des abonnés. Penche vers ce qui
    marche, sans répéter les 2 vidéos précédentes, et note la conclusion en une ligne dans l'historique. Si une durée
    retient nettement mieux sur au moins 4 vidéos de chaque, dis-le en tête du message final.
@@ -82,13 +83,16 @@ HyperFrames. Seul `HISTORIQUE.md` (7 dernières vidéos) est à lire en entier :
   chaque chiffre le jour même (WebSearch) : l'actu bouge. Dès le sujet choisi, mets ✅ + date + N° au début de sa ligne,
   commit et push TOUT DE SUITE (l'autre tâche du jour ne doit pas prendre le même). N° de la vidéo = dernier N° de
   l'historique + 1.
+- **Quel sujet selon le moment** : le SOIR prend le premier sujet [DROITS] non coché s'il est parmi les 3 premiers sujets
+  libres, sinon le premier sujet libre. Le MATIN prend le premier sujet libre qui n'est PAS [DROITS] (les [DROITS] sont
+  pour le format histoire du soir).
 - **Durée** : voir le tableau des durées en tête de ce fichier (matin court 30/45 s selon le N°, soir histoire 62-75 s).
   On compare les formats dans les stats.
 - **Mot-clé de recherche** : choisis le mot que les gens tapent dans TikTok pour ce sujet (épargne, salaire, investir,
   budget, inflation, impôts, crédit, loyer, prix…). Il est PRONONCÉ par la voix dans les 5 premières secondes, écrit dans
   le texte d'écran du hook ou du premier plan, et il ouvre la légende (voir étape 8). Vérifie chaque chiffre par une recherche web (Insee, Banque de France, AMF, service-public.fr), garde la
   source et la date.
-- Script : suis `SCRIPT-HOOKS.md` en entier. 8 hooks sur au moins 4 archétypes, garde le plus fort (archétype différent
+- Script : suis `SCRIPT-HOOKS.md` en entier. 8 hooks sur au moins 4 archétypes (le soir aussi, tous portés par Tico et son cas), garde le plus fort (archétype différent
   des 2 dernières vidéos), texte d'écran de 3 à 6 mots affiché dès la 1re image. Nombre de mots et secondes : tableau des durées. Deux appels dits à
   voix haute, et deux seulement (SCRIPT-HOOKS.md section 6) : « abonne-toi » avec une raison, juste après le chiffre choc,
   suivi aussitôt d'une relance ; puis, à la fin, une question qui fait réagir en commentaire et/ou un partage ciblé.
@@ -107,7 +111,8 @@ HyperFrames. Seul `HISTORIQUE.md` (7 dernières vidéos) est à lire en entier :
   2e tentative passe souvent). Jamais de relance après une génération réussie (chaque appel est facturé). Si la 2e
   échoue aussi, si les crédits sont épuisés ou si le téléchargement est refusé : arrête-toi et préviens Thomas avec
   l'erreur exacte.
-- Voix plus longue que la durée visée + 3 s : raccourcis le script et régénère UNE fois.
+- Durée de la voix hors cible : matin, plus de 3 s au-dessus de la durée visée → raccourcis et régénère UNE fois ; soir,
+  moins de 62 s → rallonge le bloc CONCRET et régénère UNE fois, plus de 75 s → raccourcis et régénère UNE fois.
 - `bash etapes/02-voix.sh $P "<media[0].url>" <texte-voix.txt>` : télécharge, minute chaque mot (`mots.txt`,
   `mots.json`), liste les silences (`silences.txt`), écrit la durée (`duree.txt`). Recolle les mots sur le script (l'orthographe
   du script gagne ; les mots à faible confiance viennent de la transcription).
@@ -215,8 +220,8 @@ doux) `bash etapes/07-finition.sh $P`, puis `bash etapes/06-controle.sh $P`. Reg
 planche `boards/planche.jpg` en entier. Ne dis jamais que c'est fini avant ces contrôles.
 
 ## 7. Historique (avant la livraison)
-Ajoute une ligne EN HAUT de `historique/HISTORIQUE.md` du dépôt : date, N°, sujet, hook (archétype + phrase), appel à
-l'action ET sa seconde, à approfondir, concept, monde, signatures, blueprints, transitions, effets, palette sonore,
+Ajoute une ligne EN HAUT de `historique/HISTORIQUE.md` du dépôt : date, N°, sujet, hook (archétype + phrase), format (matin court / soir histoire),
+les deux appels (abonne-toi + fin) ET leurs secondes, à approfondir, concept, monde, signatures, blueprints, transitions, effets, palette sonore,
 musique, moteur. Garde les 7 dernières lignes détaillées ; condense les plus anciennes en une demi-ligne chacune.
 Commit et push dans le dépôt (voir 10), avec `historique/CHECKS.md` s'il a changé.
 
@@ -251,15 +256,16 @@ Thomas les publie à la main avec la vidéo. Pas de voix : aucun crédit ElevenL
   | 3 | Ce que ça change pour TOI (exemple chiffré) |
   | 4 | Le détail ou le piège en plus |
   | 5 | Sources + « contenu éducatif, pas un conseil personnalisé » |
-  | 6 | « Enregistre ce post » avec une raison + « Abonne-toi » |
+  | 6 | Question qui fait réagir en commentaire et/ou partage ciblé (« Envoie-le à… ») + « Abonne-toi » avec une raison ; « Enregistre » en petit si la place le permet |
 
-  - **6 slides MAXIMUM** (5 si le sujet est simple).
+  - **6 slides MAXIMUM** (5 si le sujet est simple : on retire la slide 4).
+  - Tico peut apparaître sur la couverture et le carrousel : toujours avec `ticket.js` (rendu en image), jamais redessiné.
   - **L'essentiel tient dans les slides 1 à 3** : quelqu'un qui s'arrête à la 3 a tout compris.
   - **Chaque slide (sauf la dernière) finit par une relance** qui donne envie de voir la suivante, en bas à droite près
     de la flèche : « Et toi, ça fait combien ? → », « Le pire arrive slide 4 → ». Jamais une phrase qui conclut. Mêmes règles de contenu que la vidéo (sourcé, aucun avis politique, aucune religion,
   aucun produit à intérêts présenté comme solution, gain ET perte pour [INVESTIR]).
 - **Format** : un HTML avec des `<section class="slide">` 1080×1350, identité de la chaîne. Modèle de FORMAT VALIDÉ PAR
-  THOMAS (2026-11-01) : `exemples/carrousel-exemple.html`, et son rendu `exemples/carrousel-exemple-planche.jpg` à REGARDER (il a 7 slides : garde son STYLE, mais suis la structure en 6 slides ci-dessus)
+  THOMAS (2026-11-01) : `exemples/carrousel-exemple.html`, et son rendu `exemples/carrousel-exemple-planche.jpg` à REGARDER (il a 7 slides : garde son STYLE, mais suis la structure en 5 ou 6 slides ci-dessus ; en 5 slides, retire la slide 4)
   avant de commencer : ton carrousel doit avoir le même niveau de vie et de lisibilité (garde la grille, les polices, les couleurs ; change le contenu et ajoute 1 ou 2
   petits dessins propres au sujet, différents à chaque fois). **Zone de sécurité** : tout ce qui compte entre x 80 et
   x 940, y 140 et y 1150 (TikTok pose ses boutons à droite et sa légende en bas). **Tout ce qu'il faut pour comprendre
@@ -310,6 +316,6 @@ Ne pousse que `historique/` et les fichiers du kit modifiés, jamais `node_modul
 ## 11. Livraison finale (UN seul message, en tout dernier, après 8 quinquies et 10)
 Envoie dans l'ordre (SendUserFile, status proactive) : la vidéo, la couverture, puis les slides du carrousel. Dans un seul
 message court, en français : titre ; légende vidéo (2 lignes + 5 hashtags, mot-clé dès la 1re ligne, source et périmètre
-du chiffre) ; légende carrousel ; sujet ; durée ; hook et archétype ; CTA et sa seconde ; concept en une phrase ; gags du
+du chiffre) ; légende carrousel ; sujet ; durée ; hook et archétype ; les deux appels et leurs secondes ; concept en une phrase ; gags du
 Ticket et transformations de données utilisés ; pièces du Studio utilisées ; sources ; défauts restants ; lien du Google
 Sheet ; et une ligne pour chaque étape qui a échoué (page de liens, Studio, musique…).

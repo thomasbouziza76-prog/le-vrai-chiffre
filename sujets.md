@@ -4,7 +4,8 @@ Public : salariés de 20 à 35 ans en France. Chaque sujet passe le filtre « es
 **ton portefeuille, ton salaire ou ta comparaison aux autres**. Sinon il sort.
 
 ## Comment choisir
-- Prends le **premier sujet sans ✅** en partant du haut (voir PIPELINE.md, étape 1). Coche-le TOUT DE SUITE :
+- Prends le **premier sujet sans ✅** en partant du haut, avec la règle matin / soir de PIPELINE.md étape 1 (le soir
+  prend en priorité un [DROITS] parmi les 3 premiers libres ; le matin saute les [DROITS]). Coche-le TOUT DE SUITE :
   `✅ AAAA-MM-JJ N°xx` au début de la ligne, commit + push.
 - ⚡ = sujet d'actualité. Il a une date « valable jusqu'au » : passée, saute-le (⚡⏭). Ses chiffres viennent de la
   presse d'octobre 2026 : **REVÉRIFIE-LES le jour même** (un chiffre provisoire Insee devient définitif, un projet de
