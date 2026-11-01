@@ -168,7 +168,11 @@ Thomas les publie à la main avec la vidéo. Pas de voix : aucun crédit ElevenL
   x 940, y 140 et y 1150 (TikTok pose ses boutons à droite et sa légende en bas). **Tout ce qu'il faut pour comprendre
   est écrit EN GROS** (titres ≥ 96 px, texte ≥ 56 px) : la slide 1 dit le message complet en une phrase géante (date,
   chiffre ou condition compris, ex. « 20 novembre : ton paiement en 4 fois devient un crédit. »). Les petits textes gris
-  (bandeau du haut, « glisse ») ne portent JAMAIS une info importante. Pas de slide
+  (bandeau du haut, « glisse ») ne portent JAMAIS une info importante.
+  **Vivant, pas une simple affiche** : chaque slide a au moins 1 OBJET DESSINÉ propre au sujet (ticket, contrat, étiquette,
+  pièce, calendrier…) + 1 ANNOTATION faite main (flèche, cercle, soulignement, rature, tampon) + des éléments posés de
+  travers avec ombre de papier et scotch ; un FIL CONTINU (trait terracotta en bas) sort à droite d'une slide et rentre à
+  gauche de la suivante ; points de progression en bas. Le fil et les annotations ne passent JAMAIS sur un texte. Pas de slide
   à moitié vide : le contenu est centré et occupe la slide.
 - **Rendu** : `bash etapes/09-carrousel.sh <carrousel.html> $P/livrables <xx>` → `C<xx>-01.png`… + `C<xx>-planche.jpg`.
   REGARDE la planche : texte coupé, faute, chiffre différent de la vidéo, slide vide = corrige avant de livrer.
