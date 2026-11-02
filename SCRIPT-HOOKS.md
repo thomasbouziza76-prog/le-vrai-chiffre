@@ -68,7 +68,18 @@ Une vidéo qui informe se regarde puis s'oublie. Une vidéo qui SERT s'envoie à
    retard = 210 €). Le spectateur doit pouvoir refaire le calcul pour lui.
 3. **Comment le récupérer** : 2 ou 3 étapes MONTRÉES à l'écran (le document, le site officiel, la phrase exacte à
    écrire). Ce n'est pas une liste lue : chaque étape est une action visuelle (la lettre qui part, le tampon, l'argent
-   qui revient).
+   qui revient). Idée de Thomas (02/11), à utiliser dès qu'il y a une démarche en ligne : **on fait la démarche
+   devant le spectateur, comme si on la faisait nous-mêmes.** Un écran d'ordinateur ou de téléphone s'ouvre en plein
+   écran, on voit taper « caf.fr » dans la barre de recherche, puis les champs se remplissent tout seuls (« ce que tu
+   gagnes par mois », « ton loyer »), un bouton s'enfonce, le résultat tombe. Détails :
+   - **Badge « 1/3 », « 2/3 », « 3/3 »** dans un coin : on sait que c'est court. 2 à 3 s par étape, 8 à 10 s au total.
+   - **Une étape = un geste** (taper, remplir, valider), avec 2 à 4 mots à l'écran : le nom exact (« caf.fr »,
+     « Article 22 », « formulaire G30 »), jamais « renseigne-toi ».
+   - **L'écran est dessiné dans NOTRE DA** : navigateur et formulaire stylisés, juste l'adresse en texte. Jamais le
+     logo ni la vraie page d'un organisme, jamais une capture du vrai site.
+   - **L'avertissement est une étape à part**, en plan `mot` (« ATTENTION. ») : ex. « Ne mens pas sur tes revenus :
+     la CAF te ferait tout rembourser. » C'est la condition du point 4.
+   - **Un plan récap** à la fin (1 à 2 s) : les 3 étapes en icônes sur une seule image, que les gens enregistrent.
 4. **Le piège ou la condition** (une phrase) : ce qui fait perdre le droit (ex. « si tu n'as pas donné ta nouvelle
    adresse, c'est perdu »). C'est ce qui rend la vidéo crédible.
 5. **Fin** : partage ciblé vers une personne précise (« envoie-la à ton pote qui vient de déménager »), puis la
