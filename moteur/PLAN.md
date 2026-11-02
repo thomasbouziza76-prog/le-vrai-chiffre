@@ -9,7 +9,7 @@
 > - les transformations de données ;
 > - les bruitages calés sur la voix.
 >
-> Référence complète et validée par Thomas : `moteur/exemples/plan-N08.js` (vidéo N°08, chiffres Insee **2024** : pour un nouveau plan, prends les chiffres les plus récents, `salaires-prive-2025`). **Lis-la avant d'écrire un plan.**
+> Exemple complet de la technique actuelle : `moteur/mondes/gare-des-salaires.plan.js` (copié dans ton dossier sous le nom `plan-exemple-monde.js`). **Lis-le avant d'écrire un plan** pour la syntaxe des scènes `monde` et `mot` ; n'en recopie pas le monde (règle d'or 3). `moteur/exemples/plan-N08.js` = ancien style avec barres, à ne plus imiter.
 
 ## ⚠️ Les 3 règles d'or (Thomas, 01/11) — à relire avant chaque plan
 1. **L'image bouge, la caméra suit** : ce sont les objets (et Tico) qui agissent ; la caméra suit l'action.
@@ -72,7 +72,7 @@ Tu dessines le monde de CETTE vidéo ; le moteur s'occupe de faire suivre la cam
 ## Les commandes, dans l'ordre
 
 ```bash
-bash moteur/nouveau.sh $DOSSIER                 # prépare le dossier (copie le moteur ; plan-modele-N08.js = le modèle à lire)
+bash moteur/nouveau.sh $DOSSIER                 # prépare le dossier (copie le moteur ; plan-exemple-monde.js = l'exemple à lire)
 # … écris $DOSSIER/plan.js, puis mets la voix dans $DOSSIER/voix.mp3 …
 python3 moteur/timing.py $DOSSIER               # transcrit la voix, cale chaque mot → timing.js (+ ancres p1, p2…)
 python3 controles/verifier.py $DOSSIER          # CONTRÔLES BLOQUANTS (environ 10 s). Échec → corrige le plan, relance.

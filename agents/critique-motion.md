@@ -27,7 +27,7 @@ C'est la question que Thomas pose à chaque vidéo. Les contrôles en code ont d
 | 9 bis | **Musique et bruitages au bon moment** | `PLAN.musique` n'a pas de temps fort (`drop`) sur le chiffre choc ou la révélation, ou pas de `coupe` avant le moment « Et là… ». Ou le ton du morceau ne colle pas à l'histoire (tension pour un problème, élan pour une bonne nouvelle), ou c'est le même ton que les 2 vidéos précédentes |
 | 10 | **Fin** | L'écran final ne pose pas la question de débat clairement |
 
-Ensuite, **note de 1 à 10** : « est-ce du motion design au niveau de la N°08 ? »
+Ensuite, **note de 1 à 10** : « est-ce du vrai motion design (les 3 règles d'or) ? » Repère : la « gare des salaires » (`moteur/mondes/`) a eu 6 au 1er passage, 7 après corrections.
 - En dessous de 7 : **À CORRIGER**.
 - Chaque correction s'écrit **en termes de plan.js**, avec la ligne à changer. Par exemple :
   - « ajoute un repère `zone` à p7 sur [0,50] » ;

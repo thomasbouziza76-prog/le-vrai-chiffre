@@ -6,5 +6,5 @@ M="$(cd "$(dirname "$0")" && pwd)"; D="$1"; [ -z "$D" ] && { echo "usage : nouve
 mkdir -p "$D/polices"
 cp "$M/moteur.html" "$D/index.html"; cp "$M/moteur.js" "$M/ticket.js" "$M/donnees.js" "$M/icones.js" "$D/"
 cp "$M/../polices/InstrumentSans-700.woff2" "$M/../polices/SpaceMono-700.woff2" "$D/polices/"
-cp "$M/exemples/plan-N08.js" "$D/plan-modele-N08.js"   # modèle à lire ; ton plan s'écrit dans plan.js
-echo "prêt : $D (écris plan.js en partant de plan-modele-N08.js, puis lance timing.py)"
+cp "$M/mondes/gare-des-salaires.plan.js" "$D/plan-exemple-monde.js"   # exemple à lire (technique, pas le monde) ; ton plan s'écrit dans plan.js
+echo "prêt : $D (lis plan-exemple-monde.js pour la technique, invente TON monde dans plan.js, puis lance timing.py)"

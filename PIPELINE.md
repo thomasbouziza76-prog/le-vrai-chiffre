@@ -22,7 +22,7 @@ Racine du dépôt : `$LVC_REPO` (après l'étape 0). Projet du jour : `$P` = sor
 | 4 | `MOTION.md` | Couleurs, polices, règles de mouvement des pros |
 | 5 | `SONS.md` | Bruitages et niveaux |
 | 6 | `historique/CHECKS.md` | Les erreurs déjà faites, à ne pas refaire |
-| 7 | **`moteur/PLAN.md`** + `moteur/exemples/plan-N08.js` | Comment écrire le plan de la vidéo (le moteur fait le reste) |
+| 7 | **`moteur/PLAN.md`** + `moteur/mondes/` (README + `gare-des-salaires.plan.js`) | Comment écrire le plan de la vidéo : la scène `monde` en vrai (le moteur fait le reste) |
 | 8 | **`agents/README.md`** + `agents/retours-thomas.md` | L'équipe d'agents et les retours de Thomas |
 
 **Si deux fichiers se contredisent : `DA.md` > `historique/CHECKS.md` > `PIPELINE.md` > `SCRIPT-HOOKS.md` > `MOTION.md` > `SONS.md`.**
@@ -134,7 +134,7 @@ Racine du dépôt : `$LVC_REPO` (après l'étape 0). Projet du jour : `$P` = sor
   du script gagne ; les mots à faible confiance viennent de la transcription).
 
 ## 3. Le plan de la vidéo (≈ 10 min) : moteur + contrôles + Critique motion
-**Règle n° 1 : le moteur fait la caméra, les plans, les textes et les sons ; toi, tu inventes le MONDE de cette vidéo** dans `$P/plan.js` avec la scène `monde` (`moteur/PLAN.md`, section « La scène `monde` »), à partir du monde et des plans choisis par le Stratège. `moteur/exemples/plan-N08.js` ne sert que d'exemple de syntaxe (cartons, humeurs, choix) : ne copie PAS son monde (barres).
+**Règle n° 1 : le moteur fait la caméra, les plans, les textes et les sons ; toi, tu inventes le MONDE de cette vidéo** dans `$P/plan.js` avec la scène `monde` (`moteur/PLAN.md`, section « La scène `monde` »), à partir du monde et des plans choisis par le Stratège. Exemple complet de la technique : `moteur/mondes/gare-des-salaires.plan.js` (3 scènes `monde`, 2 plans `mot`, Juge 7/10) ; ne copie PAS son monde (la gare), seulement la façon d'écrire. `moteur/exemples/plan-N08.js` est l'ancien style (barres) : à ne plus imiter.
 1. **Écris `$P/plan.js`** :
    - `phrases` = le texte voix exact (sans balises, chiffres en chiffres) ;
    - les cartons (hook dès `'debut'`, 1 idée et 1 mot-clé chacun, aucun pendant « abonne-toi ») ;
