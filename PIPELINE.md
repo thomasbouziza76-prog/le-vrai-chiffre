@@ -242,15 +242,11 @@ Thomas les publie à la main avec la vidéo. Pas de voix : aucun crédit ElevenL
   REGARDE la planche : texte coupé, faute, chiffre différent de la vidéo, slide vide = corrige avant de livrer.
 - **Légende carrousel** : 1re ligne = mot-clé + hook, 2 lignes, 5 hashtags. Les PNG sont envoyés à l'étape 11.
 
-## 8 quater. Page de liens (levraichiffre.github.io) : mise à jour
-La page de liens de la chaîne affiche les chiffres clés et les 3 dernières vidéos depuis un fichier `data.json`.
-1. `mcp__claude-code-remote__add_repo` owner **levraichiffre**, repo **levraichiffre.github.io**, access push ; puis
-   `git clone --depth 1 https://github.com/levraichiffre/levraichiffre.github.io /home/claude/lien-page`.
-2. Dans `data.json`, ajoute EN TÊTE de `chiffres` le chiffre clé de la vidéo : `{"n":"<le chiffre, court>","t":"<une phrase
-   en tutoiement, 120 caractères max>","s":"<source courte + année>"}` (garde 10 chiffres max, supprime les plus vieux) ;
-   ajoute EN TÊTE de `videos` : `{"n":"<xx>","titre":"<titre de la vidéo>","lien":"https://www.tiktok.com/@le_vrai_chiffre"}`
-   (garde 3 vidéos). Ne touche à rien d'autre (jamais l'index.html de levraichiffre.github.io). Le JSON doit rester valide (`python3 -m json.tool`).
-3. Commit + push. Si add_repo ou le push échoue : ne bloque pas la livraison, dis-le en une ligne dans le message final.
+## 8 quater. Page de liens (levraichiffre.github.io) : RIEN À FAIRE (02/11)
+La page est tenue à jour chaque nuit par la tâche « Stats et liens » à partir du Google Sheet : les 3 dernières vidéos
+**publiées** et un chiffre clé sourcé par vidéo (tiré de la légende E et des sources H). Ton seul travail : une légende et
+des sources exactes dans le Sheet (étape 8). Ne clone pas la page et ne pousse rien dedans (deux écrivains = conflits ;
+c'est ce qui l'a figée sur la N°06 du 01/11 au 02/11).
 
 ## 8 quinquies. Studio (dépôt privé) : archiver la vidéo
 Le Studio (`/home/claude/studio`, cloné à l'étape 0 bis) garde tout pour nous : vidéos, couvertures, carrousels, fiches, librairie.
