@@ -18,6 +18,7 @@ Tu es exigeant mais réaliste : une vidéo correcte publiée à l'heure vaut mie
 | **Accroche** | À 0,5 s et à 1,5 s, ai-je envie de rester ? Le sujet est-il clair sans le son ? |
 | **Motion design** | Les 3 règles d'or : les objets agissent et la caméra les suit ? un nouveau plan toutes les 1 à 3 s ? un monde nouveau, qui ne ressemble pas aux vidéos précédentes ? Si c'est « une caméra qui se promène sur un décor », la note est 4 au maximum |
 | **Clarté** | Comprend-on en une fois ? 3 chiffres maximum ? Les cartons résument-ils sans répéter la voix ? |
+| **Chiffres justes** | Chaque chiffre dit ou affiché est-il dans le tableau du Vérificateur (`$P/agents/1b-chiffres.md`), avec le même périmètre ? Un chiffre absent ou déformé est BLOQUANT |
 | **Voix** | La transcription correspond-elle au script ? Aucun mot mangé, aucun chiffre mal dit, ton conteur ? Un trou de plus d'1 s dans `mots.json` est suspect |
 | **Synchronisation** | Le chiffre ou l'image arrive-t-il au moment où la voix le dit (horodatages des planches comparés à `mots.json`) ? |
 | **Son** | La musique a-t-elle un ton qui colle à l'histoire ? Son temps fort tombe-t-il sur le chiffre choc (`PLAN.musique.drop`, comparé à `mots.json`) ? Le silence avant la révélation est-il là ? Les bruitages sont-ils calés sur les gestes ? Tu ne peux pas écouter : tu juges sur le plan, les horodatages et `rapport-controles.json` (son à -14 LUFS) |

@@ -33,7 +33,7 @@ Tu n'as pas fait le travail. Regarde la vignette, la grille et la planche, puis 
 |---|---|
 | Lisible en petit | À 270 px, je lis l'accroche en 1 seconde ? |
 | Arrête le défilement | Est-ce que ça donne envie de toucher ? |
-| Fidèle | Mêmes chiffres et même sens que la vidéo ? Aucune faute ? |
+| Fidèle | Mêmes chiffres et même sens que la vidéo, chacun dans le tableau du Vérificateur (`1b-chiffres.md`, ou les sources de la fiche vidéo à l'atelier) ? Aucune faute ? |
 | Charte | Couleurs, polices, Tico de `ticket.js`, zone de sécurité respectée ? |
 | Demande de Thomas | Le défaut qu'il a signalé a-t-il disparu ? |
 Verdict : **VALIDÉ** (toutes les notes ≥ 7) ou **À CORRIGER** avec au plus 3 corrections précises, les bloquantes d'abord.

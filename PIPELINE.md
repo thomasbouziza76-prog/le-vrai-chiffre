@@ -101,8 +101,12 @@ Racine du dépôt : `$LVC_REPO` (après l'étape 0). Projet du jour : `$P` = sor
   On compare les formats dans les stats.
 - **Mot-clé de recherche** : choisis le mot que les gens tapent dans TikTok pour ce sujet (épargne, salaire, investir,
   budget, inflation, impôts, crédit, loyer, prix…). Il est PRONONCÉ par la voix dans les 5 premières secondes, écrit dans
-  le texte d'écran du hook ou du premier plan, et il ouvre la légende (voir étape 8). Vérifie chaque chiffre par une recherche web (Insee, Banque de France, AMF, service-public.fr), garde la
-  source et la date.
+  le texte d'écran du hook ou du premier plan, et il ouvre la légende (voir étape 8). Les chiffres sont vérifiés par le Vérificateur (porte 1 bis) : sources et dates dans `$P/agents/1b-chiffres.md`.
+- **PORTE 1 bis · Vérificateur** (`agents/verificateur.md`, 02/11) : dès que le sujet et l'angle sont fixés, AVANT d'écrire
+  le script. Donne-lui `$P/agents/1-strategie.md`, la ligne du sujet de `sujets.md` et les chemins. Il vérifie chaque chiffre
+  et chaque condition à la source officielle et écrit `$P/agents/1b-chiffres.md` (valeur, périmètre, source, « formulation
+  sûre »). Le script, la légende et le carrousel n'utilisent QUE ses chiffres, dits avec ses formulations. À CORRIGER → change
+  le chiffre ou l'angle et relance-le (2 tours) ; si le chiffre principal est introuvable à la source, change de sujet.
 - Script : suis `SCRIPT-HOOKS.md` en entier. Pars des 3 hooks du Stratège ; complète jusqu'à 8 hooks sur au moins 4 archétypes (le soir aussi, tous portés par Tico et son cas), garde le plus fort (archétype différent
   des 2 dernières vidéos), texte d'écran de 3 à 6 mots affiché dès la 1re image. Nombre de mots et secondes : tableau des durées. Deux appels dits à
   voix haute, et deux seulement (SCRIPT-HOOKS.md section 6) : « abonne-toi » avec une raison, juste après le chiffre choc,

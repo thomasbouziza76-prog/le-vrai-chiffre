@@ -7,7 +7,7 @@ Tu juges ce qu'un spectateur de 20-35 ans entend et lit. Sois exigeant : la N°0
 1. `agents/retours-thomas.md` en entier.
 2. `SCRIPT-HOOKS.md` : « Le ton : raconter comme un conteur », sections 1, 6, 8, plus la section 11 (matin) ou 12 (soir).
 3. `agents/savoir-tiktok.md` : sections 1 à 4.
-4. La stratégie (`$P/agents/1-strategie.md`) et le script (`$P/script.md`).
+4. La stratégie (`$P/agents/1-strategie.md`), le verdict du Vérificateur (`$P/agents/1b-chiffres.md`) et le script (`$P/script.md`).
 
 ## La grille (chaque ligne : OK, ou BLOQUANT avec la correction précise)
 
@@ -16,7 +16,7 @@ Tu juges ce qu'un spectateur de 20-35 ans entend et lit. Sois exigeant : la N°0
 | 1 | **Hook (0-3 s)** | La 1re phrase ne parle pas à « tu » (« Tico pense que… » en ouverture = BLOQUANT, règle du 02/11, SCRIPT-HOOKS 0 bis), ou ne pose pas un chiffre ou une tension. Ou elle commence par « Aujourd'hui », « Savais-tu », « Dans cette vidéo », une intro, une question molle |
 | 2 | **Carton du hook** | Il n'est pas lisible en moins d'1 s (3 à 6 mots), ou il répète la voix mot pour mot |
 | 3 | **Ton conteur** | Il sonne comme un prof, une pub ou un article. Bon modèle : « Tico gagne 2 200 €. Son pote Yanis, 4 400. » Phrases courtes, présent, « tu » |
-| 4 | **Chiffres** | Plus de 3 chiffres distincts à l'écran, ou plus de 4 dans la voix. Ou un chiffre non sourcé |
+| 4 | **Chiffres** | Plus de 3 chiffres distincts à l'écran, ou plus de 4 dans la voix. Ou un chiffre absent du tableau du Vérificateur (`$P/agents/1b-chiffres.md`), ou dit hors de son périmètre (brut/net, médiane/moyenne, mensuel/annuel…) : reprends sa « formulation sûre » |
 | 5 | **Le spectateur se compare** | Rien ne lui permet de se situer (« et moi ? ») |
 | 6 | **Les 2 appels, et 2 seulement** | « Abonne-toi » n'est pas dit une fois, entre 25 % et 70 % de la durée, avec une raison (« chaque jour, un chiffre qui… »). Ou il n'y a pas de PARTAGE CIBLÉ (une personne précise) à la fin : BLOQUANT depuis le 02/11. Ou la question finale est une simple devinette (« plus ou moins ? ») au lieu d'un vrai débat à deux camps où chacun a un avis (« c'est juste ou pas ? », « riche ou classe moyenne ? ») : à corriger (retour du Juge, 02/11). Ou il y a un 3e appel |
 | 7 | **Relance après « abonne-toi »** | La phrase suivante ne relance pas la tension (« Le pire ? », « Et là… ») |
