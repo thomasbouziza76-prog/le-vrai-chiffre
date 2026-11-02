@@ -7,7 +7,7 @@ dans le QG, écrit chaque étape au journal et marque la commande « faite ».
 ## Les commandes (base du QG, slug 3578fc9b-8c91-4201-9cb5-2ba66773f22e)
 `commandes/<id>` : `{t, type, video, demande, statut, par, debut, fin, resultat}`
 - `type` : `couverture` · `carrousel` · `texte` (titre, légende, hashtags) · `autre`
-- `statut` : `en attente` → `en cours` → `faite` | `échec` | `à confirmer`
+- `statut` : `en attente` → `en cours` → `faite` | `à déposer` (fichiers prêts, le manager les met en ligne) | `échec` | `à confirmer`
 - `demande` : les mots de Thomas, tels quels. C'est ce qui compte le plus.
 
 ## Qui fait quoi
@@ -35,10 +35,22 @@ l'a confirmé dans le chat). Sinon : statut `à confirmer` et `resultat` expliqu
       pour mot, les infos de la vidéo et le dossier de travail `/tmp/atelier/N<xx>/`. Journal : une ligne quand il a fini.
    d. Lance l'agent qui relit (neuf). À CORRIGER → corrections → nouvelle relecture. **2 tours maximum.** Journal : une
       ligne par verdict, une ligne par correction faite.
-   e. Livraison au QG : `get_artifact` (version en cours), puis `publish_files` mode **patch**, avec un **nouveau nom** pour
-      ne pas garder l'ancienne image en cache : `media/N<xx>-couv-v<k>.jpg`, `media/N<xx>-C<k>-<i>.jpg` (720 px de large).
-      JAMAIS index.html. Puis `db_get videos/N<xx>` et merge (ifVersion) `media.couv` / `media.carrousel` / `legende`…
-      Si la vidéo est déjà « Publiée », ajoute dans `notes` : « Couverture refaite après publication : à remplacer sur TikTok. »
+   e. Livraison au QG (images en 720 px de large, avec un **nouveau nom** pour ne pas garder l'ancienne image en cache :
+      `N<xx>-couv-v<k>.jpg`, `N<xx>-C<k>-<i>.jpg`). Trois chemins, dans cet ordre :
+      1. **`mcp__claude-artifacts__publish_files`** s'il existe (ToolSearch) : `get_artifact`, puis publish_files mode **patch**,
+         fichiers `media/…`, JAMAIS index.html.
+      2. Sinon, **l'outil `Artifact`** de la session, SEULEMENT si les 3 conditions sont vraies : (a) `get_artifact` sur le
+         slug donne exactement la version écrite dans `/home/claude/studio/qg/VERSION` ; (b) la description de l'outil
+         garantit qu'il republie CE MÊME artefact en gardant les fichiers non listés (pas de remplacement complet) ;
+         (c) tu passes comme page `file_path=/home/claude/studio/qg/index.html` (copie exacte de la page en ligne, tenue
+         par le manager), sans la modifier, et tes images en fichiers `media/…`. Après, écris la nouvelle version dans
+         `studio/qg/VERSION` (commit + push).
+      3. Sinon : **dépôt pour le manager**. Copie les images dans `studio/depot/N<xx>/` (commit + push) et, dans la commande,
+         `statut: à déposer`, `depot: ["N09-couv-v2.jpg", …]`. Le manager les publie à son passage (ou plus tôt s'il est là).
+         Ne change pas `videos/N<xx>.media` dans ce cas : le manager le fait en publiant.
+      Puis, si les fichiers sont en ligne : `db_get videos/N<xx>` et merge (ifVersion) `media.couv` / `media.carrousel` /
+      `legende_carrousel`… Si la vidéo est déjà « Publiée », ajoute dans `notes` : « Couverture refaite après publication :
+      à remplacer sur TikTok. »
    f. Studio : range dans `videos/N<xx>/` (crée le dossier s'il manque) `couverture.jpg` ou `carrousel/`, et les verdicts
       dans `agents/` ; commit + push. Si ça échoue, ne bloque pas : dis-le dans `resultat`.
    g. merge commande `statut: faite, fin, resultat` (une phrase pour Thomas : ce qui a changé, la note du relecteur) ;
