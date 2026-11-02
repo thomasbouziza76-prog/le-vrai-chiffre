@@ -27,15 +27,22 @@ l'a confirmé dans le chat). Sinon : statut `à confirmer` et `resultat` expliqu
    thomasbouziza76-prog, access push). Clone les deux (`--depth 1`) dans /home/claude/. `export LVC_REPO=/home/claude/le-vrai-chiffre`.
 2. Outils du QG : ToolSearch « select:mcp__claude-artifacts__db_list,mcp__claude-artifacts__db_get,mcp__claude-artifacts__db_write,mcp__claude-artifacts__get_artifact,mcp__claude-artifacts__publish_files ».
 3. `db_list commandes` : prends les commandes `en attente`, la plus ancienne d'abord, **3 au maximum**. Aucune : arrête-toi
-   (message final « Rien à faire »).
+   (message final « Rien à faire »). S'il en reste après tes 3, relance l'atelier à la fin (`fire_trigger`
+   trig_01WhUWvGBuh9hsKGXBJgfYwE) pour qu'elles ne restent pas en attente.
+   Agent concerné : couverture et carrousel → `graphiste` ; texte et autre (son, légende) → `realisateur`.
 4. Pour chaque commande :
    a. merge `statut: en cours, debut` (ifVersion). Si l'écriture est refusée pour conflit de version, un autre atelier l'a déjà
       prise : passe à la commande suivante, sans alerte. journal : « Atelier : commande reçue (<type> N°xx) : <demande> » ;
       `agents/graphiste` (ou l'agent du métier) etat `travaille`, tache « <type> N°xx ».
-   b. Rassemble : `videos/N<xx>` (titre, hook, sujet, sources, legende, notes), la ligne de la vidéo dans
+   b. Si `videos/N<xx>` n'existe pas dans le QG (vidéo inconnue) : `statut: échec`, `resultat` « La vidéo N°xx n'existe pas
+      dans le QG », journal `alerte`, message dans le chat (section « En cas de problème », point 2), puis commande suivante.
+      Rassemble : `videos/N<xx>` (titre, hook, sujet, sources, legende, notes), la ligne de la vidéo dans
       `historique/HISTORIQUE.md`, et le Studio `videos/N<xx>/` s'il existe (plan.js, ancienne couverture).
    c. Lance l'agent qui fabrique (outil Agent, general-purpose, au premier plan) avec sa fiche, la demande de Thomas mot
-      pour mot, les infos de la vidéo et le dossier de travail `/tmp/atelier/N<xx>/`. Journal : une ligne quand il a fini.
+      pour mot, les infos de la vidéo et le dossier de travail `/home/claude/atelier/N<xx>/` (PAS /tmp : publish_files refuse /tmp).
+      **Si l'outil `Agent` n'existe pas** : fabrique toi-même, puis relis « à froid » comme le dit `agents/README.md`
+      (verdict écrit AVANT toute correction) ; journal niveau `alerte` « Relecture faite par l'atelier lui-même (pas d'outil
+      Agent) » pour que Thomas le sache. Journal : une ligne quand il a fini.
    d. Lance l'agent qui relit (neuf). À CORRIGER → corrections → nouvelle relecture. **2 tours maximum.** Journal : une
       ligne par verdict, une ligne par correction faite.
    e. Livraison au QG : suis la section « Livraison au QG » plus bas.
@@ -51,9 +58,16 @@ présenté comme solution, chiffres identiques à la vidéo).
 
 ## Livraison au QG (vaut aussi pour l'étape 11 des vidéos du matin et du soir)
 Images en 720 px de large, vidéo recompressée (PIPELINE.md étape 11), avec un **nouveau nom** pour une retouche
-(`N<xx>-couv-v<k>.jpg`, `N<xx>-C<k>-<i>.jpg`) afin que l'ancienne image ne reste pas en cache.
-1. Si `mcp__claude-artifacts__publish_files` existe (ToolSearch) : `get_artifact`, puis publish_files mode **patch**, fichiers
-   `media/…` seulement ; puis c. et d. ci-dessous.
+(`N<xx>-couv-v<k>.jpg`, `N<xx>-C<k>-<i>.jpg`) afin que l'ancienne image ne reste pas en cache : k = 1 + le plus grand k
+déjà présent dans `list_files` pour ce nom (2 s'il n'y a que `N<xx>-couv.jpg`). Les scripts sortent `N<xx>-couv.jpg` :
+renomme la copie à publier.
+**Avant de publier, quel que soit le chemin** : `get_artifact`, `list_files` et `read_declaration` du QG, et garde-les
+(c'est la photo « avant »). Après, ne signale QUE ce qui a changé par rapport à cette photo.
+1. Si `mcp__claude-artifacts__publish_files` existe (ToolSearch) : publish_files mode **patch**, `base_version` = la version
+   de la photo « avant », fichiers `media/…` seulement (copiés sous /home/claude/). La page n'est pas touchée : pas de contrôle
+   VERSION/sha à faire. Vérifie ensuite : `list_files` (tes fichiers + tous ceux de la photo « avant ») et `read_declaration`
+   (identique à la photo « avant »). Un écart créé par TA publication → **En cas de problème** ; un écart qui existait déjà →
+   une ligne de journal `info`, pas d'alerte.
 2. Sinon (cas normal des tâches automatiques) : **l'outil intégré `Artifact`**, testé le 02/11 : il republie le même artefact
    et GARDE les fichiers qu'on ne liste pas, mais il exige la page. Donc :
    a. `git -C /home/claude/studio pull --rebase`, puis `get_artifact` et `list_files` sur le slug
@@ -62,9 +76,9 @@ Images en 720 px de large, vidéo recompressée (PIPELINE.md étape 11), avec un
       passe au 3 (la copie du Studio n'est pas la page en ligne).
    b. Appelle `Artifact` sur CE slug (pas un nouvel artefact) avec la page `/home/claude/studio/qg/index.html` telle quelle
       (ne la modifie JAMAIS) et tes fichiers servis sous `media/…`.
-   c. Vérifie : `list_files` (tes fichiers sont là ET les anciens aussi : media/N05.mp4, media/tico.png…) et
-      `mcp__claude-artifacts__read_declaration` (db, sample, mcp, downloads toujours déclarés). S'il manque un fichier ou une
-      capacité : **En cas de problème**, tout de suite.
+   c. Vérifie : `list_files` (tes fichiers sont là ET tous ceux de la photo « avant ») et
+      `mcp__claude-artifacts__read_declaration` (identique à la photo « avant »). S'il manque un fichier ou une capacité à
+      cause de ta publication : **En cas de problème**, tout de suite.
    d. Compare la sha256 de `index.html` en ligne à celle de `studio/qg/index.html`. Égales : écris la nouvelle version dans
       `studio/qg/VERSION`. Différentes (l'outil a pu « emballer » la page, vu le 02/11) : ne touche pas VERSION, ligne de journal
       niveau « alerte » « Page republiée modifiée par l'outil : le manager doit la remettre propre ». Puis
@@ -72,6 +86,8 @@ Images en 720 px de large, vidéo recompressée (PIPELINE.md étape 11), avec un
 3. Sinon : copie les fichiers dans `studio/depot/N<xx>/` (pull --rebase, commit, push). Pour une commande : `statut: à déposer`
    et `depot: [noms]`. Pour une vidéo du matin ou du soir : `videos/N<xx>.depot = [noms]`, SANS remplir `media` (sinon la fiche
    affiche des fichiers cassés). Puis **En cas de problème** : le manager les mettra en ligne.
+Statut de la commande : livrée en ligne → `faite` (même si une alerte « page emballée » a été écrite) ; chemin 3 →
+`à déposer`. L'agent repasse en `repos` dans les deux cas ; `bloque` seulement si rien n'a pu être livré.
 Puis `db_get videos/N<xx>` et merge (ifVersion) `media.couv` / `media.carrousel` / `legende_carrousel`… Si la vidéo est déjà
 « Publiée », ajoute dans `notes` : « Couverture refaite après publication : à remplacer sur TikTok. »
 
