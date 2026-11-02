@@ -178,7 +178,7 @@ Commit et push dans le dépôt (voir 10), avec `historique/CHECKS.md` s'il a cha
 ## 8. Couverture, titre, rangement, livraison
 - Couverture : fais un HTML 1080×1920 dans l'identité de la chaîne (modèle de FORMAT : `exemples/couverture-exemple.html`) :
   ligne mono « LE VRAI CHIFFRE … N° xx », hook en très gros (3 à 5 lignes) avec UN mot dans la boîte terracotta, chiffre clé
-  ou objet signature, essentiel entre y 240 et y 1650. Puis `bash etapes/08-livrables.sh $P <xx> <couverture.html>`
+  ou objet signature, essentiel entre y 420 et y 1650 (la grille du profil coupe le haut et le bas de la couverture, et le badge « Épinglé » cache la zone y 240-400 : retour de Thomas du 02/11, titres coupés sur les vidéos épinglées). Rien d'important au-dessus de y 420. Puis `bash etapes/08-livrables.sh $P <xx> <couverture.html>`
   (PNG, JPEG, vignette 270 px à REGARDER, vidéo compressée). Titre : 40 à 70 caractères.
 - Vidéothèque (artefact slug c0766a03-dabd-41fa-a209-746aadb762e6) : `get_artifact`, `publish_files` (patch) avec
   `videos/N<xx>.mp4` et `covers/N<xx>.jpg` (de `$P/livrables`), puis `edit_version` sur index.html : remplace `/*NEXT*/` par
