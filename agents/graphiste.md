@@ -15,7 +15,8 @@ Tu as deux modes : **FABRIQUER** (tu crées les fichiers) et **RELIRE** (un autr
 ## La couverture (mode FABRIQUER)
 - HTML 1080×1920 dans l'identité de la chaîne. Rendu : `bash etapes/10-couverture-seule.sh <html> <sortie> <xx>`
   (en production normale, l'étape 8 utilise `08-livrables.sh`).
-- **REGARDE** `N<xx>-vignette.jpg` et `N<xx>-grille.jpg` : c'est la taille à laquelle les gens la voient. Si l'accroche ne se lit
+- **REGARDE** `N<xx>-vignette.jpg` et `N<xx>-grille.jpg` (produits par `10-couverture-seule.sh` ; en production, lance-le aussi
+  sur ta couverture avant `08-livrables.sh` pour avoir la grille) : c'est la taille à laquelle les gens la voient. Si l'accroche ne se lit
   pas en 1 seconde à cette taille, recommence.
 - L'essentiel entre y 420 et y 1650 (grille du profil, badge « Épinglé »). 3 à 5 lignes de hook, UN mot dans la boîte terracotta,
   un chiffre ou un objet signature. Pas de petit texte qui porte une info.

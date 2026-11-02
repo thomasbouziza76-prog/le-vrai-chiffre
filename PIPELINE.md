@@ -89,12 +89,15 @@ Racine du dépôt : `$LVC_REPO` (après l'étape 0). Projet du jour : `$P` = sor
   chaque chiffre le jour même (WebSearch) : l'actu bouge. Dès le sujet choisi, mets ✅ + date + N° au début de sa ligne,
   commit et push TOUT DE SUITE (l'autre tâche du jour ne doit pas prendre le même). N° de la vidéo = dernier N° de
   l'historique + 1.
+- **QG ↔ sujets.md** : quand tu prends un sujet O, passe aussi à « fait » le document `sujets/` du QG qui a le même `code`
+  (db_list sujets). Si le sujet choisi par Thomas (`pdg/choix`) est déjà dans le Sheet : vide `pdg/choix.sujet`, passe le sujet en
+  « fait » et écris-le au journal. Coche toujours la ligne correspondante de sujets.md (son code O).
 - **Sujets OUTIL d'abord (décision de Thomas, 02/11)** : matin et soir prennent le premier sujet O libre de `sujets.md`
   (bloc en tête), sauf un ⚡ qui expire dans les 7 jours. Le script suit SCRIPT-HOOKS.md section 0 ter.
 - **Quel sujet selon le moment** (pour le reste de la liste) : le SOIR prend le premier sujet [DROITS] non coché s'il est parmi les 3 premiers sujets
   libres, sinon le premier sujet libre. Le MATIN prend le premier sujet libre qui n'est PAS [DROITS] (les [DROITS] sont
   pour le format histoire du soir).
-- **Durée** : voir le tableau des durées en tête de ce fichier (matin court 30/45 s selon le N°, soir histoire 62-75 s).
+- **Durée** : voir le tableau des durées en tête de ce fichier (matin court : 30 ou 45 s en alternance avec la vidéo du matin précédente de l'historique ; soir histoire 62-75 s).
   On compare les formats dans les stats.
 - **Mot-clé de recherche** : choisis le mot que les gens tapent dans TikTok pour ce sujet (épargne, salaire, investir,
   budget, inflation, impôts, crédit, loyer, prix…). Il est PRONONCÉ par la voix dans les 5 premières secondes, écrit dans
@@ -184,9 +187,8 @@ Commit et push dans le dépôt (voir 10), avec `historique/CHECKS.md` s'il a cha
   ligne mono « LE VRAI CHIFFRE … N° xx », hook en très gros (3 à 5 lignes) avec UN mot dans la boîte terracotta, chiffre clé
   ou objet signature, essentiel entre y 420 et y 1650 (la grille du profil coupe le haut et le bas de la couverture, et le badge « Épinglé » cache la zone y 240-400 : retour de Thomas du 02/11, titres coupés sur les vidéos épinglées). Rien d'important au-dessus de y 420. Puis `bash etapes/08-livrables.sh $P <xx> <couverture.html>`
   (PNG, JPEG, vignette 270 px à REGARDER, vidéo compressée). Titre : 40 à 70 caractères.
-- Vidéothèque (artefact slug c0766a03-dabd-41fa-a209-746aadb762e6) : `get_artifact`, `publish_files` (patch) avec
-  `videos/N<xx>.mp4` et `covers/N<xx>.jpg` (de `$P/livrables`), puis `edit_version` sur index.html : remplace `/*NEXT*/` par
-  `/*NEXT*/` + `{n:"<xx>",date:"AAAA-MM-JJ",titre:"…",sujet:"…",video:"videos/N<xx>.mp4",cover:"covers/N<xx>.jpg",legende:"…"},`.
+- Vidéothèque (ancien artefact c0766a03) : **ABANDONNÉE le 02/11**. Les tâches ne peuvent pas la mettre à jour et le QG la
+  remplace. Ne la touche pas et n'en fais jamais une alerte.
 - Google Sheet (spreadsheetId 1YOZOKiZslJRvTt3Qzekn7JD3qrJvBn6urOq-1ORWoe0, onglet Videos), plus récent en haut :
   `insert_dimension` ROWS 1→2 (sheetId 0, inheritFromBefore false), `update_values` `Videos!A2:P2` (N°xx | date | titre |
   sujet | légende + hashtags | vide | hook | sources | « À publier » | notes | K à N vides (remplies par la tâche de nuit) | durée en
@@ -243,7 +245,7 @@ La page de liens de la chaîne affiche les chiffres clés et les 3 dernières vi
 2. Dans `data.json`, ajoute EN TÊTE de `chiffres` le chiffre clé de la vidéo : `{"n":"<le chiffre, court>","t":"<une phrase
    en tutoiement, 120 caractères max>","s":"<source courte + année>"}` (garde 10 chiffres max, supprime les plus vieux) ;
    ajoute EN TÊTE de `videos` : `{"n":"<xx>","titre":"<titre de la vidéo>","lien":"https://www.tiktok.com/@le_vrai_chiffre"}`
-   (garde 3 vidéos). Ne touche à rien d'autre (jamais index.html). Le JSON doit rester valide (`python3 -m json.tool`).
+   (garde 3 vidéos). Ne touche à rien d'autre (jamais l'index.html de levraichiffre.github.io). Le JSON doit rester valide (`python3 -m json.tool`).
 3. Commit + push. Si add_repo ou le push échoue : ne bloque pas la livraison, dis-le en une ligne dans le message final.
 
 ## 8 quinquies. Studio (dépôt privé) : archiver la vidéo
@@ -264,12 +266,15 @@ Le Studio (`/home/claude/studio`, cloné à l'étape 0 bis) garde tout pour nous
 Déplacée à l'étape 0 bis (au début de chaque exécution).
 
 ## 10. Dépôt
+**Avant CHAQUE push, dans les deux dépôts : `git pull --rebase`** (le manager et l'atelier poussent aussi pendant la journée).
 `git -C $LVC_REPO add -A && git commit -m "N°xx · sujet" && git push` (le dépôt est attaché avec `add_repo`, access push).
 Ne pousse que `historique/` et les fichiers du kit modifiés, jamais `node_modules`, `.env`, vidéos, voix ni rendus.
 
-## 11. Livraison finale (UN seul message, en tout dernier, après 8 quinquies et 10)
-Envoie dans l'ordre (SendUserFile, status proactive) : la vidéo, la couverture, puis les slides du carrousel. Dans un seul
-message court, en français : **la note du Juge final et sa ligne « POUR THOMAS »** (en premier) ; titre ; légende vidéo (2 lignes + 5 hashtags, mot-clé dès la 1re ligne, source et périmètre
-du chiffre) ; légende carrousel ; sujet ; durée ; hook et archétype ; les deux appels et leurs secondes ; concept en une phrase ; gags du
-Ticket et transformations de données utilisés ; pièces du Studio utilisées ; sources ; défauts restants ; lien du Google
-Sheet ; et une ligne pour chaque étape qui a échoué (page de liens, Studio, musique…).
+## 11. Livraison finale : DÉPÔT AU QG (pas d'envoi direct à Thomas)
+- Suis la section « Livraison au QG » de `ATELIER.md`, puis le point (d) de la consigne de la tâche (fiche `videos/N<xx>`,
+  ligne de journal, état du réalisateur). Le manager contrôle la vidéo et la passe « À publier ».
+- SendUserFile seulement si le QG reste injoignable après 2 essais, avec la mention « QG injoignable ».
+- **Étapes BLOQUANTES** (si l'une échoue deux fois → « En cas de problème » d'ATELIER.md : alerte dans le chat, réveil du
+  manager, « ⚠ PROBLÈME » en tête du message final) : voix, contrôles `verifier.py`, rendu, livraison au QG, fiche
+  `videos/N<xx>`. **Toutes les autres** (page de liens, Studio, Sheet, sujets.md, historique) : une ligne de journal niveau
+  « alerte », on continue, pas de message d'alerte ni de réveil.
