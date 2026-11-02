@@ -45,7 +45,7 @@
 | 7 | Fond vivant | Jamais un aplat mort : quadrillage qui apparaît, symboles € et % qui dérivent très lentement |
 | 8 | Écran rempli | Jamais plus de 40 % de vide ; tout chiffre entièrement dans le cadre (marge ≥ 80 px). Sous le sol (zone de l'interface TikTok, y > 1330) : pas de texte, mais du DÉCOR sans texte (sol, ombres, objets posés, reflets) pour que l'image ne paraisse jamais vide en bas |
 | 9 | Son | Chaque geste a son bruitage (`SONS.md`) ; jamais 3 s sans un son d'action ; aucun bruitage plus fort que la voix |
-| 10 | Image 0 | Carton du hook de 3 à 6 mots lisible, le chiffre et la caméra bougent déjà (Tico peut être là), un son ET la voix commencent à 0,0 s |
+| 10 | Image 0 | **L'image la plus forte de la vidéo, en pleine action** (on commence par le moment choc, 02/11) + carton du hook de 3 à 6 mots lisible + seulement le chiffre du hook ; un son ET la voix commencent à 0,0 s ; la 1re phrase parle à « tu » |
 | 11 | Chiffres | UN chiffre principal + 2 secondaires maximum (`SCRIPT-HOOKS.md`) |
 
 ---
@@ -133,7 +133,7 @@ Pièces prêtes : `motion/` du Studio (`catalogue.json`, champ `quand`).
   - « Tu peux pousser : elle ne **bouge pas.** »
   - « Le vrai milieu, c'est la **médiane.** »
 - Les règles de `SCRIPT-HOOKS.md` (hook, les deux appels de la section 6, formats, mots) restent valables ; cette section dit **comment** les écrire.
-- La fin pose une question qui fait réagir (« Tu trouves ça juste ? ») et/ou demande un partage ciblé : Tico la « pose » à l'écran (il se tourne vers nous, hausse les épaules).
+- La fin demande TOUJOURS un partage ciblé à une personne précise (02/11), précédé si besoin d'une courte question de débat (« Tu trouves ça juste ? ») : Tico la « pose » à l'écran (il se tourne vers nous, hausse les épaules).
 
 ---
 

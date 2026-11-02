@@ -54,6 +54,12 @@ Karim touche une aide de plus. Et Tico, lui, n'en a jamais entendu parler. »
   fois plus », « presque rien »), pas en chiffres.
 - Test : quelqu'un qui regarde sans le son doit pouvoir redire LE chiffre de la vidéo à la fin.
 
+## 0 bis. LA 1re SECONDE (décision de Thomas du 02/11, d'après la courbe de rétention de la N°08)
+Sur la N°08, la plus grosse chute a eu lieu à 0:01 ; la meilleure image (la guillotine qui coupe le billet) n'arrivait qu'à 6,5 s. Trois règles :
+1. **L'image 0 est l'image la plus forte de la vidéo, en pleine action** (on commence par le moment choc, puis on raconte comment on en est arrivé là). Ex. N°08 : la lame tombe sur le billet de 10 000 € dès 0 s.
+2. **La 1re phrase parle à « TU »**, jamais à la 3e personne (« Tico pense que… » est interdit en ouverture). Ex. : « Tu crois qu'il faut 10 000 € pour être dans le top 10 % ? ». Tico entre en scène juste après.
+3. **Aucun chiffre parasite à l'écran pendant les 3 premières secondes** : seulement le chiffre du hook, en gros (pas de compteur qui affiche « 1 130 € », pas d'étiquette secondaire).
+
 ## 1. Les 7 principes
 
 1. **Le hook est la porte.** TikTok, Reels et Shorts décident en 1,5 à 3 s. Si les 3 premières secondes ratent,
@@ -141,13 +147,13 @@ Objectif de la phase actuelle : les **abonnements**. Chaque vidéo pousse donc �
 | Moment | Action | Exemples |
 |---|---|---|
 | **1. Juste après le chiffre choc** (secondes : tableau des durées de PIPELINE.md) | **S'abonner, avec une raison**, puis relance aussitôt | « Abonne-toi, demain je te montre un autre chiffre que ta banque te cache. » |
-| **2. La fin** (dernières secondes) | **Commenter** avec une question qui fait réagir, et/ou **partager à quelqu'un de précis** | « 150 € de plus pour 43 ans de travail. Tu trouves ça juste ? » · « Normal ou pas ? Dis-le en commentaire. » · « Montre-la à tes parents. » · « Envoie-la à quelqu'un qui garde tout sur son compte courant. » |
+| **2. La fin** (dernières secondes) | **Partager à quelqu'un de précis (OBLIGATOIRE depuis le 02/11)**, précédé si tu veux d'une question de débat courte : c'est UN seul appel | « 150 € de plus pour 43 ans de travail. Tu trouves ça juste ? » · « Normal ou pas ? Dis-le en commentaire. » · « Montre-la à tes parents. » · « Envoie-la à quelqu'un qui garde tout sur son compte courant. » |
 
 - **Les questions qui font débattre sont VOULUES**, même sur un sujet de société ou d'actualité (« Tu trouves ça
   juste ? », « Normal ou pas ? »). La page ne donne jamais SON avis ; les gens, eux, débattent en commentaire, et c'est
   ce qu'on cherche.
 - La question de fin est **facile à répondre** : oui/non, juste/pas juste, un chiffre, un mot.
-- Le partage est **ciblé sur une personne précise** (tes parents, ton pote qui…, quelqu'un qui…), jamais « partage cette vidéo ».
+- **Le partage ciblé est obligatoire à la fin** (décision de Thomas du 02/11 : 0 partage sur les N°05 et N°08 alors que les vidéos plaisent). Il désigne UNE personne précise que le spectateur connaît, liée au sujet : « Envoie-la à ton pote qui croit qu'il faut 10 000 € pour être riche », « Montre-la à ta mère qui garde tout sur son livret ». Jamais « partage cette vidéo ». Il peut suivre une question de débat courte (« Riche ou pas ? Envoie-la à… ») : les deux ensemble = UN appel.
 - Toujours une raison pour s'abonner. Jamais d'appel trompeur. Varie les formulations d'une vidéo à l'autre.
 - À l'écran : pendant l'appel 1, une petite pastille « Abonne-toi » dans le style de la chaîne ; pendant les 2 dernières
   secondes, un rappel muet « Abonne-toi ».

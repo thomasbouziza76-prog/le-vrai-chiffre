@@ -21,7 +21,7 @@ C'est la question que Thomas pose à chaque vidéo. Les contrôles en code ont d
 | 4 | **Un moment 3D stylisée** | Aucun (la vague 3D compte) |
 | 5 | **Lisibilité sur téléphone** | Un carton illisible en 1 s, un chiffre trop petit au moment où la voix le dit, ou un écran vide à plus de 40 % |
 | 6 | **Tico invité** | Tico absent au hook, au chiffre choc, à la relance ou à la fin. Ou il prend la vedette. Ou son humeur ne colle pas à la phrase |
-| 7 | **Le hook visuel (image 0,5 s)** | On ne comprend pas le sujet sans le son |
+| 7 | **Le hook visuel (image 0,5 s)** | On ne comprend pas le sujet sans le son. Ou l'image 0 n'est PAS l'image la plus forte de la vidéo en pleine action (BLOQUANT depuis le 02/11 : sur la N°08, la moitié des gens partaient avant la guillotine de 6,5 s). Ou un chiffre parasite est à l'écran dans les 3 premières s |
 | 8 | **Variété** | Plus de 3 s avec le même cadrage, ou la même scène pendant plus de 40 % de la vidéo sans nouveau repère |
 | 9 | **Cohérence voix / image** | Ce qu'on voit ne correspond pas à ce qui est dit à ce moment (comparer les horodatages aux `phrases`) |
 | 9 bis | **Musique et bruitages au bon moment** | `PLAN.musique` n'a pas de temps fort (`drop`) sur le chiffre choc ou la révélation, ou pas de `coupe` avant le moment « Et là… ». Ou le ton du morceau ne colle pas à l'histoire (tension pour un problème, élan pour une bonne nouvelle), ou c'est le même ton que les 2 vidéos précédentes |
