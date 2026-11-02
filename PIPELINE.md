@@ -89,7 +89,9 @@ Racine du dépôt : `$LVC_REPO` (après l'étape 0). Projet du jour : `$P` = sor
   chaque chiffre le jour même (WebSearch) : l'actu bouge. Dès le sujet choisi, mets ✅ + date + N° au début de sa ligne,
   commit et push TOUT DE SUITE (l'autre tâche du jour ne doit pas prendre le même). N° de la vidéo = dernier N° de
   l'historique + 1.
-- **Quel sujet selon le moment** : le SOIR prend le premier sujet [DROITS] non coché s'il est parmi les 3 premiers sujets
+- **Sujets OUTIL d'abord (décision de Thomas, 02/11)** : matin et soir prennent le premier sujet O libre de `sujets.md`
+  (bloc en tête), sauf un ⚡ qui expire dans les 7 jours. Le script suit SCRIPT-HOOKS.md section 0 ter.
+- **Quel sujet selon le moment** (pour le reste de la liste) : le SOIR prend le premier sujet [DROITS] non coché s'il est parmi les 3 premiers sujets
   libres, sinon le premier sujet libre. Le MATIN prend le premier sujet libre qui n'est PAS [DROITS] (les [DROITS] sont
   pour le format histoire du soir).
 - **Durée** : voir le tableau des durées en tête de ce fichier (matin court 30/45 s selon le N°, soir histoire 62-75 s).

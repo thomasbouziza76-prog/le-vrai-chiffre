@@ -60,6 +60,25 @@ Sur la N°08, la plus grosse chute a eu lieu à 0:01 ; la meilleure image (la gu
 2. **La 1re phrase parle à « TU »**, jamais à la 3e personne (« Tico pense que… » est interdit en ouverture). Ex. : « Tu crois qu'il faut 10 000 € pour être dans le top 10 % ? ». Tico entre en scène juste après.
 3. **Aucun chiffre parasite à l'écran pendant les 3 premières secondes** : seulement le chiffre du hook, en gros (pas de compteur qui affiche « 1 130 € », pas d'étiquette secondaire).
 
+## 0 ter. LA VIDÉO OUTIL (décision de Thomas du 02/11 : 9 vidéos, 0 partage)
+Une vidéo qui informe se regarde puis s'oublie. Une vidéo qui SERT s'envoie à un pote. Chaque vidéo OUTIL suit ce fil :
+1. **Hook (0-3 s)** : le chiffre surprenant qui concerne le spectateur, en « tu », puis « et toi ? » ou une question
+   qui le fait se situer. Ex. : « Ta caution a 2 mois de retard ? Ton proprio te doit 140 € en plus. »
+2. **Combien tu perds** : un cas concret chiffré avec un de nos personnages (Yanis paie 700 € de loyer, 3 mois de
+   retard = 210 €). Le spectateur doit pouvoir refaire le calcul pour lui.
+3. **Comment le récupérer** : 2 ou 3 étapes MONTRÉES à l'écran (le document, le site officiel, la phrase exacte à
+   écrire). Ce n'est pas une liste lue : chaque étape est une action visuelle (la lettre qui part, le tampon, l'argent
+   qui revient).
+4. **Le piège ou la condition** (une phrase) : ce qui fait perdre le droit (ex. « si tu n'as pas donné ta nouvelle
+   adresse, c'est perdu »). C'est ce qui rend la vidéo crédible.
+5. **Fin** : partage ciblé vers une personne précise (« envoie-la à ton pote qui vient de déménager »), puis la
+   question. Pas de partage vague.
+Contrôle OUTIL (s'ajoute à la section 8) :
+- [ ] À la fin, le spectateur sait QUOI faire, OÙ (site officiel, document) et AVANT QUAND.
+- [ ] Il peut le faire dans les 24 h, seul, gratuitement.
+- [ ] Le chiffre et la règle sont sourcés à l'écran (texte de loi ou site officiel) et revérifiés le jour même.
+- [ ] Aucune entreprise privée présentée comme solution ; seulement les démarches officielles.
+
 ## 1. Les 7 principes
 
 1. **Le hook est la porte.** TikTok, Reels et Shorts décident en 1,5 à 3 s. Si les 3 premières secondes ratent,
@@ -186,6 +205,7 @@ Objectif de la phase actuelle : les **abonnements**. Chaque vidéo pousse donc �
       différentes des 2 vidéos précédentes.
 - [ ] Archétype de hook différent des 2 dernières vidéos.
 - [ ] Contenu éducatif, sans promesse d'argent facile, sans produit à intérêts présenté comme solution.
+- [ ] Sujet OUTIL : le contrôle OUTIL de la section 0 ter passe.
 
 ## 10. Objectif de la chaîne (phase actuelle : croissance vers 10 000 abonnés)
 

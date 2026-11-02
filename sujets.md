@@ -4,6 +4,7 @@ Public : salariés de 20 à 35 ans en France. Chaque sujet passe le filtre « es
 **ton portefeuille, ton salaire ou ta comparaison aux autres**. Sinon il sort.
 
 ## Comment choisir
+- **D'ABORD les sujets OUTIL (O1, O2…) : voir le bloc en tête de la liste.** Les règles ci-dessous valent pour le reste.
 - Prends le **premier sujet sans ✅** en partant du haut, avec la règle matin / soir de PIPELINE.md étape 1 (le soir
   prend en priorité un [DROITS] parmi les 3 premiers libres ; le matin saute les [DROITS]). Coche-le TOUT DE SUITE :
   `✅ AAAA-MM-JJ N°xx` au début de la ligne, commit + push.
@@ -46,6 +47,72 @@ secours peut y être sans être cochée ici.
 
 ## La liste
 
+### EN PREMIER : les sujets OUTIL (décision de Thomas, 02/11)
+
+**Pourquoi** : 9 vidéos, 0 partage. Elles informent mais ne servent à rien au spectateur une fois finie. Une vidéo OUTIL
+donne **un chiffre qui le concerne + une chose qu'il peut faire dès aujourd'hui pour récupérer ou garder cet argent**.
+C'est ce qu'on envoie à un pote (« regarde, ton proprio te doit ça »). Règle d'écriture : SCRIPT-HOOKS.md section 0 ter.
+
+**Règle de choix** : matin ET soir prennent le premier sujet O libre (le soir le raconte en format histoire). Seule
+exception : un ⚡ dont la date « valable jusqu'au » tombe dans les 7 prochains jours passe devant. Les sujets O sont
+rangés pour que deux sujets qui se suivent ne soient pas du même thème (logement, travail, voyage, banque, aides).
+Chiffres vérifiés le 02/11/2026 aux sources indiquées : **revérifie-les le jour même** (montant, plafond, tarif de
+l'année) et écris la source à l'écran. On ne cite jamais une entreprise privée comme solution : seulement les outils
+officiels (service-public, caf.fr, Action Logement, formulaire de la compagnie ou de la SNCF).
+
+O1. [OUTIL · logement] **Ta caution pas rendue à temps : ton propriétaire te doit 10 % du loyer en plus, par mois de
+   retard.** Délai : 1 mois si l'état des lieux de sortie est conforme, 2 mois sinon. Chaque mois commencé en retard =
+   +10 % du loyer hors charges (cas : loyer 700 € HC, 3 mois de retard = 210 € en plus de la caution). L'action :
+   lettre recommandée de mise en demeure qui cite l'article 22, puis commission départementale de conciliation
+   (gratuite). Attention : pas de pénalité si tu n'as pas donné ta nouvelle adresse. · Loi n° 89-462 du 6 juillet 1989,
+   art. 22 ; service-public.fr fiche F31269
+O2. [OUTIL · travail] **Ton employeur doit payer la moitié de ton abonnement de transport.** Navigo mensuel 2026 :
+   90,80 €, donc 45,40 € par mois pour toi, environ 500 € sur un an. Marche aussi pour le bus, le tram, le train (base
+   2e classe) et les vélos en libre-service publics, en CDI comme en CDD. L'action : donner son justificatif
+   d'abonnement aux RH ; le montant doit apparaître sur la fiche de paie (vérifie la ligne). · Code du travail
+   L3261-2 ; entreprendre.service-public.gouv.fr F37900 (vérifiée le 21/02/2026) ; tarif IDFM 2026
+O3. [OUTIL · voyage] **Ton vol arrive avec 3 h de retard : la compagnie te doit 250, 400 ou 600 €, même si ton billet
+   a coûté 40 €.** 250 € jusqu'à 1 500 km, 400 € de 1 500 à 3 500 km (et vols UE plus longs), 600 € au-delà. Le retard se
+   compte à l'arrivée. Pas dû en cas de « circonstances extraordinaires » (météo, grève des contrôleurs aériens).
+   L'action : réclamer directement sur le formulaire de la compagnie, c'est gratuit (les sites intermédiaires gardent
+   une commission). · Règlement (CE) n° 261/2004, art. 5 et 7 ; arrêt Sturgeon CJUE 2009 ; service-public.fr
+O4. [OUTIL · banque] **Ta banque n'a pas le droit de te prendre plus de 8 € par opération à découvert, ni plus de 80 €
+   par mois** (4 € et 20 € pour la clientèle fragile) pour la commission d'intervention. 80 € par mois = 960 € par an.
+   L'action : relire ses relevés (le frais s'appelle parfois « frais de forçage »), réclamation écrite au service
+   client, puis médiateur bancaire (gratuit). · Code monétaire et financier R312-4-1 et R312-4-2 (décret 2013-931)
+O5. [OUTIL · logement] **Tu déménages ? En zone tendue, ton préavis est d'1 mois, pas 3** (logement vide ; le meublé est
+   déjà à 1 mois). Cas : loyer 750 € = 1 500 € de loyer que tu ne paies pas en double. L'action : vérifier sa commune sur
+   le simulateur « zones tendues » de service-public et écrire le motif dans la lettre de congé (sinon le
+   propriétaire peut réclamer 3 mois). Autres cas à 1 mois : premier emploi, mutation, perte d'emploi. · Loi n° 89-462,
+   art. 15 ; décret n° 2013-392 ; service-public.fr
+O6. [OUTIL · travail] **En arrêt maladie, tu gagnes quand même des congés payés : 2 jours par mois**, jusqu'à 24 jours
+   par an (2,5 jours si c'est un accident du travail). Avant avril 2024, c'était zéro. Les congés non pris à cause de
+   l'arrêt se reportent sur 15 mois. L'action : vérifier son compteur de congés sur la fiche de paie après la reprise,
+   le signaler aux RH s'il manque des jours. · Loi n° 2024-364 du 22 avril 2024, art. 37 ; Code du travail L3141-5
+O7. [OUTIL · aides] **1 salarié éligible sur 2 ne touche pas la prime d'activité** : 3,4 millions de foyers ne la
+   demandent pas (non-recours entre 48 et 52 %, chiffres de fin 2021). L'action : faire le simulateur sur caf.fr
+   (quelques minutes), puis la demande en ligne ; elle se renouvelle tous les 3 mois. Le jour même : vérifier le
+   montant de base et le plafond sur caf.fr, ne pas l'inventer. · DREES, Études et Résultats n° 1379, 8 juillet 2026
+O8. [OUTIL · logement] **Les frais d'agence d'une location sont plafonnés** : 12 €/m² en zone très tendue (Paris,
+   petite couronne), 10 €/m² en zone tendue, 8 €/m² ailleurs, + 3 €/m² pour l'état des lieux d'entrée. Cas : 30 m² à
+   Paris = 450 € maximum ; propriétaire sans agence = 0 €. L'état des lieux de sortie ne peut pas t'être facturé.
+   L'action : le simulateur « frais d'agence » de service-public avant de payer. · Décret n° 2014-890 ; ANIL ;
+   service-public.fr F375
+O9. [OUTIL · voyage] **Ton TGV a 30 min de retard : la SNCF te rend 25 % du billet** (50 % à 2 h, 75 % à 3 h), sur TGV
+   INOUI et Intercités. Le règlement européen ne commence qu'à 1 h ; la « garantie 30 minutes » de la SNCF va plus
+   loin. L'action : le formulaire G30 sur le site SNCF après le voyage. À revérifier le jour même sur le site SNCF
+   (conditions, bon d'achat ou virement, OUIGO et TER à part). · SNCF Connect, garantie G30 ; règlement (UE) 2021/782
+O10. [OUTIL · logement] **Pas de garant ? Entre 18 et 30 ans, l'État en a un gratuit pour toi : Visale** (Action
+   Logement). Il garantit le loyer au propriétaire, quel que soit ton statut (étudiant, CDD, CDI, alternant). L'action :
+   faire la demande sur visale.fr avant de déposer son dossier, puis donner le visa au propriétaire. Le jour même :
+   vérifier les plafonds de loyer sur visale.fr. · Action Logement, garantie Visale
+
+D'autres idées OUTIL à vérifier avant de les écrire ici : frais de notaire offerts aux primo-accédants (selon budget
+voté), heures sup défiscalisées (n° 24), mutuelle payée à 50 % par l'employeur (n° 30), rupture conventionnelle (n° 33),
+comptes oubliés via Ciclade (n° 27), chèque énergie (n° 15). Ils restent plus bas ; écris-les en mode outil.
+
+### Le reste de la liste
+
 ✅ 2026-11-01 N°08 · 1. [ÉCO] Il faut gagner combien pour être dans les 10 % les mieux payés en France
 ✅ 2026-11-02 N°09 · 2. [MENTAL] Négocier 100 € d'augmentation : l'effet sur 10 ans
 ✅ 2026-11-01 N°07 · 3. [DROITS] L'ASPA (minimum vieillesse) : combien, pour qui, pourquoi beaucoup de retraités ne la réclament pas, et la récupération sur l'héritage
@@ -54,11 +121,11 @@ secours peut y être sans être cochée ici.
    2026-11-20
 5. [INVESTIR] Combien il faut avoir de côté pour toucher 1 000 € par mois sans travailler (la règle des 4 %), avec la
    pire baisse qui aurait pu arriver en route
-6. [DROITS] La prime d'activité : qui y a droit en travaillant, combien, et combien de gens ne la demandent pas
+6. ↑ déplacé en O7 (prime d'activité)
 7. ⚡ [BUDGET] Le gaz augmente de 6,6 % au 1er novembre : combien en plus sur un hiver pour un logement chauffé au gaz
    (prix repère 182,88 → 194,90 €/MWh TTC) · CRE, info.gouv.fr · valable jusqu'au 2026-11-30
 8. [MENTAL] Ton téléphone à 1 200 € = combien d'heures de travail au SMIC
-9. [DROITS] L'employeur doit rembourser 50 % de ton abonnement de transport : ce que ça fait en euros sur un an
+9. ↑ déplacé en O2 (transport)
 10. [ÉCO] Le salaire des patrons du CAC 40 en années de SMIC
 11. [BUDGET] Sur 100 € de salaire, ce que l'État prend vraiment (cotisations, impôt, TVA sur tes achats)
 12. [DROITS] Tes parents peuvent te donner 100 000 € chacun sans impôt, tous les 15 ans (l'abattement parent-enfant)

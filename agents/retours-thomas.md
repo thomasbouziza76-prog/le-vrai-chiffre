@@ -36,6 +36,7 @@
 | 30/10 | — | « J'aime pas le prénom Julie » | Choix de Thomas | Jamais « Julie ». Tico est fixe ; les autres prénoms varient (Yanis, Karim, Inès, Lucas, Sarah…) |
 
 ## Les décisions de Thomas (définitives)
+- **Ligne OUTIL (02/11)** : Thomas constate 9 vidéos, 200-300 vues au début, 0 partage malgré les appels. Diagnostic validé : les vidéos informent mais ne servent à rien au spectateur. D'abord les sujets OUTIL de `sujets.md` (un chiffre qui le concerne + comment le récupérer), règle SCRIPT-HOOKS section 0 ter. Comme Masdak : sérieux mais utile ; on ne copie ni ses sujets ni ses textes.
 - **« Motion design en premier. En premier. »** Tico est l'invité.
 - **« Notre DA, on va pas la changer, même plus tard. »**
 - **La question de débat est voulue** (« Tu trouves ça juste ? »). La page ne donne **jamais son propre avis** politique, mais elle fait débattre.
