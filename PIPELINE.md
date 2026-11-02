@@ -68,7 +68,7 @@ Racine du dépôt : `$LVC_REPO` (après l'étape 0). Projet du jour : `$P` = sor
 `bash etapes/00-installer.sh` puis `source ~/.hf-env`. Il installe Whisper (avec son modèle local) et num2words, et définit `$LVC_REPO`. Playwright et Chromium sont déjà là. **HyperFrames n'est plus utilisé** : la vidéo se rend avec `moteur/`. Seul `historique/HISTORIQUE.md` (les 7 dernières vidéos) est à lire en entier.
 
 ## 0 bis. Studio, référence et boucle de retour (≈ 4 min, AVANT le sujet)
-1. **Studio** : `mcp__claude-code-remote__add_repo` owner **thomasbouziza76-prog**, repo **studio**, access push, puis
+1. **Studio** : charge d'abord l'outil avec ToolSearch (« select:mcp__claude-code-remote__add_repo » ; sans ça il paraît absent et le clone du dépôt privé est refusé, vu le 02/11), puis `mcp__claude-code-remote__add_repo` owner **thomasbouziza76-prog**, repo **studio**, access push, puis
    `git clone --depth 1 https://github.com/thomasbouziza76-prog/studio /home/claude/studio` (dépôt PRIVÉ, jamais rendu
    public). Il contient `charte/ticket.js` (le Ticket), `motion/` (pièces prêtes, `catalogue.json`) et la vidéo de
    référence. Si le clone échoue : continue avec `exemples/ticket.js` de ce dépôt et dis-le dans le message final.
