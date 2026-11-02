@@ -44,3 +44,8 @@ Réponds en 5 lignes maximum : verdict, note, les 2 corrections les plus importa
 
 ## Si un agent ne répond plus (02/11)
 Un agent qui a beaucoup travaillé peut ne plus pouvoir être relancé (historique trop lourd). Ce n'est pas grave si **le journal du projet (`$P/journal.md`) est tenu à chaque étape** : on lance un nouvel agent avec le même rôle, on lui donne le journal, le plan, le dernier verdict et ce qui a changé depuis, et il reprend là où l'autre s'est arrêté. D'où la règle : chaque agent note chaque étape dans le journal, avec l'heure et le résultat.
+
+## Leçons du test de la nuit du 02/11
+- **Un agent par porte, des missions courtes.** Un agent qui enchaîne toutes les étapes finit avec un historique trop lourd et ne peut plus être relancé. Mieux : un réalisateur jusqu'à la porte 3, un nouveau (avec le journal) jusqu'à la porte 4, un autre pour les livrables.
+- **Dans chaque brief : « personne ne peut approuver d'action »** (pas de réseau, pas d'installation, fichiers de travail dans /tmp/<nom>/). Deux agents se sont bloqués cette nuit en attendant une approbation que personne ne pouvait donner.
+- **Les relecteurs à froid font leur travail** : le Critique motion a trouvé à l'image tous les défauts que le coordinateur avait vus, et d'autres ; il a aussi révélé deux trous dans les contrôles (actions déclarées mais pas dessinées, sous-titres). Les contrôles ont été renforcés en conséquence (dessin qui bouge mesuré en pixels, bruitages jamais plus forts que la voix).
