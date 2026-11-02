@@ -345,7 +345,15 @@ SCENES.mot={ overlay:true,
     let n=0; const tot=lines.join('').length;
     lines.forEach((l,k)=>{ const w=tw(l,sz,'IS'); let x=-w/2;
       for(const ch of l){ const cw=tw(ch,sz,'IS')*(1-.035), u=bk(sg(t,sc.t0+n/Math.max(1,tot)*Math.min(.45,d*.35),sc.t0+n/Math.max(1,tot)*Math.min(.45,d*.35)+.22));
-        s+=`<g transform="translate(${f(x+cw/2)} ${f(k*sz*1.05+sz*.35-260*(1-u))}) rotate(${f((n%2?8:-8)*(1-u))})" opacity="${f(cl(u*3))}">`+txt(0,0,sz,'IS',fg,ch)+'</g>'; x+=cw; n++; } });
+        // entrée des lettres : à CHANGER d'une vidéo à l'autre (Thomas, 02/11 : « quand les motion sont nouveaux, c'est bien »)
+        const E=sc.entree||'tombe', yb=k*sz*1.05+sz*.35, xb=x+cw/2, v=1-u; let tf, op=cl(u*3);
+        if(E==='machine'){ tf=`translate(${f(xb)} ${f(yb)})`; op=u>0?1:0; }                                         // machine à écrire : la lettre apparaît d'un coup
+        else if(E==='monte') tf=`translate(${f(xb)} ${f(yb+260*v)}) rotate(${f((n%2?-8:8)*v)})`;                   // les lettres montent du bas
+        else if(E==='zoom') tf=`translate(${f(xb)} ${f(yb)}) scale(${f(L(3,1,u))})`;                               // chaque lettre claque depuis très gros
+        else if(E==='glisse') tf=`translate(${f(xb+(k%2?-900:900)*v)} ${f(yb)}) skewX(${f(-25*v)})`;               // les lignes arrivent de côtés opposés
+        else if(E==='tourne') tf=`translate(${f(xb)} ${f(yb)}) rotate(${f(180*v)}) scale(${f(L(.2,1,u))})`;       // les lettres tournent sur elles-mêmes
+        else tf=`translate(${f(xb)} ${f(yb-260*v)}) rotate(${f((n%2?8:-8)*v)})`;                                  // 'tombe' (gare des salaires)
+        s+=`<g transform="${tf}" opacity="${f(op)}">`+txt(0,0,sz,'IS',fg,ch)+'</g>'; x+=cw; n++; } });
     const tr=eio(sg(t,sc.t0+.35,sc.t1-.1)), yl=lines.length*sz*1.05-sz*.35;
     if(tr>.02) s+=`<path d="M${f(-430)} ${f(yl)} L${f(-430+860*tr)} ${f(yl+10*Math.sin(tr*9))}" stroke="${sc.fond==='encre'?ACC:INK}" stroke-width="22" stroke-linecap="round" fill="none"/>`;
     s+='</g>'; if(sc.dessin) s+=sc.dessin(t,{t0:sc.t0,t1:sc.t1,T,txt,tw,INK,PAP,GR,ACC,CR,eo,ei,eio,bk,sg,L,cl,f,...OUTILS}); return s+'</g>'; },

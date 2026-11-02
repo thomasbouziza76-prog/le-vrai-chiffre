@@ -67,7 +67,7 @@ Tu dessines le monde de CETTE vidéo ; le moteur s'occupe de faire suivre la cam
 | Couleurs | `a.INK` (encre), `a.PAP` (papier), `a.ACC` (terracotta), `a.GR` (gris), `a.CR` (crème) |
 
 ### La scène `mot` : un plan plein écran
-`{type:'mot', de:'p5', a:'p5_fin', txt:'MAIS<br>ATTENDS.', fond:'acc'}` : un mot qui claque sur un aplat (1 à 2 s). À utiliser 1 ou 2 fois par vidéo, sur un retournement. Pas de carton pendant ce plan. **Validé par Thomas le 02/11** (« MAIS ATTENDS. » et « RARES. » dans la gare des salaires). Les lettres tombent toutes seules ; ajoute `dessin:(t,a)=>svg` pour un petit geste propre au sujet (ex. un mini-train qui traverse « RARES. »). `fond:'acc'` (terracotta) ou `fond:'encre'` (noir) : alterne les deux. Cale-le sur le mot dit par la voix (pas avant).
+`{type:'mot', de:'p5', a:'p5_fin', txt:'MAIS<br>ATTENDS.', fond:'acc'}` : un mot qui claque sur un aplat (1 à 2 s). À utiliser 1 ou 2 fois par vidéo, sur un retournement. Pas de carton pendant ce plan. **Validé par Thomas le 02/11** (« MAIS ATTENDS. » et « RARES. » dans la gare des salaires). Les lettres tombent toutes seules ; ajoute `dessin:(t,a)=>svg` pour un petit geste propre au sujet (ex. un mini-train qui traverse « RARES. »). `fond:'acc'` (terracotta) ou `fond:'encre'` (noir) : alterne les deux. Cale-le sur le mot dit par la voix (pas avant). **Entrée des lettres à changer à chaque vidéo** (`entree:` `'tombe'` · `'monte'` · `'zoom'` · `'glisse'` · `'tourne'` · `'machine'`) : regarde dans `historique/HISTORIQUE.md` celle des 2 dernières vidéos et prends-en une autre ; note-la dans ta ligne d'historique (« mot : entrée zoom »). Thomas, 02/11 : « quand les motion sont nouveaux, c'est bien ».
 
 ## Les commandes, dans l'ordre
 
