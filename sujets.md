@@ -107,6 +107,8 @@ O10. [OUTIL · logement] **Pas de garant ? Entre 18 et 30 ans, l'État en a un g
    faire la demande sur visale.fr avant de déposer son dossier, puis donner le visa au propriétaire. Le jour même :
    vérifier les plafonds de loyer sur visale.fr. · Action Logement, garantie Visale
 
+O11. 💬 [OUTIL · aides] **Où et comment demander l'Aspa pour un parent ou un grand-parent** (question en commentaire de la N°07, 02/11) : la caisse de retraite (Carsat pour le régime général, MSA pour les agricoles), le formulaire sur service-public.fr, le SASPA si aucune retraite. Raconté du point de vue du 20-35 ans qui aide son parent. Le jour même : revérifier les montants et la récupération sur succession. · service-public.fr F16871
+
 D'autres idées OUTIL à vérifier avant de les écrire ici : frais de notaire offerts aux primo-accédants (selon budget
 voté), heures sup défiscalisées (n° 24), mutuelle payée à 50 % par l'employeur (n° 30), rupture conventionnelle (n° 33),
 comptes oubliés via Ciclade (n° 27), chèque énergie (n° 15). Ils restent plus bas ; écris-les en mode outil.
