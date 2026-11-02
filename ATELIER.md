@@ -35,28 +35,44 @@ l'a confirmé dans le chat). Sinon : statut `à confirmer` et `resultat` expliqu
       pour mot, les infos de la vidéo et le dossier de travail `/tmp/atelier/N<xx>/`. Journal : une ligne quand il a fini.
    d. Lance l'agent qui relit (neuf). À CORRIGER → corrections → nouvelle relecture. **2 tours maximum.** Journal : une
       ligne par verdict, une ligne par correction faite.
-   e. Livraison au QG (images en 720 px de large, avec un **nouveau nom** pour ne pas garder l'ancienne image en cache :
-      `N<xx>-couv-v<k>.jpg`, `N<xx>-C<k>-<i>.jpg`). Trois chemins, dans cet ordre :
-      1. **`mcp__claude-artifacts__publish_files`** s'il existe (ToolSearch) : `get_artifact`, puis publish_files mode **patch**,
-         fichiers `media/…`, JAMAIS index.html.
-      2. Sinon, **l'outil `Artifact`** de la session, SEULEMENT si les 3 conditions sont vraies : (a) `get_artifact` sur le
-         slug donne exactement la version écrite dans `/home/claude/studio/qg/VERSION` ; (b) la description de l'outil
-         garantit qu'il republie CE MÊME artefact en gardant les fichiers non listés (pas de remplacement complet) ;
-         (c) tu passes comme page `file_path=/home/claude/studio/qg/index.html` (copie exacte de la page en ligne, tenue
-         par le manager), sans la modifier, et tes images en fichiers `media/…`. Après, écris la nouvelle version dans
-         `studio/qg/VERSION` (commit + push).
-      3. Sinon : **dépôt pour le manager**. Copie les images dans `studio/depot/N<xx>/` (commit + push) et, dans la commande,
-         `statut: à déposer`, `depot: ["N09-couv-v2.jpg", …]`. Le manager les publie à son passage (ou plus tôt s'il est là).
-         Ne change pas `videos/N<xx>.media` dans ce cas : le manager le fait en publiant.
-      Puis, si les fichiers sont en ligne : `db_get videos/N<xx>` et merge (ifVersion) `media.couv` / `media.carrousel` /
-      `legende_carrousel`… Si la vidéo est déjà « Publiée », ajoute dans `notes` : « Couverture refaite après publication :
-      à remplacer sur TikTok. »
+   e. Livraison au QG : suis la section « Livraison au QG » plus bas.
    f. Studio : range dans `videos/N<xx>/` (crée le dossier s'il manque) `couverture.jpg` ou `carrousel/`, et les verdicts
       dans `agents/` ; commit + push. Si ça échoue, ne bloque pas : dis-le dans `resultat`.
    g. merge commande `statut: faite, fin, resultat` (une phrase pour Thomas : ce qui a changé, la note du relecteur) ;
       journal niveau `ok` ; agent etat `repos`.
-   Si une étape échoue deux fois : `statut: échec`, `resultat` = l'erreur exacte, journal niveau `bloque`.
+   Si une étape échoue deux fois : `statut: échec`, `resultat` = l'erreur exacte, puis **section « En cas de problème »**.
 5. Message final (court) : les commandes traitées et leur résultat.
 
 Règles de contenu : celles de la chaîne (aucun avis politique, aucune référence religieuse, aucun produit à intérêts
 présenté comme solution, chiffres identiques à la vidéo).
+
+## Livraison au QG (vaut aussi pour l'étape 11 des vidéos du matin et du soir)
+Images en 720 px de large, vidéo recompressée (PIPELINE.md étape 11), avec un **nouveau nom** pour une retouche
+(`N<xx>-couv-v<k>.jpg`, `N<xx>-C<k>-<i>.jpg`) afin que l'ancienne image ne reste pas en cache.
+1. Si `mcp__claude-artifacts__publish_files` existe (ToolSearch) : `get_artifact`, puis publish_files mode **patch**, fichiers
+   `media/…` seulement.
+2. Sinon (cas normal des tâches automatiques) : **l'outil intégré `Artifact`**, testé le 02/11 : il republie le même artefact
+   et GARDE les fichiers qu'on ne liste pas, mais il exige la page. Donc :
+   a. `get_artifact` sur le slug 3578fc9b-8c91-4201-9cb5-2ba66773f22e : sa version doit être EXACTEMENT celle écrite dans
+      `/home/claude/studio/qg/VERSION` (le manager tient cette copie). Sinon, n'envoie rien : passe au 3.
+   b. Appelle `Artifact` sur CE slug (pas un nouvel artefact) avec la page `/home/claude/studio/qg/index.html` telle quelle
+      (ne la modifie JAMAIS) et tes fichiers servis sous `media/…`.
+   c. Vérifie avec `mcp__claude-artifacts__list_files` que tes fichiers sont là ET que les anciens aussi (media/N05.mp4,
+      media/tico.png…). S'il en manque : **En cas de problème**, tout de suite.
+   d. Écris la nouvelle version dans `studio/qg/VERSION`, commit + push (pull --rebase avant).
+3. Sinon : copie les fichiers dans `studio/depot/N<xx>/` (commit + push), commande en `à déposer` avec `depot: [noms]`, puis
+   **En cas de problème** (le manager les mettra en ligne).
+Puis `db_get videos/N<xx>` et merge (ifVersion) `media.couv` / `media.carrousel` / `legende_carrousel`… Si la vidéo est déjà
+« Publiée », ajoute dans `notes` : « Couverture refaite après publication : à remplacer sur TikTok. »
+
+## En cas de problème (échec, blocage, fichier manquant) : PRÉVENIR, pas seulement noter
+Thomas doit le savoir tout de suite, et le manager doit pouvoir réparer. Dans l'ordre :
+1. **Journal** : une ligne niveau `bloque` avec l'erreur exacte ; l'agent concerné en `bloque`.
+2. **Message dans le chat du QG** : `db_write set chat/<AAAAMMJJ-HHMM>-alerte` avec `{t, de: "manager", alerte: true,
+   texte}`. Le texte, en 3 phrases simples : ce qui a coincé, ce qui est déjà fait (ex. « les images sont prêtes dans le
+   Studio »), et ce qui va se passer (« le manager s'en occupe ») ou ce que Thomas doit faire, s'il y a quelque chose.
+   Commence par « Souci sur la N°xx : ». Pas de jargon.
+3. **Réveiller le manager** : `db_get qg/reveil`, puis `mcp__claude-code-remote__fire_trigger` avec son `trigger_id`
+   (ToolSearch « select:mcp__claude-code-remote__fire_trigger »). Si ça échoue, ce n'est pas grave : il passe à 8 h 37,
+   12 h 37 et 18 h 17.
+4. **Ton message final commence par « ⚠ PROBLÈME : »** (Thomas reçoit une notification à la fin de la tâche).
