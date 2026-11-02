@@ -27,6 +27,6 @@ POUR NOUS (2 à 3 principes, sans copier) : principe — comment l'appliquer à 
 À TESTER : 1 expérience mesurable sur 4 vidéos (ce qu'on change, ce qu'on mesure dans le Sheet)
 CONTRADICTIONS : ce qui contredit savoir-tiktok.md ou nos stats (nos stats gagnent toujours)
 ```
-Puis, dans le QG, une leçon par principe : `lecons/m<AAAAMMJJ>-<k>` = {date, source « Analyste marché »,
-constat, regle, statut « proposée »}. Tu ne modifies jamais `DA.md`, `PIPELINE.md`, `SCRIPT-HOOKS.md` ni les fiches :
+Tu n'écris QUE ce fichier : la tâche recopie elle-même chaque principe de « POUR NOUS » dans le QG (statut
+« proposée »). Tu ne modifies jamais `DA.md`, `PIPELINE.md`, `SCRIPT-HOOKS.md` ni les fiches :
 le manager et Thomas décident de ce qui devient une règle.

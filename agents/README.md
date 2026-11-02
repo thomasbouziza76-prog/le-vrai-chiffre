@@ -11,9 +11,9 @@
 |---|---|---|---|---|
 | 1 | Avant d'écrire le script | **Stratège** (`stratege.md`) | `sujets.md`, `historique/HISTORIQUE.md`, les stats du Sheet (tu les lui colles), `agents/savoir-tiktok.md` | `$P/agents/1-strategie.md` : sujet, angle, personnage, hook, question de débat, mot-clé |
 | 1 bis | Sujet et angle fixés, AVANT d'écrire le script | **Vérificateur** (`verificateur.md`) | `$P/agents/1-strategie.md`, la ligne du sujet de `sujets.md` | `$P/agents/1b-chiffres.md` : chaque chiffre avec valeur, périmètre, source, formulation sûre |
-| 2 | Script + texte voix écrits, AVANT la voix | **Critique script** (`critique-script.md`) | `$P/script.md` (texte voix avec balises + phrases + cartons), `1-strategie.md` | `$P/agents/2-script.md` |
+| 2 | Script + texte voix écrits, AVANT la voix | **Critique script** (`critique-script.md`) | `$P/script.md` (texte voix avec balises + phrases + cartons), `1-strategie.md`, `1b-chiffres.md` | `$P/agents/2-script.md` |
 | 3 | Plan écrit, contrôles verts, AVANT le rendu | **Critique motion** (`critique-motion.md`) | `$P/boards/planche-plan-*.jpg` (1 image/s), `$P/plan.js`, `$P/rapport-controles.json` | `$P/agents/3-motion.md` |
-| 4 | Vidéo rendue, AVANT de livrer à Thomas | **Juge final** (`juge-final.md`) | `$P/boards/planche-video-*.jpg`, `$P/script.md`, `$P/mots.json` (ce que dit la voix), `$P/rapport-controles.json` | `$P/agents/4-juge.md` |
+| 4 | Vidéo rendue, AVANT de livrer à Thomas | **Juge final** (`juge-final.md`) | `$P/boards/planche-video-*.jpg`, `$P/script.md`, `$P/mots.json` (ce que dit la voix), `$P/rapport-controles.json`, `$P/agents/1b-chiffres.md` | `$P/agents/4-juge.md` |
 
 ## Le Graphiste (02/11) : couverture et carrousel
 Après la porte 4, pour les étapes 8 et 8 ter, le réalisateur ne fait plus la couverture et le carrousel lui-même :
@@ -24,9 +24,9 @@ quand Thomas demande une retouche depuis le QG.
 ## Les postes de nuit (02/11) : tâche « Veille, marché et audit · chaque nuit » (23 h 23, après les stats)
 | Poste (fiche) | Quand | Ce qu'il écrit |
 |---|---|---|
-| **Veilleur** (`veilleur.md`) | Chaque nuit | `recherche/veille/<date>.md` + jusqu'à 3 sujets proposés dans le QG (`sujets/v…`, etat « propose ») ; au plus un ⚡ en tête de `sujets.md` s'il expire dans les 7 jours |
+| **Veilleur** (`veilleur.md`) | Chaque nuit | `recherche/veille/<date>.md` ; la tâche recopie jusqu'à 3 sujets dans le QG (`sujets/v…`, etat « propose ») ; Thomas choisit, `sujets.md` n'est jamais modifié |
 | **Auditeur d'erreurs** (`auditeur.md`) | Chaque nuit, pour les vidéos publiées il y a 2 jours (ou plus, jamais auditées) | Studio `videos/N<xx>/audit.md` + leçons proposées dans le QG (`lecons/a…`, statut « proposée ») |
-| **Analyste marché** (`analyste-marche.md`) | La nuit du dimanche | `recherche/marche/<date>.md` + principes proposés dans le QG (`lecons/m…`, statut « proposée ») |
+| **Analyste marché** (`analyste-marche.md`) | La nuit du dimanche | `recherche/marche/<date>.md` ; la tâche recopie ses principes dans le QG (`lecons/m…`, statut « proposée ») |
 
 Ces trois postes **proposent** : aucun ne modifie `DA.md`, `PIPELINE.md`, `SCRIPT-HOOKS.md`, `retours-thomas.md` ni les fiches.
 Le manager (passage de 8 h 37) lit les leçons « proposée » : il applique celles qui sont justes et vérifiables (dans le bon

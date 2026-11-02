@@ -80,7 +80,7 @@ Thomas doit le savoir tout de suite, et le manager doit pouvoir réparer. Dans l
 1. **Journal** : une ligne niveau `bloque` avec l'erreur exacte ; l'agent concerné en `bloque`.
    (Identifiants de journal partout : `journal/<lettre><AAAAMMJJ-HHMMSS>-N<xx>-<agent>-<k>`, avec les secondes et un numéro
    d'ordre, pour ne jamais écraser une ligne.)
-2. **Message dans le chat du QG** : `db_write set chat/<AAAAMMJJ-HHMM>-alerte` avec `{t, de: "manager", alerte: true,
+2. **Message dans le chat du QG** : `db_write set chat/<AAAAMMJJ-HHMMSS>-<tâche>-alerte` avec `{t, de: "manager", alerte: true,
    texte}`. Le texte, en 3 phrases simples : ce qui a coincé, ce qui est déjà fait (ex. « les images sont prêtes dans le
    Studio »), et ce qui va se passer (« le manager s'en occupe ») ou ce que Thomas doit faire, s'il y a quelque chose.
    Commence par « Souci sur la N°xx : ». Pas de jargon.

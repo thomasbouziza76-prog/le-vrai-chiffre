@@ -1,6 +1,6 @@
 # Historique des vidéos (la plus récente en haut)
 
-**Prochaine vidéo du MATIN : 45 s** (la dernière vidéo du matin faite par la tâche est la N°06, 29,4 s ; la N°08 a été faite à la main).
+**Prochaine vidéo du MATIN : 45 s** (dernière vidéo du matin : N°06, 29,4 s ; la N°08 a été faite à la main). La tâche du matin réécrit cette ligne à chaque vidéo (PIPELINE.md étape 7).
 
 Une ligne par vidéo. Lis-la avant de choisir la direction du jour : ne réutilise ni le concept, ni le monde, ni les
 mécanismes signatures, ni les transitions dominantes, ni la palette sonore, ni l'archétype de hook, ni l'appel à
