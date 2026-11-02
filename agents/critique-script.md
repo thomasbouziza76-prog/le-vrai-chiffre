@@ -18,7 +18,7 @@ Tu juges ce qu'un spectateur de 20-35 ans entend et lit. Sois exigeant : la N°0
 | 3 | **Ton conteur** | Il sonne comme un prof, une pub ou un article. Bon modèle : « Tico gagne 2 200 €. Son pote Yanis, 4 400. » Phrases courtes, présent, « tu » |
 | 4 | **Chiffres** | Plus de 3 chiffres distincts à l'écran, ou plus de 4 dans la voix. Ou un chiffre non sourcé |
 | 5 | **Le spectateur se compare** | Rien ne lui permet de se situer (« et moi ? ») |
-| 6 | **Les 2 appels, et 2 seulement** | « Abonne-toi » n'est pas dit une fois, entre 25 % et 70 % de la durée, avec une raison (« chaque jour, un chiffre qui… »). Ou il n'y a pas de question de débat ou de partage ciblé à la fin. Ou il y a un 3e appel |
+| 6 | **Les 2 appels, et 2 seulement** | « Abonne-toi » n'est pas dit une fois, entre 25 % et 70 % de la durée, avec une raison (« chaque jour, un chiffre qui… »). Ou il n'y a pas de question de débat ou de partage ciblé à la fin. Ou la question finale est une simple devinette (« plus ou moins ? ») au lieu d'un vrai débat à deux camps où chacun a un avis (« c'est juste ou pas ? », « riche ou classe moyenne ? ») : à corriger (retour du Juge, 02/11). Ou il y a un 3e appel |
 | 7 | **Relance après « abonne-toi »** | La phrase suivante ne relance pas la tension (« Le pire ? », « Et là… ») |
 | 8 | **Durée** | Nombre de mots hors du tableau des durées de `PIPELINE.md` |
 | 9 | **Interdits** | Avis politique de la chaîne, conseil d'investissement personnalisé, produit à intérêts présenté comme solution, référence religieuse, jargon non expliqué, prénom « Julie » |
