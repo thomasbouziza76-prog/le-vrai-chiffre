@@ -178,6 +178,8 @@ scènes du moteur utilisées, notes des 4 agents (script, motion, juge) et nombr
 Commit et push dans le dépôt (voir 10), avec `historique/CHECKS.md` s'il a changé.
 
 ## 8. Couverture, titre, rangement, livraison
+- **Depuis le 02/11, la couverture et le carrousel (8 ter) sont faits par le Graphiste** (`agents/graphiste.md`), puis relus par un
+  Graphiste neuf (agents/README.md). Les règles ci-dessous sont les siennes.
 - Couverture : fais un HTML 1080×1920 dans l'identité de la chaîne (modèle de FORMAT : `exemples/couverture-exemple.html`) :
   ligne mono « LE VRAI CHIFFRE … N° xx », hook en très gros (3 à 5 lignes) avec UN mot dans la boîte terracotta, chiffre clé
   ou objet signature, essentiel entre y 420 et y 1650 (la grille du profil coupe le haut et le bas de la couverture, et le badge « Épinglé » cache la zone y 240-400 : retour de Thomas du 02/11, titres coupés sur les vidéos épinglées). Rien d'important au-dessus de y 420. Puis `bash etapes/08-livrables.sh $P <xx> <couverture.html>`

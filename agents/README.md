@@ -14,6 +14,12 @@
 | 3 | Plan écrit, contrôles verts, AVANT le rendu | **Critique motion** (`critique-motion.md`) | `$P/boards/planche-plan-*.jpg` (1 image/s), `$P/plan.js`, `$P/rapport-controles.json` | `$P/agents/3-motion.md` |
 | 4 | Vidéo rendue, AVANT de livrer à Thomas | **Juge final** (`juge-final.md`) | `$P/boards/planche-video-*.jpg`, `$P/script.md`, `$P/mots.json` (ce que dit la voix), `$P/rapport-controles.json` | `$P/agents/4-juge.md` |
 
+## Le Graphiste (02/11) : couverture et carrousel
+Après la porte 4, pour les étapes 8 et 8 ter, le réalisateur ne fait plus la couverture et le carrousel lui-même :
+il lance le **Graphiste** (`graphiste.md`, mode FABRIQUER) avec le script, les chiffres, le hook et la légende, puis un
+**Graphiste neuf** en mode RELIRE. Même boucle : 2 tours maximum. Le même agent sert à l'**atelier** (`ATELIER.md`)
+quand Thomas demande une retouche depuis le QG.
+
 ## Comment lancer un agent (modèle de message)
 
 Outil `Agent`, `subagent_type: general-purpose`, **au premier plan** (`run_in_background: false`), avec ce message rempli :
