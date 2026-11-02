@@ -182,6 +182,14 @@ if VIDEO:
     lo=subprocess.run(['ffmpeg','-i',v,'-af','ebur128','-f','null','-'],capture_output=True,text=True).stderr
     m=re.findall(r'I:\s+(-?[\d.]+) LUFS',lo); I=float(m[-1]) if m else 0
     ok('Son à -14 LUFS (± 1,5)',abs(I+14)<=1.5,f'{I} LUFS')
+    # aucun bruitage ni musique nettement plus fort que la voix (DA règle 9) : hors voix, RMS sur 50 ms ≤ voix médiane + 4 dB
+    import numpy as np
+    a=np.frombuffer(subprocess.run(['ffmpeg','-v','error','-i',v,'-ac','1','-ar','16000','-f','s16le','-'],capture_output=True).stdout,dtype=np.int16)/32768
+    MJ=json.load(open(os.path.join(D,'mots.json'))); iv=[(m['s'],m['e']) for m in MJ]
+    W=800; n=len(a)//W; rr=np.array([20*np.log10(np.sqrt(np.mean(a[i*W:(i+1)*W]**2))+1e-9) for i in range(n)]); tt=(np.arange(n)+.5)*W/16000
+    dedans=np.array([any(x-.05<=u<=y+.05 for x,y in iv) for u in tt]); vm=float(np.median(rr[dedans])) if dedans.any() else -99
+    trop=sorted({round(float(u),1) for u,x in zip(tt[~dedans],rr[~dedans]) if x>vm+4})
+    ok('Bruitages jamais plus forts que la voix (+4 dB max)',not trop,(f'trop fort à : {trop[:8]} s (voix {vm:.1f} dBFS)') if trop else f'voix {vm:.1f} dBFS')
 json.dump(res,open(os.path.join(D,'rapport-controles.json'),'w'),ensure_ascii=False,indent=1)
 ko=[r for r in res if not r['ok']]
 for r in res: print(('OK   ' if r['ok'] else 'ÉCHEC'),r['controle'],'—',r['detail'])

@@ -36,7 +36,12 @@ if __name__=='__main__':
     args=['ffmpeg','-v','error','-y','-i',os.path.join(D,'voix.mp3')]; flt=['[0:a]volume=1.0,apad=whole_dur=%.2f[v]'%K['end']]
     for i,(t,f,g) in enumerate(SFX,1):
         args+=['-i',SON(f)]; d=int(max(0,t)*1000); flt.append(f'[{i}:a]volume={g},adelay={d}|{d}[a{i}]')
-    flt.append('[v]'+''.join(f'[a{i}]' for i in range(1,len(SFX)+1))+f'amix=inputs={len(SFX)+1}:normalize=0,atrim=0:{K["end"]},loudnorm=I=-14:TP=-1.5:LRA=11[out]')
+    # BRUITAGES sur un bus à part, plafonnés : jamais plus forts que la voix (DA règle 9). Le juge du 02/11 a mesuré
+    # des whooshs 6-8 dB au-dessus de la voix : c'était le loudnorm dynamique qui remontait les trous de voix → supprimé
+    # (le volume final est réglé en 2e passe par un simple gain + limiteur). SFX_PLAFOND = crête max du bus, en linéaire.
+    SFX_PLAFOND=float(os.environ.get('LVC_SFX_PLAFOND','0.35'))
+    if SFX: flt.append(''.join(f'[a{i}]' for i in range(1,len(SFX)+1))+f'amix=inputs={len(SFX)}:normalize=0,acompressor=threshold=0.12:ratio=4:attack=3:release=120,alimiter=limit={SFX_PLAFOND}:level=false[sx]')
+    flt.append('[v]'+('[sx]' if SFX else '')+f'amix=inputs={2 if SFX else 1}:normalize=0,atrim=0:{K["end"]}[out]')
     # MUSIQUE (PLAN.musique = nom de moteur/musiques.json) : très basse, et elle se baisse toute seule quand la voix parle
     PL=json.loads(subprocess.run(['node',os.path.join(M,'lireplan.js'),os.path.join(D,'plan.js')],capture_output=True,text=True).stdout or '{}')
     import re as _r
@@ -64,7 +69,7 @@ if __name__=='__main__':
         flt[0]='[0:a]volume=1.0,apad=whole_dur=%.2f,asplit=2[v][vk]'%e
         flt.append(f"[{mi}:a]adelay={int(dl*1000)}|{int(dl*1000)},atrim=0:{e},volume='0.16{cut}':eval=frame,afade=t=in:d=0.4,afade=t=out:st={e-1.6:.2f}:d=1.6[m0];[m0][vk]sidechaincompress=threshold=0.03:ratio=8:attack=20:release=350[mus]")
         flt[-2],flt[-1]=flt[-1],flt[-2]   # garde le amix en dernier
-        flt[-1]=flt[-1].replace(f'amix=inputs={len(SFX)+1}',f'[mus]amix=inputs={len(SFX)+2}')
+        flt[-1]=flt[-1].replace(f'amix=inputs={2 if SFX else 1}',f'[mus]amix=inputs={3 if SFX else 2}')
     subprocess.run(args+['-filter_complex',';'.join(flt),'-map','[out]','-ac','2','-ar','48000',os.path.join(D,'mix.wav')],check=True)
     if mfile: print('musique :',mus)
     import re as _re
