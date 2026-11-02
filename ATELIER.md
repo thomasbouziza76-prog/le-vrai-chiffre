@@ -57,7 +57,9 @@ Règles de contenu : celles de la chaîne (aucun avis politique, aucune référe
 présenté comme solution, chiffres identiques à la vidéo).
 
 ## Livraison au QG (vaut aussi pour l'étape 11 des vidéos du matin et du soir)
-Images en 720 px de large, vidéo recompressée (PIPELINE.md étape 11), avec un **nouveau nom** pour une retouche
+**Pleine qualité, jamais de 720p** (Thomas télécharge depuis le QG pour publier) : couverture en JPEG 1080×1920 qualité 90,
+slides en JPEG pleine taille qualité 90, vidéo en 1080×1920 (`ffmpeg -c:v libx264 -preset slow -crf 20 -pix_fmt yuv420p
+-c:a copy -movflags +faststart`, et si le fichier dépasse 19 Mo : crf 23, puis crf 26, toujours en 1080), avec un **nouveau nom** pour une retouche
 (`N<xx>-couv-v<k>.jpg`, `N<xx>-C<k>-<i>.jpg`) afin que l'ancienne image ne reste pas en cache : k = 1 + le plus grand k
 déjà présent dans `list_files` pour ce nom (2 s'il n'y a que `N<xx>-couv.jpg`). Les scripts sortent `N<xx>-couv.jpg` :
 renomme la copie à publier.

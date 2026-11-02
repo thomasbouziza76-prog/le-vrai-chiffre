@@ -273,6 +273,10 @@ Déplacée à l'étape 0 bis (au début de chaque exécution).
 Ne pousse que `historique/` et les fichiers du kit modifiés, jamais `node_modules`, `.env`, vidéos, voix ni rendus.
 
 ## 11. Livraison finale : DÉPÔT AU QG (pas d'envoi direct à Thomas)
+- **Qualité (décision du 02/11, Thomas télécharge depuis le QG pour publier)** : JAMAIS de réduction en 720p pour le QG.
+  Vidéo = `$P/livrables/N<xx>.mp4` de `08-livrables.sh` telle quelle (1080×1920, 19 Mo maximum) ; couverture = le JPEG
+  1080×1920 (qualité 90) ; slides du carrousel = les PNG convertis en JPEG pleine taille (qualité 90). Seule l'archive du
+  Studio (8 quinquies) est réduite en 720p.
 - Suis la section « Livraison au QG » de `ATELIER.md`, puis le point (d) de la consigne de la tâche (fiche `videos/N<xx>`,
   ligne de journal, état du réalisateur). Le manager contrôle la vidéo et la passe « À publier ».
 - SendUserFile seulement si le QG reste injoignable après 2 essais, avec la mention « QG injoignable ».
