@@ -59,6 +59,8 @@ Sur la N°08, la plus grosse chute a eu lieu à 0:01 ; la meilleure image (la gu
 1. **L'image 0 est l'image la plus forte de la vidéo, en pleine action** (on commence par le moment choc, puis on raconte comment on en est arrivé là). Ex. N°08 : la lame tombe sur le billet de 10 000 € dès 0 s.
 2. **La 1re phrase parle à « TU »**, jamais à la 3e personne (« Tico pense que… » est interdit en ouverture). Ex. : « Tu crois qu'il faut 10 000 € pour être dans le top 10 % ? ». Tico entre en scène juste après.
 3. **Aucun chiffre parasite à l'écran pendant les 3 premières secondes** : seulement le chiffre du hook, en gros (pas de compteur qui affiche « 1 130 € », pas d'étiquette secondaire).
+4. **La 1re phrase dite contient un montant en euros** quand le sujet en a un (une date ou un « 1 sur 2 » ne comptent pas). Leçon des Auditeurs N°01 et N°03, appliquée le 03/11 : sur 7 vidéos, celles qui ouvrent sur un montant tiennent 12 s en moyenne (N°04 12 s, N°05 12 s, N°07 9 s, N°08 15 s), celles sans montant 6,7 s (N°01 5 s, N°03 7 s, N°06 8 s). Le montant reste le chiffre du hook (règle 3). Ex. : « Tu bosses, donc aucune aide ? 150 € par mois t'attendent peut-être. »
+5. **Chiffre du hook = son périmètre et son année visibles** : la petite ligne de source en bas de l'image 0 dit le périmètre et l'année (« Insee, privé 2025 »), et la légende aussi. Leçon de l'Auditeur N°05, appliquée le 03/11 (la N°05 disait « en France » pour un chiffre du privé, et 2024 alors que 2025 était publié).
 
 ## 0 ter. LA VIDÉO OUTIL (décision de Thomas du 02/11 : 9 vidéos, 0 partage)
 Une vidéo qui informe se regarde puis s'oublie. Une vidéo qui SERT s'envoie à un pote. Chaque vidéo OUTIL suit ce fil :
@@ -138,6 +140,7 @@ Le contrarien monte le plus haut quand il est défendu par la suite ; l'enquête
 Si après 3 retouches le hook reste plat, change d'archétype, pas de mots.
 
 ## 4. Les anti-patterns (interdits)
+- **Sujet [INVESTIR] avec un résultat calculé dans le hook** (ex. « 81 538 € ») sans son hypothèse sur le même carton (« si 5 %/an, non garanti ») et sans la perte possible dite avant 12 s : interdit (leçon de l'Auditeur N°04, appliquée le 03/11 ; le temps moyen est de 12 s, la perte arrivait à 25 s, donc la plupart des gens ne voyaient que le gain).
 
 Présentation ou logo au début · teasing vague (« ce qui suit va te choquer ») · appâter puis changer de sujet ·
 « abonne-toi » avant d'avoir donné de la valeur · commencer par une histoire chronologique (« au début… », « en 1982… » ; le format histoire du soir ouvre sur l'enjeu ou l'injustice, jamais sur le début de l'histoire) · « Stop, ne scrolle

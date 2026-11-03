@@ -13,7 +13,7 @@ Tu juges ce qu'un spectateur de 20-35 ans entend et lit. Sois exigeant : la N°0
 
 | # | Critère | BLOQUANT si… |
 |---|---|---|
-| 1 | **Hook (0-3 s)** | La 1re phrase ne parle pas à « tu » (« Tico pense que… » en ouverture = BLOQUANT, règle du 02/11, SCRIPT-HOOKS 0 bis), ou ne pose pas un chiffre ou une tension. Ou elle commence par « Aujourd'hui », « Savais-tu », « Dans cette vidéo », une intro, une question molle |
+| 1 | **Hook (0-3 s)** | La 1re phrase ne parle pas à « tu » (« Tico pense que… » en ouverture = BLOQUANT, règle du 02/11, SCRIPT-HOOKS 0 bis), ou ne pose pas un chiffre ou une tension. Ou elle commence par « Aujourd'hui », « Savais-tu », « Dans cette vidéo », une intro, une question molle. Ou le sujet a un montant en euros et la 1re phrase n'en dit aucun (SCRIPT-HOOKS 0 bis, règle 4, leçon du 03/11) : À CORRIGER avec la phrase réécrite. Sujet [INVESTIR] : résultat calculé sans hypothèse sur le carton, ou perte possible dite après 12 s (temps de mots.json) = BLOQUANT |
 | 2 | **Carton du hook** | Il n'est pas lisible en moins d'1 s (3 à 6 mots), ou il répète la voix mot pour mot |
 | 3 | **Ton conteur** | Il sonne comme un prof, une pub ou un article. Bon modèle : « Tico gagne 2 200 €. Son pote Yanis, 4 400. » Phrases courtes, présent, « tu » |
 | 4 | **Chiffres** | Plus de 3 chiffres distincts à l'écran, ou plus de 4 dans la voix. Ou un chiffre absent du tableau du Vérificateur (`$P/agents/1b-chiffres.md`), ou dit hors de son périmètre (brut/net, médiane/moyenne, mensuel/annuel…) : reprends sa « formulation sûre » |

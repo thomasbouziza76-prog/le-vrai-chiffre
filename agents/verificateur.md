@@ -26,6 +26,8 @@ Pour chaque chiffre (principal, secondaires, montants, plafonds, délais, pource
 5. **Pour un sujet OUTIL** : la démarche réelle (site, rubrique, pièces demandées, délai) et les cas où ça NE marche PAS.
    Si le site officiel a changé de nom ou de chemin, donne le bon.
 6. **Ce qui change bientôt** : une réforme votée ou un barème qui change dans les 30 jours (la vidéo vit des mois).
+7. **Tous les chiffres visibles, décor compris** (couverture, carrousel, étiquettes, compteurs) : chacun a sa ligne dans ton tableau avec son calcul refait (leçon de l'Auditeur N°01, appliquée le 03/11 : la couverture de la N°01 affichait 978 € pour 976-977 €).
+8. **Indicateur daté** (inflation, salaires, chômage…) : vérifie que c'est la DERNIÈRE publication (la N°01 utilisait l'inflation d'août alors que septembre était sorti ; la N°05, l'édition 2024 alors que 2025 était sortie). La formulation sûre et la légende écrivent toujours le mois ou l'année (« en septembre 2026, Insee »), pour que la vidéo reste vraie même publiée plus tard.
 
 ## Ce qui te fait recaler (verdict À CORRIGER)
 - Un chiffre faux, périmé, ou dont le périmètre est trompeur dans la formulation du Stratège.

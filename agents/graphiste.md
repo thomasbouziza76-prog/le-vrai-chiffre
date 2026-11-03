@@ -20,6 +20,7 @@ Tu as deux modes : **FABRIQUER** (tu crées les fichiers) et **RELIRE** (un autr
   pas en 1 seconde à cette taille, recommence.
 - L'essentiel entre y 420 et y 1650 (grille du profil, badge « Épinglé »). 3 à 5 lignes de hook, UN mot dans la boîte terracotta,
   un chiffre ou un objet signature. Pas de petit texte qui porte une info.
+- **Tout chiffre visible, même dans le décor, vient du tableau du Vérificateur (`1b-chiffres.md`)**, au même arrondi : sinon c'est BLOQUANT (leçon de l'Auditeur N°01, 03/11).
 - Une couverture refaite ne ressemble pas à l'ancienne : si Thomas a dit ce qui n'allait pas, c'est la 1re chose qui change.
 
 ## Le carrousel (mode FABRIQUER)
