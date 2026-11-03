@@ -66,6 +66,8 @@ if __name__=='__main__':
         e=K['end']; args+=['-ss',f'{st:.2f}','-i',mfile]; mi=len(SFX)+1
         # coupures : la musique se tait 0,5 s juste avant une révélation (MU['coupe'] = liste d'ancres)
         cut=''.join(f'*(1-between(t,{ancre(c)-.5:.2f},{ancre(c):.2f}))' for c in MU.get('coupe',[]))
+        # silences (Thomas, 03/11 : la musique ne joue pas en continu) : la musique se coupe net entre deux ancres, puis repart
+        cut+=''.join(f'*(1-between(t,{ancre(a):.2f},{ancre(b):.2f}))' for a,b in MU.get('silences',[]))
         flt[0]='[0:a]volume=1.0,apad=whole_dur=%.2f,asplit=2[v][vk]'%e
         flt.append(f"[{mi}:a]adelay={int(dl*1000)}|{int(dl*1000)},atrim=0:{e},volume='0.16{cut}':eval=frame,afade=t=in:d=0.4,afade=t=out:st={e-1.6:.2f}:d=1.6[m0];[m0][vk]sidechaincompress=threshold=0.03:ratio=8:attack=20:release=350[mus]")
         flt[-2],flt[-1]=flt[-1],flt[-2]   # garde le amix en dernier

@@ -94,7 +94,7 @@ const PLAN={
   persos:{ gauche:{nom:'Tico'}, droite:{nom:'Karim',couleur:'#f4e3d7',accessoire:'cravate'} },
   phrases:[ … ],             // le texte voix, phrase par phrase (voir ci-dessous)
   ancres:{ … },              // repères sur un mot précis
-  musique:{nom:'tension-cyber-anxiety', drop:'p6', coupe:['p5']},  // voir « musique » plus bas
+  musique:{nom:'tension-cyber-anxiety', drop:'p6', coupe:['p5'], silences:[['p1_fin','p3'],['p9','p10']]},  // voir « musique » plus bas
   abonne:'p6',               // la phrase « Abonne-toi… »
   question:'dis',            // l'ancre de l'appel final
   cartons:[ … ], humeurs:[ … ], scenes:[ … ],
@@ -118,6 +118,7 @@ musique:{nom:'tension-cyber-anxiety', drop:'p6', coupe:['p5']},
 - `nom` : un morceau de `moteur/musiques.json` (CC0, téléchargé tout seul au rendu). Prends un **ton différent des 2 vidéos précédentes** (HISTORIQUE.md).
 - `drop` : l'ancre où doit tomber le **temps fort** du morceau (colonne « Temps fort ») : le **chiffre choc** ou la révélation. Le moteur décale le morceau pour que ça tombe pile. Pour un morceau « none (bass at X s) », le `drop` vise l'entrée de la basse ; pour un morceau « none » sans basse, ne mets pas de `drop`.
 - `coupe` : les ancres où la musique **se tait 0,5 s juste avant**, pour un silence dramatique avant une révélation (« Et là… »). Une ou deux au maximum.
+- **`silences` (OBLIGATOIRE depuis le 03/11, Thomas : « au début tu mettais une musique, après tu l'arrêtais, et ça c'était bien ; dans la dernière vidéo elle était tout le temps ») : la musique ne joue PAS en continu.** Liste de paires d'ancres `[début, fin]` où elle se coupe net puis repart : `silences:[['p1_fin','p3'],['p6','p8'],['p13','p14_fin']]`. Au moins 2 silences de 1,5 à 4 s par vidéo : sur la vanne d'ouverture (la musique part juste après « Normal. »), sur le chiffre choc, et sur la chute ; la musique revient pour l'énergie (les étapes, l'appel). Un bruitage mème tombe souvent pile dans le silence : c'est ce qui rend la vanne drôle.
 - La musique est très basse et se baisse toute seule quand la voix parle : tu n'as pas de volume à régler.
 - Pour réécouter un changement de musique sans refaire les images : `python3 moteur/rendu.py $P --son-seul` (environ 1 min).
 
