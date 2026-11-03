@@ -99,6 +99,10 @@ Règles de contenu : celles de la chaîne (aucun avis politique, aucune référe
 présenté comme solution, chiffres identiques à la vidéo).
 
 ## Livraison au QG (vaut aussi pour l'étape 11 des vidéos du matin et du soir)
+**Noms des outils (03/11)** : selon la session, les outils du QG s'appellent `mcp__claude-artifacts__db_*`, `upload_asset`,
+`publish_files`… OU sont les outils intégrés **`ArtifactData`** (la base : get, list, query, write) et **`Artifact`** (publier,
+assets). Si les premiers sont introuvables, utilise les seconds pour EXACTEMENT les mêmes opérations : ce n'est pas un blocage,
+juste une ligne de journal `info`.
 **Pleine qualité, jamais de 720p** (Thomas télécharge depuis le QG pour publier) : couverture en JPEG 1080×1920 qualité 90,
 slides en JPEG pleine taille qualité 90, vidéo en 1080×1920 (`ffmpeg -c:v libx264 -preset slow -crf 20 -pix_fmt yuv420p
 -c:a copy -movflags +faststart`, et si le fichier dépasse 19 Mo : crf 23, puis crf 26, toujours en 1080), avec un **nouveau nom** pour une retouche
