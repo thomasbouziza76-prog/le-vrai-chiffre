@@ -295,6 +295,10 @@ Ne pousse que `historique/` et les fichiers du kit modifiés, jamais `node_modul
   Studio (8 quinquies) est réduite en 720p.
 - Suis la section « Livraison au QG » de `ATELIER.md`, puis le point (d) de la consigne de la tâche (fiche `videos/N<xx>`,
   ligne de journal, état du réalisateur). Le manager contrôle la vidéo et la passe « À publier ».
+- **APPEL DU MANAGER (décision de Thomas, 03/11) : dès que la fiche `videos/N<xx>` est écrite au statut « À contrôler »**,
+  `db_get qg/appel` puis `fire_trigger` sur son `trigger_id`, **sans texte** (un texte est parfois refusé). Le manager est
+  ainsi appelé tout de suite pour contrôler la vidéo, au lieu d'attendre son passage. Si l'appel échoue, ligne de journal
+  « alerte » (le passage suivant du manager la contrôlera quand même).
 - SendUserFile seulement si le QG reste injoignable après 2 essais, avec la mention « QG injoignable ».
 - **Étapes BLOQUANTES** (si l'une échoue deux fois → « En cas de problème » d'ATELIER.md : alerte dans le chat, réveil du
   manager, « ⚠ PROBLÈME » en tête du message final) : voix, contrôles `verifier.py`, rendu, livraison au QG, fiche
