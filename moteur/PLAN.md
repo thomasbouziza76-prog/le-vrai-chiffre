@@ -217,6 +217,13 @@ Couleurs : `'acc'` (terracotta, par défaut), `'gris'` ou `'encre'`.
 - « Abonne-toi » une seule fois, entre 25 % et 70 % de la durée, et un appel final.
 - Un carton dès la 1re image.
 - Aucune erreur JavaScript.
+- **Bruitages « mème » (décision de Thomas du 03/11)** : en plus des sons de mouvement, des sons drôles qui RÉAGISSENT à
+  la phrase, déclarés dans `sons` juste après le mot (`['p3+.1','disque-raye',.45]`) : `disque-raye` (après la vanne
+  d'ouverture), `oh-surprise` (un chiffre choquant), `piece-roule` (la galère, le peu d'argent), `pompe-clac` (essence,
+  coupure net), `grillons` (silence gênant), `chasse-eau` (toilettes, argent jeté), `trompette-triste` (l'échec),
+  `bebe-pleure` / `bebe-pleure-2` (le seum), `rires`, `applaudissements`. Un toutes les 6 à 8 s au plus, jamais sur un
+  chiffre dit, 0,3 à 0,5 de gain. Sources et licences : `sons/LICENCE-memes.txt`. Jamais un son de mème connu
+  (« bruh », boom de Vine, violon triste de film) : souvent protégé, TikTok peut couper le son.
 - **L'image agit en permanence** : jamais plus de 1,6 s sans action déclarée ni geste bruité.
 - **Un nouveau plan toutes les 1 à 3 s** (changement net de cadrage, plan plein écran ou carte qui se retourne).
 - **Monde nouveau** : `visuels` présents et aucun mot en commun avec les « VISUELS » des 5 dernières vidéos.

@@ -54,6 +54,32 @@ Karim touche une aide de plus. Et Tico, lui, n'en a jamais entendu parler. »
   fois plus », « presque rien »), pas en chiffres.
 - Test : quelqu'un qui regarde sans le son doit pouvoir redire LE chiffre de la vidéo à la fin.
 
+## 0 · L'HUMOUR (décision de Thomas du 03/11 : « on est trop sérieux ». PRIORITAIRE sur le ton « conteur posé »)
+On dit des vrais chiffres, mais comme un pote cash qui balance une vérité gênante sur ta vie. Des « dingueries », pas des
+blagues de premier de la classe. Référence validée par Thomas : « Ton boss s'est payé une Tesla. Toi, t'as eu un mug
+"Super collègue". » et toute la N°10 v2 (« T'es à découvert le quinze ? Normal. »).
+1. **La vanne est la 1re phrase, dès le 1er mot.** Jamais deux phrases d'explication avant. Le chiffre vient juste après
+   (au plus tard 3 s), puis le mot-clé avant 5 s.
+2. **Des situations RÉELLES** que les 20-35 ans vivent : découvert le 15, revendre sur Vinted pour finir le mois, mettre 10 €
+   d'essence, Uber Eats, la coloc, le scroll aux toilettes, le tonton au repas. Interdit : l'invraisemblable (« 40 min de
+   queue pour un burger gratuit » : personne ne fait ça, recalé par Thomas) et les jeux de mots.
+3. **De l'humour à plusieurs moments** : la vanne d'ouverture, 2 ou 3 piques au milieu, une chute à la fin. Même l'appel
+   « abonne-toi » est drôle (« ici, on t'apprend à arrêter de mettre dix euros d'essence »).
+4. **Provoquer, c'est permis** (une réaction, même agacée, fait commenter) : on peut être cash sur la galère du
+   spectateur, mais on se moque des situations, jamais d'un groupe de personnes. Jamais de religion, de politique, d'alcool.
+5. **Les chiffres restent exacts** et la formulation sûre du Vérificateur est gardée (« peut-être », « environ », « en
+   général ») : la vanne habille le chiffre, elle ne le change jamais.
+6. **Voix** : pince-sans-rire. Balises eleven_v4 `[sarcastic]` (la plupart du temps), `[serious]` sur les règles et les
+   avertissements, `[mischievously]` sur l'appel et le partage, `[dramatically]` sur un mot choc. Le narrateur ne rit
+   jamais de ses vannes.
+7. **Une 2e voix est permise** (accord de Thomas du 03/11) : une réplique courte d'un autre personnage (Manon, le patron,
+   la conseillère…) avec une autre voix ElevenLabs de `creative_list_voices`, 1 à 3 répliques de 15 mots au plus, jamais
+   pour dire un chiffre. Pas obligatoire : seulement si ça rend la scène plus drôle.
+8. **Mots de tous les jours** (à dire et à écrire en gros sur les moments forts) : le seum, la galère, ça pique, t'es en PLS,
+   la douille, c'est cadeau, zéro euro, en mode, une dinguerie.
+9. **Durée** : avec les vannes, une vidéo du matin peut aller jusqu'à 60-65 s (au-delà d'1 min, TikTok rémunère).
+   Le Critique script recale un script sans vanne en 1re phrase, ou avec moins de 3 moments drôles.
+
 ## 0 bis. LA 1re SECONDE (décision de Thomas du 02/11, d'après la courbe de rétention de la N°08)
 Sur la N°08, la plus grosse chute a eu lieu à 0:01 ; la meilleure image (la guillotine qui coupe le billet) n'arrivait qu'à 6,5 s. Trois règles :
 1. **L'image 0 est l'image la plus forte de la vidéo, en pleine action** (on commence par le moment choc, puis on raconte comment on en est arrivé là). Ex. N°08 : la lame tombe sur le billet de 10 000 € dès 0 s.
