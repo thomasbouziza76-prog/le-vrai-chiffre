@@ -1,6 +1,7 @@
 """Usage : python3 moteur/rendu.py DOSSIER [--sortie NOM.mp4]
 Rend DOSSIER/index.html en 1080×1920 30 i/s (un processus par cœur), mixe voix + bruitages
-(déclarés par le moteur), loudnorm -14 LUFS, encode DOSSIER/video.mp4 (ou --sortie)."""
+(déclarés par le moteur), loudnorm -14 LUFS, encode DOSSIER/video.mp4 (ou --sortie).
+       python3 moteur/rendu.py DOSSIER --audio-sur VIDEO.mp4 : retouche de son express (images gardées, 1-2 min)."""
 import sys,os,json,subprocess,multiprocessing as mp
 from playwright.sync_api import sync_playwright
 D=os.path.abspath(sys.argv[1]); OUT=sys.argv[sys.argv.index('--sortie')+1] if '--sortie' in sys.argv else 'video.mp4'
@@ -22,7 +23,11 @@ def part(a):
         b.close()
 if __name__=='__main__':
     os.makedirs(FR,exist_ok=True)
-    if '--son-seul' in sys.argv and len(os.listdir(FR))==N: print('images déjà rendues : je refais seulement le son')
+    # RETOUCHE EXPRESS (Thomas, 03/11 : 40 min pour baisser un son, c'est non) : --audio-sur VIDEO.mp4 garde les images de la
+    # vidéo déjà faite, refait seulement le mixage et remet le son dessus (-c:v copy) : 1 à 2 min, jamais de rendu d'images.
+    AS=sys.argv[sys.argv.index('--audio-sur')+1] if '--audio-sur' in sys.argv else None
+    if AS: print('retouche express : images de',AS,'gardées, je refais seulement le son')
+    elif '--son-seul' in sys.argv and len(os.listdir(FR))==N: print('images déjà rendues : je refais seulement le son')
     else:
         for x in os.listdir(FR): os.remove(os.path.join(FR,x))
         n=max(1,os.cpu_count() or 1); step=(N+n-1)//n
@@ -79,6 +84,9 @@ if __name__=='__main__':
     I=float(_re.findall(r'I:\s+(-?[\d.]+) LUFS',lo)[-1]); g=-14-I
     subprocess.run(['ffmpeg','-v','error','-y','-i',os.path.join(D,'mix.wav'),'-af',f'volume={g:.2f}dB,alimiter=limit=0.89:level=false','-ar','48000',os.path.join(D,'mix2.wav')],check=True)
     os.replace(os.path.join(D,'mix2.wav'),os.path.join(D,'mix.wav'))
+    if AS:
+        subprocess.run(['ffmpeg','-v','error','-y','-i',os.path.abspath(AS),'-i',os.path.join(D,'mix.wav'),'-map','0:v:0','-map','1:a:0','-c:v','copy','-c:a','aac','-b:a','192k','-shortest','-movflags','+faststart',os.path.join(D,OUT)],check=True)
+        print('vidéo (son refait, images gardées) :',os.path.join(D,OUT),'·',len(SFX),'bruitages'); sys.exit(0)
     subprocess.run(['ffmpeg','-v','error','-y','-framerate','30','-i',f'{FR}/%05d.jpg','-i',os.path.join(D,'mix.wav'),'-c:v','libx264','-preset','veryfast','-crf','19','-pix_fmt','yuv420p','-c:a','aac','-b:a','192k','-shortest','-movflags','+faststart',os.path.join(D,OUT)],check=True)
     if os.path.isdir(os.path.join(D,'renders')): import shutil; shutil.copy(os.path.join(D,OUT),os.path.join(D,'renders','video.mp4'))
     print('vidéo :',os.path.join(D,OUT),'·',N,'images ·',len(SFX),'bruitages')

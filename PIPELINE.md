@@ -208,8 +208,9 @@ de la livraison au QG, une fois la vidéo, la couverture et le carrousel dépos�
 `python3 moteur/rendu.py $P` : images (un processus par cœur), bruitages déclarés par le moteur, niveau à -14 LUFS, encodage → `$P/video.mp4` (copiée dans `$P/renders/video.mp4`).
 Puis **`python3 controles/verifier.py $P --video`** (tout OK) et `bash etapes/06-controle.sh $P` (noirs, images figées, son).
 - **RETOUCHES RAPIDES (Thomas, 03/11 : « on croirait qu'ils refont la vidéo entière à chaque fois »)** :
-  - un problème de SON seulement (bruitage trop fort, musique, volume) : corrige le plan puis `python3 moteur/rendu.py $P --son-seul`
-    (environ 1 min, les images ne sont pas refaites) ; JAMAIS de rendu complet pour du son.
+  - un problème de SON seulement (bruitage trop fort, musique, volume) : corrige le plan puis
+    `python3 moteur/rendu.py $P --audio-sur $P/video.mp4 --sortie video-son.mp4` (10 à 60 s, les images de la vidéo déjà rendue
+    sont gardées ; `--son-seul` ne marche que si `$P/_images` est encore complet) ; JAMAIS de rendu complet pour du son.
   - plusieurs corrections d'images (Juge, contrôles) : regroupe-les TOUTES, puis UN seul rendu complet ; ne relance pas un rendu
     par correction.
   - après une retouche, ne relance que les contrôles concernés, puis `verifier.py --video` une seule fois à la fin.
@@ -305,7 +306,10 @@ c'est ce qui l'a figée sur la N°06 du 01/11 au 02/11).
 Le Studio (`/home/claude/studio`, cloné à l'étape 0 bis) garde tout pour nous : vidéos, couvertures, carrousels, fiches, librairie.
 1. `videos/N<xx>/` : `video.mp4` compressée (`ffmpeg -i <rendu> -vf scale=720:-2 -c:v libx264 -preset veryfast -crf 28
    -c:a aac -b:a 96k -movflags +faststart`, moins de 15 Mo, sinon crf 32), `couverture.jpg` (qualité 85), `carrousel/C<xx>-NN.jpg`
-   (qualité 85), `plan.js` (le plan de la vidéo, réutilisable), `agents/` (tous les verdicts, copie de `$P/agents/`), et `fiche.json` aux MÊMES champs que `videos/N06/fiche.json` (statut « À contrôler », stats vides,
+   (qualité 85), `plan.js` (le plan de la vidéo, réutilisable), `agents/` (tous les verdicts, copie de `$P/agents/`),
+   **pour les retouches express (ATELIER.md) :** `video-hd.mp4` (la vidéo livrée, 1080×1920) et `projet/` = copie de
+   `$P/plan.js`, `$P/timing.js`, `$P/mots.json`, `$P/K.json`, `$P/voix.mp3` (sans eux, une retouche de son prend 40 min au lieu de 2),
+   et `fiche.json` aux MÊMES champs que `videos/N06/fiche.json` (statut « À contrôler », stats vides,
    `motion_utilises` = clés des pièces de la librairie utilisées).
 2. `chiffres/chiffres.json` : ajoute le chiffre clé (mêmes champs, `videos` contient `"<xx>"`).
 3. `motion/catalogue.json` : ajoute `"N<xx>"` dans `utilise_dans` des pièces utilisées. Si un plan de la vidéo est nouveau et
