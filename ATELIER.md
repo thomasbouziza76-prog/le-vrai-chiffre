@@ -23,7 +23,7 @@ dans le QG, écrit chaque étape au journal et marque la commande « faite ».
 l'a confirmé dans le chat). Sinon : statut `à confirmer` et `resultat` explique ce que ça coûterait.
 
 ## Procédure (une exécution de la tâche Atelier)
-1. Outils : ToolSearch « select:mcp__claude-code-remote__add_repo » ; add_repo le-vrai-chiffre ET studio (owner
+1. Outils : ToolSearch « select:mcp__claude-code-remote__add_repo » (introuvable : procédure « Si add_repo est introuvable » de PIPELINE.md 0 bis, avec RefreshMcpTools et 30 s d'attente) ; add_repo le-vrai-chiffre ET studio (owner
    thomasbouziza76-prog, access push). Clone les deux (`--depth 1`) dans /home/claude/. `export LVC_REPO=/home/claude/le-vrai-chiffre`.
 2. Outils du QG : ToolSearch « select:mcp__claude-artifacts__db_list,mcp__claude-artifacts__db_get,mcp__claude-artifacts__db_write,mcp__claude-artifacts__get_artifact,mcp__claude-artifacts__publish_files ».
 3. `db_list commandes` : prends les commandes `en attente`, la plus ancienne d'abord, **3 au maximum**. Aucune : arrête-toi
