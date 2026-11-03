@@ -14,6 +14,10 @@
   - 3 chiffres seulement.
   - Une question de débat qui oppose deux camps.
   - Le motion design porte l'histoire : chiffres → barres → vague → bulle qui éclate.
+- **N°10 « prime d'activité », version test (03/11/2026)** : Thomas a adoré l'IMAGINATION du montage (« c'était bien imaginé »).
+  - Ce qui a plu : une métaphore concrète inventée pour CE sujet, où chaque étape de la démarche devient un objet qui agit, dans un monde riche et cohérent du début à la fin.
+  - À reproduire : cet effort d'invention, avec un monde NOUVEAU à chaque vidéo.
+  - Le décor de cette vidéo (tapis à bagages, valises) ne se réutilise JAMAIS : Thomas l'a dit (« ça ne veut pas dire qu'il faut me faire à chaque fois des trucs avec des bagages »). Règle d'or n° 3 de DA.md.
 - **Les vidéos concurrentes qui marchent** : « Thomas a travaillé 43 ans au SMIC… ». Ce qui accroche : **une personne, une situation, un chiffre**, racontés comme une histoire.
 
 ## Ce qui n'a pas marché (à ne jamais refaire)
