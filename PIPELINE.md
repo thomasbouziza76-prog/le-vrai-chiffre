@@ -136,7 +136,7 @@ Racine du dépôt : `$LVC_REPO` (après l'étape 0). Projet du jour : `$P` = sor
 - **Voix déjà payée** : si le QG contient reprises/N<xx> avec flow_id et generation_id d'une voix réussie pour CE sujet, réutilise-la
   (creative_get_generations → full_res_url) au lieu d'en générer une nouvelle.
 - Écris le texte voix « comme à un pote » avec les balises eleven_v4 : tons (`[serious]`, `[curious]`, `[softly]`,
-  `[warmly]`, `[surprised]`…), 0 à 2 sons humains maximum (`[sighs]`, `[exhales]` ; jamais de rire forcé) : le ton est celui d'un conteur posé
+  `[warmly]`, `[surprised]`…), 0 à 2 sons humains maximum (`[sighs]`, `[exhales]` ; jamais de rire forcé) : le ton est VIF, avec du peps (réglage « Creative » choisi par Thomas), pince-sans-rire sur les vannes (SCRIPT-HOOKS.md section 0) ; jamais mou ni « posé »
   (`SCRIPT-HOOKS.md`, « Le ton : raconter comme un conteur »),
   pauses (`[short pause]`, `[pause]`, « … »). **Sigles** : écris-les dans le texte voix comme ils se prononcent (« l'Aspa »
   et jamais « l'ASPA » ; « la Drès » pour la Drees ; « T.A.E.G. » épelé) ; à l'écran, garde l'orthographe officielle. Hook net : une balise au plus. Aucune balise de bruitage. Un soupir ou un

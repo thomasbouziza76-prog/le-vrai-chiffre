@@ -42,7 +42,7 @@
 - **La question de débat est voulue** (« Tu trouves ça juste ? »). La page ne donne **jamais son propre avis** politique, mais elle fait débattre.
 - **Priorités** : partages et commentaires d'abord, puis abonnements, puis likes.
 - **Exactement 2 appels dits à voix haute** : « abonne-toi » au milieu, puis une question et/ou un partage ciblé à la fin.
-- **Voix** : ElevenLabs v4, Paul K, stabilité « Creative ». Ton conteur, posé.
+- **Voix** : ElevenLabs v4, Paul K, stabilité « Creative ». **Thomas, 03/11 : le narrateur doit être VIF, avec du peps (« plus vif, tu vois »), jamais « posé » ; pince-sans-rire sur les vannes.**
 - **Musique** : niveau et calage validés par Thomas sur la N°08 v3 (01/11) : morceau CC0 très bas, baissé sous la voix, temps fort sur le chiffre choc, silence avant la révélation. Ne change pas les niveaux du moteur.
 - **Garder le rythme de publication** : 2 vidéos par jour. Une vidéo moyenne publiée vaut mieux qu'aucune vidéo.
 - **VALIDÉ PAR THOMAS (02/11, 7 h 19) : « Voilà, ça c'est une vraie vidéo motion design ! »** sur la N°08 « gare des salaires » (`moteur/mondes/gare-des-salaires.plan.js`). C'est le niveau minimum à atteindre : un monde inventé pour le sujet, des objets qui agissent (billet qui se déroule, guillotine, train qui roule), la caméra qui les suit, un plan toutes les 1 à 2 s. Inspire-toi de la technique, jamais du monde (règle d'or 3).

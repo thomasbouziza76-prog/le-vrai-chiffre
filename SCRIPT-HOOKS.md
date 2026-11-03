@@ -36,25 +36,14 @@ Ce qui fait que ça accroche :
 - **Des phrases de tension** qui relancent : « Et là… », « Sauf que… », « Comment c'est possible ? », « Le pire ? ».
 - **Des chiffres arrondis et répétés** : « environ 1 200 € », « à peine 150 € de plus » ; le chiffre principal revient
   2 ou 3 fois.
-- **Un narrateur posé** qui raconte, pas un présentateur qui s'exclame : peu de balises d'émotion, aucun rire forcé,
-  2 sons humains maximum (un soupir sur la chute, par exemple).
-
-À ne plus faire (exemple réel N°07) : « 343 euros de plus sur sa retraite, chaque mois. Tico y a droit, et il refuse.
-Tico a 68 ans et 700 euros de retraite. Mais l'Aspa, le minimum vieillesse, complète tes revenus jusqu'à 1 043 euros
-par mois quand tu vis seul. » → trop de chiffres, un sigle d'entrée, un personnage lointain, aucune histoire.
-
-Le bon ton, sur un sujet de la cible (exemple de TON, chiffres à vérifier avant tout usage) :
-« Tico bosse à temps plein depuis 3 ans. Son collègue Karim aussi. Même boulot, même salaire. Sauf que chaque mois,
-Karim touche une aide de plus. Et Tico, lui, n'en a jamais entendu parler. »
-
-**Règle des chiffres (leçon N°07 : 11 chiffres en 69 s, Thomas « perdu dès le début »)** :
+- **Un narrateur VIF, avec du peps** (correction de Thomas du 03/11 : c'est le réglage « Creative » qu'il a choisi, le même narrateur mais plus vif ; « posé » était une erreur) : du rythme, des phrases qui claquent, jamais mou ni endormi ; pince-sans-rire sur les vannes (il ne rit pas de ses blagues), aucun rire forcé.
 - **UN chiffre principal** par vidéo (celui du titre), **2 chiffres secondaires au maximum** pour l'expliquer.
 - Jamais deux chiffres nouveaux dans la même phrase ; au moins 8 s entre deux chiffres nouveaux.
 - Un chiffre n'arrive qu'avec son image (comparaison concrète). Tout le reste se dit en mots (« la moitié », « deux
   fois plus », « presque rien »), pas en chiffres.
 - Test : quelqu'un qui regarde sans le son doit pouvoir redire LE chiffre de la vidéo à la fin.
 
-## 0 · L'HUMOUR (décision de Thomas du 03/11 : « on est trop sérieux ». PRIORITAIRE sur le ton « conteur posé »)
+## 0 · L'HUMOUR (décision de Thomas du 03/11 : « on est trop sérieux ». PRIORITAIRE sur l'ancien ton « conteur »)
 On dit des vrais chiffres, mais comme un pote cash qui balance une vérité gênante sur ta vie. Des « dingueries », pas des
 blagues de premier de la classe. Référence validée par Thomas : « Ton boss s'est payé une Tesla. Toi, t'as eu un mug
 "Super collègue". » et toute la N°10 v2 (« T'es à découvert le quinze ? Normal. »).
@@ -69,7 +58,7 @@ blagues de premier de la classe. Référence validée par Thomas : « Ton boss s
    spectateur, mais on se moque des situations, jamais d'un groupe de personnes. Jamais de religion, de politique, d'alcool.
 5. **Les chiffres restent exacts** et la formulation sûre du Vérificateur est gardée (« peut-être », « environ », « en
    général ») : la vanne habille le chiffre, elle ne le change jamais.
-6. **Voix** : pince-sans-rire. Balises eleven_v4 `[sarcastic]` (la plupart du temps), `[serious]` sur les règles et les
+6. **Voix** : vive, avec du peps, et pince-sans-rire sur les vannes. Balises eleven_v4 `[sarcastic]` (la plupart du temps), `[serious]` sur les règles et les
    avertissements, `[mischievously]` sur l'appel et le partage, `[dramatically]` sur un mot choc. Le narrateur ne rit
    jamais de ses vannes.
 7. **Une 2e voix est permise** (accord de Thomas du 03/11) : une réplique courte d'un autre personnage (Manon, le patron,
