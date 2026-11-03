@@ -172,6 +172,13 @@ et repasse en « repos » quand il a fini. La fiche finale de l'étape 11 (etape
   2e tentative passe souvent). Jamais de relance après une génération réussie (chaque appel est facturé). Si la 2e
   échoue aussi, si les crédits sont épuisés ou si le téléchargement est refusé : arrête-toi et préviens Thomas avec
   l'erreur exacte.
+- **VOIX EN MORCEAUX (méthode validée par Thomas le 03/11, N°10 : « le début est super vif, puis ça redevient normal »)** :
+  sur un long texte, eleven_v4 oublie les balises au bout de 10-15 s et la voix s'endort. Donc découpe le texte voix en **4 à 6
+  morceaux** (un par bloc : hook, cas, appel, règle, fin), chacun commençant par ses balises de ton (répète [energetic] ou
+  [sarcastic] en tête de CHAQUE morceau). Génère chaque morceau (même réglage, generations_count 1 ; le coût total est le même
+  qu'en un bloc, car on paie au caractère), puis assemble : `bash etapes/02b-assembler-voix.sh $P/assets/audio/voix-assemblee.mp3
+  <url1> <url2> …` (même volume partout, 0,35 s entre les morceaux), et passe ce fichier à `02-voix.sh`. Un morceau raté se
+  régénère seul (UNE fois), pas toute la voix. Note les generation_id de chaque morceau dans reprises/N<xx> du QG.
 - Durée de la voix hors cible : matin, plus de 3 s au-dessus ou plus de 6 s en dessous de la durée visée → ajuste le texte et régénère UNE fois ; soir,
   moins de 62 s → rallonge le bloc CONCRET et régénère UNE fois (sous 1 min, TikTok ne rémunère pas), plus de 75 s → raccourcis et régénère UNE fois.
 - `bash etapes/02-voix.sh $P "<media[0].url>" <texte-voix.txt>` (le moteur relit `$P/assets/audio/voix.mp3` tout seul) : télécharge, minute chaque mot (`mots.txt`,
