@@ -211,8 +211,11 @@ Puis **`python3 controles/verifier.py $P --video`** (tout OK) et `bash etapes/06
   - un problème de SON seulement (bruitage trop fort, musique, volume) : corrige le plan puis
     `python3 moteur/rendu.py $P --audio-sur $P/video.mp4 --sortie video-son.mp4` (10 à 60 s, les images de la vidéo déjà rendue
     sont gardées ; `--son-seul` ne marche que si `$P/_images` est encore complet) ; JAMAIS de rendu complet pour du son.
-  - plusieurs corrections d'images (Juge, contrôles) : regroupe-les TOUTES, puis UN seul rendu complet ; ne relance pas un rendu
-    par correction.
+  - plusieurs corrections d'images (Juge, contrôles) : regroupe-les TOUTES ; si elles tiennent sur quelques passages,
+    `python3 moteur/rendu.py $P --plage A B --sur $P/video.mp4 --sortie video.mp4` par passage (seules ces images sont refaites,
+    environ 1 min pour 3 s) ; sinon UN seul rendu complet. Ne relance jamais un rendu complet par correction.
+  - couverture et carrousel : garde leurs SOURCES (`couverture.html`, `carrousel/*.html`) et archive-les dans le Studio
+    (8 quinquies) : une retouche part de la source, jamais d'une page blanche.
   - après une retouche, ne relance que les contrôles concernés, puis `verifier.py --video` une seule fois à la fin.
   - le Graphiste (couverture, carrousel) travaille EN PARALLÈLE du Juge et des retouches, pas après.
   - chaque retouche = une ligne de journal avec sa durée (« son corrigé en 2 min »).
@@ -307,7 +310,7 @@ Le Studio (`/home/claude/studio`, cloné à l'étape 0 bis) garde tout pour nous
 1. `videos/N<xx>/` : `video.mp4` compressée (`ffmpeg -i <rendu> -vf scale=720:-2 -c:v libx264 -preset veryfast -crf 28
    -c:a aac -b:a 96k -movflags +faststart`, moins de 15 Mo, sinon crf 32), `couverture.jpg` (qualité 85), `carrousel/C<xx>-NN.jpg`
    (qualité 85), `plan.js` (le plan de la vidéo, réutilisable), `agents/` (tous les verdicts, copie de `$P/agents/`),
-   **pour les retouches express (ATELIER.md) :** `video-hd.mp4` (la vidéo livrée, 1080×1920) et `projet/` = copie de
+   **pour les retouches express (ATELIER.md) :** les sources `couverture.html` et `carrousel/*.html`, `video-hd.mp4` (la vidéo livrée, 1080×1920) et `projet/` = copie de
    `$P/plan.js`, `$P/timing.js`, `$P/mots.json`, `$P/K.json`, `$P/voix.mp3` (sans eux, une retouche de son prend 40 min au lieu de 2),
    et `fiche.json` aux MÊMES champs que `videos/N06/fiche.json` (statut « À contrôler », stats vides,
    `motion_utilises` = clés des pièces de la librairie utilisées).

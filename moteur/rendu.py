@@ -1,7 +1,9 @@
 """Usage : python3 moteur/rendu.py DOSSIER [--sortie NOM.mp4]
 Rend DOSSIER/index.html en 1080×1920 30 i/s (un processus par cœur), mixe voix + bruitages
 (déclarés par le moteur), loudnorm -14 LUFS, encode DOSSIER/video.mp4 (ou --sortie).
-       python3 moteur/rendu.py DOSSIER --audio-sur VIDEO.mp4 : retouche de son express (images gardées, 1-2 min)."""
+       python3 moteur/rendu.py DOSSIER --audio-sur VIDEO.mp4 : retouche de son express (images gardées, 1-2 min).
+       python3 moteur/rendu.py DOSSIER --plage A B --sur VIDEO.mp4 [--remix] : retouche d'image express (seules les images
+       entre A et B s sont refaites et posées sur la vidéo ; --remix refait aussi le son)."""
 import sys,os,json,subprocess,multiprocessing as mp
 from playwright.sync_api import sync_playwright
 D=os.path.abspath(sys.argv[1]); OUT=sys.argv[sys.argv.index('--sortie')+1] if '--sortie' in sys.argv else 'video.mp4'
@@ -26,7 +28,23 @@ if __name__=='__main__':
     # RETOUCHE EXPRESS (Thomas, 03/11 : 40 min pour baisser un son, c'est non) : --audio-sur VIDEO.mp4 garde les images de la
     # vidéo déjà faite, refait seulement le mixage et remet le son dessus (-c:v copy) : 1 à 2 min, jamais de rendu d'images.
     AS=sys.argv[sys.argv.index('--audio-sur')+1] if '--audio-sur' in sys.argv else None
+    # RETOUCHE D'IMAGE EXPRESS : --plage A B --sur VIDEO.mp4 refait SEULEMENT les images entre A et B secondes et les pose
+    # sur la vidéo déjà faite (le reste est gardé tel quel) ; --remix refait aussi le son, sinon le son d'origine est gardé.
+    PG=None
+    if '--plage' in sys.argv:
+        k=sys.argv.index('--plage'); PG=(max(0.0,float(sys.argv[k+1])),min(K['end'],float(sys.argv[k+2])))
+        SUR=os.path.abspath(sys.argv[sys.argv.index('--sur')+1])
     if AS: print('retouche express : images de',AS,'gardées, je refais seulement le son')
+    elif PG:
+        for x in os.listdir(FR): os.remove(os.path.join(FR,x))
+        lo,hi=int(PG[0]*FPS),min(N,int(PG[1]*FPS)+1); n=max(1,min(os.cpu_count() or 1,hi-lo)); step=(hi-lo+n-1)//n
+        with mp.Pool(n) as pool: pool.map(part,[(i,min(hi,i+step)) for i in range(lo,hi,step)])
+        print('retouche express : images refaites seulement de %.2f à %.2f s (%d images)'%(PG[0],PG[1],hi-lo))
+        if '--remix' not in sys.argv:
+            subprocess.run(['ffmpeg','-v','error','-y','-i',SUR,'-framerate',str(FPS),'-start_number',str(lo),'-i',f'{FR}/%05d.jpg',
+              '-filter_complex',f"[1:v]setpts=PTS-STARTPTS+{lo/FPS:.4f}/TB[n];[0:v][n]overlay=eof_action=pass:enable='between(t,{lo/FPS:.4f},{(hi-1)/FPS:.4f})'[v]",
+              '-map','[v]','-map','0:a?','-c:v','libx264','-preset','veryfast','-crf','19','-pix_fmt','yuv420p','-c:a','copy','-movflags','+faststart',os.path.join(D,OUT)],check=True)
+            print('vidéo (images retouchées sur la plage, son gardé) :',os.path.join(D,OUT)); sys.exit(0)
     elif '--son-seul' in sys.argv and len(os.listdir(FR))==N: print('images déjà rendues : je refais seulement le son')
     else:
         for x in os.listdir(FR): os.remove(os.path.join(FR,x))
@@ -84,6 +102,12 @@ if __name__=='__main__':
     I=float(_re.findall(r'I:\s+(-?[\d.]+) LUFS',lo)[-1]); g=-14-I
     subprocess.run(['ffmpeg','-v','error','-y','-i',os.path.join(D,'mix.wav'),'-af',f'volume={g:.2f}dB,alimiter=limit=0.89:level=false','-ar','48000',os.path.join(D,'mix2.wav')],check=True)
     os.replace(os.path.join(D,'mix2.wav'),os.path.join(D,'mix.wav'))
+    if PG:
+        lo,hi=int(PG[0]*FPS),min(N,int(PG[1]*FPS)+1)
+        subprocess.run(['ffmpeg','-v','error','-y','-i',SUR,'-framerate',str(FPS),'-start_number',str(lo),'-i',f'{FR}/%05d.jpg','-i',os.path.join(D,'mix.wav'),
+          '-filter_complex',f"[1:v]setpts=PTS-STARTPTS+{lo/FPS:.4f}/TB[n];[0:v][n]overlay=eof_action=pass:enable='between(t,{lo/FPS:.4f},{(hi-1)/FPS:.4f})'[v]",
+          '-map','[v]','-map','2:a','-c:v','libx264','-preset','veryfast','-crf','19','-pix_fmt','yuv420p','-c:a','aac','-b:a','192k','-shortest','-movflags','+faststart',os.path.join(D,OUT)],check=True)
+        print('vidéo (images retouchées sur la plage + son refait) :',os.path.join(D,OUT)); sys.exit(0)
     if AS:
         subprocess.run(['ffmpeg','-v','error','-y','-i',os.path.abspath(AS),'-i',os.path.join(D,'mix.wav'),'-map','0:v:0','-map','1:a:0','-c:v','copy','-c:a','aac','-b:a','192k','-shortest','-movflags','+faststart',os.path.join(D,OUT)],check=True)
         print('vidéo (son refait, images gardées) :',os.path.join(D,OUT),'·',len(SFX),'bruitages'); sys.exit(0)

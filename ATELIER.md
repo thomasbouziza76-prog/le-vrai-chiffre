@@ -32,8 +32,21 @@ Pour une retouche de SON (bruitage trop fort, mot couvert, musique, volume) ou d
    Si `projet/` manque (anciennes vidéos) : ffmpeg sur la piste de la vidéo (`volume` limité à la fenêtre dite avec
    `enable='between(t,a,b)'`, `-c:v copy`) et dis dans `resultat` que la voix a pu baisser aussi sur ce passage.
 4. TEXTE : corrige toi-même dans `videos/N<xx>` (merge), sans agent.
-5. Livraison (section « Livraison au QG »), `statut: faite, fin, resultat` avec la DURÉE (« son corrigé en 4 min »).
-Tout le reste (couverture, carrousel, mission, image à refaire) suit la procédure normale ci-dessous.
+5. IMAGE à un endroit précis (un texte mal placé, un objet qui chevauche, un plan à changer) : même projet, corrige
+   `plan.js` UNIQUEMENT pour ce passage, puis
+   `python3 moteur/rendu.py <projet> --plage A B --sur …/video-hd.mp4 --sortie retouche.mp4` (A et B = les secondes du passage,
+   avec 0,5 s de marge ; ajoute `--remix` si le son change aussi). Seules ces images sont refaites et posées sur la vidéo :
+   environ 1 min pour 3 s de vidéo (testé le 03/11 : 49 s, le reste de la vidéo identique). Contrôle : regarde 3 images
+   du passage (début, milieu, fin) et 1 image juste avant et juste après (raccord).
+6. COUVERTURE ou CARROUSEL : pars de la SOURCE archivée (`couverture.html`, `carrousel/*.html` du Studio) et change seulement
+   ce qui est demandé ; ne redessine jamais tout. Une seule relecture rapide par toi (pas d'agent neuf) si la demande est
+   petite (un mot, une couleur, une taille) ; procédure normale si Thomas demande une nouvelle idée.
+7. Livraison (section « Livraison au QG »), `statut: faite, fin, resultat` avec la DURÉE (« son corrigé en 4 min »).
+**RÈGLE GÉNÉRALE (Thomas, 03/11) : une retouche ne repart JAMAIS de zéro.** On garde tout ce qui est bon et on ne refait
+que ce qui est demandé. Plusieurs retouches sur la même vidéo = UN seul passage (regroupe-les). Une vidéo complète n'est
+refaite que si Thomas le demande (`confirme: true`).
+Ce qui suit la procédure normale ci-dessous : une NOUVELLE couverture ou un nouveau carrousel, une mission, une retouche
+qui touche plus de la moitié de la vidéo.
 
 ## Qui fait quoi
 | Type | Fabrique | Relit (agent neuf) |
