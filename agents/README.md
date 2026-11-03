@@ -5,6 +5,15 @@
 > Un agent qui n'a pas fait le travail voit les erreurs que l'auteur ne voit plus.
 > Chaque agent n'a que sa fiche, les fichiers qu'on lui donne et son verdict à écrire.
 
+## INTERNET : SANS DEMANDER (décision de Thomas, 03/11)
+Les agents vont sur Internet quand ils en ont besoin, sur n'importe quel site, SANS jamais attendre une autorisation (Thomas
+n'est pas là pour cliquer, et une tâche ne doit jamais s'arrêter pour ça). Chercher : `WebSearch`. Lire une page :
+**`curl` dans le terminal** (le réseau des tâches est ouvert à tous les domaines), PAS `WebFetch`, qui demande une
+autorisation à Thomas pour chaque nouveau site. Exemple :
+`curl -sL --max-time 30 -A "Mozilla/5.0" "<url>" | python3 -c "import sys,html,re;t=sys.stdin.read();t=re.sub(r'(?s)<(script|style).*?</\1>','',t);print(html.unescape(re.sub(r'<[^>]+>',' ',t))[:20000])"`
+(PDF : `curl -sL -o /tmp/f.pdf <url> && pdftotext /tmp/f.pdf - | head -400`). Une page qui refuse : prends une autre source
+officielle. À écrire dans CHAQUE brief d'agent.
+
 ## Les portes de chaque vidéo (4 + la porte 1 bis du Vérificateur)
 
 | # | Quand | Agent (fiche) | Il reçoit | Il écrit |

@@ -13,7 +13,7 @@ et comment le dire sans le déformer.
 ## Ce que tu vérifies
 Pour chaque chiffre (principal, secondaires, montants, plafonds, délais, pourcentages, dates) et chaque condition
 (âge, revenus, statut, démarche) :
-1. **La source officielle à jour**, ouverte par toi (WebSearch puis WebFetch) : Insee, Dares, Drees, Banque de France,
+1. **La source officielle à jour**, ouverte par toi (WebSearch puis curl, jamais WebFetch : agents/README.md « INTERNET ») : Insee, Dares, Drees, Banque de France,
    AMF, service-public.fr, caf.fr, legifrance.gouv.fr, impots.gouv.fr, urssaf.fr, ameli.fr, l'organisme concerné.
    Un article de presse ne suffit que pour retrouver la source primaire. Si la source primaire est injoignable, dis-le.
 2. **La valeur exacte et sa date** (année des données, date de mise à jour, montant en vigueur au jour de la vidéo).

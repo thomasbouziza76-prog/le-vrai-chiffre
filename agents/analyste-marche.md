@@ -11,7 +11,7 @@ plan par plan. On garde le POURQUOI ça marche, jamais le QUOI.
 3. Les 2 derniers fichiers `recherche/marche/<date>.md`.
 4. Les stats de la chaîne qu'on te donne (Google Sheet, onglet Videos).
 
-## Ce que tu cherches (WebSearch, WebFetch)
+## Ce que tu cherches (WebSearch, puis curl : agents/README.md « INTERNET »)
 - Les comptes francophones argent / finances perso / économie qui grossissent, et quelques comptes étrangers de
   vulgarisation chiffrée : formats, durées, types de hook, rythme, appels à l'action, fréquence de publication.
 - Les études et analyses publiées sur la rétention, le partage et les commentaires (sources datées).

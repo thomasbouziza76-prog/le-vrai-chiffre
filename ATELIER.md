@@ -38,6 +38,15 @@ toi (toucher aux dépôts, aux tâches, aux réglages, publier ou dépenser des 
 | marche | `agents/analyste-marche.md` | principes → chat ; règle proposée → `lecons` statut `proposee` |
 | auditeur | `agents/auditeur.md` | bilan → chat + `lecons` statut `proposee` |
 | stats | la procédure de la tâche Stats (Sheet `Videos`) | chiffres → chat |
+**Une demande de Thomas = UNE mission** (décision du 03/11). Si plusieurs agents doivent intervenir, la commande porte
+`agents` = la chaîne dans l'ordre (ex. [veilleur, verif]) et `etape_mission` = l'indice de l'agent au travail. Ils travaillent
+l'un APRÈS l'autre et partagent un **cerveau commun** : `/home/claude/atelier/<id>/cerveau.md`, où chaque agent écrit ce qu'il a
+trouvé (faits, liens, doutes) ; l'agent suivant le lit en entier avant de commencer et part de là (le Vérificateur contrôle ce
+que le Veilleur a trouvé, il ne recommence pas de zéro). Avant chaque agent : merge `{agent: <id>, etape_mission: k}` (la page
+du QG montre qui est dessus). À la fin : UN seul message dans le chat, qui assemble le travail de toute la chaîne.
+Anciennes missions déposées séparément pour la même demande (moins d'une minute d'écart) : traite-les ensemble, comme une
+chaîne, et un seul message final.
+Internet : agents/README.md « INTERNET » (WebSearch + curl, jamais WebFetch : aucune autorisation à attendre).
 Déroulé : merge `statut: en cours, debut` (ifVersion) ; `agents/<agent>` etat `travaille`, tache « Mission : <demande courte> » ;
 journal « Atelier : mission reçue pour <Agent> : <demande> ». Lance l'agent (outil Agent, general-purpose, au premier plan) avec
 sa fiche, la demande mot pour mot, le contexte (fiche `videos/N<xx>` si `video`, sujets en cours, HISTORIQUE) et les règles de
