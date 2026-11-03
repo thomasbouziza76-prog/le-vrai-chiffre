@@ -13,7 +13,7 @@ res=[]
 def ok(nom,passe,detail=''): res.append({'controle':nom,'ok':bool(passe),'detail':detail})
 
 # 1. durée selon le format
-fmt=P.get('format','court'); dur=K['end']; bornes={'court':(28,48),'histoire':(61,78)}[fmt]
+fmt=P.get('format','court'); dur=K['end']; bornes={'court':(28,66),'histoire':(61,78)}[fmt]  # court jusqu'à 66 s : vannes du 03/11 (SCRIPT-HOOKS section 0)
 ok('Durée',bornes[0]<=dur<=bornes[1],f'{dur:.1f} s pour le format « {fmt} » (attendu {bornes[0]}–{bornes[1]} s)')
 
 # 2. chiffres affichés : 1 principal + 2 secondaires maximum
