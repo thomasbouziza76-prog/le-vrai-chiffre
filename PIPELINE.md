@@ -71,12 +71,13 @@ tâche s'il n'est pas là). Détail et commande : agents/README.md « INTERNET �
 
 ## SUIVI EN DIRECT DANS LE QG (demande de Thomas, 03/11 : il voit sur la page où en est la vidéo et qui est dessus)
 Dès que le N° est connu (étape 1), `set videos/N<xx>` {n, titre (provisoire, le sujet), date, creneau, statut « En fabrication »,
-etape 0, agent « stratege »}. Puis, à CHAQUE étape, `merge` (ifVersion) {etape, agent} AVANT de la commencer :
+etape 0, agent « stratege », debut (heure de Paris avec son décalage : c'est le départ du chrono que Thomas voit)}. Puis, à CHAQUE étape, `merge` (ifVersion) {etape, agent} AVANT de la commencer :
 0 Sujet → stratege · 1 Chiffres vérifiés → verif · 2 Script → realisateur · 3 Relecture → critscript · 4 Voix → realisateur ·
 5 Plan motion → realisateur · 6 Contrôle motion → critmotion · 7 Rendu → realisateur · 8 Juge final → juge ·
 9 Livraison → graphiste pendant la couverture et le carrousel, puis realisateur pour le dépôt.
 L'agent qui travaille passe `agents/<id>` en « travaille » avec une `tache` qui contient « N°xx » (ex. « N°11 : carrousel »),
-et repasse en « repos » quand il a fini. La fiche finale de l'étape 11 (etape 10, statut « À contrôler ») remplace tout.
+et repasse en « repos » quand il a fini. La fiche finale de l'étape 11 (etape 10, statut « À contrôler ») remplace tout : elle GARDE `debut` et ajoute `fin` = l'heure
+de la livraison au QG, une fois la vidéo, la couverture et le carrousel déposés (la page affiche « tout fait en … »).
 
 ## 0. Installer (≈ 1 à 2 min)
 `bash etapes/00-installer.sh` puis `source ~/.hf-env`. Il installe Whisper (avec son modèle local) et num2words, et définit `$LVC_REPO`. Playwright et Chromium sont déjà là. **HyperFrames n'est plus utilisé** : la vidéo se rend avec `moteur/`. Seul `historique/HISTORIQUE.md` (les 7 dernières vidéos) est à lire en entier.
