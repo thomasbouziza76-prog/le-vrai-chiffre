@@ -5,4 +5,8 @@ Enregistrements BigSoundBank (LaSonotheque, Joseph Sardin), licence CC0 1.0 (dom
   chasse-eau-2.mp3 (n° 0836), oh-surprise.mp3 (n° 3534), applaudissements.mp3 (n° 0021), rires.mp3 (n° 0490)
   https://bigsoundbank.com — CC0 : https://creativecommons.org/publicdomain/zero/1.0/
 
-Synthétisés par nous (aucun droit tiers) : trompette-triste.mp3, disque-raye.mp3, piece-roule.mp3, pompe-clac.mp3
+Synthétisé par nous (aucun droit tiers) : piece-roule.mp3
+
+Générés avec ElevenLabs (effets sonores, abonnement payant de Thomas : libres de droits, usage commercial, sans mention) le 03/11/2026 :
+  disque-raye, trompette-triste, piece-tombe, pompe-clac, ba-dum-tss, buzzer-faux, ding-juste, boom-dramatique,
+  foule-ooh, rire-moqueur, foule-decue, sifflet-chute, tic-tac (.mp3). Projet ElevenLabs : flow dhUa4tETBdkDpeIySHwM.

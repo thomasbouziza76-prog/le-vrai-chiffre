@@ -222,7 +222,7 @@ Couleurs : `'acc'` (terracotta, par défaut), `'gris'` ou `'encre'`.
   la phrase, déclarés dans `sons` juste après le mot (`['p3+.1','disque-raye',.45]`) : `disque-raye` (après la vanne
   d'ouverture), `oh-surprise` (un chiffre choquant), `piece-roule` (la galère, le peu d'argent), `pompe-clac` (essence,
   coupure net), `grillons` (silence gênant), `chasse-eau` (toilettes, argent jeté), `trompette-triste` (l'échec),
-  `bebe-pleure` / `bebe-pleure-2` (le seum), `rires`, `applaudissements`. Un toutes les 6 à 8 s au plus, jamais sur un
+  `bebe-pleure` / `bebe-pleure-2` (le seum), `rires`, `applaudissements`, `piece-tombe` (une pièce qui tombe : « t'as plus rien »), `ba-dum-tss` (après une vanne), `buzzer-faux` (une idée reçue fausse), `ding-juste` (la bonne réponse), `boom-dramatique` (un chiffre choc, à utiliser rarement), `foule-ooh` (surprise), `rire-moqueur` (on se moque gentiment), `foule-decue` (« aww »), `sifflet-chute` (Tico qui tombe, l'argent qui chute), `tic-tac` (le temps presse, « avant la fin du mois »). Un toutes les 6 à 8 s au plus, jamais sur un
   chiffre dit, 0,3 à 0,5 de gain. Sources et licences : `sons/LICENCE-memes.txt`. Jamais un son de mème connu
   (« bruh », boom de Vine, violon triste de film) : souvent protégé, TikTok peut couper le son.
 - **L'image agit en permanence** : jamais plus de 1,6 s sans action déclarée ni geste bruité.
