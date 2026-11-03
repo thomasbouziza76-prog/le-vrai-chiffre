@@ -77,6 +77,11 @@ Racine du dépôt : `$LVC_REPO` (après l'étape 0). Projet du jour : `$P` = sor
   Tout ce que tu aurais poussé va dans le QG, et le manager le pousse à son passage : `set a_pousser/N<xx>` avec
   {sujet (ligne de sujets.md à cocher ✅), historique (ligne à ajouter à HISTORIQUE.md), studio (fiche.json, plan.js et
   verdicts des agents, en texte), fait false}. Ne perds jamais ce travail.
+  **La vidéo, elle, se livre quand même au QG** : chemin « 2 bis » (assets) de « Livraison au QG » d'ATELIER.md, qui
+  n'a besoin ni du Studio ni de republier la page. Sans Studio, ne t'arrête JAMAIS avant d'avoir livré au QG.
+  Le plan.js, les verdicts et mots.json ne doivent pas mourir avec la machine (N°10 du 03/11 : plan.js perdu) : envoie-les aussi
+  par `upload_asset` (noms `N<xx>-plan.js`, `N<xx>-mots.json`, `N<xx>-verdicts.md`) et note leurs `opaque_id` dans
+  `a_pousser/N<xx>.assets` pour que le manager les range dans le Studio.
 1. **Studio** : charge d'abord l'outil avec ToolSearch (« select:mcp__claude-code-remote__add_repo » ; sans ça il paraît absent et le clone du dépôt privé est refusé, vu le 02/11), puis `mcp__claude-code-remote__add_repo` owner **thomasbouziza76-prog**, repo **studio**, access push, puis
    `git clone --depth 1 https://github.com/thomasbouziza76-prog/studio /home/claude/studio` (dépôt PRIVÉ, jamais rendu
    public). Il contient `charte/ticket.js` (le Ticket), `motion/` (pièces prêtes, `catalogue.json`) et la vidéo de
@@ -293,7 +298,7 @@ Ne pousse que `historique/` et les fichiers du kit modifiés, jamais `node_modul
   Vidéo = `$P/livrables/N<xx>.mp4` de `08-livrables.sh` telle quelle (1080×1920, 19 Mo maximum) ; couverture = le JPEG
   1080×1920 (qualité 90) ; slides du carrousel = les PNG convertis en JPEG pleine taille (qualité 90). Seule l'archive du
   Studio (8 quinquies) est réduite en 720p.
-- Suis la section « Livraison au QG » de `ATELIER.md`, puis le point (d) de la consigne de la tâche (fiche `videos/N<xx>`,
+- Suis la section « Livraison au QG » de `ATELIER.md` (sans Studio : son chemin « 2 bis », par assets), puis le point (d) de la consigne de la tâche (fiche `videos/N<xx>`,
   ligne de journal, état du réalisateur). Le manager contrôle la vidéo et la passe « À publier ».
 - **APPEL DU MANAGER (décision de Thomas, 03/11) : dès que la fiche `videos/N<xx>` est écrite au statut « À contrôler »**,
   `db_get qg/appel` puis `fire_trigger` sur son `trigger_id`, **sans texte** (un texte est parfois refusé). Le manager est
