@@ -64,6 +64,11 @@ Racine du dépôt : `$LVC_REPO` (après l'étape 0). Projet du jour : `$P` = sor
 | Enchaînement de scènes du moteur (ex. `duel → vague → choix`) | la vidéo précédente (varie au moins une scène ou les repères) |
 | **Se réutilisent librement** | Tico, le moteur et ses scènes, les transformations de données de `DA.md` section 5 |
 
+## INTERNET SANS AUTORISATION (Thomas, 03/11)
+Toi et tes agents allez sur Internet sans jamais attendre d'autorisation : `WebSearch` pour chercher, `curl` dans le terminal
+pour lire une page (réseau ouvert à tous les domaines), JAMAIS `WebFetch` (il demande à Thomas pour chaque site et bloque la
+tâche s'il n'est pas là). Détail et commande : agents/README.md « INTERNET ».
+
 ## SUIVI EN DIRECT DANS LE QG (demande de Thomas, 03/11 : il voit sur la page où en est la vidéo et qui est dessus)
 Dès que le N° est connu (étape 1), `set videos/N<xx>` {n, titre (provisoire, le sujet), date, creneau, statut « En fabrication »,
 etape 0, agent « stratege »}. Puis, à CHAQUE étape, `merge` (ifVersion) {etape, agent} AVANT de la commencer :
