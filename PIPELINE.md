@@ -207,6 +207,14 @@ de la livraison au QG, une fois la vidéo, la couverture et le carrousel dépos�
 ## 4. Rendu (≈ 3 à 5 min)
 `python3 moteur/rendu.py $P` : images (un processus par cœur), bruitages déclarés par le moteur, niveau à -14 LUFS, encodage → `$P/video.mp4` (copiée dans `$P/renders/video.mp4`).
 Puis **`python3 controles/verifier.py $P --video`** (tout OK) et `bash etapes/06-controle.sh $P` (noirs, images figées, son).
+- **RETOUCHES RAPIDES (Thomas, 03/11 : « on croirait qu'ils refont la vidéo entière à chaque fois »)** :
+  - un problème de SON seulement (bruitage trop fort, musique, volume) : corrige le plan puis `python3 moteur/rendu.py $P --son-seul`
+    (environ 1 min, les images ne sont pas refaites) ; JAMAIS de rendu complet pour du son.
+  - plusieurs corrections d'images (Juge, contrôles) : regroupe-les TOUTES, puis UN seul rendu complet ; ne relance pas un rendu
+    par correction.
+  - après une retouche, ne relance que les contrôles concernés, puis `verifier.py --video` une seule fois à la fin.
+  - le Graphiste (couverture, carrousel) travaille EN PARALLÈLE du Juge et des retouches, pas après.
+  - chaque retouche = une ligne de journal avec sa durée (« son corrigé en 2 min »).
 
 ## 5. Juge final (≈ 4 min) : PORTE 4
 `python3 moteur/planche.py $P 1.5 --video` → `$P/boards/planche-video-*.jpg`, puis le **Juge final** (`agents/juge-final.md`). Il écrit `$P/agents/4-juge.md`.
