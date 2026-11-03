@@ -119,6 +119,13 @@ Racine du dépôt : `$LVC_REPO` (après l'étape 0). Projet du jour : `$P` = sor
   présenté comme solution, aucune référence religieuse. Chiffres en lettres dans la voix, en chiffres à l'écran.
 
 ## 2. Voix (≈ 2 min)
+- **AVANT TOUTE GÉNÉRATION (incident du 03/11 : voix payée puis impossible à télécharger)** : teste le domaine des voix :
+  `curl -sS -o /dev/null -w '%{http_code}' https://elevenlabsusercontent.com/` . Si la connexion échoue (« CONNECT tunnel failed,
+  response 403 », code 000), **NE GÉNÈRE PAS LA VOIX** (elle serait facturée pour rien) : journal « bloque », alerte dans le chat du
+  QG (« le réseau des tâches bloque elevenlabsusercontent.com : il faut l'autoriser dans les réglages réseau de l'environnement »),
+  réveil du manager, et arrête la production en gardant le script validé dans le QG (videos/N<xx>.script).
+- **Voix déjà payée** : si le QG contient reprises/N<xx> avec flow_id et generation_id d'une voix réussie pour CE sujet, réutilise-la
+  (creative_get_generations → full_res_url) au lieu d'en générer une nouvelle.
 - Écris le texte voix « comme à un pote » avec les balises eleven_v4 : tons (`[serious]`, `[curious]`, `[softly]`,
   `[warmly]`, `[surprised]`…), 0 à 2 sons humains maximum (`[sighs]`, `[exhales]` ; jamais de rire forcé) : le ton est celui d'un conteur posé
   (`SCRIPT-HOOKS.md`, « Le ton : raconter comme un conteur »),
