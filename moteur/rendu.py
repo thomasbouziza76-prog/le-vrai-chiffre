@@ -61,7 +61,10 @@ if __name__=='__main__':
         b=p.chromium.launch(); pg=b.new_page(viewport={'width':1080,'height':1920}); pg.goto('file://'+D+'/index.html'); pg.wait_for_function('window.ready===true',timeout=30000)
         SFX=pg.evaluate('window.SFX'); b.close()
     manq=sorted({x[1] for x in SFX if not SON(x[1])})
-    if manq: print('BRUITAGES INTROUVABLES (ignorés) :',manq)
+    if manq:
+        print('BRUITAGES INTROUVABLES (ignorés) :',manq)
+        if ('--audio-sur' in sys.argv or '--plage' in sys.argv) and '--sons-manquants-ok' not in sys.argv:
+            sys.exit('RETOUCHE ARRÊTÉE : %d bruitage(s) introuvable(s) %s. Le clone partiel doit contenir sons/ ET hyperframes/.claude/skills/media-use/audio/assets/sfx (ATELIER.md, RETOUCHE EXPRESS 2). Sans ça, la retouche perdrait ces bruitages en silence.'%(len(manq),manq))
     SFX=[x for x in SFX if SON(x[1]) and x[0]<K['end']]
     args=['ffmpeg','-v','error','-y','-i',os.path.join(D,'voix.mp3')]; flt=['[0:a]volume=1.0,apad=whole_dur=%.2f[v]'%K['end']]
     for i,(t,f,g) in enumerate(SFX,1):
