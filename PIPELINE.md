@@ -1,5 +1,12 @@
 # Pipeline quotidien · « Le Vrai Chiffre » (vidéo 9:16 : matin court 30 à 66 s, soir histoire 62 à 75 s ; voir le tableau des durées)
 
+> **DÉCISION DE THOMAS, 04/11/2026 (prime sur tout ce qui suit)** : Le Vrai Chiffre passe à **UNE vidéo par jour**, celle du
+> matin (tâche « Vidéo argent · matin », 6 h 37). La tâche du soir est **désactivée par Thomas** (pause voulue : ne pas la
+> réactiver, ne pas la signaler comme panne). Publication **sur TikTok seulement** (vidéo + carrousel en mode photo) : plus de
+> YouTube ni d'Instagram. Les mentions du « soir », de SLOT = 1 et d'Instagram ci-dessous ne s'appliquent plus ; la vidéo du
+> matin peut prendre n'importe quel sujet libre (y compris les [DROITS] autrefois réservés au soir). Les stats Instagram des
+> anciennes vidéos restent relevées la nuit, pour l'historique seulement.
+
 Session neuve et éphémère : tout se réinstalle. Travaille seul, sans poser de question. Si une étape échoue deux fois,
 livre ce qui existe et écris ce qui manque. Les étapes mécaniques sont des scripts dans `etapes/` et `moteur/` : lance-les, ne les
 réécris pas, ne relis pas leur code. Garde ta réflexion pour le sujet, le script et le plan.
