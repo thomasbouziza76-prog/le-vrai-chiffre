@@ -22,7 +22,7 @@ Pour une retouche de SON (bruitage trop fort, mot couvert, musique, volume) ou d
 1. `statut: en cours, debut`, journal « Atelier express : <demande> ».
 2. Récupère SEULEMENT la vidéo concernée dans le Studio, sans tout cloner :
    `git clone --depth 1 --filter=blob:none --sparse https://github.com/thomasbouziza76-prog/studio /home/claude/studio && cd /home/claude/studio && git sparse-checkout set videos/N<xx>`
-   (le-vrai-chiffre : `git clone --depth 1 --filter=blob:none --sparse … && git sparse-checkout set moteur sons polices`).
+   (le-vrai-chiffre : `git clone --depth 1 --filter=blob:none --sparse … && git sparse-checkout set moteur sons polices etapes`).
 3. SON : le Studio garde `videos/N<xx>/projet/` (plan.js, timing.js, mots.json, K.json, voix.mp3) et `videos/N<xx>/video-hd.mp4`.
    `bash moteur/nouveau.sh /home/claude/atelier/N<xx>/p`, copie-y les fichiers de `projet/`, corrige UNIQUEMENT ce qui est
    demandé dans `plan.js` (le gain du bruitage à la seconde dite, `PLAN.musique`, un silence…), puis
@@ -42,6 +42,12 @@ Pour une retouche de SON (bruitage trop fort, mot couvert, musique, volume) ou d
    ce qui est demandé ; ne redessine jamais tout. Une seule relecture rapide par toi (pas d'agent neuf) si la demande est
    petite (un mot, une couleur, une taille) ; procédure normale si Thomas demande une nouvelle idée.
 7. Livraison (section « Livraison au QG »), `statut: faite, fin, resultat` avec la DURÉE (« son corrigé en 4 min »).
+8. RANGER la retouche (sinon la suivante repart de l'ancienne vidéo) : remplace dans le Studio `videos/N<xx>/video-hd.mp4` et
+   `projet/plan.js` par les nouveaux, commit « N<xx> : retouche <quoi> », push ; la vidéo livrée au QG s'appelle `N<xx>-v<k>.mp4`.
+   Recopie aussi par-dessus le projet les fichiers du moteur archivés dans `projet/` (index.html, moteur.js…) s'ils existent :
+   la retouche doit garder le style de la vidéo d'origine.
+**MARQUES** : une vidéo dont l'id commence par `NC` (ou `marque` = `nc`) est de Non Classée : agent `nc-realisateur`, jamais
+Tico ni la DA de Le Vrai Chiffre, ni le Sheet, ni la page de liens ; ses sources sont dans le Studio `videos/NC<xxx>/`.
 **RÈGLE GÉNÉRALE (Thomas, 03/11) : une retouche ne repart JAMAIS de zéro.** On garde tout ce qui est bon et on ne refait
 que ce qui est demandé. Plusieurs retouches sur la même vidéo = UN seul passage (regroupe-les). Une vidéo complète n'est
 refaite que si Thomas le demande (`confirme: true`).

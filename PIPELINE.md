@@ -1,4 +1,4 @@
-# Pipeline quotidien · « Le Vrai Chiffre » (vidéo 9:16 : matin 30 ou 45 s, soir histoire 62 à 75 s ; voir le tableau des durées)
+# Pipeline quotidien · « Le Vrai Chiffre » (vidéo 9:16 : matin court 30 à 66 s, soir histoire 62 à 75 s ; voir le tableau des durées)
 
 Session neuve et éphémère : tout se réinstalle. Travaille seul, sans poser de question. Si une étape échoue deux fois,
 livre ce qui existe et écris ce qui manque. Les étapes mécaniques sont des scripts dans `etapes/` et `moteur/` : lance-les, ne les
@@ -29,12 +29,12 @@ Racine du dépôt : `$LVC_REPO` (après l'étape 0). Projet du jour : `$P` = sor
 
 ## Tableau des durées (décision de Thomas du 2026-11-01)
 
-- **Vidéo du MATIN (SLOT 0)** : format court qui ALTERNE avec la vidéo du matin précédente dans `HISTORIQUE.md` : 45 s si
-  la précédente faisait 30 s, 30 s si elle faisait 45 s. Le N° ne joue PAS sur la durée.
+- **Vidéo du MATIN (SLOT 0)** : format COURT de 30 à 66 s (avec les vannes, 50 à 65 s est normal ; contrôle « court » 28-66 s).
+  Plus d'alternance 30/45 s (audit du 04/11 : la règle d'alternance faisait repayer des voix réussies). Le N° ne joue PAS sur la durée.
 - **Vidéo du SOIR (SLOT 1)** : format HISTOIRE de 62 à 75 s (au-dessus d'une minute : seules les vidéos de plus d'1 min
   sont rémunérées par TikTok). Structure : `SCRIPT-HOOKS.md` section 12.
 
-| | **30 s** (matin, une fois sur deux) | **45 s** (matin, l'autre fois) | **62-75 s** (soir, histoire) |
+| | **matin court, repère ~30 s** | **matin court, repère ~45-60 s** | **62-75 s** (soir, histoire) |
 |---|---|---|---|
 | Mots de la voix (Paul K, stabilité Creative ≈ 3,1 mots/s, mesuré le 01/11) | 90 à 100 | 135 à 145 | 200 à 230 |
 | Appel « abonne-toi » dit à voix haute | entre 12 et 16 s | entre 16 et 24 s | entre 18 et 28 s |
@@ -82,13 +82,20 @@ de la livraison au QG, une fois la vidéo, la couverture et le carrousel dépos�
 ## 0. Installer (≈ 1 à 2 min)
 `bash etapes/00-installer.sh` puis `source ~/.hf-env`. Il installe Whisper (avec son modèle local) et num2words, et définit `$LVC_REPO`. Playwright et Chromium sont déjà là. **HyperFrames n'est plus utilisé** : la vidéo se rend avec `moteur/`. Seul `historique/HISTORIQUE.md` (les 7 dernières vidéos) est à lire en entier.
 
+**Marques (QG agence, 03/11)** : ce pipeline est celui de Le Vrai Chiffre. Ignore toute vidéo du QG dont l'id commence par `NC` ou dont `marque` = `nc` (Non Classée) : elle n'entre ni dans le calcul du N°, ni dans le Sheet, ni dans l'historique, ni dans la page de liens. Le N° = 1 + le plus grand n des seuls ids `N<chiffres>`.
+
 ## 0 bis. Studio, référence et boucle de retour (≈ 4 min, AVANT le sujet)
 **Si `add_repo` est introuvable (incidents des 02 et 03/11)** — sans lui, pas de Studio ni de push :
 - Essai 1 : ToolSearch « select:mcp__claude-code-remote__add_repo ». Essai 2 : « add_repo github repository ».
 - Puis jusqu'à 3 cycles : `RefreshMcpTools` (serveur `claude-code-remote`, ou sans argument) si cet outil existe, attends 30 s
   (`sleep 30`), refais ToolSearch « +claude-code-remote add_repo ». Le serveur se connecte parfois en retard : c'est souvent
   ce qui fait croire qu'il manque.
-- Toujours introuvable : réveille le manager (ALERTES IMMÉDIATES) et CONTINUE la vidéo (le dépôt public se clone sans lui).
+- **Toujours introuvable : ESSAIE QUAND MÊME les deux dépôts** (audit du 04/11 : la nuit du 03/11, la veille a poussé dans les
+  deux dépôts SANS add_repo, car l'accès était déjà attaché à la session ; la tâche stats, elle, a abandonné sans essayer) :
+  `git clone --depth 1 https://github.com/thomasbouziza76-prog/le-vrai-chiffre /home/claude/le-vrai-chiffre` ET
+  `git clone --depth 1 --filter=blob:none https://github.com/thomasbouziza76-prog/studio /home/claude/studio` (délai 10 min),
+  puis `git push` normalement. **Seulement si une commande git échoue vraiment** (copie son erreur exacte) : réveille le
+  manager (ALERTES IMMÉDIATES) et CONTINUE la vidéo.
   Tout ce que tu aurais poussé va dans le QG, et le manager le pousse à son passage : `set a_pousser/N<xx>` avec
   {sujet (ligne de sujets.md à cocher ✅), historique (ligne à ajouter à HISTORIQUE.md), studio (fiche.json, plan.js et
   verdicts des agents, en texte), fait false}. Ne perds jamais ce travail.
@@ -103,7 +110,7 @@ de la livraison au QG, une fois la vidéo, la couverture et le carrousel dépos�
    référence. Si le clone échoue : continue avec `exemples/ticket.js` de ce dépôt et dis-le dans le message final.
 2. **Référence** : relis les 3 règles d'or en tête de `DA.md` (image qui agit, nouveau plan toutes les 1 à 3 s, monde unique). La N°08 n'est plus une référence visuelle.
 3. **Boucle de retour** : lis `Videos!A1:W200` du Google Sheet. Les stats sont écrites par la tâche de nuit (22h43) :
-   ne les réécris jamais. Si des vidéos ont des stats, repère les hooks, sujets, durées (30 s / 45 s / histoire 62-75 s) et mots-clés qui
+   ne les réécris jamais. Si des vidéos ont des stats, repère les hooks, sujets, durées (court 30-66 s / histoire 62-75 s) et mots-clés qui
    retiennent le mieux (temps moyen, % qui finit, % recherche) et ceux qui font gagner des abonnés. Penche vers ce qui
    marche, sans répéter les 2 vidéos précédentes, et note la conclusion en une ligne dans l'historique. Si une durée
    retient nettement mieux sur au moins 4 vidéos de chaque, dis-le en tête du message final.
@@ -111,7 +118,7 @@ de la livraison au QG, une fois la vidéo, la couverture et le carrousel dépos�
 ## 1. Sujet et script (≈ 12 min), avec 2 agents
 - Crée d'abord le dossier : `P=$(bash etapes/01-nouveau-projet.sh nXX-slug)` (slug provisoire, tu peux le garder même si le sujet change).
 - **PORTE 1 · Stratège** (`agents/stratege.md`) : lance-le **avant** de choisir le sujet. Donne-lui le SLOT, la règle de sujet ci-dessous, les stats du Sheet (colle-les) et les chemins. Il écrit `$P/agents/1-strategie.md`. Suis sa stratégie (sujet, angle, personnages, hook, question de débat, mot-clé, scènes). Tu peux t'en écarter **seulement si une règle de ce fichier l'impose** : écris pourquoi dans HISTORIQUE.md.
-- Deux vidéos par jour : le prompt de la tâche donne SLOT (0 = matin, 1 = soir). **Sujet : `git pull`, lis `Videos!A2:D200` du Google Sheet (les vidéos déjà faites, même hors dépôt), puis le PREMIER
+- Deux vidéos par jour : le prompt de la tâche donne SLOT (0 = matin, 1 = soir). **Sujet : `git pull --rebase`, lis `Videos!A2:D200` du Google Sheet (les vidéos déjà faites, même hors dépôt), puis le PREMIER
   sujet de `sujets.md` qui n'a pas ✅**, en partant du haut, règles du fichier comprises. Saute un sujet ⚡ dont la date
   « valable jusqu'au » est passée (coche-le ⚡⏭). Si une grosse actu argent de la semaine (Insee, gouvernement, prix,
   impôts) intéresse plus les gens, tu peux la traiter à la place : ajoute-la en tête avec ⚡. Pour un sujet ⚡, REVÉRIFIE
@@ -127,7 +134,7 @@ de la livraison au QG, une fois la vidéo, la couverture et le carrousel dépos�
 - **Quel sujet selon le moment** (pour le reste de la liste) : le SOIR prend le premier sujet [DROITS] non coché s'il est parmi les 3 premiers sujets
   libres, sinon le premier sujet libre. Le MATIN prend le premier sujet libre qui n'est PAS [DROITS] (les [DROITS] sont
   pour le format histoire du soir).
-- **Durée** : voir le tableau des durées en tête de ce fichier (matin court : 30 ou 45 s en alternance avec la vidéo du matin précédente de l'historique ; soir histoire 62-75 s).
+- **Durée** : voir le tableau des durées en tête de ce fichier (matin court : 30 à 66 s ; soir histoire 62-75 s).
   On compare les formats dans les stats.
 - **Mot-clé de recherche** : choisis le mot que les gens tapent dans TikTok pour ce sujet (épargne, salaire, investir,
   budget, inflation, impôts, crédit, loyer, prix…). Il est PRONONCÉ par la voix dans les 5 premières secondes, écrit dans
@@ -180,7 +187,7 @@ de la livraison au QG, une fois la vidéo, la couverture et le carrousel dépos�
   qu'en un bloc, car on paie au caractère), puis assemble : `bash etapes/02b-assembler-voix.sh $P/assets/audio/voix-assemblee.mp3
   <url1> <url2> …` (même volume partout, 0,35 s entre les morceaux), et passe ce fichier à `02-voix.sh`. Un morceau raté se
   régénère seul (UNE fois), pas toute la voix. Note les generation_id de chaque morceau dans reprises/N<xx> du QG.
-- Durée de la voix hors cible : matin, plus de 3 s au-dessus ou plus de 6 s en dessous de la durée visée → ajuste le texte et régénère UNE fois ; soir,
+- Durée de la voix hors format (et SEULEMENT dans ce cas) : matin, moins de 28 s ou plus de 66 s → ajuste le texte et régénère UNE fois (entre 28 et 66 s, on garde la voix : jamais de voix réussie repayée pour quelques secondes) ; soir,
   moins de 62 s → rallonge le bloc CONCRET et régénère UNE fois (sous 1 min, TikTok ne rémunère pas), plus de 75 s → raccourcis et régénère UNE fois.
 - `bash etapes/02-voix.sh $P "<media[0].url>" <texte-voix.txt>` (le moteur relit `$P/assets/audio/voix.mp3` tout seul) : télécharge, minute chaque mot (`mots.txt`,
   `mots.json`), liste les silences (`silences.txt`), écrit la durée (`duree.txt`). Recolle les mots sur le script (l'orthographe
@@ -212,7 +219,7 @@ Puis **`python3 controles/verifier.py $P --video`** (tout OK) et `bash etapes/06
     `python3 moteur/rendu.py $P --audio-sur $P/video.mp4 --sortie video-son.mp4` (10 à 60 s, les images de la vidéo déjà rendue
     sont gardées ; `--son-seul` ne marche que si `$P/_images` est encore complet) ; JAMAIS de rendu complet pour du son.
   - plusieurs corrections d'images (Juge, contrôles) : regroupe-les TOUTES ; si elles tiennent sur quelques passages,
-    `python3 moteur/rendu.py $P --plage A B --sur $P/video.mp4 --sortie video.mp4` par passage (seules ces images sont refaites,
+    `python3 moteur/rendu.py $P --plage A B --sur $P/video.mp4 --sortie video-retouche.mp4` puis `mv $P/video-retouche.mp4 $P/video.mp4`, par passage (seules ces images sont refaites,
     environ 1 min pour 3 s) ; sinon UN seul rendu complet. Ne relance jamais un rendu complet par correction.
   - couverture et carrousel : garde leurs SOURCES (`couverture.html`, `carrousel/*.html`) et archive-les dans le Studio
     (8 quinquies) : une retouche part de la source, jamais d'une page blanche.
@@ -238,7 +245,6 @@ La ligne « POUR THOMAS » du Juge est recopiée dans le message final, avec sa 
 Ajoute une ligne EN HAUT de `historique/HISTORIQUE.md` du dépôt : date, N°, sujet, hook (archétype + phrase), format (matin court / soir histoire),
 les deux appels (abonne-toi + fin) ET leurs secondes, à approfondir, concept, monde, signatures, blueprints, transitions, effets, palette sonore,
 scènes du moteur utilisées, notes des 4 agents (script, motion, juge) et nombre de tours, durée totale de la production. Garde les 7 dernières lignes détaillées ; condense les plus anciennes en une demi-ligne chacune.
-**Vidéo du MATIN seulement : réécris aussi la 1re ligne en gras** : `**Prochaine vidéo du MATIN : <30 si tu viens de faire 45 s, 45 si tu viens de faire 30 s> s** (dernière vidéo du matin : N°xx, <durée> s)`. Sans ça, l'alternance 30/45 s s'arrête.
 Commit et push dans le dépôt (voir 10), avec `historique/CHECKS.md` s'il a changé.
 
 ## 8. Couverture, titre, rangement, livraison
@@ -311,7 +317,7 @@ Le Studio (`/home/claude/studio`, cloné à l'étape 0 bis) garde tout pour nous
    -c:a aac -b:a 96k -movflags +faststart`, moins de 15 Mo, sinon crf 32), `couverture.jpg` (qualité 85), `carrousel/C<xx>-NN.jpg`
    (qualité 85), `plan.js` (le plan de la vidéo, réutilisable), `agents/` (tous les verdicts, copie de `$P/agents/`),
    **pour les retouches express (ATELIER.md) :** les sources `couverture.html` et `carrousel/*.html`, `video-hd.mp4` (la vidéo livrée, 1080×1920) et `projet/` = copie de
-   `$P/plan.js`, `$P/timing.js`, `$P/mots.json`, `$P/K.json`, `$P/voix.mp3` (sans eux, une retouche de son prend 40 min au lieu de 2),
+   `$P/plan.js`, `$P/timing.js`, `$P/mots.json`, `$P/K.json`, `$P/voix.mp3`, ET le moteur qui a rendu la vidéo (`$P/index.html`, `moteur.js`, `ticket.js`, `donnees.js`, `icones.js`) pour qu'une retouche garde exactement le même style (sans eux, une retouche de son prend 40 min au lieu de 2),
    et `fiche.json` aux MÊMES champs que `videos/N06/fiche.json` (statut « À contrôler », stats vides,
    `motion_utilises` = clés des pièces de la librairie utilisées).
 2. `chiffres/chiffres.json` : ajoute le chiffre clé (mêmes champs, `videos` contient `"<xx>"`).
@@ -326,7 +332,7 @@ Le Studio (`/home/claude/studio`, cloné à l'étape 0 bis) garde tout pour nous
 Déplacée à l'étape 0 bis (au début de chaque exécution).
 
 ## 10. Dépôt
-**Avant CHAQUE push, dans les deux dépôts : `git pull --rebase`** (le manager et l'atelier poussent aussi pendant la journée).
+**Avant CHAQUE push, dans les deux dépôts : `git pull --rebase`** (jamais `git pull` seul : il bloque sur « divergent branches ») (le manager et l'atelier poussent aussi pendant la journée).
 `git -C $LVC_REPO add -A && git commit -m "N°xx · sujet" && git push` (le dépôt est attaché avec `add_repo`, access push).
 Ne pousse que `historique/` et les fichiers du kit modifiés, jamais `node_modules`, `.env`, vidéos, voix ni rendus.
 

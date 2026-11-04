@@ -89,7 +89,7 @@ O6. [OUTIL · travail] **En arrêt maladie, tu gagnes quand même des congés pa
    par an (2,5 jours si c'est un accident du travail). Avant avril 2024, c'était zéro. Les congés non pris à cause de
    l'arrêt se reportent sur 15 mois. L'action : vérifier son compteur de congés sur la fiche de paie après la reprise,
    le signaler aux RH s'il manque des jours. · Loi n° 2024-364 du 22 avril 2024, art. 37 ; Code du travail L3141-5
-O7. [OUTIL · aides] **1 salarié éligible sur 2 ne touche pas la prime d'activité** : 3,4 millions de foyers ne la
+✅ 2026-11-03 N°10 · O7. [OUTIL · aides] **1 salarié éligible sur 2 ne touche pas la prime d'activité** : 3,4 millions de foyers ne la
    demandent pas (non-recours entre 48 et 52 %, chiffres de fin 2021). L'action : faire le simulateur sur caf.fr
    (quelques minutes), puis la demande en ligne ; elle se renouvelle tous les 3 mois. Le jour même : vérifier le
    montant de base et le plafond sur caf.fr, ne pas l'inventer. · DREES, Études et Résultats n° 1379, 8 juillet 2026

@@ -20,8 +20,8 @@ Tu juges ce qu'un spectateur de 20-35 ans entend et lit. Sois exigeant : la N°0
 | 5 | **Le spectateur se compare** | Rien ne lui permet de se situer (« et moi ? ») |
 | 6 | **Les 2 appels, et 2 seulement** | « Abonne-toi » n'est pas dit une fois, entre 25 % et 70 % de la durée, avec une raison (« chaque jour, un chiffre qui… »). Ou il n'y a pas de PARTAGE CIBLÉ (une personne précise) à la fin : BLOQUANT depuis le 02/11. Ou la question finale est une simple devinette (« plus ou moins ? ») au lieu d'un vrai débat à deux camps où chacun a un avis (« c'est juste ou pas ? », « riche ou classe moyenne ? ») : à corriger (retour du Juge, 02/11). Ou il y a un 3e appel |
 | 7 | **Relance après « abonne-toi »** | La phrase suivante ne relance pas la tension (« Le pire ? », « Et là… ») |
-| 8 | **Durée** | Nombre de mots hors du tableau des durées de `PIPELINE.md` |
-| 9 | **Interdits** | Avis politique de la chaîne, conseil d'investissement personnalisé, produit à intérêts présenté comme solution, référence religieuse, jargon non expliqué, prénom « Julie » |
+| 8 | **Durée** | Nombre de mots hors de la plage du format : matin court 30-66 s ≈ 90 à 205 mots (plus d'alternance 30/45 s depuis le 04/11) ; soir histoire 200 à 230 mots |
+| 9 | **Interdits** | Avis politique de la chaîne, conseil d'investissement personnalisé, produit à intérêts présenté comme solution, référence religieuse, vanne sur l'alcool, jargon non expliqué, prénom « Julie » |
 | 10 | **Texte voix ElevenLabs** | Chiffres pas en lettres, sigles pas écrits comme ils se prononcent, plus d'une balise sur le hook, plus de 2 sons humains |
 | 11 | **`phrases` du plan** | Elles ne reprennent pas exactement le texte voix (sans balises, chiffres en chiffres). Ou une phrase dépasse environ 15 mots (plus de 6 s) |
 | 12 | **Fin** | La dernière phrase ne boucle pas sur l'ouverture, ou finit à plat |

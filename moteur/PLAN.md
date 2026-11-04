@@ -89,7 +89,7 @@ python3 moteur/planche.py $DOSSIER 1.5 --video  # planche de la vidéo → Juge 
 
 ```js
 const PLAN={
-  format:'court',            // 'court' = matin 30-45 s · 'histoire' = soir 62-75 s
+  format:'court',            // 'court' = matin 30-66 s · 'histoire' = soir 62-75 s
   source:'SOURCE : INSEE 2024 · SALARIÉS DU PRIVÉ · NET',   // affichée pendant les données et sur l'écran final
   persos:{ gauche:{nom:'Tico'}, droite:{nom:'Karim',couleur:'#f4e3d7',accessoire:'cravate'} },
   phrases:[ … ],             // le texte voix, phrase par phrase (voir ci-dessous)
