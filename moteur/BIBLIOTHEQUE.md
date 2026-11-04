@@ -4,6 +4,7 @@
 > Contraintes du moteur : rendu hors ligne, seuls npm et GitHub sont joignables, la page est ouverte en `file://`.
 > **En `file://`, Chromium bloque les `import` ES modules** : il faut un build UMD (`<script src>`) ou un bundle IIFE fait avec esbuild (voir la fin du fichier).
 > Interdit ici : licences non commerciales, « free for personal use », ShareAlike (CC BY-SA) et licences « éthiques » non standard.
+> **Déjà branché dans le moteur (04/11)** : cartes Natural Earth, frise, courbes façon GSAP/CustomEase (sans GSAP), alignement WhisperX en option → `moteur/outils/README.md`.
 
 ## Les 8 à recommander
 

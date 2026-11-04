@@ -5,6 +5,7 @@ set -e
 M="$(cd "$(dirname "$0")" && pwd)"; D="$1"; [ -z "$D" ] && { echo "usage : nouveau.sh DOSSIER"; exit 1; }
 mkdir -p "$D/polices"
 cp "$M/moteur.html" "$D/index.html"; cp "$M/moteur.js" "$M/ticket.js" "$M/donnees.js" "$M/icones.js" "$D/"
+mkdir -p "$D/outils"; cp "$M/outils/"*.js "$D/outils/"   # bibliothèque optionnelle (cartes, frise, courbes) : voir moteur/outils/README.md
 cp "$M/../polices/InstrumentSans-700.woff2" "$M/../polices/SpaceMono-700.woff2" "$D/polices/"
 cp "$M/mondes/gare-des-salaires.plan.js" "$D/plan-exemple-monde.js"   # exemple à lire (technique, pas le monde) ; ton plan s'écrit dans plan.js
 echo "prêt : $D (lis plan-exemple-monde.js pour la technique, invente TON monde dans plan.js, puis lance timing.py)"

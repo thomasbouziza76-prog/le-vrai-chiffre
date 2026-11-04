@@ -8,6 +8,13 @@ import sys,os,json,subprocess,multiprocessing as mp
 from playwright.sync_api import sync_playwright
 D=os.path.abspath(sys.argv[1]); OUT=sys.argv[sys.argv.index('--sortie')+1] if '--sortie' in sys.argv else 'video.mp4'
 M=os.path.dirname(os.path.abspath(__file__))
+FIN=os.path.join(D,OUT)
+def cible(src):
+    """Si la sortie est le fichier même que ffmpeg lit (--sur / --audio-sur = video.mp4), écrire d'abord à côté puis remplacer :
+    sinon ffmpeg écrase l'entrée pendant qu'il la lit (vidéo détruite)."""
+    return FIN+'.tmp.mp4' if src and os.path.realpath(src)==os.path.realpath(FIN) else FIN
+def pose(tmp):
+    if tmp!=FIN: os.replace(tmp,FIN)
 SONS_DIRS=[os.path.join(M,'..','sons'),os.path.join(M,'..','hyperframes','.claude','skills','media-use','audio','assets','sfx')]
 def SON(n):
     for d in SONS_DIRS:
@@ -41,9 +48,9 @@ if __name__=='__main__':
         with mp.Pool(n) as pool: pool.map(part,[(i,min(hi,i+step)) for i in range(lo,hi,step)])
         print('retouche express : images refaites seulement de %.2f à %.2f s (%d images)'%(PG[0],PG[1],hi-lo))
         if '--remix' not in sys.argv:
-            subprocess.run(['ffmpeg','-v','error','-y','-i',SUR,'-framerate',str(FPS),'-start_number',str(lo),'-i',f'{FR}/%05d.jpg',
+            tmp=cible(SUR); subprocess.run(['ffmpeg','-v','error','-y','-i',SUR,'-framerate',str(FPS),'-start_number',str(lo),'-i',f'{FR}/%05d.jpg',
               '-filter_complex',f"[1:v]setpts=PTS-STARTPTS+{lo/FPS:.4f}/TB[n];[0:v][n]overlay=eof_action=pass:enable='between(t,{lo/FPS:.4f},{(hi-1)/FPS:.4f})'[v]",
-              '-map','[v]','-map','0:a?','-c:v','libx264','-preset','veryfast','-crf','19','-pix_fmt','yuv420p','-c:a','copy','-movflags','+faststart',os.path.join(D,OUT)],check=True)
+              '-map','[v]','-map','0:a?','-c:v','libx264','-preset','veryfast','-crf','19','-pix_fmt','yuv420p','-c:a','copy','-movflags','+faststart',tmp],check=True); pose(tmp)
             print('vidéo (images retouchées sur la plage, son gardé) :',os.path.join(D,OUT)); sys.exit(0)
     elif '--son-seul' in sys.argv and len(os.listdir(FR))==N: print('images déjà rendues : je refais seulement le son')
     else:
@@ -104,12 +111,12 @@ if __name__=='__main__':
     os.replace(os.path.join(D,'mix2.wav'),os.path.join(D,'mix.wav'))
     if PG:
         lo,hi=int(PG[0]*FPS),min(N,int(PG[1]*FPS)+1)
-        subprocess.run(['ffmpeg','-v','error','-y','-i',SUR,'-framerate',str(FPS),'-start_number',str(lo),'-i',f'{FR}/%05d.jpg','-i',os.path.join(D,'mix.wav'),
+        tmp=cible(SUR); subprocess.run(['ffmpeg','-v','error','-y','-i',SUR,'-framerate',str(FPS),'-start_number',str(lo),'-i',f'{FR}/%05d.jpg','-i',os.path.join(D,'mix.wav'),
           '-filter_complex',f"[1:v]setpts=PTS-STARTPTS+{lo/FPS:.4f}/TB[n];[0:v][n]overlay=eof_action=pass:enable='between(t,{lo/FPS:.4f},{(hi-1)/FPS:.4f})'[v]",
-          '-map','[v]','-map','2:a','-c:v','libx264','-preset','veryfast','-crf','19','-pix_fmt','yuv420p','-c:a','aac','-b:a','192k','-shortest','-movflags','+faststart',os.path.join(D,OUT)],check=True)
+          '-map','[v]','-map','2:a','-c:v','libx264','-preset','veryfast','-crf','19','-pix_fmt','yuv420p','-c:a','aac','-b:a','192k','-shortest','-movflags','+faststart',tmp],check=True); pose(tmp)
         print('vidéo (images retouchées sur la plage + son refait) :',os.path.join(D,OUT)); sys.exit(0)
     if AS:
-        subprocess.run(['ffmpeg','-v','error','-y','-i',os.path.abspath(AS),'-i',os.path.join(D,'mix.wav'),'-map','0:v:0','-map','1:a:0','-c:v','copy','-c:a','aac','-b:a','192k','-shortest','-movflags','+faststart',os.path.join(D,OUT)],check=True)
+        tmp=cible(AS); subprocess.run(['ffmpeg','-v','error','-y','-i',os.path.abspath(AS),'-i',os.path.join(D,'mix.wav'),'-map','0:v:0','-map','1:a:0','-c:v','copy','-c:a','aac','-b:a','192k','-shortest','-movflags','+faststart',tmp],check=True); pose(tmp)
         print('vidéo (son refait, images gardées) :',os.path.join(D,OUT),'·',len(SFX),'bruitages'); sys.exit(0)
     subprocess.run(['ffmpeg','-v','error','-y','-framerate','30','-i',f'{FR}/%05d.jpg','-i',os.path.join(D,'mix.wav'),'-c:v','libx264','-preset','veryfast','-crf','19','-pix_fmt','yuv420p','-c:a','aac','-b:a','192k','-shortest','-movflags','+faststart',os.path.join(D,OUT)],check=True)
     if os.path.isdir(os.path.join(D,'renders')): import shutil; shutil.copy(os.path.join(D,OUT),os.path.join(D,'renders','video.mp4'))

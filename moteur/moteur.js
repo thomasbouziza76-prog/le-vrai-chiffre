@@ -7,6 +7,8 @@
    transformations de données, bruitages calés sur la voix.
    ════════════════════════════════════════════════════════════════════════════ */
 const S=document.getElementById('s');
+// bibliothèque optionnelle (moteur/outils : courbes, carte, frise) : ajoutée à la boîte « a » des dessins ; les outils du moteur gardent la priorité
+const BIB=window.BIBLI||{};
 const INK='#1c1a17',PAP='#fbf8f2',GR='#6b645a',ACC='#c4552d',CR='#f6f1e8',BLEU='#8fb7d8',ROSE='#e9b39d',GRIS='#d6cec2';
 const cl=(x,a=0,b=1)=>Math.max(a,Math.min(b,x)), L=(a,b,u)=>a+(b-a)*u, sg=(t,a,b)=>cl((t-a)/(b-a||1e-6));
 const eo=u=>1-Math.pow(1-cl(u),3), ei=u=>Math.pow(cl(u),3), eio=u=>{u=cl(u);return u<.5?4*u*u*u:1-Math.pow(-2*u+2,3)/2;};
@@ -230,7 +232,7 @@ SCENES.choix={
 /* ── LIBRE : une scène écrite à la main (dernier recours) : dessin(t,api) → SVG monde ── */
 SCENES.libre={
   init(sc){ sc.t0=T(sc.de); sc.t1=T(sc.a); sc.cams=(sc.cameras||[[sc.de,0,0,.8,0]]).map(c=>[T(c[0]),sc.ox+c[1],c[2]===null?Y(c[3]):G+c[2],c[3],c[4]||0]); (sc.sons||[]).forEach(x=>son(T(x[0]),x[1],x[2]||.25)); },
-  monde(t,sc){ return t<sc.t0-.2?'':sc.dessin(t,{sc,T,K,txt,fmt,G,ox:sc.ox,INK,PAP,GR,ACC,CR,BLEU,ROSE,GRIS,eo,ei,eio,bk,sg,L,cl,f}); },
+  monde(t,sc){ return t<sc.t0-.2?'':sc.dessin(t,{...BIB,sc,T,K,txt,fmt,G,ox:sc.ox,INK,PAP,GR,ACC,CR,BLEU,ROSE,GRIS,eo,ei,eio,bk,sg,L,cl,f}); },
   poser(t,qui,sc){ return sc.poser?sc.poser(t,qui,{T,G,ox:sc.ox,bk,sg}):null; },
 };
 
@@ -356,7 +358,7 @@ SCENES.mot={ overlay:true,
         s+=`<g transform="${tf}" opacity="${f(op)}">`+txt(0,0,sz,'IS',fg,ch)+'</g>'; x+=cw; n++; } });
     const tr=eio(sg(t,sc.t0+.35,sc.t1-.1)), yl=lines.length*sz*1.05-sz*.35;
     if(tr>.02) s+=`<path d="M${f(-430)} ${f(yl)} L${f(-430+860*tr)} ${f(yl+10*Math.sin(tr*9))}" stroke="${sc.fond==='encre'?ACC:INK}" stroke-width="22" stroke-linecap="round" fill="none"/>`;
-    s+='</g>'; if(sc.dessin) s+=sc.dessin(t,{t0:sc.t0,t1:sc.t1,T,txt,tw,INK,PAP,GR,ACC,CR,eo,ei,eio,bk,sg,L,cl,f,...OUTILS}); return s+'</g>'; },
+    s+='</g>'; if(sc.dessin) s+=sc.dessin(t,{...BIB,t0:sc.t0,t1:sc.t1,T,txt,tw,INK,PAP,GR,ACC,CR,eo,ei,eio,bk,sg,L,cl,f,...OUTILS}); return s+'</g>'; },
   poser(){ return null; },
 };
 
@@ -422,7 +424,7 @@ SCENES.monde={
       return v; };
     sc.cad.forEach((c,i)=>{ if(i>0) son(c.t,c.coupe?'whoosh-short':'whoosh-short',c.coupe?.16:.12); });
     (sc.sons||[]).forEach(x=>son(T(x[0]),x[1],x[2]??.25)); (sc.actions||[]).forEach(x=>action(T(x[0]),T(x[1]),x[2]||'action'));
-    sc.api={T,K,G,ox:sc.ox,txt,fmt,tw,INK,PAP,GR,ACC,CR,BLEU,ROSE,GRIS,eo,ei,eio,bk,sg,L,cl,f,acteur:t=>sc.pos(t),...OUTILS};
+    sc.api={...BIB,T,K,G,ox:sc.ox,txt,fmt,tw,INK,PAP,GR,ACC,CR,BLEU,ROSE,GRIS,eo,ei,eio,bk,sg,L,cl,f,acteur:t=>sc.pos(t),...OUTILS};
   },
   monde(t,sc){ return (t<sc.t0-.3||(!sc.persiste&&t>sc.t1+.6))?'':`<g transform="translate(${sc.ox} 0)">`+sc.dessin(t,Object.assign(sc.api,{ox:0}))+'</g>'; },
   poser(t,qui,sc){ if(qui!=='gauche'||!sc.acteur||t<sc.t0-.2) return null; const p=sc.pos(t); return {x:p.x+sc.ox,y:p.y,s:(sc.taille??.62)*bk(sg(t,sc.t0,sc.t0+.4))}; },

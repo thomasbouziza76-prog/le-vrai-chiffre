@@ -1,7 +1,8 @@
-"""Usage : python3 moteur/timing.py DOSSIER
+"""Usage : python3 moteur/timing.py DOSSIER [--whisperx]
 Lit DOSSIER/voix.mp3 et DOSSIER/plan.js (PLAN.phrases), transcrit la voix (Whisper local),
 aligne chaque mot affiché sur la voix et écrit DOSSIER/timing.js + DOSSIER/mots.json.
-Ancres créées : p1…pN (début de chaque phrase), p1_fin…pN_fin, + PLAN.ancres {nom:{mot, phrase}}."""
+Ancres créées : p1…pN (début de chaque phrase), p1_fin…pN_fin, + PLAN.ancres {nom:{mot, phrase}}.
+--whisperx (option) : refait mots.json avec WhisperX (alignement forcé, CPU) si installé ; voir moteur/outils/README.md."""
 import sys,os,json,re,difflib,unicodedata,subprocess
 import numpy as np
 from num2words import num2words
@@ -20,6 +21,16 @@ if '--simuler' in sys.argv:   # test sans voix : 2,7 mots/s, 0,35 s entre les ph
     os.utime(os.path.join(D,'mots.json'))
 if not os.path.exists(os.path.join(D,'voix.mp3')) and os.path.exists(os.path.join(D,'assets','audio','voix.mp3')): shutil.copy(os.path.join(D,'assets','audio','voix.mp3'),os.path.join(D,'voix.mp3'))
 mots=os.path.join(D,'mots.json')
+# OPTION --whisperx (bibliothèque moteur/outils, pilote NC-001) : alignement forcé wav2vec2, plus précis sur les débuts de mots.
+# Seulement si WhisperX est installé (venv) ; sinon, ou en cas d'échec, l'alignement habituel ci-dessous reste le défaut.
+if '--whisperx' in sys.argv and '--simuler' not in sys.argv and os.path.exists(os.path.join(D,'voix.mp3')):
+    import importlib.util
+    PYX=os.environ.get('LVC_WHISPERX_PY') or (sys.executable if importlib.util.find_spec('whisperx') else '/home/claude/outils-video/venv-whisperx/bin/python')
+    if os.path.exists(PYX):
+        tmp=mots+'.whisperx'; r=subprocess.run([PYX,os.path.join(M,'outils','aligne_whisperx.py'),os.path.join(D,'voix.mp3'),tmp])
+        if r.returncode==0 and os.path.exists(tmp): os.replace(tmp,mots); print('alignement : WhisperX (wav2vec2, CPU)')
+        else: print('WhisperX a échoué : alignement habituel (faster-whisper)')
+    else: print('WhisperX non installé (LVC_WHISPERX_PY) : alignement habituel (faster-whisper)')
 if not os.path.exists(mots) or os.path.getmtime(mots)<os.path.getmtime(os.path.join(D,'voix.mp3')):
     from faster_whisper import WhisperModel
     raw=subprocess.run(['ffmpeg','-v','error','-i',os.path.join(D,'voix.mp3'),'-ac','1','-ar','16000','-f','f32le','-'],capture_output=True,check=True).stdout
