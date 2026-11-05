@@ -200,4 +200,5 @@ comptes oubliés via Ciclade (n° 27), chèque énergie (n° 15). Ils restent pl
 71. [INVESTIR] L'immobilier locatif : rendement brut, rendement net, ce qui reste vraiment
 
 ### Déjà faits (cochés)
+✅ 2026-11-05 N°13 · ⚡ [OUTIL · travail] Train supprimé par une grève : salarié du privé, retenue d'environ 95 € brut pour une journée sur 2 000 € brut, bulletin de retard, accord du boss · service-public F21019 (V20261104-2334-2)
 ✅ 2026-11-01 N°06 · 13. [PIÈGE] Payer en 4 fois : pourquoi le « petit » paiement coûte cher
