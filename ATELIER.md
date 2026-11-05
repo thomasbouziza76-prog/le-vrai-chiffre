@@ -53,7 +53,10 @@ Pour une retouche de SON (bruitage trop fort, mot couvert, musique, volume) ou d
    Recopie aussi par-dessus le projet les fichiers du moteur archivés dans `projet/` (index.html, moteur.js…) s'ils existent :
    la retouche doit garder le style de la vidéo d'origine.
 **MARQUES** : une vidéo dont l'id commence par `NC` (ou `marque` = `nc`) est de Non Classée : agent `nc-realisateur`, jamais
-Tico ni la DA de Le Vrai Chiffre, ni le Sheet, ni la page de liens ; ses sources sont dans le Studio `videos/NC<xxx>/`.
+Tico ni la DA de Le Vrai Chiffre, ni le Sheet, ni la page de liens, ni de carrousel ; ses sources sont dans le Studio `videos/NC<xxx>/`.
+**Toute retouche NC suit `studio/marques/nc/RETOUCHE.md`** (« RETOUCHE EXPRESS NC », dépôt privé : son remixé avec `son.py`,
+image par plage avec `video.py`, couverture `couverture.py`, noms `NC-0xx_<titre>-v<k>.mp4`, contrôle planche + ebur128),
+pas la procédure `moteur/` ci-dessus. Sparse-checkout du Studio pour une NC : `videos/NC0xx videos/NC001 sons marques/nc`.
 **RÈGLE GÉNÉRALE (Thomas, 03/11) : une retouche ne repart JAMAIS de zéro.** On garde tout ce qui est bon et on ne refait
 que ce qui est demandé. Plusieurs retouches sur la même vidéo = UN seul passage (regroupe-les). Une vidéo complète n'est
 refaite que si Thomas le demande (`confirme: true`).
@@ -85,6 +88,10 @@ toi (toucher aux dépôts, aux tâches, aux réglages, publier ou dépenser des 
 | marche | `agents/analyste-marche.md` | principes → chat ; règle proposée → `lecons` statut `proposee` |
 | auditeur | `agents/auditeur.md` | bilan → chat + `lecons` statut `proposee` |
 | stats | la procédure de la tâche Stats (Sheet `Videos`) | chiffres → chat |
+| nc-stratege | Studio `marques/nc/agents/stratege.md` + `marques/nc/sujets.md` | affaire et angle → `sujets/<id>` avec `marque: "nc"` |
+| nc-realisateur | Studio `marques/nc/agents/realisateur.md` + `marques/nc/RETOUCHE.md` | script, son, retouche NC → chat (et `videos/NC<xxx>.notes` si `video`) |
+Mission ou vidéo **nc** : pour verif, juge, critique-script, stratege et realisateur, donne la fiche NC du Studio
+(`marques/nc/agents/{verificateur,juge,critique-script,stratege,realisateur}.md`) à la place de la fiche LVC.
 **Une demande de Thomas = UNE mission** (décision du 03/11). Si plusieurs agents doivent intervenir, la commande porte
 `agents` = la chaîne dans l'ordre (ex. [veilleur, verif]) et `etape_mission` = l'indice de l'agent au travail. Ils travaillent
 l'un APRÈS l'autre et partagent un **cerveau commun** : `/home/claude/atelier/<id>/cerveau.md`, où chaque agent écrit ce qu'il a
@@ -100,13 +107,16 @@ sa fiche, la demande mot pour mot, le contexte (fiche `videos/N<xx>` si `video`,
 la chaîne. Tout chiffre rendu = source officielle + date, sinon « non vérifié ». Si le résultat contient des chiffres qui
 serviront dans une vidéo, un 2e Vérificateur NEUF les recontrôle (verdict avant correction, 2 tours maximum).
 Résultat :
-- `sujets/s<AAAAMMJJHHMM>` = `{titre, angle, source, etat: "propose", par: "<agent>", ordre: 0, t}` pour un sujet. JAMAIS
+- **`marque` (`lvc` ou `nc`) est OBLIGATOIRE dans tout `sujets/`, `lecons/` et `chat/` créé par une mission** (sinon la page
+  le range côté Le Vrai Chiffre et la tâche du matin peut le prendre). Marque = celle de la commande, sinon de la vidéo
+  (`NC…` → nc), sinon des agents (`nc-*` → nc).
+- `sujets/s<AAAAMMJJHHMM>` = `{titre, angle, source, marque, etat: "propose", par: "<agent>", ordre: 0, t}` pour un sujet. JAMAIS
   `choisi` : c'est Thomas qui choisit. Pas de ligne dans `sujets.md` du dépôt (le Veilleur et le Stratège des vidéos lisent le QG).
-- chat : `chat/<id>` = `{t, de: "manager", texte: "<Agent> : <résultat en 6 lignes max, sources comprises>", contexte: "N°xx" si video}`.
+- chat : `chat/<id>` = `{t, de: "manager", marque, texte: "<Agent> : <résultat en 6 lignes max, sources comprises>", contexte: "N°xx" ou "NC-0xx" si video}`.
 - commande : `statut: faite, fin, resultat` (3 phrases max) ; journal `ok` ; agent `repos`.
 Une mission qui demande une vidéo complète, une voix ou de refaire une vidéo (crédits) : sans `confirme: true`, statut
 `à confirmer` et `resultat` explique le coût ; une nouvelle vidéo passe par un sujet proposé, que Thomas choisit, et c'est la
-tâche du matin ou du soir qui la fabrique. Ne lance jamais de génération ElevenLabs depuis une mission.
+tâche de production de la marque qui la fabrique (le choix de Thomas : `pdg/choix` pour lvc, `pdg/choix-nc` pour nc). Ne lance jamais de génération ElevenLabs depuis une mission.
 
 ## Procédure (une exécution de la tâche Atelier)
 1. Outils : ToolSearch « select:mcp__claude-code-remote__add_repo » (introuvable : procédure « Si add_repo est introuvable » de PIPELINE.md 0 bis, avec RefreshMcpTools et 30 s d'attente) ; add_repo le-vrai-chiffre ET studio (owner
