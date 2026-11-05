@@ -235,6 +235,18 @@ Objectif de la phase actuelle : les **abonnements**. Chaque vidéo pousse donc �
 - [ ] Archétype de hook différent des 2 dernières vidéos.
 - [ ] Contenu éducatif, sans promesse d'argent facile, sans produit à intérêts présenté comme solution.
 - [ ] Sujet OUTIL : le contrôle OUTIL de la section 0 ter passe.
+- [ ] (Auditeur N°06, appliqué le 05/11) Le mot qui répond au hook n'est jamais à l'écran avant que la voix le dise
+      (contrôlé à la porte 4 sur la planche contact et mots.json).
+- [ ] (Auditeur N°06, appliqué le 05/11) Sujet de loi à date d'effet : chaque affirmation est classée « avant » ou
+      « après » la date dans 1b-chiffres.md, la phrase dite le précise, et le hook comme le carton donnent la date
+      absolue (« le 20 novembre »), jamais un compte à rebours seul.
+- [ ] (Auditeur N°07, appliqué le 05/11, à vérifier sur les 5 prochaines vidéos) Le partage de fin nomme une personne
+      précise ET un critère chiffré qu'elle remplit ET le gain en euros pour elle ; sinon le Critique script met
+      À CORRIGER. (N°07 : 81 partages avec ce schéma ; N°09 à N°12 : 0 à 2 sans critère.)
+- [ ] (Auditeur N°08, appliqué le 05/11) Quand le hook corrige une idée reçue, le vrai chiffre est à l'écran ET dit
+      avant 4 s (porte 2, vérifié sur mots.json et la planche contact ; N°08 : 4 441 € à 8 s, temps moyen 4 s).
+- [ ] (Auditeur N°08, appliqué le 05/11) Avant « À publier », l'année et la source de la légende sont identiques à
+      celles de 1b-chiffres.md et du texte à l'écran (porte 4 ; un écart est BLOQUANT).
 
 ## 10. Objectif de la chaîne (phase actuelle : croissance vers 10 000 abonnés)
 

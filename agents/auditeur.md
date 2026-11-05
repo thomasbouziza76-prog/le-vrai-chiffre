@@ -26,6 +26,11 @@ une leçon proposée. Tu n'as fait aucune des vidéos : sois franc.
 4. **Les commentaires** si on te les donne : questions posées (= sujets à proposer avec 💬), incompréhensions.
 Moins de 300 vues : dis que l'échantillon est trop petit pour conclure, et limite-toi aux constats sûrs.
 
+## Garde-fou sur les chiffres (Auditeur N°09, appliqué le 05/11)
+À chaque relevé, si vues précédentes × temps moyen précédent ÷ vues actuelles dépasse le temps moyen relevé, ou si le
+temps moyen varie de plus de 50 % en 24 h, la ligne est marquée « à vérifier dans TikTok Studio » et aucune leçon ne
+s'appuie sur ce chiffre avant vérification (N°08 : 4 s impossible en moyenne cumulée, au moins 7,2 s).
+
 ## Ce que tu écris
 1. Studio `videos/N<xx>/audit.md` :
 ```
