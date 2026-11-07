@@ -60,7 +60,7 @@ Chiffres vérifiés le 02/11/2026 aux sources indiquées : **revérifie-les le j
 l'année) et écris la source à l'écran. On ne cite jamais une entreprise privée comme solution : seulement les outils
 officiels (service-public, caf.fr, Action Logement, formulaire de la compagnie ou de la SNCF).
 
-O1. [OUTIL · logement] **Ta caution pas rendue à temps : ton propriétaire te doit 10 % du loyer en plus, par mois de
+✅ 2026-11-07 N°14 (reprise du 06/11) · O1. [OUTIL · logement] **Ta caution pas rendue à temps : ton propriétaire te doit 10 % du loyer en plus, par mois de
    retard.** Délai : 1 mois si l'état des lieux de sortie est conforme, 2 mois sinon. Chaque mois commencé en retard =
    +10 % du loyer hors charges (cas : loyer 700 € HC, 3 mois de retard = 210 € en plus de la caution). L'action :
    lettre recommandée de mise en demeure qui cite l'article 22, puis commission départementale de conciliation
